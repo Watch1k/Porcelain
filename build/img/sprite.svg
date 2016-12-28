@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs>
+        <style>
+            .cls-1{fill:#a2a4a8}
+        </style>
+    
+        <style>
+            .cls-1{fill:#a2a4a8}
+        </style>
+    
+        <style>
+            .cls-1{fill:#666}
+        </style>
+    
+        <style>
+            .cls-1{fill:#a2a4a8}
+        </style>
+    </defs><symbol id="icon-arrow-left" viewBox="0 0 10 14">
+    <title>
+        Rectangle 21 copy
+    </title>
+    <path d="M.985 7.237l5.84 5.777 2.189-2.166L5.125 7l3.889-3.848L6.825.986.985 6.763l.24.237z"/>
+</symbol><symbol id="icon-arrow-right" viewBox="0 0 8 13">
+    <title>
+        Rectangle 21
+    </title>
+    <path d="M7.889 6.732l-5.657 5.657-2.121-2.121L3.879 6.5.111 2.732 2.232.611l5.657 5.657-.232.232z"/>
+</symbol><symbol id="icon-fb" viewBox="0 0 200.72 430.11">
+    
+    <title>
+        facebook
+    </title>
+    <path id="Facebook" class="cls-1" d="M158.08 83.3v59.22H114.7v72.41h43.38v215.18h89.12V214.94H307s5.6-34.72 8.32-72.68h-67.78V92.74c0-7.4 9.72-17.35 19.32-17.35h48.56V0h-66c-93.54 0-91.34 72.48-91.34 83.3z" transform="translate(-114.7)"/>
+</symbol><symbol id="icon-insta-original" viewBox="0 0 169.06 169.06">
+    <title>
+        instagram
+    </title>
+    <path class="cls-1" fill="currentColor" d="M122.41 0H46.65A46.71 46.71 0 0 0 0 46.65v75.75a46.71 46.71 0 0 0 46.65 46.65h75.75a46.71 46.71 0 0 0 46.66-46.65V46.65A46.71 46.71 0 0 0 122.41 0z"/>
+    <path class="cls-2" fill="#fff" d="M84.53 41a43.56 43.56 0 1 0 43.56 43.56A43.61 43.61 0 0 0 84.53 41zm0 72.12a28.56 28.56 0 1 1 28.56-28.56 28.59 28.59 0 0 1-28.56 28.53z"/>
+    <path class="cls-2" fill="#fff" d="M139.92 28.25a11 11 0 1 0 7.78 3.22 11 11 0 0 0-7.78-3.22z"/>
+</symbol><symbol id="icon-logo" viewBox="0 0 150 53">
+    <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAA1CAMAAACUV+KQAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACx1BMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AAACGEKYnAAAA63RSTlMALiAQAgg+mo93fniSexJzf4AKHHxyUjBgWEMdOISstqRtGVlGBUiQr6iHPAxaJzdOBk3QS7v5A8o72BjA8KCm0f4v71Af5KoB+g31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" width="150" height="53"/>
+</symbol><symbol id="icon-rect-bot" viewBox="0 0 13 3">
+    <title>
+        Rectangle 28 copy 2
+    </title>
+    <path d="M0 3V0h13v3z"/>
+</symbol><symbol id="icon-rect" viewBox="0 0 3 13">
+    <title>
+        Rectangle 19 copy 8
+    </title>
+    <path d="M0 13V0h3v13z"/>
+</symbol><symbol id="icon-tw" viewBox="0 0 612 497.12">
+    
+    <title>
+        twitter
+    </title>
+    <path class="cls-1" d="M612 116.26A250.71 250.71 0 0 1 539.91 136a126.07 126.07 0 0 0 55.19-69.38 253.1 253.1 0 0 1-79.78 30.48 125.64 125.64 0 0 0-213.93 114.46A356.43 356.43 0 0 1 42.64 80.39 125.69 125.69 0 0 0 81.5 248a125.56 125.56 0 0 1-56.87-15.76v1.57a125.67 125.67 0 0 0 100.69 123.1 127.17 127.17 0 0 1-33.08 4.4 120.5 120.5 0 0 1-23.63-2.33 125.61 125.61 0 0 0 117.25 87.19A251.89 251.89 0 0 1 29.94 499.8 266.81 266.81 0 0 1 0 498.07a354.88 354.88 0 0 0 192.44 56.49c230.95 0 357.19-191.29 357.19-357.19l-.42-16.25A250.7 250.7 0 0 0 612 116.26z" transform="translate(0 -57.44)"/>
+</symbol><symbol id="icon-vintage" viewBox="0 0 60 12.94">
+    
+    <title>
+        logo_vintage
+    </title>
+    <path class="cls-1" d="M2.34.09H0l.56 2.16h2.35L2.34.09z"/>
+    <path class="cls-1" d="M10.59.09h2.44v12.56h-2.44z"/>
+    <path class="cls-1" d="M21.38 7.5L18.09.09h-2.62v12.57h2.16V4.59l3.65 8.07h2.35V.09h-2.25V7.5z"/>
+    <path class="cls-1" d="M33.19.09h-7.97v2.16h2.72v10.41h2.44V2.25h2.81V.09z"/>
+    <path class="cls-1" d="M36.19.09l-3.1 12.57h2.34l.66-2.66h3.28l.56 2.62h2.25L39.19.09h-3zm.28 7.78l1.22-5.06 1.13 5.06z"/>
+    <path class="cls-1" d="M47.34 2.06c.84 0 1.5.56 1.5 2.16h2.44C51.19 1.41 49.87 0 47.44 0S43.5 1.13 43.5 4.22v4.5c0 3.09 1.59 4.22 3.94 4.22a2.9 2.9 0 0 0 2.25-1.22l.38 1h1.22V6.28h-4.13v2h1.69V9c0 1-.56 1.78-1.41 1.78s-1.6-.37-1.6-1.78V3.94c-.09-1.5.57-1.88 1.5-1.88z"/>
+    <path class="cls-1" d="M55.69 10.5V7.22h3.19V5.06h-3.19V2.25h4.12V.09h-6.56v12.57H60V10.5h-4.31z"/>
+    <path class="cls-1" d="M6.84.09L3.66 12.66h2.25L9.09.09H6.84z"/>
+</symbol><symbol id="icon-yt" viewBox="0 0 90 63">
+    
+    <title>
+        youtube
+    </title>
+    <path id="YouTube_alt_" data-name="YouTube (alt)" class="cls-1" d="M90 27a13.45 13.45 0 0 0-13.45-13.5h-63.1A13.45 13.45 0 0 0 0 27v36a13.45 13.45 0 0 0 13.45 13.5h63.1A13.45 13.45 0 0 0 90 63zM36 60.22V26.33l25.7 16.95z" transform="translate(0 -13.5)"/>
+</symbol></svg>

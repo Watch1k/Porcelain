@@ -1,0 +1,1571 @@
+// fonts
++font('PTSans-Regular', 'PTSans-Regular')
++font('OpenSans-Extrabold', 'OpenSans-Extrabold')
+
+$default-fonts: Arial, sans-serif
+=pt
+	font-family: 'PTSans-Regular', $default-fonts
+=open-extrabold
+	font-family: 'OpenSans-Extrabold', $default-fonts
+
+// colors
+$red: #a70a3f
+$gray-light: #a2a4a8
+$black: #000000
+$gray-dark: #808080
+$white: #ffffff
+$whitesmoke: #f5f5f5
+
+//title
+=h1-lg
+	+open-extrabold
+	font-size: 35px
+	line-height: 1.28571
+=h1
+	+open-extrabold
+	font-size: 24px
+	line-height: 1.25
+=h2
+	+open-extrabold
+	font-size: 18px
+	line-height: 1.33333
+=h3
+	+open-extrabold
+	font-size: 12px
+	line-height: 1.5
+	
+=trs
+	transition: all 0.5s ease-in-out
+	
+=smooth
+	-webkit-font-smoothing: antialiased
+	
+=text-slider
+	+open-extrabold
+	font-size: 60px
+	
+.btn
+	display: inline-block
+	width: 300px
+	height: 60px
+	line-height: 60px
+	+open-extrabold
+	font-size: 12px
+	color: $white
+	text-align: center
+	text-transform: uppercase
+	transition: all 0.75s ease-out
+	.btn__icon
+		display: inline-block
+		vertical-align: middle
+		height: 13px
+		width: 3px
+		position: relative
+		left: 12px
+		top: -1px
+		transition: all 0.75s ease-out
+		transform: translateZ(0)
+		&:before,
+		&:after
+			content: ''
+			position: absolute
+			display: block
+			right: 0
+			width: 3px
+			height: 7px
+			background-color: #ffffff
+			transition: all 0.75s ease-out
+			transform: translateZ(0)
+		&:before
+			bottom: 50%
+		&:after
+			top: 50%
+		&_red
+			&:before,
+			&:after
+				background-color: $red
+	&:hover &__icon
+		&:before
+			transform: rotate(-40deg) translateY(2px) scaleY(1.15) translateZ(0)
+		&:after
+			transform: rotate(40deg) translateY(-2px) scaleY(1.15) translateZ(0)
+	&_red
+		background-color: $red
+	&_black
+		background-color: $black
+	&_white
+		color: $red
+		background-color: #ffffff
+
+.arrow-bot-anim
+	display: inline-block
+	vertical-align: middle
+	height: 13px
+	width: 3px
+	position: relative
+	transform: rotate(90deg) translateZ(0)
+	transition: all 0.75s ease-out
+	&:before,
+	&:after
+		content: ''
+		position: absolute
+		display: block
+		right: 0
+		width: 3px
+		height: 7px
+		background-color: #000
+		transition: all 0.75s ease-out
+		trnasform: translateZ(0)
+	&:before
+		bottom: 50%
+	&:after
+		top: 50%
+	&.is-active
+		&:before
+			transform: rotate(-40deg) translateY(2px) scaleY(1.15) translateZ(0)
+		&:after
+			transform: rotate(40deg) translateY(-2px) scaleY(1.15) translateZ(0)
+
+
+/* ===================================
+	 Main Styles
+	 =================================== */
+.main
+	padding-top: 38px
+	
+body
+	position: relative
+	min-width: 320px
+	+pt
+	font-size: 14px
+	color: #000
+	line-height: 1.2
+	+smooth
+	background-color: #ffffff
+
+.wrapper
+	position: relative
+	overflow: hidden
+	margin: 0 auto
+	min-height: 100%
+	
+.main
+	position: relative
+
+.container
+	margin-left: auto
+	margin-right: auto
+	padding: 0 40px
+	max-width: 1280px
+	
+.preloader
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	z-index: 1000
+	background-color: #ffffff
+	transition: all 0.75s ease-in-out
+	.is-loaded &
+		opacity: 0
+		pointer-events: none
+
+
+/* Helpers
+	----------------------------------- */
+button
+	background-color: transparent
+
+a:hover, a:focus
+	text-decoration: none
+
+a
+	color: inherit
+	text-decoration: none
+
+table
+	vertical-align: top
+
+img
+	max-width: 100%
+	vertical-align: top
+
+.icon
+	display: inline-block
+	vertical-align: middle
+
+.text-left
+	text-align: left
+
+.text-center
+	text-align: center
+
+.text-right
+	text-align: right
+
+.is-hidden
+	display: none
+
+.vertical
+	display: inline-block
+	vertical-align: middle
+
+.cfx
+	+pie-clearfix
+
+*
+	+selection
+		color: #fff
+		background-color: $red
+
+
+
+/* ===================================
+	 Header
+	 =================================== */
+.header
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	z-index: 100
+	background-color: lighten($red,30)
+	opacity: 0
+	transform: translateY(-40px)
+	transition: all 1s ease-in-out
+	.is-loaded &
+		opacity: 1
+		transform: translateY(0)
+	&__top
+		+open-extrabold
+		color: #ffffff
+		line-height: 38px
+		background-color: #000000
+		opacity: 0
+		transform: translateY(-40px)
+		transition: all 1s ease-in-out
+		+pie-clearfix
+		.is-loaded &
+			opacity: 1
+			transform: translateY(0)
+	&__phone
+		float: left
+		position: relative
+		padding-left: 57px
+		&:before
+			content: ''
+			position: absolute
+			z-index: 1
+			top: 50%
+			left: 0
+			width: 30px
+			height: 1px
+			background-color: rgba(#ffffff, .2)
+	&__login
+		float: right
+		font-size: 12px
+		color: rgba(#ffffff, .4)
+		text-transform: uppercase
+		+trs
+		&:hover
+			color: $red
+	&__lang
+		position: relative
+		position: relative
+		z-index: 101
+		float: right
+		margin-right: 30px
+		font-size: 12px
+		text-transform: uppercase
+		&-link
+			display: block
+			position: relative
+			padding-left: 10px
+			padding-right: 30px
+			color: $gray-dark
+			line-height: 30px
+			background-color: #ffffff
+			+trs
+			&:before
+				content: ''
+				position: absolute
+				z-index: 1
+				top: 50%
+				right: 9px
+				width: 0
+				height: 3px
+				margin-top: -2px
+				background-color: transparent
+				+trs
+		&_parent > &-item > &-link
+			&:before,
+			&:after
+				content: ''
+				position: absolute
+				display: block
+				top: 50%
+				right: 9px
+				width: 7px
+				height: 3px
+				background-color: #4C4C4C
+				transition: all 0.75s ease-in-out
+			&:after
+				right: 15px
+				margin-top: -2px
+		&_parent.is-active > &-item > &-link
+			&:before,
+			&:after
+				background-color: #c9c9c9
+			&:before
+				margin-top: -3px
+				transform: rotate(-40deg) translateX(-2px) scaleY(1.15)
+			&:after
+				margin-top: -3px
+				transform: rotate(40deg) translateX(2px) scaleY(1.15)
+		&:not(&_parent) &-item:hover > &-link
+			color: $red
+			&:before
+				width: 13px
+				background-color: $red
+		&-item.active > &-link
+			color: #ffffff
+			line-height: 38px
+		&-item.active > &-link
+			background-color: transparent
+		&.is-active > &-item > &-link
+			color: $red
+			background-color: #ffffff
+		& &
+			display: none
+			position: absolute
+			z-index: 1
+			top: 100%
+	&__bot
+		padding: 14px 0
+		position: absolute
+		z-index: 1
+		top: 100%
+		left: 0
+		right: 0
+	&__logo
+		float: left
+	&__nav
+		float: right
+		margin-right: -35px
+		
+/* Nav
+	----------------------------------- */
+.nav
+	+open-extrabold
+	font-size: 12px
+	color: #ffffff
+	text-transform: uppercase
+	+pie-clearfix
+	&__item
+		float: left
+		padding: 20px 35px 20px 36px
+	&_header &__item
+		opacity: 0
+		transform: translateY(-7px)
+	&__link
+		display: block
+		+trs
+		&:hover
+			color: $red
+	&_footer
+		color: $gray-light
+	&_footer &__item
+		padding-left: 24px
+		padding-right: 25px
+
+
+/* ===================================
+	 Footer
+	 =================================== */
+.footer
+	background-color: #ffffff
+	&__top
+		padding-top: 12px
+		padding-bottom: 12px
+		+pie-clearfix
+	&__nav
+		float: left
+		margin-left: -24px
+	&__socials
+		margin-top: 15px
+		margin-right: -5px
+		float: right
+	&__bot
+		padding-top: 13px
+		padding-bottom: 10px
+		background-color: #000000
+		+pie-clearfix
+	&__copy
+		position: relative
+		top: 2px
+		float: left
+		font-size: 12px
+		line-height: 15px
+		color: rgba(#ffffff,.2)
+	&__vintage
+		float: right
+		font-size: 0
+		.icon
+			font-size: 15px
+			color: rgba(#ffffff, .4)
+
+/* Socials
+	----------------------------------- */
+.socials
+	+pie-clearfix
+	&__item
+		float: left
+		& + &
+			margin-left: 9px
+	&__link
+		display: block
+		padding: 5px
+		font-size: 0
+		color: $gray-light
+	&__item:nth-child(1)
+		.icon
+			font-size: 13px
+	&__item:nth-child(2)
+		.icon
+			font-size: 13px
+	&__item:nth-child(3)
+		.icon
+			margin-top: 1px
+			font-size: 11px
+	&__item:nth-child(4)
+		.icon
+			margin-top: 1px
+			font-size: 11px
+		
+
+/* ===================================
+	 Home Page
+	 =================================== */
+.line-v
+	position: absolute
+	z-index: 0
+	pointer-events: none
+	
+
+/* Screen
+	----------------------------------- */
+.screen
+	margin-top: -38px
+	position: relative
+	color: #ffffff
+	min-height: 670px
+	&__item
+		position: relative
+		height: 670px
+		overflow: hidden
+		&.slick-current
+			transform: scale(1.1)
+		transition: all 1s ease-in-out
+		.is-loaded &.slick-current
+			transform: scale(1)
+	&__slider.is-video &__item
+		pointer-events: none
+	&__video
+		pointer-events: auto
+		position: absolute
+		opacity: 0
+		z-index: 1
+		top: 50%
+		left: 50%
+		transform: scale(1.15) translate(-50%, -50%)
+		min-width: 100%
+		min-height: 100%
+		width: auto
+		height: auto
+		transition: all 1s ease-in-out
+		&.is-active
+			cursor: pointer
+			opacity: 1
+		.is-loaded &
+			transform: scale(1) translate(-50%, -50%)
+	&__img
+		position: absolute
+		z-index: 0
+		width: 100%
+		height: 100%
+		pointer-events: none
+		background-position: center center
+		background-repeat: no-repeat
+		background-size: cover
+	&__container
+		position: relative
+		height: 100%
+		padding-top: 40px
+		z-index: 2
+		+vertical
+	&__play
+		position: absolute
+		z-index: 1
+		left: 50%
+		margin-left: -486px
+		top: 50%
+		margin-top: 20px
+		+open-extrabold
+		font-size: 12px
+		color: rgba(#ffffff, .5)
+		line-height: 1.5
+		text-transform: uppercase
+		+trs
+		&-text
+			display: inline-block
+			vertical-align: 2px
+			opacity: 0
+			transform: translateY(-20px)
+		.icon
+			position: relative
+			top: -3px
+			margin-left: 20px
+			width: 28px
+			color: #ffffff
+			opacity: 0
+			transform: translateX(-10px)
+		&:before
+			pointer-events: none
+			content: ''
+			position: absolute
+			z-index: 1
+			width: 1px
+			height: 0
+			bottom: 100%
+			margin-bottom: 17px
+			right: 15px
+			background-color: #ffffff
+			transition: all 1s ease-in-out
+			transition-delay: 0.5s
+		&:after
+			pointer-events: none
+			content: ''
+			position: absolute
+			z-index: 1
+			width: 1px
+			height: 0
+			top: 100%
+			margin-top: 10px
+			right: 15px
+			background-color: #ffffff
+			transition: all 1s ease-in-out
+			transition-delay: 0.5s
+		.is-loaded &:before,
+		.is-loaded &:after
+			height: 34px
+	&__slider.is-video &__play
+		opacity: 0
+		transform: translateX(-50px)
+	&__inner
+		margin-top: 125px
+		display: inline-block
+		vertical-align: middle
+		width: 100%
+	&__title
+		max-width: 460px
+		margin-left: auto
+		margin-right: auto
+		text-transform: uppercase
+		text-align: left
+		+trs
+		&.is-loaded
+			+trs
+	&__slider.is-video &__title
+		opacity: 0
+		transform: translateX(50px)
+	&__btn
+		margin-top: 40px
+		margin-left: 300px
+	&__scroll
+		position: absolute
+		bottom: 25px
+		right: 70px
+		z-index: 1
+		+open-extrabold
+		font-size: 12px
+		color: #ffffff
+		text-transform: uppercase
+		+trs
+		&-text
+			display: inline-block
+			vertical-align: middle
+			opacity: 0
+			transform: translateY(-20px)
+		&-line
+			position: absolute
+			z-index: 1
+			height: 65px
+			width: 3px
+			right: -31px
+			bottom: -25px
+			overflow: hidden
+			transform: translateY(-100%)
+			&:before
+				content: ''
+				position: absolute
+				z-index: 1
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				background-color: #ffffff
+			&.is-animated
+				&:before
+					animation: scroll-btn 2s infinite cubic-bezier(0.46, 0.03, 0.52, 0.96)
+					animation-delay: -1s
+		&.is-video
+			pointer-events: none
+			opacity: 0
+			transform: translateY(50px)
+	&__title
+		+h1-lg
+	&__prev
+		position: absolute
+		z-index: 3
+		bottom: 30px
+		left: calc(50% - 600px)
+	&__next
+		position: absolute
+		z-index: 3
+		left: calc(50% - 310px)
+		bottom: 30px
+	&__prev,
+	&__next
+		color: rgba(#ffffff, .5)
+		+trs
+		&:hover
+			color: #ffffff
+	&__dots
+		position: absolute
+		z-index: 3
+		bottom: 15px
+		left: calc(50% - 530px)
+		font-size: 0
+		+trs
+		+pie-clearfix
+		&-item
+			cursor: pointer
+			display: inline-block
+			+open-extrabold
+			font-size: 60px
+			color: #ffffff
+			& + &
+				position: relative
+				margin-left: 55px
+				font-size: 24px
+				color: rgba(#ffffff, .5)
+				&:before
+					content: ''
+					position: absolute
+					z-index: 1
+					width: 3px
+					height: 3px
+					pointer-events: none
+					background-color: #ffffff
+					top: 50%
+					margin-top: -2px
+					left: -28px
+	&__slider.is-video &__dots
+		pointer-events: none
+		opacity: 0
+		transform: translateY(50px)
+		
+@keyframes scroll-btn
+	from
+		transform: translateY(-100%)
+	to
+		transform: translateY(100%)
+		
+/* Inno
+	----------------------------------- */
+.inno
+	padding-top: 90px
+	&__top
+		+pie-clearfix
+		&-col
+			float: left
+			&:nth-child(1)
+				overflow: hidden
+				position: relative
+				margin-left: -40px
+				width: 340px
+				color: #ffffff
+				text-transform: uppercase
+			& + &
+				margin-left: 70px
+				margin-top: 97px
+				max-width: 460px
+		&-title
+			+h1
+			.motion
+				position: relative
+				z-index: 1
+				top: 0
+				left: 0
+				width: 100%
+				height: 423px
+				background-color: $gray-light
+				&__inner
+					padding: 85px 50px 20px 40px
+				&:before
+					content: ''
+					position: absolute
+					z-index: 1
+					top: 57px
+					left: 29px
+					width: 20px
+					height: 3px
+					background-color: #ffffff
+		&-subtitle
+			+h2
+			text-transform: uppercase
+			opacity: 0
+			transform: translateY(50px)
+		&-text
+			margin-top: 36px
+			font-size: 16px
+			opacity: 0
+			color: $gray-dark
+			transform: translateY(50px)
+	&__row
+		position: relative
+		padding-bottom: 100px
+		margin-left: -22px
+		margin-right: -23px
+		+pie-clearfix
+		&:before
+			content: ""
+			display: table
+			clear: both
+	&__col
+		position: relative
+		margin-top: -131px
+		float: left
+		width: 33.33%
+		padding-left: 22px
+		padding-right: 23px
+	&__item
+		position: relative
+		padding-bottom: 85px
+		+ratio(1,1)
+		z-index: 1
+		&-inner
+			overflow: hidden
+			+ratio-in
+			z-index: 1
+			bottom: 85px
+			&:after
+				content: ''
+				position: absolute
+				z-index: 2
+				pointer-events: none
+				width: 100%
+				height: 100%
+				left: 0
+				top: 0
+				background-color: $red
+				transform: translate(0,0)
+				+trs
+			&.is-motion
+				&:after
+					transform: translate(100%,0)
+		&-in
+			+trs
+		&-video
+			position: absolute
+			z-index: 1
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			overflow: hidden
+			+trs
+	&__video
+		position: absolute
+		z-index: 1
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		height: 100%
+	&__desc
+		position: absolute
+		margin-top: -84px
+		top: 100%
+		left: 0
+		z-index: 2
+		background-color: #ffffff
+		margin-left: -40px
+		padding: 0 0 10px 0
+		width: calc(100% - 30px)
+		height: 240px
+		transition: all 0.75s ease-in-out
+		&-title
+			cursor: pointer
+			padding-top: 40px
+			margin-left: 40px
+			padding-right: 45px
+			+open-extrabold
+			font-size: 18px
+			text-transform: uppercase
+			+pie-clearfix
+			&-text
+				float: left
+				max-width: 200px
+				line-height: 1.33
+			.icon
+				float: right
+				margin-top: 4px
+				margin-right: 3px
+		&-text
+			margin-top: 22px
+			padding: 0 95px 0 40px
+			font-size: 16px
+			color: $gray-dark
+			opacity: 0
+			transition: all 0.5s ease-in-out
+	&__item.is-active &__desc
+		transform: translateY(-100%)
+		opacity: 0
+		transition: all 0.75s ease-in-out
+	&__item.is-active &__desc-text
+		opacity: 1
+		transition: all 1.25s ease-in-out
+	&__item.is-active &__item-in
+		filter: grayscale(100%)
+	&__item.is-active &__item-video
+		filter: grayscale(100%)
+		transition: all 1.5s ease-in-out
+		
+/* Start
+	----------------------------------- */
+.start
+	padding-top: 100px
+	font-size: 0
+	text-align: right
+	&__item
+		position: relative
+		display: inline-block
+		vertical-align: top
+		width: 25%
+		text-align: left
+		overflow: hidden
+		&:not(&_title)
+			+ratio(1,1)
+		&:nth-child(3n + 1) &-inner
+			color: #ffffff
+			background-color: $red
+			&:before
+				content: none
+				display: none
+		&_title
+			display: block
+			float: right
+			height: 400px
+			margin-bottom: -100px
+			overflow: visible
+			.motion
+				padding: 0
+				&__inner
+					position: relative
+					padding: 85px 50px 20px 40px
+					z-index: 1
+				&:before
+					content: ''
+					position: absolute
+					z-index: 0
+					pointer-events: none
+					top: 0
+					left: 0
+					width: 100%
+					bottom: 0
+					background-color: $gray-light
+					transition: all 1s ease-in-out
+				&.is-motion:before
+					width: calc(100% + 40px)
+				&:after
+					content: ''
+					position: absolute
+					z-index: 1
+					top: 55px
+					left: 29px
+					width: 20px
+					height: 3px
+					background-color: #ffffff
+			&__inner
+				position: relative
+				z-index: 3
+		&-inner
+			overflow: hidden
+			z-index: 0
+			background-color: #ffffff
+			+ratio-in
+			&:after
+				content: ''
+				position: absolute
+				z-index: 2
+				pointer-events: none
+				width: 100%
+				height: 100%
+				left: 0
+				top: 0
+				background-color: $red
+				transform: translate(0,0)
+				+trs
+			&.is-motion
+				&:after
+					transform: translate(100%,0)
+		&:nth-child(3n + 1) &-inner:after,
+		&:nth-child(3n + 3) &-inner:after
+			display: none
+			content: none
+		&-desc
+			padding: 45px 0 0
+			z-index: 1
+			+ratio-in
+			display: flex
+			flex-direction: column
+			&:before
+				content: ''
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				z-index: -1
+				background-color: $gray-light
+				transform: translateX(-100%)
+				transition: all 0.5s ease-in-out
+		&:hover &-desc
+			&:before
+				transform: translateX(0)
+	&__img
+		position: absolute
+		z-index: 1
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		height: 100%
+	&__video
+		position: absolute
+		z-index: 1
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		height: 100%
+	&__hide
+		flex: 1 0 auto
+		overflow: hidden
+		transform: translateX(-100%)
+		transition: all 0.5s ease-in-out
+	&__item:hover &__hide
+		transform: translateX(0)
+	&__title
+		position: relative
+		z-index: 2
+		flex: 0 0 auto
+		padding: 0 30px
+		+open-extrabold
+		font-size: 18px
+		text-transform: uppercase
+		line-height: 1.33
+		transition: all 0.5s ease-in-out
+		+pie-clearfix
+		&-text
+			float: left
+			max-width: 190px
+		&-icon
+			float: right
+			height: 13px
+			width: 3px
+			position: relative
+			top: 5px
+			right: 3px
+			transform: rotate(90deg)
+			transition: all 0.75s ease-in-out
+			&:before,
+			&:after
+				content: ''
+				position: absolute
+				display: block
+				right: 0
+				width: 3px
+				height: 7px
+				background-color: #ffffff
+				transition: all 0.75s ease-in-out
+				transform: translateZ(0)
+			&_black:before,
+			&_black:after
+				background-color: #000000
+			&:before
+				bottom: 50%
+			&:after
+				top: 50%
+	&__item:hover &__title-icon
+		transform: translateY(-3px) rotate(90deg)
+		&:before
+			transform: rotate(-40deg) translateY(2px) scaleY(1.15) translateZ(0)
+		&:after
+			transform: rotate(40deg) translateY(-2px) scaleY(1.15) translateZ(0)
+	&__item:hover &__title-icon_black:before,
+	&__item:hover &__title-icon_black:after
+		background-color: #ffffff
+	&__item:hover &__title
+		color: #ffffff
+	&__item_title &__title
+		font-size: 24px
+		color: #ffffff
+		line-height: 1.25
+	&__text
+		position: relative
+		margin-top: 18px
+		padding: 0 30px
+		font-size: 16px
+		color: rgba(#ffffff, .75)
+		top: 20px
+		opacity: 0
+		transform: translateX(100%)
+		transition: top 0.5s ease-in-out 0.15s, transform 0.5s ease-in-out, opacity 0.5s ease-in-out
+	&__item:hover &__text
+		top: 0
+		opacity: 1
+		transform: translateX(0)
+		transition: top 0.5s ease-in-out 0.15s, transform 0.5s ease-in-out, opacity 0.75s ease-in-out 0.15s
+	&__btn
+		position: absolute
+		z-index: 1
+		bottom: 0
+		left: 100%
+		width: 100%
+		display: block
+		padding-top: 24px
+		padding-bottom: 23px
+		padding-left: 30px
+		+open-extrabold
+		font-size: 12px
+		color: #ffffff
+		line-height: 12px
+		text-transform: uppercase
+		background-color: #989a9e
+		transform: translate(0,100%)
+		&-icon
+			display: inline-block
+			vertical-align: middle
+			height: 13px
+			width: 3px
+			position: relative
+			left: 12px
+			top: -1px
+			transition: all 0.75s ease-in-out
+			&:before,
+			&:after
+				content: ''
+				position: absolute
+				display: block
+				right: 0
+				width: 3px
+				height: 7px
+				background-color: #ffffff
+				transition: all 0.75s ease-in-out
+				transform: translateZ(0)
+			&:before
+				bottom: 50%
+			&:after
+				top: 50%
+		&:hover &-icon
+			transform: translateX(-3px)
+			&:before
+				transform: rotate(-40deg) translateY(2px) scaleY(1.15) translateZ(0)
+			&:after
+				transform: rotate(40deg) translateY(-2px) scaleY(1.15) translateZ(0)
+	&__item &__btn
+		transition: transform 0.5s ease-in-out 0.5s, left 0.5s ease-in-out 0s
+	&__item:hover &__btn
+		left: 0
+		transform: translate(0,0)
+		transition: transform 0.5s ease-in-out 0.4s, left 0.5s ease-in-out 0s
+	&__button
+		width: 25%
+		position: relative
+		right: -1px
+		margin-right: 1px
+		z-index: 2
+		transition: all 0.75s
+		
+/* Why
+	----------------------------------- */
+.why
+	padding-top: 180px
+	&__top
+		+pie-clearfix
+		&-col
+			float: left
+			&:nth-child(1)
+				position: relative
+				margin-left: -40px
+				margin-bottom: -60px
+				color: #ffffff
+				text-transform: uppercase
+				.motion
+					z-index: 1
+					top: 0
+					left: 0
+					width: 340px
+					height: 336px
+					background-color: $red
+				.motion__inner
+					padding: 85px 50px 20px 40px
+					&:before
+						content: ''
+						position: absolute
+						z-index: 1
+						top: 57px
+						left: 29px
+						width: 20px
+						height: 3px
+						background-color: #ffffff
+			& + &
+				margin-left: 70px
+				margin-top: 97px
+				max-width: 460px
+		&-title
+			+h1
+		&-subtitle
+			+h2
+			text-transform: uppercase
+			opacity: 0
+			transform: translateY(50px)
+		&-text
+			margin-top: 36px
+			font-size: 16px
+			color: $gray-dark
+			opacity: 0
+			transform: translateY(50px)
+	&__row
+		position: relative
+		padding-bottom: 100px
+		display: table
+		width: 100%
+	&__col
+		position: relative
+		overflow: hidden
+		display: table-cell
+		height: 400px
+		width: 25%
+		&:nth-child(2n)
+			color: #ffffff
+	&__item
+		position: relative
+		height: 100%
+		&-in
+			overflow: hidden
+			position: relative
+			background-color: #ffffff
+			&:after
+				content: ''
+				position: absolute
+				z-index: 2
+				pointer-events: none
+				width: 100%
+				height: 100%
+				left: 0
+				top: 0
+				background-color: $red
+				transform: translate(0,0)
+				+trs
+			&.is-motion
+				&:after
+					transform: translate(100%,0)
+		&-inner
+			padding: 45px 30px
+	&__col:nth-child(2n) &__item-in
+		background-color: $gray-light
+	&__title
+		margin-top: 28px
+		+open-extrabold
+		font-size: 12px
+		line-height: 1.5
+		text-transform: uppercase
+		+pie-clearfix
+	&__text
+		margin-top: 23px
+		font-size: 16px
+		color: $gray-dark
+		+trs
+	&__col:nth-child(2n) &__text
+		color: rgba(#ffffff, .75)
+	&__number
+		+open-extrabold
+		font-size: 60px
+		text-transform: uppercase
+		
+/* Reg
+	----------------------------------- */
+.reg
+	padding-top: 80px
+	&__row
+		+pie-clearfix
+		&_right
+			width: calc(100% + 40px)
+			margin-right: -40px
+	&__col
+		float: left
+		&:nth-child(2)
+			margin-top: 65px
+			background-color: $red
+			min-height: 535px
+			margin-left: -30px
+			padding-top: 85px
+			padding-left: 70px
+			width: calc(100% - 300px)
+			color: #ffffff
+	&__title
+		position: relative
+		margin-left: -40px
+		margin-bottom: -85px
+		padding: 85px 50px 20px 40px
+		width: 340px
+		height: 300px
+		+h1
+		color: #ffffff
+		text-transform: uppercase
+		background-color: $gray-light
+		&:before
+			content: ''
+			position: absolute
+			z-index: 1
+			top: 57px
+			left: 29px
+			width: 20px
+			height: 3px
+			background-color: #ffffff
+	&__image
+		position: relative
+		width: 330px
+	&__subtitle
+		max-width: 430px
+		margin-bottom: 55px
+		+open-extrabold
+		font-size: 18px
+		line-height: 1.33
+		text-transform: uppercase
+	&__column
+		float: left
+		&:nth-child(1)
+			width: calc(100% - 340px)
+			padding-right: 60px
+		&:nth-child(2)
+			width: 300px
+		&-title
+			+open-extrabold
+			font-size: 12px
+			line-height: 1.5
+			text-transform: uppercase
+	&__column-title + &__text
+		margin-top: 20px
+	&__text
+		font-size: 16px
+		color: rgba(#ffffff, .75)
+		& + &
+			margin-top: 20px
+	&__phone
+		display: block
+		margin-top: 13px
+		margin-bottom: 30px
+		+open-extrabold
+		font-size: 45px
+	&__btn
+		margin-top: 25px
+		
+/* Service
+	----------------------------------- */
+.service
+	padding-top: 182px
+	font-size: 0
+	text-align: right
+	&__item
+		position: relative
+		padding: 50px 30px
+		display: inline-block
+		vertical-align: top
+		width: 25%
+		height: 300px
+		text-align: left
+		background-color: #ffffff
+		overflow: hidden
+		&:nth-child(3n + 1)
+			color: #ffffff
+			background-color: $red
+		&_title
+			display: block
+			float: right
+			height: 400px
+			margin-bottom: -100px
+			padding: 85px 50px 20px 40px
+			overflow: visible
+			&:after
+				content: ''
+				position: absolute
+				z-index: 1
+				top: 55px
+				left: 29px
+				width: 20px
+				height: 3px
+				background-color: #ffffff
+			&:before
+				content: ''
+				position: absolute
+				z-index: 0
+				pointer-events: none
+				top: 0
+				left: 0
+				right: -40px
+				bottom: 0
+				background-color: $gray-light
+	&__img
+		position: absolute
+		z-index: 1
+		top: 0
+		left: 0
+	&__title
+		position: relative
+		z-index: 2
+		+open-extrabold
+		font-size: 18px
+		text-transform: uppercase
+		line-height: 1.33
+		+trs
+		+pie-clearfix
+	&__item_title &__title
+		font-size: 24px
+		color: #ffffff
+		line-height: 1.25
+		
+/* Gal
+	----------------------------------- */
+.gal
+	padding-bottom: 115px
+	&__row
+		margin-left: -40px
+		margin-right: -40px
+		display: flex
+		flex-direction: row-reverse
+		padding-top: 200px
+	&__item
+		position: relative
+		&_1
+			flex-basis: 190px
+			align-self: flex-end
+		&_2
+			margin-top: 75px
+			flex-basis: 450px
+		&_3
+			flex-basis: 450px
+		&_4
+			flex-basis: 190px
+			align-self: flex-end
+			transform: translateY(calc(100% - 75px))
+	&__item-in
+		&_1-1
+			position: absolute
+			z-index: 1
+			top: 100%
+			left: 0
+			right: 0
+			transform: translateX(-40px)
+		&_1-2
+			position: absolute
+			z-index: 1
+			top: 45%
+			right: 60%
+			width: calc(100% - 40px)
+		&_2-1
+			position: absolute
+			z-index: 1
+			bottom: 100%
+			left: 0
+			width: calc(100% / 3)
+		&_4-1
+			position: absolute
+			z-index: 1
+			top: 50%
+			left: 40%
+			width: 100%
+	&__img
+		position: relative
+		z-index: 2
+		width: 100%
+	&__item-title
+		position: absolute
+		bottom: 100%
+		right: 0
+		width: 340px
+		height: 350px
+		padding: 85px 50px 20px 40px
+		color: #ffffff
+		overflow: visible
+		background-color: $gray-light
+		&:after
+			content: ''
+			position: absolute
+			z-index: 1
+			top: 55px
+			left: 29px
+			width: 20px
+			height: 3px
+			background-color: #ffffff
+		&-in
+			max-width: 150px
+			position: relative
+			z-index: 2
+			+open-extrabold
+			font-size: 24px
+			text-transform: uppercase
+			line-height: 1.25
+			+trs
+			+pie-clearfix
+	&__desc
+		display: flex
+		margin-top: 100px
+		max-width: 50%
+		margin-left: auto
+		margin-right: auto
+		flex-wrap: wrap
+		justify-content: flex-end
+		&-text
+			position: relative
+			padding-left: 11.5%
+			flex-basis: 100%
+			+open-extrabold
+			font-size: 18px
+			text-transform: uppercase
+			line-height: 24px
+			&:before
+				content: '“'
+				position: absolute
+				top: -5px
+				left: -20px
+				font-size: 72px
+				+open-extrabold
+				color: #ced0d6
+		&-btn
+			margin-top: 40px
+			
+/* About
+	----------------------------------- */
+.about
+	padding-top: 60px
+	padding-bottom: 60px
+	&__row
+		+pie-clearfix
+	&__col
+		float: left
+		width: 37.5%
+		margin-left: 12.5%
+	&__title
+		+open-extrabold
+		font-size: 12px
+		line-height: 1.5
+		text-transform: uppercase
+	&__phone
+		display: block
+		margin-top: 15px
+		+open-extrabold
+		font-size: 45px
+		color: $gray-light
+		text-transform: uppercase
+	&__button
+		margin-top: 25px
+		
+
+/* Map
+	----------------------------------- */
+.map
+	padding-top: 30px
+	&__list
+		position: relative
+		z-index: 2
+		min-height: 210px
+		margin-left: -22px
+		margin-right: -23px
+		color: #ffffff
+		overflow: hidden
+		margin-bottom: -140px
+	&__col
+		cursor: pointer
+		float: left
+		background-color: $gray-light
+		width: calc(33.33% - 45px)
+		margin-left: 22px
+		margin-right: 23px
+		padding: 52px 45px
+		+trs
+		&.is-active
+			background-color: $red
+	&__title
+		+open-extrabold
+		font-size: 0
+		line-height: 1.67
+		text-transform: uppercase
+		&-number
+			font-size: 18px
+			display: inline-block
+			vertical-align: middle
+		&-text
+			position: relative
+			margin-left: 50px
+			display: inline-block
+			vertical-align: middle
+			font-size: 18px
+			&:before
+				content: ''
+				position: absolute
+				z-index: 1
+				top: 50%
+				margin-top: -1px
+				left: -26px
+				width: 3px
+				height: 3px
+				background-color: #ffffff
+	&__desc
+		padding-top: 0
+		padding-bottom: 0
+		font-size: 16px
+		max-height: 0
+		opacity: 0
+		+trs
+		&-number
+			pointer-events: none
+			display: table
+			margin-top: 10px
+	&__col.is-active &__desc
+		padding-top: 17px
+		padding-bottom: 5px
+		max-height: 75px
+		opacity: 1
+	&__col.is-active &__desc-number
+		pointer-events: auto
+	&__wrap
+		position: relative
+		z-index: 1
+		margin-left: -40px
+		margin-right: -40px
+	&__el
+		height: 400px
+	.gm-style > div:first-child > div:first-child > div:last-child
+		filter: grayscale(100%)
+	.gm-style > div:nth-child(2)
+		display: none
+	.gm-style > .gmnoprint
+		display: none
+		
+		
+/* ===================================
+	 Other Styles
+	 =================================== */
+

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SVG Sprite Preview</title>
+  <style type="text/css" media="all">
+
+    h1 {
+      text-align: center;
+    }
+
+    .icons-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0;
+      text-align: center;
+    }
+
+    .icon-box {
+      display: inline-block;
+      vertical-align: middle;
+      min-width: 100px;
+      min-height: 100px;
+      padding: 10px;
+    }
+
+    .icon-container {
+      min-height: 100px;
+      text-align: center;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #CCC;
+      box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    input:not([type=range]):not([type=color]) {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 12px;
+      height: 30px;
+      padding: 0;
+      text-align: center;
+      border: 1px solid #CCC;
+      box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
+      -webkit-appearance: none;
+    }
+
+    .configure {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      margin: auto;
+    }
+
+    .configure label:first-child input {
+      display: block;
+      width: 100%;
+    }
+
+    .configure label:last-child {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .icon-class-name {
+      width: 70%;
+    }
+
+    .icon-unicode {
+      width: 30%;
+    }
+
+    .icon-arrow-left {
+      width: 0.8em;
+      height: 1em;
+    }
+    .icon-arrow-right {
+      width: 0.7em;
+      height: 1em;
+    }
+    .icon-fb {
+      width: 0.5em;
+      height: 1em;
+    }
+    .icon-insta-original {
+      width: 1em;
+      height: 1em;
+    }
+    .icon-logo {
+      width: 2.9em;
+      height: 1em;
+    }
+    .icon-rect-bot {
+      width: 4.4em;
+      height: 1em;
+    }
+    .icon-rect {
+      width: 0.3em;
+      height: 1em;
+    }
+    .icon-tw {
+      width: 1.3em;
+      height: 1em;
+    }
+    .icon-vintage {
+      width: 4.7em;
+      height: 1em;
+    }
+    .icon-yt {
+      width: 1.5em;
+      height: 1em;
+    }
+    
+  </style>
+</head>
+<body>
+  <h1>Icons: <span id="count"></span></h1>
+
+  <div class="configure">
+    <label>
+      <span>Size: <b><output for="size" id="size-value">100</output></b>px</span>
+      <input type="range" id="size" value="100" min="6" max="1000">
+    </label>
+
+    <label>
+      <span>Color:&nbsp;</span>
+      <input type="color" id="color">
+    </label>
+  </div>
+
+  <ul class="icons-list">
+    
+    <li class="icon-box">
+      <input class="icon-class-name autoselect" type="text" value=".icon-arrow-left" readonly>
+      <div class="icon-container">
+        <svg class="icon icon-arrow-left">
+          <use xlink:href="/img/sprite.svg#icon-arrow-left"></use>
+        </svg>
+      </div>
+    </li>
+    
+    <li class="icon-box">
+      <input class="icon-class-name autoselect" type="text" value=".icon-arrow-right" readonly>
+      <div class="icon-container">
+        <svg class="icon icon-arrow-right">
+          <use xlink:href="/img/sprite.svg#icon-arrow-right"></use>
+        </svg>
+      </div>
+    </li>
+    
+    <li class="icon-box">
+      <input class="icon-class-name autoselect" type="text" value=".icon-fb" readonly>
+      <div class="icon-container">
+        <svg class="icon icon-fb">
+          <use xlink:href="/img/sprite.svg#icon-fb"></use>
+        </svg>
+      </div>
+    </li>
+    
+    <li class="icon-box">
+      <input class="icon-class-name autoselect" type="text" value=".icon-insta-original" readonly>
+      <div class="icon-container">
+        <svg class="icon icon-insta-original">
+          <use xlink:href="/img/sprite.svg#icon-insta-original"></use>
+        </svg>
+      </div>
+    </li>
+    
+    <li class="icon-box">
+      <input class="icon-class-name autoselect" type="text" value=".icon-logo" readonly>
+      <div class="icon-container">
+        <svg class="icon icon-logo">
+          <use xlink:href="/img/sprite.svg#icon-logo"></use>
+        </svg>
+      </div>
+    </li>
+    
+    <li class="icon-box">
+      <input class="icon-class-name autoselect" type="text" value=".icon-rect-bot" readonly>
+      <div class="icon-container">
+        <svg class="icon icon-rect-bot">
+          <use xlink:href="/img/sprite.svg#icon-rect-bot"></use>
+        </svg>
+      </div>
+    </li>
+    
+    <li class="icon-box">
+      <input class="icon-class-name autoselect" type="text" value=".icon-rect" readonly>
+      <div class="icon-container">
+        <svg class="icon icon-rect">
+          <use xlink:href="/img/sprite.svg#icon-rect"></use>
+        </svg>
+      </div>
+    </li>
+    
+    <li class="icon-box">
+      <input class="icon-class-name autoselect" type="text" value=".icon-tw" readonly>
+      <div class="icon-container">
+        <svg class="icon icon-tw">
+          <use xlink:href="/img/sprite.svg#icon-tw"></use>
+        </svg>
+      </div>
+    </li>
+    
+    <li class="icon-box">
+      <input class="icon-class-name autoselect" type="text" value=".icon-vintage" readonly>
+      <div class="icon-container">
+        <svg class="icon icon-vintage">
+          <use xlink:href="/img/sprite.svg#icon-vintage"></use>
+        </svg>
+      </div>
+    </li>
+    
+    <li class="icon-box">
+      <input class="icon-class-name autoselect" type="text" value=".icon-yt" readonly>
+      <div class="icon-container">
+        <svg class="icon icon-yt">
+          <use xlink:href="/img/sprite.svg#icon-yt"></use>
+        </svg>
+      </div>
+    </li>
+    
+  </ul>
+
+  <script>
+    var change = document.getElementById('size');
+    var color = document.getElementById('color');
+    var changeVal = document.getElementById('size-value');
+    var count = document.getElementById('count');
+    var autoselect = document.getElementsByClassName('autoselect');
+    var icons = document.getElementsByClassName('icon');
+
+    Array.prototype.forEach.call(autoselect, function(el) {
+      el.onclick = function() {
+        this.focus();
+        this.select();
+      };
+    });
+
+    change.oninput = function() {
+      var val = this.value;
+      changeVal.value = val;
+      Array.prototype.forEach.call(icons, function(el) {
+        el.style.fontSize = val + 'px';
+      });
+    }
+
+    color.onchange = function() {
+      var val = this.value;
+      Array.prototype.forEach.call(icons, function(el) {
+        el.style.fill = val;
+      });
+    }
+
+    count.innerHTML = icons.length;
+  </script>
+</body>
+</html>

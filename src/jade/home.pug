@@ -1,0 +1,338 @@
+extend includes/_layout
+block title
+	title Home
+block content
+	.line-v.line-v_1
+	//begin screen
+	.screen
+		button.screen__scroll.is-animate.js-scroll-btn(type='button' data-href='#inno')
+			span.screen__scroll-text листайте вниз
+			.screen__scroll-line
+		.screen__slider.js-screen-slider
+			.screen__item
+				video.screen__video(src='/video/screen-1.mp4' loop='loop' preload='none')
+				.screen__img(style='background-image: url(/img/content/screen-1.jpg)')
+				.screen__container.container
+					.screen__inner
+						button.screen__play.js-play(type='button')
+							span.screen__play-text смотреть видео о нас
+							svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 337.173 337.173")
+								path(d="M25.922 337.173V0l285.329 168.595L25.922 337.173zM42.179 28.491v280.2L279.29 168.595 42.179 28.491z")
+						.screen__title Дети не боятся приводить своих родитлей в Porcelain
+								a.screen__btn.btn.btn_red(href='#')
+									| детский кабинет
+									.btn__icon
+			.screen__item
+				.screen__img(style='background-image: url(/img/content/screen-2.jpg)')
+				.screen__container.container
+					.screen__inner
+						.screen__title Дети не боятся приводить своих родитлей в Porcelain
+						a.screen__btn.btn.btn_red(href='#')
+							| детский кабинет
+							.btn__icon
+			.screen__item
+				.screen__img(style='background-image: url(/img/content/screen-3.jpg)')
+				.screen__container.container
+					.screen__inner
+						.screen__title Дети не боятся приводить своих родитлей в Porcelain
+						a.screen__btn.btn.btn_red(href='#')
+							| детский кабинет
+							.btn__icon
+	//end screen
+
+	//begin inno
+	.inno#inno
+		.inno__container.container
+			.inno__top
+				.inno__top-col.inno__top-title.js-inview.js-tween(data-anim='anim2' data-tween='true' data-main-delay='0' data-delay='0' data-speed='750')
+					.motion.js-motion1
+						.motion__inner инновации porcelain
+				.inno__top-col
+					.inno__top-subtitle.js-inview.js-tween(data-anim='anim1' data-tween='true' data-main-delay='0' data-speed='1000') Клиника "Porcelain" внедряет новые стандарты лечения зубов
+					.inno__top-text.js-inview.js-tween(data-anim='anim1' data-tween='true' data-main-delay='500' data-speed='1000' data-anim-delay='true') Клиника Porclaine совершенствуется каждый день и применяет все возможности передовых технологий для безопасного <br>и комфортного лечения пациентов
+			.inno__row
+				.inno__col
+					.inno__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='500' data-delay='0' data-speed='500')
+						.inno__item-inner
+							.inno__item-video
+								video.inno__video(src='/video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+							img.inno__item-in(src='/img/content/inno-1.jpg' alt='image')
+						.inno__desc.js-inno-desc
+							.inno__desc-title
+								.inno__desc-title-text 3D-пациент
+								.icon.arrow-bot-anim
+							.inno__desc-text Проектируем цифровой прототип для разработки плана лечения.
+				.inno__col
+					.inno__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
+						.inno__item-inner
+							img.inno__item-in(src='/img/content/inno-2.jpg' alt='image')
+						.inno__desc.js-inno-desc
+							.inno__desc-title
+								.inno__desc-title-text Виртуальные операции
+								.icon.arrow-bot-anim
+							.inno__desc-text Проектируем цифровой прототип для разработки плана лечения.
+				.inno__col
+					.inno__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='250' data-delay='0' data-speed='500')
+						.inno__item-inner
+							img.inno__item-in(src='/img/content/inno-3.jpg' alt='image')
+						.inno__desc.js-inno-desc
+							.inno__desc-title
+								.inno__desc-title-text Цифровая модель улыбки
+								.icon.arrow-bot-anim
+							.inno__desc-text Проектируем цифровой прототип для разработки плана лечения.
+	//end inno
+
+	//begin start
+	.start
+		.start__container.container
+			.start__item.start__item_title.js-inview.js-tween(data-anim='anim2' data-tween='true' data-main-delay='0' data-delay='0' data-speed='750')
+				.start__title.motion.js-motion2
+					.start__title-text.motion__inner услуги клиники Porcelain
+			.start__list
+				.start__item.js-inview.js-tween(data-anim='anim4' data-tween='true' data-main-delay='0' data-delay='0' data-speed='550' data-offset-y='150')
+					.start__item-inner.motion.js-motion1
+						.motion__inner
+							.start__item-desc
+								.start__title
+									.start__title-text первый прием
+									.start__title-icon
+								.start__hide
+									.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+									a.start__btn(href='#')
+										| узнать больше о лечении
+										.start__btn-icon
+				.start__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='50' data-delay='0' data-speed='500' data-offset-y='50')
+					.start__item-inner
+						//img.start__img(src='/img/content/start-2.jpg' alt='image')
+						video.start__video(src='/video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+						.start__item-desc
+							.start__title
+								.start__title-text лечение десен
+								.start__title-icon.start__title-icon_black
+							.start__hide
+								.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+								a.start__btn(href='#')
+									| узнать больше о лечении
+									.start__btn-icon
+				.start__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500' data-offset-y='150')
+					.start__item-inner
+						.start__item-desc
+							.start__title
+								.start__title-text протезирование и эстетика
+								.start__title-icon.start__title-icon_black
+							.start__hide
+								.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+								a.start__btn(href='#')
+									| узнать больше о лечении
+									.start__btn-icon
+				.start__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
+					.start__item-inner
+						.start__item-desc
+							.start__title
+								.start__title-text лечение каналов
+								.start__title-icon
+							.start__hide
+								.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+								a.start__btn(href='#')
+									| узнать больше о лечении
+									.start__btn-icon
+				.start__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
+					.start__item-inner
+						img.start__img(src='/img/content/start-6.jpg' alt='image')
+						.start__item-desc
+							.start__title
+								.start__title-text детский кабинет
+								.start__title-icon.start__title-icon_black
+							.start__hide
+								.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+								a.start__btn(href='#')
+									| узнать больше о лечении
+									.start__btn-icon
+				.start__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
+					.start__item-inner
+						.start__item-desc
+							.start__title
+								.start__title-text профилактика
+								.start__title-icon
+							.start__hide
+								.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+								a.start__btn(href='#')
+									| узнать больше о лечении
+									.start__btn-icon
+				a.start__button.btn.btn_red.js-motion3(href="#")
+					| все услуги клиники
+					.btn__icon
+	//end start
+
+	//begin why
+	.why
+		.why__container.container
+			.why__top
+				.why__top-col.why__top-title.js-inview.js-tween(data-anim='anim2' data-tween='true' data-main-delay='0' data-delay='0' data-speed='750')
+					.motion.js-motion1
+						.motion__inner почему porcelain?
+				.why__top-col
+					.why__top-subtitle.js-inview.js-tween(data-anim='anim1' data-tween='true' data-main-delay='0' data-speed='1000') Как проходит лечение
+					.why__top-text.js-inview.js-tween(data-anim='anim1' data-tween='true' data-main-delay='500' data-speed='1000' data-anim-delay='true') Наши технологии увеличивают скорость вашего выздоровления, вам не придется долго ждать
+			.why__row
+				.why__col
+					.why__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
+						.why__item-in
+							.why__item-inner
+								.why__number 01
+								.why__title Вы звоните в клинику
+								.why__text Вместе с клиент-менеджером вы определяете необходимое лечение, выбираете удобное время и дату встречи с врачом.
+				.why__col
+					.why__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
+						.why__item-in
+							.why__item-inner
+								.why__number 02
+								.why__title Вы встречаетесь с врачом
+								.why__text Мы делаем серию фотографий и рентген-снимков, проектируем 3D-прототип и презентуем вам варианты лечения.
+				.why__col
+					.why__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
+						.why__item-in
+							.why__item-inner
+								.why__number 03
+								.why__title Вы начинаете лечение
+								.why__text В ходе лечения для вашей безопасности, экономии времени и точности результата мы тестируем каждый этап на прототипе.
+				.why__col
+					.why__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
+						.why__item-in
+							.why__item-inner
+								.why__number 04
+								.why__title Вы получаете онлайн-карту
+								.why__text Вы знакомитесь с планом лечения, финансовой историей, графиком визитов в мобильном приложении и виртуальном кабинете на сайте.
+	//end why
+
+	//begin reg
+	.reg
+		.reg__container.container
+			.reg__row.reg__row_right
+				.reg__col
+					.reg__title запись <br>на прием
+					.reg__image
+						img.reg__img(src='/img/content/reg-photo.jpg' alt='image')
+				.reg__col
+					.reg__subtitle Моя задача – понять вашу потребность и составить персональный план лечения
+					.reg__row
+						.reg__column
+							.reg__column-title Здравствуйте, меня зовут Анастасия, я клиент-менеджер клиники Porcelain.
+							p.reg__text Каждый день я разговариваю с пациентами, которые выбирают себе клинику и помогаю им разобраться с ценами.
+							p.reg__text После нашей беседы вы узнаете оптимальный вариант лечения, сколько это будет стоить, и мы вместе подберем врача.
+						.reg__column
+							.reg__column-title для записи на прием позвоните мне <br>по телефону
+							a.reg__phone(href='tel:0445937787') 044 593 77 87
+							.reg__column-title или я могу вам написать
+							a.reg__btn.btn.btn_white(href='#')
+								| оставить заявку
+								.btn__icon.btn__icon_red
+	//end reg
+
+	//begin service
+	.service
+		.service__container.container
+			.service__item.service__item_title
+				.service__title
+					.service__title-text Сервис клиники Porcelain <br>в деталях
+			.service__list
+				.service__item
+					.service__title
+						.service__title-text Собираем самые необходимые данные и особенности пациента
+				.service__item
+					img.service__img(src='/img/content/service-2.jpg' alt='image')
+					.service__title
+						.service__title-text Игровая комната <br>и детский кабинет
+				.service__item
+					.service__title
+						.service__title-text Комната отдыха <br>и сна после наркоза
+				.service__item
+					.service__title
+						.service__title-text Небольшая библиотека Porcelain: свежие журналы <br>и книги
+				.service__item
+					img.service__img(src='/img/content/service-6.jpg' alt='image')
+					.service__title
+						.service__title-text Профессиональная фотосессия <br>с мейкапом <br>по окончании лечения
+				.service__item
+					.service__title
+						.service__title-text Кафе в клинике, <br>где можно попробовать десерт <br>и выпить чай
+	//end service
+
+	//begin gal
+	.gal
+		.gal__container.container
+			.gal__row
+				.gal__item.gal__item_1
+					.gal__item-title
+						.gal__item-title-in Наши здоровые клиенты
+					img.gal__img(src='/img/content/gal-1.jpg' alt='image')
+					.gal__item-in.gal__item-in_1-1
+						img.gal__img(src='/img/content/gal-1-1.jpg' alt='image')
+						.gal__item-in.gal__item-in_1-2
+							img.gal__img(src='/img/content/gal-1-2.jpg' alt='image')
+				.gal__item.gal__item_2
+					img.gal__img(src='/img/content/gal-2.jpg' alt='image')
+					.gal__item-in.gal__item-in_2-1
+						img.gal__img(src='/img/content/gal-2-1.jpg' alt='image')
+				.gal__item.gal__item_3
+					img.gal__img(src='/img/content/gal-3.jpg' alt='image')
+				.gal__item.gal__item_4
+					img.gal__img(src='/img/content/gal-4.jpg' alt='image')
+					.gal__item-in.gal__item-in_4-1
+						img.gal__img(src='/img/content/gal-4-1.jpg' alt='image')
+			.gal__desc
+				.gal__desc-text Нам доверили свои улыбки 27 000 человек. <br>из них — посольства 20 стран мира, <br>15 международных компаний <br>и 33 страховые компании.
+				a.gal__desc-btn.btn.btn_black(href='#')
+					| читать истории клиентов
+					.btn__icon
+	//end gal
+
+	//begin about
+	.about
+		.about__container.container
+			.about__row
+				.about__col
+					.about__title для записи на прием позвоните
+					a.about__phone(href='tel:0445937787') 044 593 77 87
+				.about__col
+					.about__title или оставьте заявку через форму записи
+					a.about__button.btn.btn_red(href='#')
+						| оставить заявку
+						.btn__icon
+	//end about
+
+	//begin map
+	.map
+		.map__container.container
+			.map__list.js-map-list.js-tabs-nav
+				.map__col.is-active
+					.map__title
+						.map__title-number 01
+						.map__title-text подол
+					.map__desc
+						.map__desc-text ул. Воздвиженская, 29
+						a.map__desc-number(href='tel:380445937787') +380 44 593-77-87
+				.map__col
+					.map__title
+						.map__title-number 02
+						.map__title-text татарка
+					.map__desc
+						.map__desc-text ул. Воздвиженская, 29
+						a.map__desc-number(href='tel:380445937787') +380 44 593-77-87
+				.map__col
+					.map__title
+						.map__title-number 03
+						.map__title-text печерск
+					.map__desc
+						.map__desc-text ул. Воздвиженская, 29
+						a.map__desc-number(href='tel:380445937787') +380 44 593-77-87
+			.map__wrap.js-tabs-for
+				.map__el.is-active#map1
+				.map__el#map2
+				.map__el#map3
+	//end map
+
+block js
+	script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_5P4IIFsySgMjMwG2dtuJiMUcg5X6gg0")
+	script(src="js/app.js")
+
