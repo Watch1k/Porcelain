@@ -28,8 +28,8 @@ $(document).ready(function () {
 			if (motionEl1.length) {
 				motionEl1.each(function () {
 					var _thisEl1 = $(this),
-						_motionElWidth1 = $(this).width(),
-						_motionElHeight1 = $(this).height();
+						_motionElWidth1 = Math.floor($(this).width()),
+						_motionElHeight1 = Math.floor($(this).height());
 
 					_thisEl1
 						.css({
@@ -52,8 +52,8 @@ $(document).ready(function () {
 			if (motionEl2.length) {
 				motionEl2.each(function () {
 					var _thisEl2 = $(this),
-						_motionElWidth2 = $(this).parent().width(),
-						_motionElHeight2 = $(this).parent().height();
+						_motionElWidth2 = Math.floor($(this).parent().width()),
+						_motionElHeight2 = Math.floor($(this).parent().height());
 
 					_thisEl2
 						.css({
@@ -73,25 +73,37 @@ $(document).ready(function () {
 				});
 			}
 
-			// if (motionEl3.length) {
-			// 	motionEl3.each(function () {
-			// 		var _thisEl3 = $(this),
-			// 			_motionElWidth3 = $(this).parent().width(),
-			// 			_motionElHeight3 = $(this).parent().height();
-			//
-			// 		_thisEl3
-			// 			.css({
-			// 				width: 0,
-			// 				overflow: 'hidden'
-			// 			})
-			// 			.wrapInner('<div class="motion__inner"></div>')
-			// 			.wrapInner('<div class="motion"></div>')
-			// 			.find('.motion')
-			// 			.css({
-			// 				width: _motionElWidth3
-			// 			});
-			// 	});
-			// }
+			if (motionEl3.length) {
+				motionEl3.each(function () {
+					var _thisEl3 = $(this),
+						_motionElWidth3 = Math.floor($(this).width()),
+						_motionElHeight3 = Math.floor($(this).height()),
+						_motionColor3 = $(this).css('backgroundColor');
+
+					_thisEl3
+						.css({
+							background: 'transparent'
+						})
+						.wrapInner('<div class="motion__inner"></div>')
+						.wrapInner('<div class="motion"></div>')
+						.find('.motion')
+						.css({
+							position: 'absolute',
+							'z-index': 1,
+							left: '50%',
+							top: 0,
+							overflow: 'hidden',
+							width: 0,
+							background: _motionColor3
+						})
+						.children()
+						.css({
+							position: 'relative',
+							width: _motionElWidth3,
+							left: _motionElWidth3 / 2 * (-1)
+						});
+				});
+			}
 
 			for (var i = 0; i < inviewItem.length; i++) {
 				var elementWatcher = scrollMonitor.create(inviewItem[i], -200);
@@ -231,6 +243,19 @@ $(document).ready(function () {
 										});
 								}, elMainDelay4);
 								break;
+							case 'anim5':
+								var elMainDelay5 = el.attr('data-main-delay'),
+									elSpeed5 = el.attr('data-speed'),
+									elSpeed5Tween = elSpeed5 / 1000;
+
+								setTimeout(function () {
+									TweenMax.to(el.children(), elSpeed5Tween, {
+										left: 0, width: '100%', ease: Power1.easeInOut
+									});
+									TweenMax.to(el.children().children(), elSpeed5Tween, {
+										left: 0, ease: Power1.easeInOut
+									});
+								}, elMainDelay5);
 							default:
 								break;
 						}
