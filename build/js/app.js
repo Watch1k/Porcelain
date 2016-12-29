@@ -332,6 +332,103 @@ $(document).ready(function () {
 		TweenMax.staggerTo($('.header .nav__item'), 1, {opacity: 1, transform: 'translateY(0)', delay: 0.5}, 0.1);
 
 		(function () {
+			var testEl = $('.js-test-el');
+
+			var Animation = function () {
+				this.motion = false;
+				this.tween = false;
+				this.mainDelay = false;
+				this.reveal = false;
+				this.bgColor = '#eeeeee';
+				this.speedLine = 500;
+				this.speedRect = 500;
+				this.moveDown = false;
+				this.moveDownDelay = false;
+				this.moveDownSpeed = 500;
+				this.moveUp = false;
+				this.moveUpDelay = false;
+				this.moveUpSpeed = 500;
+			};
+
+			testEl.each(function () {
+				var el = $(this);
+
+				var animation = new Animation();
+
+				if (checkAttrExists('data-motion')) {
+					animation.motion = el.attr('data-motion');
+				}
+				if (checkAttrExists('data-tween')) {
+					animation.tween = true;
+				}
+				if (checkAttrExists('data-main-delay')) {
+					animation.delayMain = el.attr('data-main-delay');
+				} else {
+					animation.delayMain = 0;
+				}
+				if (checkAttrExists('data-reveal')) {
+					if (el.attr('data-reavel') == 'true') {
+						animation.reveal = true;
+					}
+				}
+				if (checkAttrExists('data-speed-line')) {
+					animation.speedLine = el.attr('data-speed-line');
+				}
+				if (checkAttrExists('data-speed-rect')) {
+					animation.speedRect = el.attr('data-speed-rect');
+				}
+				if (checkAttrExists('data-main-delay')) {
+					animation.delayMain = el.attr('data-main-delay');
+				} else {
+					animation.delayMain = 0;
+				}
+				if (checkAttrExists('data-move-down')) {
+					if (el.attr('data-move-down') == 'true') {
+						animation.moveDown = true;
+					}
+				}
+				if (checkAttrExists('data-move-down-delay')) {
+					animation.moveDownDelay = el.attr('data-move-down-delay');
+				} else {
+					animation.moveDownDelay = 0;
+				}
+				if (checkAttrExists('data-move-down-speed')) {
+					animation.moveDownSpeed = el.attr('data-move-down-speed');
+				}
+				if (checkAttrExists('data-move-up')) {
+					if (el.attr('data-move-up') == 'true') {
+						animation.moveUp = true;
+					}
+				}
+				if (checkAttrExists('data-move-up-delay')) {
+					animation.moveUpDelay = el.attr('data-move-up-delay');
+				} else {
+					animation.moveUpDelay = 0;
+				}
+				if (checkAttrExists('data-move-up-speed')) {
+					animation.moveUpSpeed = el.attr('data-move-up-speed');
+				}
+
+				switch (animation.motion) {
+					case 'motion3':
+						break;
+					default:
+						console.log(animation.motion);
+				}
+
+				if (animation.tween) {
+					setTimeout(function () {
+
+					}, animation.delayMain);
+				}
+
+				function checkAttrExists(name) {
+					return (testEl.attr(name) != undefined) && (testEl.attr(name) != '');
+				}
+			});
+		})();
+
+		(function () {
 			var inviewItem = $('.js-inview'),
 				motionEl1 = $('.js-motion1'),
 				motionEl2 = $('.js-motion2'),
