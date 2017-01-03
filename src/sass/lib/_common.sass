@@ -159,6 +159,7 @@ body
 	max-width: 1280px
 	
 .preloader
+	display: none
 	position: fixed
 	top: 0
 	left: 0
@@ -462,7 +463,7 @@ img
 	min-height: 670px
 	&__item
 		position: relative
-		height: 670px
+		height: 100vh
 		overflow: hidden
 		&.slick-current
 			transform: scale(1.1)
@@ -691,7 +692,6 @@ img
 		&-col
 			float: left
 			&:nth-child(1)
-				overflow: hidden
 				position: relative
 				margin-left: -40px
 				width: 340px
@@ -702,17 +702,13 @@ img
 				margin-top: 97px
 				max-width: 460px
 		&-title
+			height: 423px
+			background-color: $gray-light
 			+h1
+			p
+				padding: 85px 50px 20px 40px
 			.motion
-				position: relative
-				z-index: 1
-				top: 0
-				left: 0
-				width: 100%
-				height: 423px
-				background-color: $gray-light
-				&__inner
-					padding: 85px 50px 20px 40px
+				overflow: hidden
 				&:before
 					content: ''
 					position: absolute
@@ -725,14 +721,10 @@ img
 		&-subtitle
 			+h2
 			text-transform: uppercase
-			opacity: 0
-			transform: translateY(50px)
 		&-text
 			margin-top: 36px
 			font-size: 16px
-			opacity: 0
 			color: $gray-dark
-			transform: translateY(50px)
 	&__row
 		position: relative
 		padding-bottom: 100px
@@ -756,25 +748,26 @@ img
 		+ratio(1,1)
 		z-index: 1
 		&-inner
-			overflow: hidden
 			+ratio-in
 			z-index: 1
 			bottom: 85px
-			&:after
-				content: ''
+		.motion
+			overflow: hidden
+			transform: translate3d(0,0,0)
+			&__inner
+				position: relative
+				z-index: 1
+				transform: translate3d(0,0,0)
+			&__element
 				position: absolute
+				margin-left: 20px
 				z-index: 2
-				pointer-events: none
-				width: 100%
-				height: 100%
-				left: 0
 				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				width: calc(100% + 20px)
 				background-color: $red
-				transform: translate(0,0)
-				+trs
-			&.is-motion
-				&:after
-					transform: translate(100%,0)
 		&-in
 			+trs
 		&-video
@@ -798,13 +791,15 @@ img
 		margin-top: -84px
 		top: 100%
 		left: 0
+		opacity: 0
 		z-index: 2
 		background-color: #ffffff
 		margin-left: -40px
 		padding: 0 0 10px 0
 		width: calc(100% - 30px)
 		height: 240px
-		transition: all 0.75s ease-in-out
+		&.is-transition
+			transition: all 0.75s ease-in-out
 		&-title
 			cursor: pointer
 			padding-top: 40px
@@ -831,7 +826,6 @@ img
 			transition: all 0.5s ease-in-out
 	&__item.is-active &__desc
 		transform: translateY(-100%)
-		opacity: 0
 		transition: all 0.75s ease-in-out
 	&__item.is-active &__desc-text
 		opacity: 1
@@ -854,40 +848,26 @@ img
 		vertical-align: top
 		width: 25%
 		text-align: left
-		overflow: hidden
 		&:not(&_title)
 			+ratio(1,1)
-		&:nth-child(3n + 1) &-inner
+		&:not(&_title):nth-child(3n + 1)
 			color: #ffffff
 			background-color: $red
-			&:before
-				content: none
-				display: none
+		&:not(&_title):nth-child(3n + 3)
+			background-color: #ffffff
 		&_title
 			display: block
 			float: right
 			height: 400px
 			margin-bottom: -100px
 			overflow: visible
+			+h1
+			color: #ffffff
+			text-transform: uppercase
+			background-color: $gray-light
+			p
+				padding: 85px 50px 20px 40px
 			.motion
-				padding: 0
-				&__inner
-					position: relative
-					padding: 85px 50px 20px 40px
-					z-index: 1
-				&:before
-					content: ''
-					position: absolute
-					z-index: 0
-					pointer-events: none
-					top: 0
-					left: 0
-					width: 100%
-					bottom: 0
-					background-color: $gray-light
-					transition: all 1s ease-in-out
-				&.is-motion:before
-					width: calc(100% + 40px)
 				&:after
 					content: ''
 					position: absolute
@@ -897,33 +877,23 @@ img
 					width: 20px
 					height: 3px
 					background-color: #ffffff
-			&__inner
-				position: relative
-				z-index: 3
-		&-inner
+		.motion
 			overflow: hidden
 			z-index: 0
 			background-color: #ffffff
 			+ratio-in
-			&:after
-				content: ''
+			&__inner
+				position: relative
+				z-index: 1
+			&__element
 				position: absolute
 				z-index: 2
 				pointer-events: none
-				width: 100%
-				height: 100%
-				left: 0
 				top: 0
+				left: 0
+				right: 0
+				bottom: 0
 				background-color: $red
-				transform: translate(0,0)
-				+trs
-			&.is-motion
-				&:after
-					transform: translate(100%,0)
-		&:nth-child(3n + 1) &-inner:after,
-		&:nth-child(3n + 3) &-inner:after
-			display: none
-			content: none
 		&-desc
 			padding: 45px 0 0
 			z-index: 1
@@ -1090,11 +1060,15 @@ img
 		transform: translate(0,0)
 		transition: transform 0.5s ease-in-out 0.4s, left 0.5s ease-in-out 0s
 	&__button
+		overflow: hidden
 		width: 25%
 		position: relative
 		right: -1px
 		margin-right: 1px
 		z-index: 2
+		.motion
+			overflow: hidden
+			position: relative
 		
 /* Why
 	----------------------------------- */

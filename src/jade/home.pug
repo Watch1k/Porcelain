@@ -18,15 +18,17 @@ block content
 							span.screen__play-text смотреть видео о нас
 							svg.icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 337.173 337.173")
 								path(d="M25.922 337.173V0l285.329 168.595L25.922 337.173zM42.179 28.491v280.2L279.29 168.595 42.179 28.491z")
-						.screen__title Дети не боятся приводить своих родитлей в Porcelain
-								a.screen__btn.btn.btn_red(href='#')
-									| детский кабинет
-									.btn__icon
+						.screen__title
+							p Дети не боятся приводить своих родитлей в Porcelain
+							a.screen__btn.btn.btn_red(href='#')
+								| детский кабинет
+								.btn__icon
 			.screen__item
 				.screen__img(style='background-image: url(/img/content/screen-2.jpg)')
 				.screen__container.container
 					.screen__inner
-						.screen__title Дети не боятся приводить своих родитлей в Porcelain
+						.screen__title
+							p Дети не боятся приводить своих родитлей в Porcelain
 						a.screen__btn.btn.btn_red(href='#')
 							| детский кабинет
 							.btn__icon
@@ -34,7 +36,8 @@ block content
 				.screen__img(style='background-image: url(/img/content/screen-2.jpg)')
 				.screen__container.container
 					.screen__inner
-						.screen__title Дети не боятся приводить своих родитлей в Porcelain
+						.screen__title
+							p Дети не боятся приводить своих родитлей в Porcelain
 						a.screen__btn.btn.btn_red(href='#')
 							| детский кабинет
 							.btn__icon
@@ -42,7 +45,8 @@ block content
 				.screen__img(style='background-image: url(/img/content/screen-2.jpg)')
 				.screen__container.container
 					.screen__inner
-						.screen__title Дети не боятся приводить своих родитлей в Porcelain
+						.screen__title
+							p Дети не боятся приводить своих родитлей в Porcelain
 						a.screen__btn.btn.btn_red(href='#')
 							| детский кабинет
 							.btn__icon
@@ -50,27 +54,28 @@ block content
 				.screen__img(style='background-image: url(/img/content/screen-3.jpg)')
 				.screen__container.container
 					.screen__inner
-						.screen__title Дети не боятся приводить своих родитлей в Porcelain
+						.screen__title
+							p Дети не боятся приводить своих родитлей в Porcelain
 						a.screen__btn.btn.btn_red(href='#')
 							| детский кабинет
 							.btn__icon
 	//end screen
 
 	//begin inno
-	.inno#inno
+	.inno#inno.js-scene(data-offset="50")
 		.inno__container.container
 			.inno__top
-				.inno__top-col.inno__top-title.js-inview.js-tween(data-anim='anim2' data-tween='true' data-main-delay='0' data-delay='0' data-speed='750')
-					.motion.js-motion1
-						.motion__inner инновации porcelain
+				.inno__top-col.inno__top-title.js-motion(data-motion='motion1' data-move-delay='0.25' data-move-up='100')
+					p инновации porcelain
 				.inno__top-col
-					.inno__top-subtitle.js-inview.js-tween(data-anim='anim1' data-tween='true' data-main-delay='0' data-speed='1000') Клиника "Porcelain" внедряет новые стандарты лечения зубов
-					.inno__top-text.js-inview.js-tween(data-anim='anim1' data-tween='true' data-main-delay='500' data-speed='1000' data-anim-delay='true') Клиника Porclaine совершенствуется каждый день и применяет все возможности передовых технологий для безопасного <br>и комфортного лечения пациентов
+					.inno__top-subtitle.js-motion(data-motion='motion2' data-main-delay='0' data-move-up='50' data-speed-alpha='1.5')
+						p Клиника "Porcelain" внедряет новые стандарты лечения зубов
+					.inno__top-text.js-motion(data-motion='motion2' data-main-delay='0' data-move-delay='0.25' data-move-up='100')
+						p Клиника Porclaine совершенствуется каждый день и применяет все возможности передовых технологий для безопасного <br>и комфортного лечения пациентов
 			.inno__row
 				.inno__col
-					//.inno__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='500' data-delay='0' data-speed='500')
-					.inno__item.js-test-el(data-tween='true' data-main-delay='500')
-						.inno__item-inner
+					.inno__item
+						.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
 							.inno__item-video
 								video.inno__video(src='/video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
 							img.inno__item-in(src='/img/content/inno-1.jpg' alt='image')
@@ -78,105 +83,100 @@ block content
 							.inno__desc-title
 								.inno__desc-title-text 3D-пациент
 								.icon.arrow-bot-anim
-							.inno__desc-text Проектируем цифровой прототип для разработки плана лечения.
+							.inno__desc-text
+								p Проектируем цифровой прототип для разработки плана лечения.
 				.inno__col
-					.inno__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
-						.inno__item-inner
+					.inno__item
+						.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
 							img.inno__item-in(src='/img/content/inno-2.jpg' alt='image')
 						.inno__desc.js-inno-desc
 							.inno__desc-title
 								.inno__desc-title-text Виртуальные операции
 								.icon.arrow-bot-anim
-							.inno__desc-text Проектируем цифровой прототип для разработки плана лечения.
+							.inno__desc-text
+								p Проектируем цифровой прототип для разработки плана лечения.
 				.inno__col
-					.inno__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='250' data-delay='0' data-speed='500' data-motion='motion3')
-						.inno__item-inner
+					.inno__item
+						.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
 							img.inno__item-in(src='/img/content/inno-3.jpg' alt='image')
 						.inno__desc.js-inno-desc
 							.inno__desc-title
 								.inno__desc-title-text Цифровая модель улыбки
 								.icon.arrow-bot-anim
-							.inno__desc-text Проектируем цифровой прототип для разработки плана лечения.
+							.inno__desc-text
+								p Проектируем цифровой прототип для разработки плана лечения.
 	//end inno
 
 	//begin start
-	.start
+	.start.js-scene(data-offset="50")
 		.start__container.container
-			.start__item.start__item_title.js-inview.js-tween(data-anim='anim2' data-tween='true' data-main-delay='0' data-delay='0' data-speed='750')
-				.start__title.motion.js-motion2
-					.start__title-text.motion__inner услуги клиники Porcelain
+			.start__item.start__item_title.js-motion(data-motion='motion1' data-advanced-width='40' data-main-delay='0.1' data-move-up='70')
+				p услуги клиники Porcelain
 			.start__list
-				.start__item.js-inview.js-tween(data-anim='anim4' data-tween='true' data-main-delay='0' data-delay='0' data-speed='550' data-offset-y='150')
-					.start__item-inner.motion.js-motion1
-						.motion__inner
-							.start__item-desc
-								.start__title
-									.start__title-text первый прием
-									.start__title-icon
-								.start__hide
-									.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
-									a.start__btn(href='#')
-										| узнать больше о лечении
-										.start__btn-icon
-				.start__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='50' data-delay='0' data-speed='500' data-offset-y='50')
-					.start__item-inner
-						//img.start__img(src='/img/content/start-2.jpg' alt='image')
-						video.start__video(src='/video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
-						.start__item-desc
-							.start__title
-								.start__title-text лечение десен
-								.start__title-icon.start__title-icon_black
-							.start__hide
-								.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
-								a.start__btn(href='#')
-									| узнать больше о лечении
-									.start__btn-icon
-				.start__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500' data-offset-y='150')
-					.start__item-inner
-						.start__item-desc
-							.start__title
-								.start__title-text протезирование и эстетика
-								.start__title-icon.start__title-icon_black
-							.start__hide
-								.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
-								a.start__btn(href='#')
-									| узнать больше о лечении
-									.start__btn-icon
-				.start__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
-					.start__item-inner
-						.start__item-desc
-							.start__title
-								.start__title-text лечение каналов
-								.start__title-icon
-							.start__hide
-								.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
-								a.start__btn(href='#')
-									| узнать больше о лечении
-									.start__btn-icon
-				.start__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
-					.start__item-inner
-						img.start__img(src='/img/content/start-6.jpg' alt='image')
-						.start__item-desc
-							.start__title
-								.start__title-text детский кабинет
-								.start__title-icon.start__title-icon_black
-							.start__hide
-								.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
-								a.start__btn(href='#')
-									| узнать больше о лечении
-									.start__btn-icon
-				.start__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
-					.start__item-inner
-						.start__item-desc
-							.start__title
-								.start__title-text профилактика
-								.start__title-icon
-							.start__hide
-								.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
-								a.start__btn(href='#')
-									| узнать больше о лечении
-									.start__btn-icon
-				a.start__button.btn.btn_red.js-motion3.js-inview(href="#" data-anim='anim5' data-speed='1000' data-main-delay='500' data-tween='true')
+				.start__item.js-motion(data-motion='motion1' data-move-up='70')
+					.start__item-desc
+						.start__title
+							.start__title-text первый прием
+							.start__title-icon
+						.start__hide
+							.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+							a.start__btn(href='#')
+								| узнать больше о лечении
+								.start__btn-icon
+				.start__item.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='30' data-speed-line='0.25' data-move-up-speed='0.75')
+					//img.start__img(src='/img/content/start-2.jpg' alt='image')
+					video.start__video(src='/video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+					.start__item-desc
+						.start__title
+							.start__title-text лечение десен
+							.start__title-icon.start__title-icon_black
+						.start__hide
+							.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+							a.start__btn(href='#')
+								| узнать больше о лечении
+								.start__btn-icon
+				.start__item.js-motion(data-motion='motion1' data-main-delay='0.15' data-move-up='50')
+					.start__item-desc
+						.start__title
+							.start__title-text протезирование и эстетика
+							.start__title-icon.start__title-icon_black
+						.start__hide
+							.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+							a.start__btn(href='#')
+								| узнать больше о лечении
+								.start__btn-icon
+				.start__item.js-motion(data-motion='motion1' data-main-delay='0.2' data-move-up='30' data-speed-line='0.25' data-move-up-speed='1')
+					.start__item-desc
+						.start__title
+							.start__title-text лечение каналов
+							.start__title-icon
+						.start__hide
+							.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+							a.start__btn(href='#')
+								| узнать больше о лечении
+								.start__btn-icon
+				.start__item.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='50')
+					img.start__img(src='/img/content/start-6.jpg' alt='image')
+					.start__item-desc
+						.start__title
+							.start__title-text детский кабинет
+							.start__title-icon.start__title-icon_black
+						.start__hide
+							.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+							a.start__btn(href='#')
+								| узнать больше о лечении
+								.start__btn-icon
+				.start__item.js-motion(data-motion='motion1' data-main-delay='0.25' data-move-up='70' data-speed-line='1')
+					.start__item-desc
+						.start__title
+							.start__title-text профилактика
+							.start__title-icon.start__title-icon_black
+						.start__hide
+							.start__text Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.
+							a.start__btn(href='#')
+								| узнать больше о лечении
+								.start__btn-icon
+				a.start__button.btn.btn_red.js-motion(data-motion='motion4' data-main-delay='1.5')
 					| все услуги клиники
 					.btn__icon
 	//end start
