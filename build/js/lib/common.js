@@ -1,5 +1,24 @@
 /* Common JS */
 $(document).ready(function () {
+	(function () {
+		var main = $('.js-main');
+
+		main.children().each(function () {
+			var $this = $(this);
+
+			$this.css({
+				position: 'relative',
+				'z-index': 1
+			})
+				.prepend('<div class="line-vertical line-vertical_left"></div>')
+				.prepend('<div class="line-vertical line-vertical_mid"></div>')
+				.prepend('<div class="line-vertical line-vertical_right"></div>');
+		});
+
+		if ($('.screen').length) {
+			$('.screen').find('.line-vertical_mid').remove();
+		}
+	})();
 
 	$(window).on('load', function () {
 		$('body').addClass('is-loaded');
@@ -22,7 +41,7 @@ $(document).ready(function () {
 				}, 0.1, 0)
 				.staggerFrom($('.footer .socials__item'), 1, {
 					alpha: 0,
-					y: -10,
+					y: -15,
 					delay: 0.5
 				}, 0.15, 0)
 				.from($('.footer__bot'), 1, {
@@ -39,7 +58,6 @@ $(document).ready(function () {
 				.addTo(footerController);
 
 			footerController.scene.on('start', function () {
-				console.log('footer start');
 				this.remove();
 			});
 		})();
@@ -583,14 +601,15 @@ $(document).ready(function () {
 
 		screenSlider.on('init', function (slick) {
 			setTimeout(function () {
-				TweenMax.to($('.screen__play .icon'), 1, {opacity: 1, transform: 'translateX(0)', delay: 0.5});
+				$('.screen__anime').addClass('is-loaded');
+				TweenMax.to($('.screen__play .icon'), 1, {opacity: 1, delay: 0.5});
 				TweenMax.to($('.screen__play-text, .screen__scroll-text'), 1, {
 					opacity: 1,
 					transform: 'translateY(0)',
 					delay: 0.5
 				});
 				TweenMax.to($('.screen__scroll-line'), 1, {
-					opacity: 1, transform: 'translateY(0)', delay: 0.5, ease: Power3.easeInOut, onComplete: function () {
+					opacity: 1, transform: 'translateY(0)', delay: 0.5, ease: Power2.easeInOut, onComplete: function () {
 						$(this.target[0]).addClass('is-animated');
 					}
 				});

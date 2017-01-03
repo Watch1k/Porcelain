@@ -5,6 +5,7 @@ block content
 	.line-v.line-v_1
 	//begin screen
 	.screen
+		.screen__anime
 		button.screen__scroll.is-animate.js-scroll-btn(type='button' data-href='#inno')
 			span.screen__scroll-text листайте вниз
 			.screen__scroll-line
@@ -242,7 +243,7 @@ block content
 								p После нашей беседы вы узнаете оптимальный вариант лечения, сколько это будет стоить, и мы вместе подберем врача.
 						.reg__column
 							p для записи на прием позвоните мне <br>по телефону
-							a.reg__phone(href='tel:0445937787') 044 593 77 87
+							a(href='tel:0445937787') 044 593 77 87
 							p или я могу вам написать
 							a.reg__btn.btn.btn_white(href='#')
 								| оставить заявку
@@ -366,7 +367,7 @@ block content
 						.map__desc
 							p ул. Воздвиженская, 29
 							a(href='tel:380445937787') +380 44 593-77-87
-			.map__wrap.js-tabs-for.js-motion(data-motion='motion3')
+			.map__wrap.js-tabs-for.js-motion(data-motion='motion3' data-speed-rect='1.25')
 				.map__el.is-active#map1
 				.map__el#map2
 				.map__el#map3

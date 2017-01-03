@@ -5,6 +5,5 @@
 //=include lib/CSSPlugin.min.js
 //=include lib/ScrollMagic.min.js
 //=include lib/animation.gsap.min.js
-//=include lib/reveal.js
 //=include lib/slick.min.js
 //=include lib/common.js
