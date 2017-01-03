@@ -62,7 +62,7 @@ block content
 	//end screen
 
 	//begin inno
-	.inno#inno.js-scene(data-offset="50")
+	.inno#inno.js-scene(data-offset="0")
 		.inno__container.container
 			.inno__top
 				.inno__top-col.inno__top-title.js-motion(data-motion='motion1' data-move-delay='0.25' data-move-up='100')
@@ -108,10 +108,10 @@ block content
 	//end inno
 
 	//begin start
-	.start.js-scene(data-offset="50")
+	.start.js-scene(data-offset="0")
 		.start__container.container
 			.start__item.start__item_title.js-motion(data-motion='motion1' data-advanced-width='40' data-main-delay='0.1' data-move-up='70')
-				p услуги клиники Porcelain
+				p услуги <br>клиники Porcelain
 			.start__list
 				.start__item.js-motion(data-motion='motion1' data-move-up='70')
 					.start__item-desc
@@ -124,8 +124,8 @@ block content
 								| узнать больше о лечении
 								.start__btn-icon
 				.start__item.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='30' data-speed-line='0.25' data-move-up-speed='0.75')
-					//img.start__img(src='/img/content/start-2.jpg' alt='image')
-					video.start__video(src='/video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+					img.start__img(src='/img/content/start-2.jpg' alt='image')
+					//video.start__video(src='/video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
 					.start__item-desc
 						.start__title
 							.start__title-text лечение десен
@@ -155,7 +155,7 @@ block content
 							a.start__btn(href='#')
 								| узнать больше о лечении
 								.start__btn-icon
-				.start__item.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='50')
+				.start__item.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='50' data-move-up-speed='1')
 					img.start__img(src='/img/content/start-6.jpg' alt='image')
 					.start__item-desc
 						.start__title
@@ -176,174 +176,197 @@ block content
 							a.start__btn(href='#')
 								| узнать больше о лечении
 								.start__btn-icon
-				a.start__button.btn.btn_red.js-motion(data-motion='motion4' data-main-delay='1.5')
+				a.start__button.btn.btn_red.js-motion(data-motion='motion4' data-main-delay='2' href='#')
 					| все услуги клиники
 					.btn__icon
 	//end start
 
 	//begin why
-	.why
+	.why.js-scene(data-offset='0')
 		.why__container.container
 			.why__top
-				.why__top-col.why__top-title.js-inview.js-tween(data-anim='anim2' data-tween='true' data-main-delay='0' data-delay='0' data-speed='750')
-					.motion.js-motion1
-						.motion__inner почему porcelain?
+				.why__top-col.why__top-title.js-motion(data-motion='motion1' data-move-delay='0.25' data-move-up='100')
+					p почему porcelain?
 				.why__top-col
-					.why__top-subtitle.js-inview.js-tween(data-anim='anim1' data-tween='true' data-main-delay='0' data-speed='1000') Как проходит лечение
-					.why__top-text.js-inview.js-tween(data-anim='anim1' data-tween='true' data-main-delay='500' data-speed='1000' data-anim-delay='true') Наши технологии увеличивают скорость вашего выздоровления, вам не придется долго ждать
+					.why__top-subtitle.js-motion(data-motion='motion2' data-main-delay='0' data-move-up='50' data-speed-alpha='1.5')
+						p Как проходит лечение
+					.why__top-text.js-motion(data-motion='motion2' data-main-delay='0' data-move-delay='0.25' data-move-up='100')
+						p Наши технологии увеличивают скорость вашего выздоровления, вам не придется долго ждать
 			.why__row
 				.why__col
-					.why__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
-						.why__item-in
-							.why__item-inner
-								.why__number 01
-								.why__title Вы звоните в клинику
-								.why__text Вместе с клиент-менеджером вы определяете необходимое лечение, выбираете удобное время и дату встречи с врачом.
+					.why__item.js-motion(data-motion='motion1' data-main-delay='0' data-move-up='75')
+							.why__number 01
+							.why__title
+								p Вы звоните в клинику
+							.why__text
+								p Вместе с клиент-менеджером вы определяете необходимое лечение, выбираете удобное время и дату встречи с врачом.
 				.why__col
-					.why__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
-						.why__item-in
-							.why__item-inner
-								.why__number 02
-								.why__title Вы встречаетесь с врачом
-								.why__text Мы делаем серию фотографий и рентген-снимков, проектируем 3D-прототип и презентуем вам варианты лечения.
+					.why__item.js-motion(data-motion='motion1' data-main-delay='0.3' data-move-up='30' data-move-up-speed='1' data-speed-line='0.8')
+							.why__number 02
+							.why__title
+								p Вы встречаетесь с врачом
+							.why__text
+								p Мы делаем серию фотографий и рентген-снимков, проектируем 3D-прототип и презентуем вам варианты лечения.
 				.why__col
-					.why__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
-						.why__item-in
-							.why__item-inner
-								.why__number 03
-								.why__title Вы начинаете лечение
-								.why__text В ходе лечения для вашей безопасности, экономии времени и точности результата мы тестируем каждый этап на прототипе.
+					.why__item.js-motion(data-motion='motion1' data-main-delay='0.4' data-move-up='50' data-speed-rect='1')
+						.why__number 03
+						.why__title
+							p Вы начинаете лечение
+						.why__text
+							p В ходе лечения для вашей безопасности, экономии времени и точности результата мы тестируем каждый этап на прототипе.
 				.why__col
-					.why__item.js-inview.js-tween.js-hide(data-anim='anim3' data-tween='true' data-main-delay='0' data-delay='0' data-speed='500')
-						.why__item-in
-							.why__item-inner
-								.why__number 04
-								.why__title Вы получаете онлайн-карту
-								.why__text Вы знакомитесь с планом лечения, финансовой историей, графиком визитов в мобильном приложении и виртуальном кабинете на сайте.
+					.why__item.why__item.js-motion(data-motion='motion1' data-main-delay='0.2' data-move-up='40')
+						.why__number 04
+						.why__title
+							p Вы получаете онлайн-карту
+						.why__text
+							p Вы знакомитесь с планом лечения, финансовой историей, графиком визитов в мобильном приложении и виртуальном кабинете на сайте.
 	//end why
 
 	//begin reg
-	.reg
+	.reg.js-scene(data-offset='0')
 		.reg__container.container
 			.reg__row.reg__row_right
 				.reg__col
-					.reg__title запись <br>на прием
-					.reg__image
-						img.reg__img(src='/img/content/reg-photo.jpg' alt='image')
-				.reg__col
-					.reg__subtitle Моя задача – понять вашу потребность и составить персональный план лечения
+					.reg__title.js-motion(data-motion='motion1' data-move-delay='0.25' data-move-up='100')
+						p запись <br>на прием
+					.reg__image.js-motion(data-motion='motion3' data-main-delay='0.5')
+						img(src='/img/content/reg-photo.jpg' alt='image')
+				.reg__col.js-motion(data-motion='motion1' data-main-delay='0.15' data-speed-rect='1.2')
+					.reg__subtitle
+						p Моя задача – понять вашу потребность и составить персональный план лечения
 					.reg__row
 						.reg__column
-							.reg__column-title Здравствуйте, меня зовут Анастасия, я клиент-менеджер клиники Porcelain.
-							p.reg__text Каждый день я разговариваю с пациентами, которые выбирают себе клинику и помогаю им разобраться с ценами.
-							p.reg__text После нашей беседы вы узнаете оптимальный вариант лечения, сколько это будет стоить, и мы вместе подберем врача.
+								p Здравствуйте, меня зовут Анастасия, я клиент-менеджер клиники Porcelain.
+								p Каждый день я разговариваю с пациентами, которые выбирают себе клинику и помогаю им разобраться с ценами.
+								p После нашей беседы вы узнаете оптимальный вариант лечения, сколько это будет стоить, и мы вместе подберем врача.
 						.reg__column
-							.reg__column-title для записи на прием позвоните мне <br>по телефону
+							p для записи на прием позвоните мне <br>по телефону
 							a.reg__phone(href='tel:0445937787') 044 593 77 87
-							.reg__column-title или я могу вам написать
+							p или я могу вам написать
 							a.reg__btn.btn.btn_white(href='#')
 								| оставить заявку
 								.btn__icon.btn__icon_red
 	//end reg
 
 	//begin service
-	.service
+	.service.js-scene(data-offset='0')
 		.service__container.container
-			.service__item.service__item_title
-				.service__title
-					.service__title-text Сервис клиники Porcelain <br>в деталях
+			.service__item.service__item_title.js-motion(data-motion='motion1' data-advanced-width='40' data-main-delay='0.1' data-move-up='70')
+				p Сервис <br>клиники Porcelain <br>в деталях
 			.service__list
-				.service__item
+				.service__item.js-motion(data-motion='motion1' data-move-up='70')
 					.service__title
-						.service__title-text Собираем самые необходимые данные и особенности пациента
-				.service__item
+						.service__title-text
+							p Собираем самые необходимые данные и особенности пациента
+				.service__item.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='30' data-speed-line='0.25' data-move-up-speed='0.75')
 					img.service__img(src='/img/content/service-2.jpg' alt='image')
 					.service__title
-						.service__title-text Игровая комната <br>и детский кабинет
-				.service__item
+						.service__title-text
+							p Игровая комната <br>и детский кабинет
+				.service__item.js-motion(data-motion='motion1' data-main-delay='0.15' data-move-up='50')
 					.service__title
-						.service__title-text Комната отдыха <br>и сна после наркоза
-				.service__item
+						.service__title-text
+							p Комната отдыха <br>и сна после наркоза
+				.service__item.js-motion(data-motion='motion1' data-main-delay='0.2' data-move-up='30' data-speed-line='0.25' data-move-up-speed='1')
 					.service__title
-						.service__title-text Небольшая библиотека Porcelain: свежие журналы <br>и книги
-				.service__item
+						.service__title-text
+							p Небольшая библиотека Porcelain: свежие журналы <br>и книги
+				.service__item.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='50' data-move-up-speed='1')
 					img.service__img(src='/img/content/service-6.jpg' alt='image')
 					.service__title
-						.service__title-text Профессиональная фотосессия <br>с мейкапом <br>по окончании лечения
-				.service__item
+						.service__title-text
+							p Профессиональная фотосессия <br>с мейкапом <br>по окончании лечения
+				.service__item.js-motion(data-motion='motion1' data-main-delay='0.25' data-move-up='70' data-speed-line='1')
 					.service__title
-						.service__title-text Кафе в клинике, <br>где можно попробовать десерт <br>и выпить чай
+						.service__title-text
+							p Кафе в клинике, <br>где можно попробовать десерт <br>и выпить чай
 	//end service
 
 	//begin gal
-	.gal
+	.gal.js-scene(data-offset='0')
 		.gal__container.container
 			.gal__row
 				.gal__item.gal__item_1
-					.gal__item-title
-						.gal__item-title-in Наши здоровые клиенты
-					img.gal__img(src='/img/content/gal-1.jpg' alt='image')
+					.gal__item-title.js-motion(data-motion='motion1' data-main-delay='0' data-move-up='70')
+						p Наши здоровые клиенты
+					.gal__item-motion.js-motion(data-motion='motion3' data-main-delay='0.35' data-move-up='50' data-move-delay='0.45')
+						img(src='/img/content/gal-1.jpg' alt='image')
 					.gal__item-in.gal__item-in_1-1
-						img.gal__img(src='/img/content/gal-1-1.jpg' alt='image')
+						.gal__item-motion.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='30')
+							img(src='/img/content/gal-1-1.jpg' alt='image')
 						.gal__item-in.gal__item-in_1-2
-							img.gal__img(src='/img/content/gal-1-2.jpg' alt='image')
+							.gal__item-motion.js-motion(data-motion='motion3' data-main-delay='0.5' data-move-up='50' data-move-delay='0.35')
+								img(src='/img/content/gal-1-2.jpg' alt='image')
 				.gal__item.gal__item_2
-					img.gal__img(src='/img/content/gal-2.jpg' alt='image')
+					.gal__item-motion.js-motion(data-motion='motion3' data-main-delay='0.6' data-move-up='40')
+						img(src='/img/content/gal-2.jpg' alt='image')
 					.gal__item-in.gal__item-in_2-1
-						img.gal__img(src='/img/content/gal-2-1.jpg' alt='image')
+						.gal__item-motion.js-motion(data-motion='motion3' data-main-delay='0' data-move-up='50' data-move-delay='0.35')
+							img(src='/img/content/gal-2-1.jpg' alt='image')
 				.gal__item.gal__item_3
-					img.gal__img(src='/img/content/gal-3.jpg' alt='image')
+					.gal__item-motion.js-motion(data-motion='motion3' data-main-delay='0' data-move-up='20' data-move-delay='0.35')
+						img(src='/img/content/gal-3.jpg' alt='image')
 				.gal__item.gal__item_4
-					img.gal__img(src='/img/content/gal-4.jpg' alt='image')
+					.gal__item-motion.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='60')
+						img(src='/img/content/gal-4.jpg' alt='image')
 					.gal__item-in.gal__item-in_4-1
-						img.gal__img(src='/img/content/gal-4-1.jpg' alt='image')
+						.gal__item-motion.js-motion(data-motion='motion3' data-main-delay='0.3' data-move-up='45' data-move-delay='0.35')
+							img(src='/img/content/gal-4-1.jpg' alt='image')
 			.gal__desc
-				.gal__desc-text Нам доверили свои улыбки 27 000 человек. <br>из них — посольства 20 стран мира, <br>15 международных компаний <br>и 33 страховые компании.
-				a.gal__desc-btn.btn.btn_black(href='#')
+				.gal__desc-text.js-motion(data-motion='motion3' data-main-delay='0.75')
+					p Нам доверили свои улыбки 27 000 человек. <br>из них — посольства 20 стран мира, <br>15 международных компаний <br>и 33 страховые компании.
+				a.gal__desc-btn.btn.btn_black.js-motion(href='#' data-motion='motion4' data-main-delay='2')
 					| читать истории клиентов
 					.btn__icon
 	//end gal
 
 	//begin about
-	.about
+	.about.js-scene(data-offset='-20')
 		.about__container.container
 			.about__row
 				.about__col
-					.about__title для записи на прием позвоните
-					a.about__phone(href='tel:0445937787') 044 593 77 87
+					.about__title.js-motion(data-motion='motion3' data-move-up='20')
+						p для записи на прием позвоните
+					.about__phone.js-motion(data-motion='motion3' data-move-up='40' data-move-delay='0.3' data-main-delay='0.2')
+						a(href='tel:0445937787') 044 593 77 87
 				.about__col
-					.about__title или оставьте заявку через форму записи
-					a.about__button.btn.btn_red(href='#')
+					.about__title.js-motion(data-motion='motion3' data-move-up='20' data-main-delay='0.1')
+						p или оставьте заявку через форму записи
+					a.about__button.btn.btn_red.js-motion(href='#' data-motion='motion4' data-main-delay='1.5')
 						| оставить заявку
 						.btn__icon
 	//end about
 
 	//begin map
-	.map
+	.map.js-scene(data-offset='0')
 		.map__container.container
 			.map__list.js-map-list.js-tabs-nav
-				.map__col.is-active
-					.map__title
-						.map__title-number 01
-						.map__title-text подол
-					.map__desc
-						.map__desc-text ул. Воздвиженская, 29
-						a.map__desc-number(href='tel:380445937787') +380 44 593-77-87
-				.map__col
-					.map__title
-						.map__title-number 02
-						.map__title-text татарка
-					.map__desc
-						.map__desc-text ул. Воздвиженская, 29
-						a.map__desc-number(href='tel:380445937787') +380 44 593-77-87
-				.map__col
-					.map__title
-						.map__title-number 03
-						.map__title-text печерск
-					.map__desc
-						.map__desc-text ул. Воздвиженская, 29
-						a.map__desc-number(href='tel:380445937787') +380 44 593-77-87
-			.map__wrap.js-tabs-for
+				.map__col.is-active.js-motion(data-motion='motion1' data-move-up='60' data-main-delay='0' data-speed-line='0.75' data-auto-height='true')
+					.map__col-inner
+						.map__title
+							p 01
+							p подол
+						.map__desc
+							p ул. Воздвиженская, 29
+							a(href='tel:380445937787') +380 44 593-77-87
+				.map__col.js-motion(data-motion='motion1' data-move-up='30' data-main-delay='0.1' data-speed-line='0.75' data-auto-height='true')
+					.map__col-inner
+						.map__title
+							p 02
+							p татарка
+						.map__desc
+							p ул. Воздвиженская, 29
+							a(href='tel:380445937787') +380 44 593-77-87
+				.map__col.js-motion(data-motion='motion1' data-move-up='45' data-main-delay='0.2' data-speed-line='0.75' data-auto-height='true')
+					.map__col-inner
+						.map__title
+							p 03
+							p печерск
+						.map__desc
+							p ул. Воздвиженская, 29
+							a(href='tel:380445937787') +380 44 593-77-87
+			.map__wrap.js-tabs-for.js-motion(data-motion='motion3')
 				.map__el.is-active#map1
 				.map__el#map2
 				.map__el#map3

@@ -121,7 +121,7 @@
       </div>
       <!--end screen-->
       <!--begin inno-->
-      <div class="inno js-scene" id="inno" data-offset="50">
+      <div class="inno js-scene" id="inno" data-offset="0">
         <div class="inno__container container">
           <div class="inno__top">
             <div class="inno__top-col inno__top-title js-motion" data-motion="motion1" data-move-delay="0.25" data-move-up="100">
@@ -188,10 +188,10 @@
       </div>
       <!--end inno-->
       <!--begin start-->
-      <div class="start js-scene" data-offset="50">
+      <div class="start js-scene" data-offset="0">
         <div class="start__container container">
           <div class="start__item start__item_title js-motion" data-motion="motion1" data-advanced-width="40" data-main-delay="0.1" data-move-up="70">
-            <p>услуги клиники Porcelain</p>
+            <p>услуги <br>клиники Porcelain</p>
           </div>
           <div class="start__list">
             <div class="start__item js-motion" data-motion="motion1" data-move-up="70">
@@ -206,9 +206,8 @@
                 </div>
               </div>
             </div>
-            <div class="start__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="0.75">
-              <!--img.start__img(src='/img/content/start-2.jpg' alt='image')-->
-              <video class="start__video" src="/video/inno-1.mp4" loop="loop" autoplay="true" muted="true"></video>
+            <div class="start__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="0.75"><img class="start__img" src="/img/content/start-2.jpg" alt="image">
+              <!--video.start__video(src='/video/inno-1.mp4' loop='loop' autoplay='true' muted='true')-->
               <div class="start__item-desc">
                 <div class="start__title">
                   <div class="start__title-text">лечение десен</div>
@@ -244,7 +243,7 @@
                 </div>
               </div>
             </div>
-            <div class="start__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="50"><img class="start__img" src="/img/content/start-6.jpg" alt="image">
+            <div class="start__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="50" data-move-up-speed="1"><img class="start__img" src="/img/content/start-6.jpg" alt="image">
               <div class="start__item-desc">
                 <div class="start__title">
                   <div class="start__title-text">детский кабинет</div>
@@ -267,68 +266,70 @@
                       <div class="start__btn-icon"></div></a>
                 </div>
               </div>
-            </div><a class="start__button btn btn_red js-motion" data-motion="motion4" data-main-delay="1.5">все услуги клиники
+            </div><a class="start__button btn btn_red js-motion" data-motion="motion4" data-main-delay="2" href="#">все услуги клиники
                 <div class="btn__icon"></div></a>
           </div>
         </div>
       </div>
       <!--end start-->
       <!--begin why-->
-      <div class="why">
+      <div class="why js-scene" data-offset="0">
         <div class="why__container container">
           <div class="why__top">
-            <div class="why__top-col why__top-title js-inview js-tween" data-anim="anim2" data-tween="true" data-main-delay="0" data-delay="0" data-speed="750">
-              <div class="motion js-motion1">
-                <div class="motion__inner">почему porcelain?</div>
-              </div>
+            <div class="why__top-col why__top-title js-motion" data-motion="motion1" data-move-delay="0.25" data-move-up="100">
+              <p>почему porcelain?</p>
             </div>
             <div class="why__top-col">
-              <div class="why__top-subtitle js-inview js-tween" data-anim="anim1" data-tween="true" data-main-delay="0" data-speed="1000">Как проходит лечение</div>
-              <div class="why__top-text js-inview js-tween" data-anim="anim1" data-tween="true" data-main-delay="500" data-speed="1000" data-anim-delay="true">Наши технологии увеличивают скорость вашего выздоровления, вам не придется долго ждать</div>
+              <div class="why__top-subtitle js-motion" data-motion="motion2" data-main-delay="0" data-move-up="50" data-speed-alpha="1.5">
+                <p>Как проходит лечение</p>
+              </div>
+              <div class="why__top-text js-motion" data-motion="motion2" data-main-delay="0" data-move-delay="0.25" data-move-up="100">
+                <p>Наши технологии увеличивают скорость вашего выздоровления, вам не придется долго ждать</p>
+              </div>
             </div>
           </div>
           <div class="why__row">
             <div class="why__col">
-              <div class="why__item js-inview js-tween js-hide" data-anim="anim3" data-tween="true" data-main-delay="0" data-delay="0" data-speed="500">
-                <div class="why__item-in">
-                  <div class="why__item-inner">
-                    <div class="why__number">01</div>
-                    <div class="why__title">Вы звоните в клинику</div>
-                    <div class="why__text">Вместе с клиент-менеджером вы определяете необходимое лечение, выбираете удобное время и дату встречи с врачом.</div>
-                  </div>
+              <div class="why__item js-motion" data-motion="motion1" data-main-delay="0" data-move-up="75">
+                <div class="why__number">01</div>
+                <div class="why__title">
+                  <p>Вы звоните в клинику</p>
+                </div>
+                <div class="why__text">
+                  <p>Вместе с клиент-менеджером вы определяете необходимое лечение, выбираете удобное время и дату встречи с врачом.</p>
                 </div>
               </div>
             </div>
             <div class="why__col">
-              <div class="why__item js-inview js-tween js-hide" data-anim="anim3" data-tween="true" data-main-delay="0" data-delay="0" data-speed="500">
-                <div class="why__item-in">
-                  <div class="why__item-inner">
-                    <div class="why__number">02</div>
-                    <div class="why__title">Вы встречаетесь с врачом</div>
-                    <div class="why__text">Мы делаем серию фотографий и рентген-снимков, проектируем 3D-прототип и презентуем вам варианты лечения.</div>
-                  </div>
+              <div class="why__item js-motion" data-motion="motion1" data-main-delay="0.3" data-move-up="30" data-move-up-speed="1" data-speed-line="0.8">
+                <div class="why__number">02</div>
+                <div class="why__title">
+                  <p>Вы встречаетесь с врачом</p>
+                </div>
+                <div class="why__text">
+                  <p>Мы делаем серию фотографий и рентген-снимков, проектируем 3D-прототип и презентуем вам варианты лечения.</p>
                 </div>
               </div>
             </div>
             <div class="why__col">
-              <div class="why__item js-inview js-tween js-hide" data-anim="anim3" data-tween="true" data-main-delay="0" data-delay="0" data-speed="500">
-                <div class="why__item-in">
-                  <div class="why__item-inner">
-                    <div class="why__number">03</div>
-                    <div class="why__title">Вы начинаете лечение</div>
-                    <div class="why__text">В ходе лечения для вашей безопасности, экономии времени и точности результата мы тестируем каждый этап на прототипе.</div>
-                  </div>
+              <div class="why__item js-motion" data-motion="motion1" data-main-delay="0.4" data-move-up="50" data-speed-rect="1">
+                <div class="why__number">03</div>
+                <div class="why__title">
+                  <p>Вы начинаете лечение</p>
+                </div>
+                <div class="why__text">
+                  <p>В ходе лечения для вашей безопасности, экономии времени и точности результата мы тестируем каждый этап на прототипе.</p>
                 </div>
               </div>
             </div>
             <div class="why__col">
-              <div class="why__item js-inview js-tween js-hide" data-anim="anim3" data-tween="true" data-main-delay="0" data-delay="0" data-speed="500">
-                <div class="why__item-in">
-                  <div class="why__item-inner">
-                    <div class="why__number">04</div>
-                    <div class="why__title">Вы получаете онлайн-карту</div>
-                    <div class="why__text">Вы знакомитесь с планом лечения, финансовой историей, графиком визитов в мобильном приложении и виртуальном кабинете на сайте.</div>
-                  </div>
+              <div class="why__item why__item js-motion" data-motion="motion1" data-main-delay="0.2" data-move-up="40">
+                <div class="why__number">04</div>
+                <div class="why__title">
+                  <p>Вы получаете онлайн-карту</p>
+                </div>
+                <div class="why__text">
+                  <p>Вы знакомитесь с планом лечения, финансовой историей, графиком визитов в мобильном приложении и виртуальном кабинете на сайте.</p>
                 </div>
               </div>
             </div>
@@ -337,24 +338,28 @@
       </div>
       <!--end why-->
       <!--begin reg-->
-      <div class="reg">
+      <div class="reg js-scene" data-offset="0">
         <div class="reg__container container">
           <div class="reg__row reg__row_right">
             <div class="reg__col">
-              <div class="reg__title">запись <br>на прием</div>
-              <div class="reg__image"><img class="reg__img" src="/img/content/reg-photo.jpg" alt="image"></div>
+              <div class="reg__title js-motion" data-motion="motion1" data-move-delay="0.25" data-move-up="100">
+                <p>запись <br>на прием</p>
+              </div>
+              <div class="reg__image js-motion" data-motion="motion3" data-main-delay="0.5"><img src="/img/content/reg-photo.jpg" alt="image"></div>
             </div>
-            <div class="reg__col">
-              <div class="reg__subtitle">Моя задача – понять вашу потребность и составить персональный план лечения</div>
+            <div class="reg__col js-motion" data-motion="motion1" data-main-delay="0.15" data-speed-rect="1.2">
+              <div class="reg__subtitle">
+                <p>Моя задача – понять вашу потребность и составить персональный план лечения</p>
+              </div>
               <div class="reg__row">
                 <div class="reg__column">
-                  <div class="reg__column-title">Здравствуйте, меня зовут Анастасия, я клиент-менеджер клиники Porcelain.</div>
-                  <p class="reg__text">Каждый день я разговариваю с пациентами, которые выбирают себе клинику и помогаю им разобраться с ценами.</p>
-                  <p class="reg__text">После нашей беседы вы узнаете оптимальный вариант лечения, сколько это будет стоить, и мы вместе подберем врача.</p>
+                  <p>Здравствуйте, меня зовут Анастасия, я клиент-менеджер клиники Porcelain.</p>
+                  <p>Каждый день я разговариваю с пациентами, которые выбирают себе клинику и помогаю им разобраться с ценами.</p>
+                  <p>После нашей беседы вы узнаете оптимальный вариант лечения, сколько это будет стоить, и мы вместе подберем врача.</p>
                 </div>
                 <div class="reg__column">
-                  <div class="reg__column-title">для записи на прием позвоните мне <br>по телефону</div><a class="reg__phone" href="tel:0445937787">044 593 77 87</a>
-                  <div class="reg__column-title">или я могу вам написать</div><a class="reg__btn btn btn_white" href="#">оставить заявку
+                  <p>для записи на прием позвоните мне <br>по телефону</p><a class="reg__phone" href="tel:0445937787">044 593 77 87</a>
+                  <p>или я могу вам написать</p><a class="reg__btn btn btn_white" href="#">оставить заявку
                       <div class="btn__icon btn__icon_red"></div></a>
                 </div>
               </div>
@@ -364,42 +369,52 @@
       </div>
       <!--end reg-->
       <!--begin service-->
-      <div class="service">
+      <div class="service js-scene" data-offset="0">
         <div class="service__container container">
-          <div class="service__item service__item_title">
-            <div class="service__title">
-              <div class="service__title-text">Сервис клиники Porcelain <br>в деталях</div>
-            </div>
+          <div class="service__item service__item_title js-motion" data-motion="motion1" data-advanced-width="40" data-main-delay="0.1" data-move-up="70">
+            <p>Сервис <br>клиники Porcelain <br>в деталях</p>
           </div>
           <div class="service__list">
-            <div class="service__item">
+            <div class="service__item js-motion" data-motion="motion1" data-move-up="70">
               <div class="service__title">
-                <div class="service__title-text">Собираем самые необходимые данные и особенности пациента</div>
+                <div class="service__title-text">
+                  <p>Собираем самые необходимые данные и особенности пациента</p>
+                </div>
               </div>
             </div>
-            <div class="service__item"><img class="service__img" src="/img/content/service-2.jpg" alt="image">
+            <div class="service__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="0.75"><img class="service__img" src="/img/content/service-2.jpg" alt="image">
               <div class="service__title">
-                <div class="service__title-text">Игровая комната <br>и детский кабинет</div>
+                <div class="service__title-text">
+                  <p>Игровая комната <br>и детский кабинет</p>
+                </div>
               </div>
             </div>
-            <div class="service__item">
+            <div class="service__item js-motion" data-motion="motion1" data-main-delay="0.15" data-move-up="50">
               <div class="service__title">
-                <div class="service__title-text">Комната отдыха <br>и сна после наркоза</div>
+                <div class="service__title-text">
+                  <p>Комната отдыха <br>и сна после наркоза</p>
+                </div>
               </div>
             </div>
-            <div class="service__item">
+            <div class="service__item js-motion" data-motion="motion1" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="1">
               <div class="service__title">
-                <div class="service__title-text">Небольшая библиотека Porcelain: свежие журналы <br>и книги</div>
+                <div class="service__title-text">
+                  <p>Небольшая библиотека Porcelain: свежие журналы <br>и книги</p>
+                </div>
               </div>
             </div>
-            <div class="service__item"><img class="service__img" src="/img/content/service-6.jpg" alt="image">
+            <div class="service__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="50" data-move-up-speed="1"><img class="service__img" src="/img/content/service-6.jpg" alt="image">
               <div class="service__title">
-                <div class="service__title-text">Профессиональная фотосессия <br>с мейкапом <br>по окончании лечения</div>
+                <div class="service__title-text">
+                  <p>Профессиональная фотосессия <br>с мейкапом <br>по окончании лечения</p>
+                </div>
               </div>
             </div>
-            <div class="service__item">
+            <div class="service__item js-motion" data-motion="motion1" data-main-delay="0.25" data-move-up="70" data-speed-line="1">
               <div class="service__title">
-                <div class="service__title-text">Кафе в клинике, <br>где можно попробовать десерт <br>и выпить чай</div>
+                <div class="service__title-text">
+                  <p>Кафе в клинике, <br>где можно попробовать десерт <br>и выпить чай</p>
+                </div>
               </div>
             </div>
           </div>
@@ -407,41 +422,60 @@
       </div>
       <!--end service-->
       <!--begin gal-->
-      <div class="gal">
+      <div class="gal js-scene" data-offset="0">
         <div class="gal__container container">
           <div class="gal__row">
             <div class="gal__item gal__item_1">
-              <div class="gal__item-title">
-                <div class="gal__item-title-in">Наши здоровые клиенты</div>
-              </div><img class="gal__img" src="/img/content/gal-1.jpg" alt="image">
-              <div class="gal__item-in gal__item-in_1-1"><img class="gal__img" src="/img/content/gal-1-1.jpg" alt="image">
-                <div class="gal__item-in gal__item-in_1-2"><img class="gal__img" src="/img/content/gal-1-2.jpg" alt="image"></div>
+              <div class="gal__item-title js-motion" data-motion="motion1" data-main-delay="0" data-move-up="70">
+                <p>Наши здоровые клиенты</p>
+              </div>
+              <div class="gal__item-motion js-motion" data-motion="motion3" data-main-delay="0.35" data-move-up="50" data-move-delay="0.45"><img src="/img/content/gal-1.jpg" alt="image"></div>
+              <div class="gal__item-in gal__item-in_1-1">
+                <div class="gal__item-motion js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="30"><img src="/img/content/gal-1-1.jpg" alt="image"></div>
+                <div class="gal__item-in gal__item-in_1-2">
+                  <div class="gal__item-motion js-motion" data-motion="motion3" data-main-delay="0.5" data-move-up="50" data-move-delay="0.35"><img src="/img/content/gal-1-2.jpg" alt="image"></div>
+                </div>
               </div>
             </div>
-            <div class="gal__item gal__item_2"><img class="gal__img" src="/img/content/gal-2.jpg" alt="image">
-              <div class="gal__item-in gal__item-in_2-1"><img class="gal__img" src="/img/content/gal-2-1.jpg" alt="image"></div>
+            <div class="gal__item gal__item_2">
+              <div class="gal__item-motion js-motion" data-motion="motion3" data-main-delay="0.6" data-move-up="40"><img src="/img/content/gal-2.jpg" alt="image"></div>
+              <div class="gal__item-in gal__item-in_2-1">
+                <div class="gal__item-motion js-motion" data-motion="motion3" data-main-delay="0" data-move-up="50" data-move-delay="0.35"><img src="/img/content/gal-2-1.jpg" alt="image"></div>
+              </div>
             </div>
-            <div class="gal__item gal__item_3"><img class="gal__img" src="/img/content/gal-3.jpg" alt="image"></div>
-            <div class="gal__item gal__item_4"><img class="gal__img" src="/img/content/gal-4.jpg" alt="image">
-              <div class="gal__item-in gal__item-in_4-1"><img class="gal__img" src="/img/content/gal-4-1.jpg" alt="image"></div>
+            <div class="gal__item gal__item_3">
+              <div class="gal__item-motion js-motion" data-motion="motion3" data-main-delay="0" data-move-up="20" data-move-delay="0.35"><img src="/img/content/gal-3.jpg" alt="image"></div>
+            </div>
+            <div class="gal__item gal__item_4">
+              <div class="gal__item-motion js-motion" data-motion="motion3" data-main-delay="0.4" data-move-up="60"><img src="/img/content/gal-4.jpg" alt="image"></div>
+              <div class="gal__item-in gal__item-in_4-1">
+                <div class="gal__item-motion js-motion" data-motion="motion3" data-main-delay="0.3" data-move-up="45" data-move-delay="0.35"><img src="/img/content/gal-4-1.jpg" alt="image"></div>
+              </div>
             </div>
           </div>
           <div class="gal__desc">
-            <div class="gal__desc-text">Нам доверили свои улыбки 27 000 человек. <br>из них — посольства 20 стран мира, <br>15 международных компаний <br>и 33 страховые компании.</div><a class="gal__desc-btn btn btn_black" href="#">читать истории клиентов
+            <div class="gal__desc-text js-motion" data-motion="motion3" data-main-delay="0.75">
+              <p>Нам доверили свои улыбки 27 000 человек. <br>из них — посольства 20 стран мира, <br>15 международных компаний <br>и 33 страховые компании.</p>
+            </div><a class="gal__desc-btn btn btn_black js-motion" href="#" data-motion="motion4" data-main-delay="2">читать истории клиентов
                 <div class="btn__icon"></div></a>
           </div>
         </div>
       </div>
       <!--end gal-->
       <!--begin about-->
-      <div class="about">
+      <div class="about js-scene" data-offset="-20">
         <div class="about__container container">
           <div class="about__row">
             <div class="about__col">
-              <div class="about__title">для записи на прием позвоните</div><a class="about__phone" href="tel:0445937787">044 593 77 87</a>
+              <div class="about__title js-motion" data-motion="motion3" data-move-up="20">
+                <p>для записи на прием позвоните</p>
+              </div>
+              <div class="about__phone js-motion" data-motion="motion3" data-move-up="40" data-move-delay="0.3" data-main-delay="0.2"><a href="tel:0445937787">044 593 77 87</a></div>
             </div>
             <div class="about__col">
-              <div class="about__title">или оставьте заявку через форму записи</div><a class="about__button btn btn_red" href="#">оставить заявку
+              <div class="about__title js-motion" data-motion="motion3" data-move-up="20" data-main-delay="0.1">
+                <p>или оставьте заявку через форму записи</p>
+              </div><a class="about__button btn btn_red js-motion" href="#" data-motion="motion4" data-main-delay="1.5">оставить заявку
                   <div class="btn__icon"></div></a>
             </div>
           </div>
@@ -449,38 +483,44 @@
       </div>
       <!--end about-->
       <!--begin map-->
-      <div class="map">
+      <div class="map js-scene" data-offset="0">
         <div class="map__container container">
           <div class="map__list js-map-list js-tabs-nav">
-            <div class="map__col is-active">
-              <div class="map__title">
-                <div class="map__title-number">01</div>
-                <div class="map__title-text">подол</div>
-              </div>
-              <div class="map__desc">
-                <div class="map__desc-text">ул. Воздвиженская, 29</div><a class="map__desc-number" href="tel:380445937787">+380 44 593-77-87</a>
-              </div>
-            </div>
-            <div class="map__col">
-              <div class="map__title">
-                <div class="map__title-number">02</div>
-                <div class="map__title-text">татарка</div>
-              </div>
-              <div class="map__desc">
-                <div class="map__desc-text">ул. Воздвиженская, 29</div><a class="map__desc-number" href="tel:380445937787">+380 44 593-77-87</a>
+            <div class="map__col is-active js-motion" data-motion="motion1" data-move-up="60" data-main-delay="0" data-speed-line="0.75" data-auto-height="true">
+              <div class="map__col-inner">
+                <div class="map__title">
+                  <p>01</p>
+                  <p>подол</p>
+                </div>
+                <div class="map__desc">
+                  <p>ул. Воздвиженская, 29</p><a href="tel:380445937787">+380 44 593-77-87</a>
+                </div>
               </div>
             </div>
-            <div class="map__col">
-              <div class="map__title">
-                <div class="map__title-number">03</div>
-                <div class="map__title-text">печерск</div>
+            <div class="map__col js-motion" data-motion="motion1" data-move-up="30" data-main-delay="0.1" data-speed-line="0.75" data-auto-height="true">
+              <div class="map__col-inner">
+                <div class="map__title">
+                  <p>02</p>
+                  <p>татарка</p>
+                </div>
+                <div class="map__desc">
+                  <p>ул. Воздвиженская, 29</p><a href="tel:380445937787">+380 44 593-77-87</a>
+                </div>
               </div>
-              <div class="map__desc">
-                <div class="map__desc-text">ул. Воздвиженская, 29</div><a class="map__desc-number" href="tel:380445937787">+380 44 593-77-87</a>
+            </div>
+            <div class="map__col js-motion" data-motion="motion1" data-move-up="45" data-main-delay="0.2" data-speed-line="0.75" data-auto-height="true">
+              <div class="map__col-inner">
+                <div class="map__title">
+                  <p>03</p>
+                  <p>печерск</p>
+                </div>
+                <div class="map__desc">
+                  <p>ул. Воздвиженская, 29</p><a href="tel:380445937787">+380 44 593-77-87</a>
+                </div>
               </div>
             </div>
           </div>
-          <div class="map__wrap js-tabs-for">
+          <div class="map__wrap js-tabs-for js-motion" data-motion="motion3">
             <div class="map__el is-active" id="map1"></div>
             <div class="map__el" id="map2"></div>
             <div class="map__el" id="map3"></div>

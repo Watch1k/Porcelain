@@ -6,6 +6,45 @@ $(document).ready(function () {
 		TweenMax.staggerTo($('.header .nav__item'), 1, {opacity: 1, transform: 'translateY(0)', delay: 0.5}, 0.1);
 
 		(function () {
+			var footerController = new ScrollMagic.Controller(),
+				tween = new TimelineMax();
+
+			tween
+				.from('.footer', 1, {
+					alpha: 0,
+					y: 40,
+					ease: Power1.easeInOut
+				}, 0)
+				.staggerFrom($('.footer .nav__item'), 1, {
+					alpha: 0,
+					y: -10,
+					delay: 0.5
+				}, 0.1, 0)
+				.staggerFrom($('.footer .socials__item'), 1, {
+					alpha: 0,
+					y: -10,
+					delay: 0.5
+				}, 0.15, 0)
+				.from($('.footer__bot'), 1, {
+					alpha: 0,
+					y: 40,
+					ease: Power1.easeInOut
+				}, 0);
+
+			footerController.scene = new ScrollMagic.Scene({
+				triggerElement: '.footer',
+				offset: $(window).height() * 3 / (-5)
+			})
+				.setTween(tween)
+				.addTo(footerController);
+
+			footerController.scene.on('start', function () {
+				console.log('footer start');
+				this.remove();
+			});
+		})();
+
+		(function () {
 			var motionEl = $('.js-motion'),
 				sceneEl = $('.js-scene');
 
@@ -39,10 +78,13 @@ $(document).ready(function () {
 				this.animation.width = this.$el.width();
 				this.animation.height = this.$el.height();
 				this.animation.bgColor = this.$el.css('backgroundColor');
-				this.animation.offset = parseInt(this.$el.attr('data-offset')) || this.animation.offset;
+				this.animation.offset = +this.$el.closest(sceneEl).attr('data-offset') || this.animation.offset;
+
+				this.animation.offset = this.animation.offset / 100 * $(window).height();
 
 				switch (this.animation.motion) {
 					case 'motion1':
+						this.animation.autoHeight = this.$el.attr('data-auto-height') || false;
 						this.animation.advancedWidth = this.$el.attr('data-advanced-width') || 0;
 						this.animation.width = +this.animation.width + +this.animation.advancedWidth;
 						this.$el
@@ -78,7 +120,15 @@ $(document).ready(function () {
 									TweenMax.to($(this.target), $(this.target).parent().get(0).animation.speedRect, {
 										width: $(this.target).parent().get(0).animation.width,
 										ease: Power3.easeInOut
-									})
+									});
+									if ($(this.target).parent().get(0).animation.autoHeight) {
+										TweenMax.set($(this.target), {
+											height: 'auto'
+										});
+										TweenMax.set($(this.target).children(), {
+											height: 'auto'
+										});
+									}
 								}
 							}, 'start')
 							.set(this.$el.children(), {
@@ -140,6 +190,10 @@ $(document).ready(function () {
 							.css({
 								width: this.animation.width + 'px',
 								height: this.animation.height + 'px'
+							})
+							.last()
+							.css({
+								'margin-left': '20px'
 							});
 
 						if (this.$el.find('video').length) {
@@ -171,7 +225,7 @@ $(document).ready(function () {
 							}, 'start')
 							.set(this.$el.children().children().first(), {
 								alpha: 1
-							}, (+this.animation.speedRect + +this.animation.speedLine + +this.animation.mainDelay))
+							}, (+this.animation.speedRect + +this.animation.speedLine + +this.animation.mainDelay + 0.001))
 							.set(this.$el.children(), {
 								y: this.animation.moveDown
 							}, 0)
@@ -224,30 +278,30 @@ $(document).ready(function () {
 							.find('.motion')
 							.css({
 								position: 'absolute',
+								top: 0,
 								left: '50%',
 								'background-color': this.animation.bgColor,
-								width: 0,
+								width: '0%',
 								height: this.animation.height + 'px'
 							})
 							.children()
 							.css({
 								position: 'absolute',
+								top: 0,
+								left: this.animation.width / 2 * (-1),
 								width: this.animation.width + 'px',
 								height: this.animation.height + 'px'
 							});
 						this.animation.tweenAnimation = new TimelineMax();
 						this.animation.tweenAnimation
 							.addLabel('start', 0.01)
-							.set(this.$el.children().children(), {
-								x: '-50%'
-							}, 'start')
 							.to(this.$el.children(), this.animation.speedRect, {
 								left: 0,
-								width: this.animation.width,
+								width: '100%',
 								ease: Power3.easeInOut
 							}, 'start+=' + +this.animation.mainDelay)
 							.to(this.$el.children().children(), this.animation.speedRect, {
-								x: '0%',
+								left: 0,
 								ease: Power3.easeInOut
 							}, 'start+=' + +this.animation.mainDelay);
 					default:
@@ -267,7 +321,7 @@ $(document).ready(function () {
 				sceneModule.element.each(function () {
 					sceneModule.container.scene = new ScrollMagic.Scene({
 						triggerElement: this.closest('.js-scene'),
-						offset: 0
+						offset: $(this).closest('.js-scene').attr('data-offset') / 100 * $(window).width()
 					})
 						.setTween(this.animation.tweenAnimation)
 						.addTo(sceneModule.container.controller);
