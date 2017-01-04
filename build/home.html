@@ -15,7 +15,9 @@
 </head>
 
 <body>
-  <div class="preloader"></div>
+  <div class="preloader">
+    <video src="/video/preloader.mp4" loop="loop" preload="preload" autoplay="autoplay"></video>
+  </div>
   <div class="wrapper">
     <header class="header">
       <div class="header__top">
@@ -63,8 +65,19 @@
             <div class="screen__container container">
               <div class="screen__inner">
                 <button class="screen__play js-play" type="button"><span class="screen__play-text">смотреть видео о нас</span>
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 337.173 337.173">
-                      <path d="M25.922 337.173V0l285.329 168.595L25.922 337.173zM42.179 28.491v280.2L279.29 168.595 42.179 28.491z"></path>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 27.32 34.44">
+                      <defs>
+                        <style>
+                          .path {
+                          	fill: none;
+                          	stroke: #fff;
+                          	stroke-miterlimit: 10;
+                          	stroke-width: 3px;
+                          	fill-rule: evenodd;
+                          }
+                        </style>
+                      </defs>
+                      <path class="path" d="M24.5,17.22l-23,14.5v-29Z"></path>
                     </svg>
                   </button>
                 <div class="screen__title">
@@ -147,7 +160,9 @@
                 </div>
                 <div class="inno__desc js-inno-desc">
                   <div class="inno__desc-title">
-                    <div class="inno__desc-title-text">3D-пациент</div>
+                    <div class="inno__desc-title-text">
+                      <p>3D-пациент</p>
+                    </div>
                     <div class="icon arrow-bot-anim"></div>
                   </div>
                   <div class="inno__desc-text">
@@ -161,7 +176,9 @@
                 <div class="inno__item-inner js-motion" data-motion="motion3" data-main-delay="0" data-move-delay="0" data-move-up="75"><img class="inno__item-in" src="/img/content/inno-2.jpg" alt="image"></div>
                 <div class="inno__desc js-inno-desc">
                   <div class="inno__desc-title">
-                    <div class="inno__desc-title-text">Виртуальные операции</div>
+                    <div class="inno__desc-title-text">
+                      <p>Виртуальные операции</p>
+                    </div>
                     <div class="icon arrow-bot-anim"></div>
                   </div>
                   <div class="inno__desc-text">
@@ -175,7 +192,9 @@
                 <div class="inno__item-inner js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="75"><img class="inno__item-in" src="/img/content/inno-3.jpg" alt="image"></div>
                 <div class="inno__desc js-inno-desc">
                   <div class="inno__desc-title">
-                    <div class="inno__desc-title-text">Цифровая модель улыбки</div>
+                    <div class="inno__desc-title-text">
+                      <p>Цифровая модель улыбки</p>
+                    </div>
                     <div class="icon arrow-bot-anim"></div>
                   </div>
                   <div class="inno__desc-text">
@@ -198,11 +217,15 @@
             <div class="start__item js-motion" data-motion="motion1" data-move-up="70">
               <div class="start__item-desc">
                 <div class="start__title">
-                  <div class="start__title-text">первый прием</div>
+                  <div class="start__title-text">
+                    <p>первый прием</p>
+                  </div>
                   <div class="start__title-icon"></div>
                 </div>
                 <div class="start__hide">
-                  <div class="start__text">Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</div><a class="start__btn" href="#">узнать больше о лечении
+                  <div class="start__text">
+                    <p>Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</p>
+                  </div><a class="start__btn" href="#">узнать больше о лечении
                       <div class="start__btn-icon"></div></a>
                 </div>
               </div>
@@ -211,11 +234,15 @@
               <!--video.start__video(src='/video/inno-1.mp4' loop='loop' autoplay='true' muted='true')-->
               <div class="start__item-desc">
                 <div class="start__title">
-                  <div class="start__title-text">лечение десен</div>
+                  <div class="start__title-text">
+                    <p>лечение десен</p>
+                  </div>
                   <div class="start__title-icon start__title-icon_black"></div>
                 </div>
                 <div class="start__hide">
-                  <div class="start__text">Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</div><a class="start__btn" href="#">узнать больше о лечении
+                  <div class="start__text">
+                    <p>Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</p>
+                  </div><a class="start__btn" href="#">узнать больше о лечении
                       <div class="start__btn-icon"></div></a>
                 </div>
               </div>
@@ -223,11 +250,15 @@
             <div class="start__item js-motion" data-motion="motion1" data-main-delay="0.15" data-move-up="50">
               <div class="start__item-desc">
                 <div class="start__title">
-                  <div class="start__title-text">протезирование и эстетика</div>
+                  <div class="start__title-text">
+                    <p>протезирование и эстетика</p>
+                  </div>
                   <div class="start__title-icon start__title-icon_black"></div>
                 </div>
                 <div class="start__hide">
-                  <div class="start__text">Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</div><a class="start__btn" href="#">узнать больше о лечении
+                  <div class="start__text">
+                    <p>Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</p>
+                  </div><a class="start__btn" href="#">узнать больше о лечении
                       <div class="start__btn-icon"></div></a>
                 </div>
               </div>
@@ -235,11 +266,15 @@
             <div class="start__item js-motion" data-motion="motion1" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="1">
               <div class="start__item-desc">
                 <div class="start__title">
-                  <div class="start__title-text">лечение каналов</div>
+                  <div class="start__title-text">
+                    <p>лечение каналов</p>
+                  </div>
                   <div class="start__title-icon"></div>
                 </div>
                 <div class="start__hide">
-                  <div class="start__text">Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</div><a class="start__btn" href="#">узнать больше о лечении
+                  <div class="start__text">
+                    <p>Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</p>
+                  </div><a class="start__btn" href="#">узнать больше о лечении
                       <div class="start__btn-icon"></div></a>
                 </div>
               </div>
@@ -247,11 +282,15 @@
             <div class="start__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="50" data-move-up-speed="1"><img class="start__img" src="/img/content/start-6.jpg" alt="image">
               <div class="start__item-desc">
                 <div class="start__title">
-                  <div class="start__title-text">детский кабинет</div>
+                  <div class="start__title-text">
+                    <p>детский кабинет</p>
+                  </div>
                   <div class="start__title-icon start__title-icon_black"></div>
                 </div>
                 <div class="start__hide">
-                  <div class="start__text">Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</div><a class="start__btn" href="#">узнать больше о лечении
+                  <div class="start__text">
+                    <p>Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</p>
+                  </div><a class="start__btn" href="#">узнать больше о лечении
                       <div class="start__btn-icon"></div></a>
                 </div>
               </div>
@@ -259,11 +298,15 @@
             <div class="start__item js-motion" data-motion="motion1" data-main-delay="0.25" data-move-up="70" data-speed-line="1">
               <div class="start__item-desc">
                 <div class="start__title">
-                  <div class="start__title-text">профилактика</div>
+                  <div class="start__title-text">
+                    <p>профилактика</p>
+                  </div>
                   <div class="start__title-icon start__title-icon_black"></div>
                 </div>
                 <div class="start__hide">
-                  <div class="start__text">Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</div><a class="start__btn" href="#">узнать больше о лечении
+                  <div class="start__text">
+                    <p>Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</p>
+                  </div><a class="start__btn" href="#">узнать больше о лечении
                       <div class="start__btn-icon"></div></a>
                 </div>
               </div>
@@ -289,7 +332,7 @@
               </div>
             </div>
           </div>
-          <div class="why__row">
+          <div class="why__row js-why-slider">
             <div class="why__col">
               <div class="why__item js-motion" data-motion="motion1" data-main-delay="0" data-move-up="75">
                 <div class="why__number">01</div>
@@ -359,9 +402,13 @@
                   <p>После нашей беседы вы узнаете оптимальный вариант лечения, сколько это будет стоить, и мы вместе подберем врача.</p>
                 </div>
                 <div class="reg__column">
-                  <p>для записи на прием позвоните мне <br>по телефону</p><a href="tel:0445937787">044 593 77 87</a>
-                  <p>или я могу вам написать</p><a class="reg__btn btn btn_white" href="#">оставить заявку
-                      <div class="btn__icon btn__icon_red"></div></a>
+                  <div class="reg__column-row">
+                    <p>для записи на прием позвоните мне <br>по телефону</p><a href="tel:0445937787">044 593 77 87</a>
+                  </div>
+                  <div class="reg__column-row">
+                    <p>или я могу вам написать</p><a class="reg__btn btn btn_white" href="#">оставить заявку
+                        <div class="btn__icon btn__icon_red"></div></a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -383,7 +430,7 @@
                 </div>
               </div>
             </div>
-            <div class="service__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="0.75"><img class="service__img" src="/img/content/service-2.jpg" alt="image">
+            <div class="service__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="0.75"><img src="/img/content/service-2.jpg" alt="image">
               <div class="service__title">
                 <div class="service__title-text">
                   <p>Игровая комната <br>и детский кабинет</p>
@@ -404,7 +451,7 @@
                 </div>
               </div>
             </div>
-            <div class="service__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="50" data-move-up-speed="1"><img class="service__img" src="/img/content/service-6.jpg" alt="image">
+            <div class="service__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="50" data-move-up-speed="1"><img src="/img/content/service-6.jpg" alt="image">
               <div class="service__title">
                 <div class="service__title-text">
                   <p>Профессиональная фотосессия <br>с мейкапом <br>по окончании лечения</p>
@@ -457,7 +504,7 @@
           <div class="gal__desc">
             <div class="gal__desc-text js-motion" data-motion="motion3" data-main-delay="0.75">
               <p>Нам доверили свои улыбки 27 000 человек. <br>из них — посольства 20 стран мира, <br>15 международных компаний <br>и 33 страховые компании.</p>
-            </div><a class="gal__desc-btn btn btn_black js-motion" href="#" data-motion="motion4" data-main-delay="2">читать истории клиентов
+            </div><a class="gal__desc-btn btn btn_black js-motion" href="#" data-motion="motion4" data-main-delay="2"><span class="btn__hide">читать </span>истории клиентов
                 <div class="btn__icon"></div></a>
           </div>
         </div>

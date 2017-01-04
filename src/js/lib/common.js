@@ -1,5 +1,6 @@
 /* Common JS */
 $(document).ready(function () {
+
 	(function () {
 		var main = $('.js-main');
 
@@ -93,8 +94,8 @@ $(document).ready(function () {
 				this.animation.moveUp = this.$el.attr('data-move-up') || this.animation.moveUp;
 				this.animation.moveDown = this.$el.attr('data-move-down') || this.animation.moveUp;
 				this.animation.moveUpSpeed = this.$el.attr('data-move-up-speed') || this.animation.moveUpSpeed;
-				this.animation.width = this.$el.width();
-				this.animation.height = this.$el.height();
+				this.animation.width = this.$el.outerWidth();
+				this.animation.height = this.$el.outerHeight();
 				this.animation.bgColor = this.$el.css('backgroundColor');
 				this.animation.offset = +this.$el.closest(sceneEl).attr('data-offset') || this.animation.offset;
 
@@ -657,6 +658,39 @@ $(document).ready(function () {
 				speed: 750,
 				prevArrow: '<button type="button" class="screen__prev"><svg class="icon icon-arrow-left"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-left"></use></svg></button>',
 				nextArrow: '<button type="button" class="screen__next"><svg class="icon icon-arrow-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-right"></use></svg></button>'
+			});
+		}
+	})();
+
+	(function () {
+		var whySlider = $('.js-why-slider');
+
+		toggleSlider(1280, whySlider);
+		$(window).resize(function () {
+			toggleSlider(1280, whySlider);
+		});
+
+		function toggleSlider(breakpoint, slider) {
+			if ($(window).width() < breakpoint) {
+				if (!slider.hasClass('slick-initialized')) {
+					initSlickSlider(slider);
+				}
+			} else {
+				if (slider.hasClass('slick-initialized')) {
+					slider.slick('unslick');
+				}
+			}
+		}
+
+		function initSlickSlider(slider) {
+			slider.slick({
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				infinite: true,
+				cssEase: 'ease-in-out',
+				speed: 750,
+				prevArrow: '<button type="button" class="why__prev"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>',
+				nextArrow: '<button type="button" class="why__next"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>'
 			});
 		}
 	})();

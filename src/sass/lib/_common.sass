@@ -55,6 +55,11 @@ $whitesmoke: #f5f5f5
 	text-align: center
 	text-transform: uppercase
 	transition: all 0.5s ease-out
+	+r(1279)
+		width: 235px
+	&__hide
+		+r(1279)
+			display: none
 	.btn__icon
 		display: inline-block
 		vertical-align: middle
@@ -157,19 +162,38 @@ $whitesmoke: #f5f5f5
 		width: 100%
 		height: 100%
 		background-color: #f5f5f5
+	&:before
+		+r(1279)
+			display: none
+			content: none
 	&_left
 		margin-left: -601px
 		left: 50%
+		+r(1279)
+			margin-left: 0
+			left: 0
 		&:after
 			transform: translateX(300px)
 			z-index: 2
+			+r(1279)
+				transform: none
+				left: calc(33.33vw + (24px - 15px) / 3)
 	&_right
 		margin-right: -601px
 		right: 50%
+		+r(1279)
+			right: 0
+			margin-right: 0
 		&:after
 			transform: translateX(-300px)
+			+r(1279)
+				transform: none
+				left: auto
+				right: calc(33.33vw + (24px - 15px) / 3)
 	&_mid
 		left: 50%
+		+r(1279)
+			display: none
 		&:after
 			display: none
 			content: none
@@ -200,9 +224,11 @@ body
 	margin-right: auto
 	padding: 0 40px
 	max-width: 1280px
+	+r(1279)
+		padding-left: 24px
+		padding-right: 24px
 	
 .preloader
-	display: none
 	position: fixed
 	top: 0
 	left: 0
@@ -210,10 +236,23 @@ body
 	bottom: 0
 	z-index: 1000
 	background-color: #ffffff
-	transition: all 0.75s ease-in-out
+	transition: all 1s ease-in-out
+	video
+		position: absolute
+		z-index: 1
+		max-width: 330px
+		margin-left: -20px
+		height: auto
+		top: 50%
+		left: 50%
+		transform: translate(-50%,-50%) scale(1)
+		transition: transform 1s ease-in-out, opacity 0.25s linear
 	.is-loaded &
 		opacity: 0
 		pointer-events: none
+	.is-loaded & video
+		opacity: 0
+		transform: translate(-50%,-50%) scale(0.9)
 
 
 /* Helpers
@@ -352,12 +391,12 @@ img
 				display: block
 				top: 50%
 				right: 9px
-				width: 7px
+				width: 8px
 				height: 3px
 				background-color: #4C4C4C
-				transition: all 0.75s ease-in-out
+				transition: all 0.5s ease-in-out
 			&:after
-				right: 15px
+				right: 13px
 				margin-top: -2px
 		&_parent.is-active > &-item > &-link
 			&:before,
@@ -365,10 +404,10 @@ img
 				background-color: #c9c9c9
 			&:before
 				margin-top: -3px
-				transform: rotate(-40deg) translateX(-2px) scaleY(1.15)
+				transform: rotate(-45deg)
 			&:after
 				margin-top: -3px
-				transform: rotate(40deg) translateX(2px) scaleY(1.15)
+				transform: rotate(45deg)
 		&:not(&_parent) &-item:hover > &-link
 			color: $red
 			&:before
@@ -401,6 +440,10 @@ img
 			transform: translateY(0)
 	&__logo
 		float: left
+		color: #ffffff
+		font-size: 0
+		.icon
+			font-size: 53px
 	&__nav
 		float: right
 		margin-right: -35px
@@ -518,6 +561,8 @@ img
 		left: 0
 		right: 0
 		height: 0
+		+r(1279)
+			display: none
 		&:before
 			content: ''
 			position: absolute
@@ -604,6 +649,14 @@ img
 		line-height: 1.5
 		text-transform: uppercase
 		+trs
+		+r(1279)
+			top: 0
+			bottom: 0
+			left: auto
+			margin-left: 0
+			right: 100%
+			margin-right: -42px
+			background-color: rgba(#f5f5f5, 0.1)
 		&:hover
 			color: #ffffff
 		.is-loaded &
@@ -612,7 +665,9 @@ img
 			display: inline-block
 			vertical-align: 2px
 			opacity: 0
-			transform: translateY(-20px)
+			transform: translateY(-30px)
+			+r(1279)
+				visibility: hidden
 		.icon
 			position: relative
 			top: -3px
@@ -620,6 +675,18 @@ img
 			width: 28px
 			color: #ffffff
 			opacity: 0
+			+r(1279)
+				margin-left: 23px
+			.path
+				fill: none
+				stroke: #fff
+				stroke-miterlimit: 10
+				stroke-width: 3px
+				fill-rule: evenodd
+				stroke-dasharray: 100px
+				stroke-dashoffset: 100px
+				transition: all 1.25s ease-in-out
+				transition-delay: 1.25s
 		&:before
 			pointer-events: none
 			content: ''
@@ -631,8 +698,12 @@ img
 			margin-bottom: 17px
 			right: 15px
 			background-color: #ffffff
-			transition: all 1s ease-in-out
-			transition-delay: 1s
+			transition: all 0.75s ease-in-out
+			transition-delay: 0.75s
+			+r(1279)
+				bottom: 50%
+				right: 21px
+				margin-bottom: 5px
 		&:after
 			pointer-events: none
 			content: ''
@@ -644,11 +715,17 @@ img
 			margin-top: 10px
 			right: 15px
 			background-color: #ffffff
-			transition: all 1s ease-in-out
-			transition-delay: 1s
+			transition: all 0.75s ease-in-out
+			transition-delay: 0.75s
+			+r(1279)
+				margin-top: 55px
+				top: 50%
+				right: 21px
 		.is-loaded &:before,
 		.is-loaded &:after
 			height: 34px
+		.is-loaded & .path
+			stroke-dashoffset: 0
 	&__slider.is-video &__play
 		opacity: 0
 	&__inner
@@ -663,6 +740,8 @@ img
 		text-transform: uppercase
 		text-align: left
 		+trs
+		+r(1279)
+			max-width: 70%
 		p
 			transform: scale(1.1)
 			transition: all 1s ease-in-out
@@ -675,6 +754,9 @@ img
 		position: relative
 		margin-top: 40px
 		margin-left: 230px
+		+r(1279)
+			left: 74.5%
+			margin-left: 0
 	&__scroll
 		position: absolute
 		bottom: 25px
@@ -723,11 +805,15 @@ img
 		z-index: 3
 		bottom: 30px
 		left: calc(50% - 600px)
+		+r(1279)
+			left: 10px
 	&__next
 		position: absolute
 		z-index: 3
 		left: calc(50% - 310px)
 		bottom: 30px
+		+r(1279)
+			left: 315px
 	&__prev,
 	&__next
 		color: rgba(#ffffff, .5)
@@ -742,6 +828,8 @@ img
 		font-size: 0
 		+trs
 		+pie-clearfix
+		+r(1279)
+			left: 95px
 		&-item
 			cursor: pointer
 			display: inline-block
@@ -764,7 +852,9 @@ img
 					top: 50%
 					margin-top: -2px
 					left: -28px
-	&__slider.is-video &__dots
+	&__slider.is-video &__dots,
+	&__slider.is-video &__prev,
+	&__slider.is-video &__next
 		pointer-events: none
 		opacity: 0
 		transform: translateY(50px)
@@ -790,6 +880,9 @@ img
 			width: 3px
 			height: 3px
 			background-color: #e8ebf1
+			+r(1279)
+				display: none
+				content: none
 		&:after
 			content: ''
 			pointer-events: none
@@ -800,6 +893,9 @@ img
 			width: 3px
 			height: 3px
 			background-color: #e8ebf1
+			+r(1279)
+				display: none
+				content: none
 	&__top
 		position: relative
 		+pie-clearfix
@@ -813,6 +909,9 @@ img
 			width: 3px
 			height: 3px
 			background-color: #e8ebf1
+			+r(1279)
+				display: none
+				content: none
 		&-col
 			float: left
 			&:nth-child(1)
@@ -821,16 +920,28 @@ img
 				width: 340px
 				color: #ffffff
 				text-transform: uppercase
+				+r(1279)
+					width: calc(33.33vw + (24px - 15px) / 3 - 15px)
+					margin-left: -24px
 			& + &
 				margin-left: 70px
 				margin-top: 97px
 				max-width: 460px
+				+r(1279)
+					margin-left: 30px
+					margin-top: 70px
 		&-title
 			height: 423px
 			background-color: $gray-light
 			+h1
+			+r(1279)
+				height: 300px
 			p
 				padding: 85px 50px 20px 40px
+				+r(1279)
+					padding-top: 70px
+					padding-left: 24px
+					padding-right: 20px
 			.motion
 				overflow: hidden
 				&:before
@@ -842,6 +953,9 @@ img
 					width: 20px
 					height: 3px
 					background-color: #ffffff
+					+r(1279)
+						left: 14px
+						top: 40px
 		&-subtitle
 			+h2
 			text-transform: uppercase
@@ -849,12 +963,17 @@ img
 			margin-top: 36px
 			font-size: 16px
 			color: $gray-dark
+			+r(1279)
+				margin-top: 25px
 	&__row
 		position: relative
 		padding-bottom: 100px
 		margin-left: -22px
 		margin-right: -23px
 		+pie-clearfix
+		+r(1279)
+			margin-left: -15px
+			margin-right: -15px
 		&:before
 			content: ""
 			display: table
@@ -866,6 +985,10 @@ img
 		width: 33.33%
 		padding-left: 22px
 		padding-right: 23px
+		+r(1279)
+			margin-top: -60px
+			padding-left: 15px
+			padding-right: 15px
 	&__item
 		position: relative
 		padding-bottom: 85px
@@ -921,6 +1044,11 @@ img
 		padding: 0 0 10px 0
 		width: calc(100% - 70px)
 		height: 240px
+		+r(1279)
+			height: auto
+			min-height: 178px
+			width: 100%
+			margin-left: -14px
 		&.is-transition
 			transition: all 0.75s ease-in-out
 		&-title
@@ -931,10 +1059,16 @@ img
 			font-size: 18px
 			text-transform: uppercase
 			+pie-clearfix
+			+r(1279)
+				padding-top: 25px
+				padding-right: 15px
+				padding-left: 14px
 			&-text
 				float: left
 				max-width: 200px
 				line-height: 1.33
+				+r(1279)
+					max-width: calc(100% - 14px)
 			.icon
 				float: right
 				margin-top: 4px
@@ -946,6 +1080,10 @@ img
 			color: $gray-dark
 			opacity: 0
 			transition: all 0.5s ease-in-out
+			+r(1279)
+				margin-top: 10px
+				padding-left: 14px
+				padding-right: 30px
 	&__item.is-active &__desc
 		transform: translateY(-100%)
 		transition: all 0.75s ease-in-out
@@ -964,7 +1102,10 @@ img
 	padding-top: 100px
 	font-size: 0
 	text-align: right
+	+r(1279)
+		padding-top: 0
 	&__container
+		+pie-clearfix
 		&:before
 			content: ''
 			pointer-events: none
@@ -974,6 +1115,19 @@ img
 			width: 3px
 			height: 65px
 			background-color: #e8ebf1
+			+r(1279)
+				display: none
+				content: none
+	&__list
+		+r(1279)
+			display: flex
+			flex-wrap: wrap
+			width: calc(100% + 30px)
+			margin-left: -15px
+			margin-right: -15px
+			padding-left: 15px
+			padding-right: 15px
+			justify-content: center
 	&__item
 		position: relative
 		display: inline-block
@@ -981,6 +1135,21 @@ img
 		width: 25%
 		text-align: left
 		transform: translate3d(0,0,0)
+		+r(1279)
+			width: calc(33.33% - 15px)
+			flex: 1 0 auto
+			height: 250px
+			&:nth-child(3n+2)
+				width: 33.33%
+			&:nth-child(4)
+				order: 6
+				width: calc(33.33% - 15px)
+			&:nth-child(5)
+				order: 4
+				width: calc(33.33% - 15px)
+			&:nth-child(6)
+				order: 5
+				width: 33.33%
 		&:not(&_title)
 			+ratio(1,1)
 		&:not(&_title):nth-child(3n + 1)
@@ -1008,8 +1177,17 @@ img
 			color: #ffffff
 			text-transform: uppercase
 			background-color: $gray-light
+			+r(1279)
+				height: 425px
+				margin-bottom: -190px
+				width: calc(33.33vw + (24px - 15px) / 3 - 15px)
+				margin-right: -24px
 			p
 				padding: 85px 50px 20px 40px
+				+r(1279)
+					padding-top: 70px
+					padding-right: 20px
+					padding-left: 24px
 			.motion
 				&:after
 					content: ''
@@ -1020,6 +1198,9 @@ img
 					width: 20px
 					height: 3px
 					background-color: #ffffff
+					+r(1279)
+						left: 14px
+						top: 40px
 		.motion
 			overflow: hidden
 			z-index: 0
@@ -1044,6 +1225,8 @@ img
 			display: flex
 			flex-direction: column
 			overflow: hidden
+			+r(1279)
+				padding-top: 40px
 			&:before
 				content: ''
 				position: absolute
@@ -1055,6 +1238,8 @@ img
 				background-color: $gray-light
 				transform: translateX(-100%)
 				transition: all 0.5s ease-in-out
+				+r(1279)
+					display: none
 		&:hover &-desc
 			&:before
 				transform: translateX(0)
@@ -1065,6 +1250,7 @@ img
 		left: 50%
 		transform: translate(-50%, -50%)
 		height: 100%
+		width: 100%
 	&__video
 		position: absolute
 		z-index: 1
@@ -1072,11 +1258,16 @@ img
 		left: 50%
 		transform: translate(-50%, -50%)
 		height: 100%
+		+r(1279)
+			width: 100%
+			height: auto
 	&__hide
 		flex: 1 0 auto
 		overflow: hidden
 		transform: translateX(-100%)
 		transition: all 0.5s ease-in-out
+		+r(1279)
+			display: none
 	&__item:hover &__hide
 		transform: translateX(0)
 	&__title
@@ -1090,6 +1281,8 @@ img
 		line-height: 1.33
 		transition: all 0.5s ease-in-out
 		+pie-clearfix
+		+r(1279)
+			padding: 0 24px
 		&-text
 			float: left
 			max-width: 190px
@@ -1103,6 +1296,8 @@ img
 			right: 3px
 			transform: rotate(90deg) translate3d(0,0,0)
 			transition: all 0.5s ease-in-out
+			+r(1279)
+				display: none
 			&:before,
 			&:after
 				content: ''
@@ -1215,6 +1410,10 @@ img
 		right: -1px
 		margin-right: 1px
 		z-index: 2
+		+r(1279)
+			flex: 0 0 auto
+			order: 7
+			width: calc(33.33% + 10px)
 		.motion
 			overflow: hidden
 			position: relative
@@ -1223,6 +1422,8 @@ img
 	----------------------------------- */
 .why
 	padding-top: 180px
+	+r(1279)
+		padding-top: 90px
 	&:before
 		content: ''
 		pointer-events: none
@@ -1234,6 +1435,9 @@ img
 		width: 3px
 		height: 3px
 		background-color: #e8ebf1
+		+r(1279)
+			display: none
+			content: none
 	&__top
 		position: relative
 		+pie-clearfix
@@ -1247,6 +1451,9 @@ img
 			width: 3px
 			height: 65px
 			background-color: #e8ebf1
+			+r(1279)
+				display: none
+				content: none
 		&-col
 			float: left
 			&:nth-child(1)
@@ -1258,8 +1465,16 @@ img
 				color: #ffffff
 				text-transform: uppercase
 				background-color: $red
+				+r(1279)
+					width: calc(33.33vw + (24px - 15px) / 3 - 15px)
+					margin-left: -24px
+					margin-bottom: -110px
 				p
 					padding: 85px 50px 20px 40px
+					+r(1279)
+						padding-top: 70px
+						padding-left: 24px
+						padding-right: 20px
 				.motion
 					&:before
 						content: ''
@@ -1274,6 +1489,9 @@ img
 				margin-left: 70px
 				margin-top: 97px
 				max-width: 460px
+				+r(1279)
+					margin-left: 30px
+					margin-top: 70px
 		&-title
 			+h1
 		&-subtitle
@@ -1288,6 +1506,9 @@ img
 		padding-bottom: 100px
 		display: table
 		width: 100%
+		+r(1279)
+			display: block
+			padding-bottom: 70px
 	&__col
 		position: relative
 		display: table-cell
@@ -1295,10 +1516,47 @@ img
 		width: 25%
 		&:nth-child(2n)
 			color: #ffffff
+		+r(1279)
+			display: block
+			&:before,
+			&:after
+				content: ''
+				position: absolute
+				z-index: 1
+				width: 0
+				top: 0
+				bottom: 0
+				background-color: $gray-light
+		&.slick-current + &:nth-child(2n)
+			+r(1279)
+				&:before,
+				&:after
+					width: 5px
+				&:before
+					right: 100%
+				&:after
+					left: 100%
+		&.slick-current + &:nth-child(2n+1)
+			+r(1279)
+				&:before,
+				&:after
+					content: ''
+					position: absolute
+					z-index: 1
+					width: 5px
+					top: 0
+					bottom: 0
+					background-color: #ffffff
+				&:before
+					left: -5px
+				&:after
+					right: -5px
 	&__item
 		position: relative
 		min-height: 400px
 		background-color: #ffffff
+		+r(1279)
+			min-height: 244px
 		.motion
 			overflow: hidden
 			position: relative
@@ -1309,6 +1567,9 @@ img
 				left: 0
 			&__inner
 				padding: 45px 30px
+				+r(1279)
+					padding-left: 24px
+					padding-right: 24px
 	&__col:nth-child(2n) &__item
 		background-color: $gray-light
 	&__title
@@ -1323,12 +1584,34 @@ img
 		font-size: 16px
 		color: $gray-dark
 		+trs
+		+r(1279)
+			display: none
 	&__col:nth-child(2n) &__text
 		color: rgba(#ffffff, .75)
 	&__number
 		+open-extrabold
 		font-size: 60px
 		text-transform: uppercase
+	&__prev,
+	&__next
+		opacity: 0.61
+		position: absolute
+		z-index: 10
+		bottom: 0
+		font-size: 0
+		padding-top: 8px
+		padding-bottom: 8px
+		+trs
+		&:focus
+			opacity: 1
+		.icon
+			font-size: 12px
+	&__prev
+		left: 0
+		transform: rotate(180deg)
+	&__next
+		right: 0
+		
 		
 /* Reg
 	----------------------------------- */
@@ -1345,6 +1628,9 @@ img
 		width: 3px
 		height: 3px
 		background-color: #e8ebf1
+		+r(1279)
+			display: none
+			content: none
 	&__container
 		&:before
 			content: ''
@@ -1356,12 +1642,19 @@ img
 			width: 3px
 			height: 65px
 			background-color: #e8ebf1
+			+r(1279)
+				display: none
+				content: none
 	&__row
 		position: relative
 		+pie-clearfix
 		&_right
 			width: calc(100% + 40px)
 			margin-right: -40px
+			+r(1279)
+				width: auto
+				margin-left: -24px
+				margin-right: -24px
 			&:before
 				content: ''
 				pointer-events: none
@@ -1372,8 +1665,16 @@ img
 				width: 3px
 				height: 3px
 				background-color: #e8ebf1
+				+r(1279)
+					display: none
+					content: none
 	&__col
 		float: left
+		+r(1279)
+			float: none
+		&:nth-child(1)
+			+r(1279)
+				display: none
 		&:nth-child(2)
 			position: relative
 			margin-top: 65px
@@ -1382,12 +1683,19 @@ img
 			min-height: 535px
 			width: calc(100% - 300px)
 			color: #ffffff
+			+r(1279)
+				width: auto
+				margin-left: 0
+				margin-right: 0
+				min-height: 0
 			.motion
 				position: relative
 				overflow: hidden
 				&__inner
 					padding-top: 85px
 					padding-left: 70px
+					+r(1279)
+						padding: 0
 				&__element
 					position: absolute
 					left: 0
@@ -1405,6 +1713,9 @@ img
 			right: 39px
 			width: 1px
 			background-color: rgba(#ffffff, 0.1)
+			+r(1279)
+				display: none
+				content: none
 		&:after
 			content: ''
 			pointer-events: none
@@ -1415,6 +1726,9 @@ img
 			right: 339px
 			width: 1px
 			background-color: rgba(#ffffff, 0.1)
+			+r(1279)
+				display: none
+				content: none
 	&__title
 		position: relative
 		margin-left: -40px
@@ -1462,13 +1776,37 @@ img
 		font-size: 18px
 		line-height: 24px
 		text-transform: uppercase
+		+r(1279)
+			max-width: none
+			margin-bottom: 42px
+			padding-top: 65px
+			padding-left: 24px
+			padding-right: 64px
+	&__subtitle + &__row
+		padding-left: 24px
+		padding-right: 64px
+		padding-bottom: 70px
 	&__column
 		float: left
+		+pie-clearfix
+		+r(1279)
+			float: none
+		&-row
+			+r(1279)
+				float: left
+				width: 65%
+				& + &
+					width: 35%
 		&:nth-child(1)
 			width: calc(100% - 340px)
 			padding-right: 60px
+			+r(1279)
+				width: auto
 		&:nth-child(2)
 			width: 300px
+			+r(1279)
+				width: auto
+				margin-top: 42px
 		p
 			&:nth-child(1)
 				+open-extrabold
@@ -1490,8 +1828,14 @@ img
 		margin-bottom: 30px
 		+open-extrabold
 		font-size: 45px
+		+r(1279)
+			margin-top: 18px
+			margin-bottom: 0
 	&__btn
 		margin-top: 27px
+		+r(1279)
+			margin-top: 45px
+			width: 235px
 		
 /* Service
 	----------------------------------- */
@@ -1510,6 +1854,9 @@ img
 		width: 3px
 		height: 65px
 		background-color: #e8ebf1
+		+r(1279)
+			display: none
+			content: none
 	&__container
 		&:before
 			content: ''
@@ -1521,6 +1868,9 @@ img
 			width: 3px
 			height: 3px
 			background-color: #e8ebf1
+			+r(1279)
+				display: none
+				content: none
 		&:after
 			content: ''
 			pointer-events: none
@@ -1531,6 +1881,19 @@ img
 			width: 3px
 			height: 3px
 			background-color: #e8ebf1
+			+r(1279)
+				display: none
+				content: none
+	&__list
+		+r(1279)
+			display: flex
+			flex-wrap: wrap
+			width: calc(100% + 30px)
+			margin-left: -15px
+			margin-right: -15px
+			padding-left: 15px
+			padding-right: 15px
+			justify-content: center
 	&__item
 		position: relative
 		display: inline-block
@@ -1539,6 +1902,21 @@ img
 		height: 300px
 		text-align: left
 		background-color: #ffffff
+		+r(1279)
+			width: calc(33.33% - 15px)
+			flex: 1 0 auto
+			height: 250px
+			&:nth-child(3n+2)
+				width: 33.33%
+			&:nth-child(4)
+				order: 6
+				width: calc(33.33% - 15px)
+			&:nth-child(5)
+				order: 4
+				width: calc(33.33% - 15px)
+			&:nth-child(6)
+				order: 5
+				width: 33.33%
 		&:nth-child(3) .motion
 			&:before
 				content: ''
@@ -1572,8 +1950,17 @@ img
 				width: 3px
 				height: 3px
 				background-color: #e8ebf1
+				+r(1279)
+					display: none
+					content: none
 		p
 			padding: 50px 30px
+			+r(1279)
+				padding-top: 40px
+				padding-left: 24px
+				padding-right: 24px
+				br
+					display: none
 		.motion
 			position: relative
 			overflow: hidden
@@ -1597,8 +1984,17 @@ img
 			color: #ffffff
 			text-transform: uppercase
 			background-color: $gray-light
+			+r(1279)
+				height: 425px
+				margin-bottom: -190px
+				width: calc(33.33vw + (24px - 15px) / 3 - 15px)
+				margin-right: -24px
 			p
 				padding: 85px 50px 20px 40px
+				+r(1279)
+					padding-top: 70px
+					padding-right: 20px
+					padding-left: 24px
 			.motion
 				&:after
 					content: ''
@@ -1609,11 +2005,13 @@ img
 					width: 20px
 					height: 3px
 					background-color: #ffffff
-	&__img
+	img
 		position: absolute
 		z-index: 1
 		top: 0
 		left: 0
+		height: 100%
+		width: 100%
 	&__title
 		position: relative
 		z-index: 2
@@ -1632,6 +2030,8 @@ img
 	----------------------------------- */
 .gal
 	padding-bottom: 115px
+	+r(1279)
+		padding-bottom: 90px
 	&:before
 		content: ''
 		pointer-events: none
@@ -1643,6 +2043,9 @@ img
 		width: 3px
 		height: 65px
 		background-color: #e8ebf1
+		+r(1279)
+			display: none
+			content: none
 	&:after
 		content: ''
 		pointer-events: none
@@ -1654,6 +2057,9 @@ img
 		width: 3px
 		height: 3px
 		background-color: #e8ebf1
+		+r(1279)
+			display: none
+			content: none
 	&__row
 		margin-left: -40px
 		margin-right: -40px
@@ -1758,6 +2164,9 @@ img
 		margin-right: auto
 		flex-wrap: wrap
 		justify-content: flex-end
+		+r(1279)
+			position: relative
+			left: 30px
 		&-text
 			position: relative
 			padding-left: 11.5%
@@ -1766,9 +2175,15 @@ img
 			font-size: 18px
 			text-transform: uppercase
 			line-height: 24px
+			+r(1279)
+				br
+					display: none
 			.motion
 				position: relative
 				overflow: hidden
+				&__inner
+					+r(1279)
+					padding-right: 30px
 				&__element
 					position: absolute
 					z-index: 2
@@ -1788,6 +2203,8 @@ img
 		&-btn
 			position: relative
 			margin-top: 40px
+			+r(1279)
+				margin-top: 20px
 			.motion
 				position: relative
 				overflow: hidden
@@ -1797,6 +2214,8 @@ img
 .about
 	padding-top: 60px
 	padding-bottom: 60px
+	+r(1279)
+		padding-top: 0
 	&:before
 		content: ''
 		pointer-events: none
@@ -1808,6 +2227,9 @@ img
 		width: 3px
 		height: 65px
 		background-color: #e8ebf1
+		+r(1279)
+			display: none
+			content: none
 	&:after
 		content: ''
 		pointer-events: none
@@ -1819,18 +2241,33 @@ img
 		width: 3px
 		height: 3px
 		background-color: #e8ebf1
+		+r(1279)
+			display: none
+			content: none
 	&__row
 		+pie-clearfix
 	&__col
 		float: left
 		width: 37.5%
 		margin-left: 12.5%
+		+r(1279)
+			width: calc(50% + 48px)
+			margin-left: 0
+			padding-left: 48px
+		& + &
+			+r(1279)
+				width: calc(50% - 48px)
+				padding-left: 0
+				padding-right: 48px
+				float: right
 	&__title
 		display: table
 		+open-extrabold
 		font-size: 12px
 		line-height: 1.5
 		text-transform: uppercase
+		+r(1279)
+			max-width: 235px
 		.motion
 			position: relative
 			overflow: hidden
@@ -1850,6 +2287,8 @@ img
 		font-size: 45px
 		color: $gray-light
 		text-transform: uppercase
+		+r(1279)
+			margin-top: 35px
 		.motion
 			overflow: hidden
 			position: relative
@@ -1882,6 +2321,9 @@ img
 		color: #ffffff
 		overflow: hidden
 		margin-bottom: -140px
+		+r(1279)
+			margin-left: -15px
+			margin-right: -15px
 	&__col
 		position: relative
 		cursor: pointer
@@ -1891,10 +2333,19 @@ img
 		margin-left: 22px
 		margin-right: 23px
 		+trs
-		&.is-active
-			background-color: $red
+		+r(1279)
+			width: calc(33.33% - 30px)
+			margin-left: 15px
+			margin-right: 15px
+		& .motion
+			background-color: $gray-light!important
+		&.is-active .motion
+			background-color: $red!important
 		&-inner
 			padding: 52px 45px
+			+r(1279)
+				padding-left: 24px
+				padding-right: 24px
 		.motion
 			position: relative
 			overflow: hidden
