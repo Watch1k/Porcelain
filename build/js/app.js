@@ -841,4 +841,49 @@ $(document).ready(function () {
 		});
 	})();
 
+	(function () {
+		var hamburger = $('.js-hamburger'),
+			nav = $('.js-nav'),
+			speedNav = 1.5;
+
+		hamburger.on('click', function () {
+			var _this = $(this);
+
+			if (!_this.hasClass('is-active')) {
+				_this.addClass('is-active');
+				animateNav();
+			} else {
+				_this.removeClass('is-active');
+				animateNav();
+			}
+			function animateNav() {
+				var navTl = new TimelineMax();
+				$('<div class="nav-anime"></div>').insertAfter(_this);
+				_this.siblings('.nav-anime').css({
+					position: 'absolute',
+					'z-index': 99,
+					top: -14,
+					left: 0,
+					right: 0,
+					height: $(window).height() - 38,
+					'background-color': '#a70a3f'
+				});
+				navTl.fromTo(_this.siblings('.nav-anime'), speedNav, {
+					x: '-100%'
+				}, {
+					x: '100%',
+					ease: Power3.easeInOut,
+					onComplete: function () {
+						$(this.target).remove();
+					}
+				})
+					.set(nav, {
+						onComplete: function () {
+							$(this.target).toggleClass('is-active');
+						}
+					}, (speedNav / 2));
+			}
+		})
+	})();
+
 });
