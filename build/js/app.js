@@ -219,10 +219,20 @@ $(document).ready(function () {
 
 				this.animation.offset = this.animation.offset / 100 * $(window).height();
 
+				if ($(window).width() < 768) {
+					if (this.animation.motion == 'motion1') {
+						this.animation.motion = 'motion3';
+					}
+				}
+
 				switch (this.animation.motion) {
 					case 'motion1':
 						this.animation.autoHeight = this.$el.attr('data-auto-height') || false;
-						this.animation.advancedWidth = this.$el.attr('data-advanced-width') || 0;
+						if ($(window).width() > 1279) {
+							this.animation.advancedWidth = this.$el.attr('data-advanced-width') || 0;
+						} else {
+							this.animation.advancedWidth = 0;
+						}
 						this.animation.width = +this.animation.width + +this.animation.advancedWidth;
 						this.$el
 							.css({
@@ -775,23 +785,38 @@ $(document).ready(function () {
 				cssEase: 'ease-in-out',
 				speed: 750,
 				prevArrow: '<button type="button" class="screen__prev"><svg class="icon icon-arrow-left"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-left"></use></svg></button>',
-				nextArrow: '<button type="button" class="screen__next"><svg class="icon icon-arrow-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-right"></use></svg></button>'
+				nextArrow: '<button type="button" class="screen__next"><svg class="icon icon-arrow-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-right"></use></svg></button>',
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							prevArrow: '<button type="button" class="screen__prev"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>',
+							nextArrow: '<button type="button" class="screen__next"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>'
+						}
+					}
+				]
 			});
 		}
+
 	})();
 
 	(function () {
-		var whySlider = $('.js-why-slider');
+		var whySlider = $('.js-why-slider'),
+			serviceSlider = $('.js-service-slider');
 
-		toggleSlider(1280, whySlider);
+		toggleWhySlider(1280, whySlider);
+		toggleServiceSlider(768, serviceSlider);
 		$(window).resize(function () {
-			toggleSlider(1280, whySlider);
+			toggleWhySlider(1280, whySlider);
+			toggleServiceSlider(768, serviceSlider);
 		});
 
-		function toggleSlider(breakpoint, slider) {
+		function toggleWhySlider(breakpoint, slider) {
 			if ($(window).width() < breakpoint) {
 				if (!slider.hasClass('slick-initialized')) {
-					initSlickSlider(slider);
+					initWhySlider(slider);
 				}
 			} else {
 				if (slider.hasClass('slick-initialized')) {
@@ -800,7 +825,7 @@ $(document).ready(function () {
 			}
 		}
 
-		function initSlickSlider(slider) {
+		function initWhySlider(slider) {
 			slider.slick({
 				slidesToShow: 3,
 				slidesToScroll: 1,
@@ -808,7 +833,37 @@ $(document).ready(function () {
 				cssEase: 'ease-in-out',
 				speed: 750,
 				prevArrow: '<button type="button" class="why__prev"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>',
-				nextArrow: '<button type="button" class="why__next"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>'
+				nextArrow: '<button type="button" class="why__next"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>',
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: 'unslick'
+					}
+				]
+			});
+		}
+
+		function toggleServiceSlider(breakpoint, slider) {
+			if ($(window).width() < breakpoint) {
+				if (!slider.hasClass('slick-initialized')) {
+					initServiceSlider(slider);
+				}
+			} else {
+				if (slider.hasClass('slick-initialized')) {
+					slider.slick('unslick');
+				}
+			}
+		}
+
+		function initServiceSlider(slider) {
+			slider.slick({
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: true,
+				cssEase: 'ease-in-out',
+				speed: 750,
+				prevArrow: '<button type="button" class="service__prev"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>',
+				nextArrow: '<button type="button" class="service__next"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>'
 			});
 		}
 	})();
@@ -821,10 +876,30 @@ $(document).ready(function () {
 			timer,
 			timerDelay = 150;
 
-		innoDescTitle.on('mouseenter', function () {
-			var _this = $(this),
-				_thisVideo = _this.closest(innoItem).find(innoVideo);
-			timer = setTimeout(function () {
+		if ($(window).width() > 767) {
+			innoDescTitle.on('mouseenter', function () {
+				var _this = $(this),
+					_thisVideo = _this.closest(innoItem).find(innoVideo);
+				timer = setTimeout(function () {
+					_this.closest(innoItem).toggleClass('is-active');
+					_this.find('.icon').toggleClass('is-active');
+					if (_thisVideo.length) {
+						if (_thisVideo.get(0).paused) {
+							_thisVideo.get(0).play();
+						} else {
+							_thisVideo.get(0).pause();
+						}
+					}
+				}, timerDelay);
+				_this.on('mouseleave', function () {
+					clearTimeout(timer);
+				});
+			});
+		} else {
+			innoDescTitle.on('click', function () {
+				var _this = $(this),
+					_thisVideo = _this.closest(innoItem).find(innoVideo);
+
 				_this.closest(innoItem).toggleClass('is-active');
 				_this.find('.icon').toggleClass('is-active');
 				if (_thisVideo.length) {
@@ -834,11 +909,9 @@ $(document).ready(function () {
 						_thisVideo.get(0).pause();
 					}
 				}
-			}, timerDelay);
-			_this.on('mouseleave', function () {
-				clearTimeout(timer);
 			});
-		});
+		}
+
 	})();
 
 	(function () {
@@ -861,7 +934,7 @@ $(document).ready(function () {
 				$('<div class="nav-anime"></div>').insertAfter(_this);
 				_this.siblings('.nav-anime').css({
 					position: 'absolute',
-					'z-index': 99,
+					'z-index': 102,
 					top: -14,
 					left: 0,
 					right: 0,
@@ -884,6 +957,22 @@ $(document).ready(function () {
 					}, (speedNav / 2));
 			}
 		})
+	})();
+
+	(function () {
+
+		if ($(window).width() < 768) {
+			(function () {
+				if ($('.service__item_title').length) {
+					var _el = $('.service__item_title'),
+						_str = _el.find('p').text();
+
+					_str = _str.replace(/ в деталях/g, '');
+					_el.find('p').text(_str);
+				}
+			})();
+		}
+
 	})();
 
 });

@@ -21,6 +21,9 @@ $whitesmoke: #f5f5f5
 	+open-extrabold
 	font-size: 35px
 	line-height: 1.28571
+	+r(767)
+		font-size: 30px
+		line-height: 36px
 =h1
 	+open-extrabold
 	font-size: 24px
@@ -57,6 +60,8 @@ $whitesmoke: #f5f5f5
 	transition: all 0.5s ease-out
 	+r(1279)
 		width: 235px
+	+r(767)
+		width: 290px
 	&__hide
 		+r(1279)
 			display: none
@@ -151,6 +156,8 @@ $whitesmoke: #f5f5f5
 	top: 0
 	width: 1px
 	bottom: 0
+	+r(767)
+		display: none
 	&:before,
 	&:after
 		content: ''
@@ -227,6 +234,9 @@ body
 	+r(1279)
 		padding-left: 24px
 		padding-right: 24px
+	+r(767)
+		padding-left: 15px
+		padding-right: 15px
 	
 .preloader
 	position: fixed
@@ -330,6 +340,9 @@ img
 	+r(1279)
 		float: right
 		display: block
+	+r(767)
+		padding-top: 4px
+		padding-bottom: 4px
 	&__box
 		width: 23px
 		height: 16px
@@ -431,6 +444,8 @@ img
 		float: left
 		position: relative
 		padding-left: 57px
+		+r(767)
+			padding-left: 0
 		&:before
 			content: ''
 			position: absolute
@@ -440,6 +455,9 @@ img
 			width: 30px
 			height: 1px
 			background-color: rgba(#ffffff, .2)
+			+r(767)
+				display: none
+				content: none
 	&__login
 		float: right
 		font-size: 12px
@@ -541,6 +559,8 @@ img
 			font-size: 53px
 			+r(1279)
 				font-size: 41px
+			+r(767)
+				font-size: 29px
 	&__nav
 		float: right
 		margin-right: -35px
@@ -738,6 +758,8 @@ img
 		position: relative
 		height: 100vh
 		overflow: hidden
+		+r(767)
+			height: 540px
 	&__slider.is-video &__item
 		pointer-events: none
 	&__video
@@ -799,6 +821,8 @@ img
 			right: 100%
 			margin-right: -42px
 			background-color: rgba(#f5f5f5, 0.1)
+		+r(767)
+			display: none
 		&:hover
 			color: #ffffff
 		.is-loaded &
@@ -875,15 +899,20 @@ img
 		display: inline-block
 		vertical-align: middle
 		width: 100%
+		+r(767)
+			margin-top: 15px
 	&__title
 		max-width: 460px
 		margin-left: auto
 		margin-right: auto
+		+h1-lg
 		text-transform: uppercase
 		text-align: left
 		+trs
 		+r(1279)
 			max-width: 70%
+		+r(767)
+			max-width: none
 		p
 			transform: scale(1.1)
 			transition: all 1s ease-in-out
@@ -899,6 +928,11 @@ img
 		+r(1279)
 			left: 74.5%
 			margin-left: 0
+		+r(767)
+			left: auto
+			margin-left: auto
+			margin-right: auto
+			display: block
 	&__scroll
 		position: absolute
 		bottom: 25px
@@ -909,6 +943,8 @@ img
 		color: #ffffff
 		text-transform: uppercase
 		+trs
+		+r(767)
+			display: none
 		&-text
 			display: inline-block
 			vertical-align: middle
@@ -940,22 +976,30 @@ img
 			pointer-events: none
 			opacity: 0
 			transform: translateY(50px)
-	&__title
-		+h1-lg
 	&__prev
 		position: absolute
 		z-index: 3
 		bottom: 30px
 		left: calc(50% - 600px)
+		font-size: 0
 		+r(1279)
 			left: 10px
+		+r(767)
+			bottom: 35px
+			left: 15px
+			transform: rotate(180deg)
 	&__next
 		position: absolute
 		z-index: 3
 		left: calc(50% - 310px)
 		bottom: 30px
+		font-size: 0
 		+r(1279)
 			left: 315px
+		+r(767)
+			bottom: 35px
+			left: auto
+			right: 15px
 	&__prev,
 	&__next
 		color: rgba(#ffffff, .5)
@@ -972,6 +1016,8 @@ img
 		+pie-clearfix
 		+r(1279)
 			left: 95px
+		+r(767)
+			display: none
 		&-item
 			cursor: pointer
 			display: inline-block
@@ -1011,6 +1057,8 @@ img
 	----------------------------------- */
 .inno
 	padding-top: 90px
+	+r(767)
+		padding-top: 70px
 	&__container
 		&:before
 			content: ''
@@ -1056,6 +1104,8 @@ img
 				content: none
 		&-col
 			float: left
+			+r(767)
+				float: none
 			&:nth-child(1)
 				position: relative
 				margin-left: -40px
@@ -1065,6 +1115,10 @@ img
 				+r(1279)
 					width: calc(33.33vw + (24px - 15px) / 3 - 15px)
 					margin-left: -24px
+				+r(767)
+					width: auto
+					color: #000000
+					margin-left: 0
 			& + &
 				margin-left: 70px
 				margin-top: 97px
@@ -1072,20 +1126,35 @@ img
 				+r(1279)
 					margin-left: 30px
 					margin-top: 70px
+				+r(767)
+					display: none
 		&-title
 			height: 423px
 			background-color: $gray-light
 			+h1
 			+r(1279)
 				height: 300px
+			+r(767)
+				height: auto
+				background-color: transparent
 			p
 				padding: 85px 50px 20px 40px
 				+r(1279)
 					padding-top: 70px
 					padding-left: 24px
 					padding-right: 20px
+				+r(767)
+					padding: 0
 			.motion
 				overflow: hidden
+				&__element
+					position: absolute
+					z-index: 2
+					top: 0
+					left: 0
+					right: 0
+					bottom: 0
+					background-color: $red
 				&:before
 					content: ''
 					position: absolute
@@ -1098,15 +1167,21 @@ img
 					+r(1279)
 						left: 14px
 						top: 40px
+					+r(767)
+						display: none
 		&-subtitle
 			+h2
 			text-transform: uppercase
+			+r(767)
+				display: none
 		&-text
 			margin-top: 36px
 			font-size: 16px
 			color: $gray-dark
 			+r(1279)
 				margin-top: 25px
+			+r(767)
+				display: none
 	&__row
 		position: relative
 		padding-bottom: 100px
@@ -1116,6 +1191,10 @@ img
 		+r(1279)
 			margin-left: -15px
 			margin-right: -15px
+		+r(767)
+			margin-left: 0
+			padding: 30px 0 0
+			margin-right: 0
 		&:before
 			content: ""
 			display: table
@@ -1131,6 +1210,15 @@ img
 			margin-top: -60px
 			padding-left: 15px
 			padding-right: 15px
+		+r(767)
+			float: none
+			width: auto
+			padding-left: 0
+			padding-right: 0
+			margin-top: 0
+		& + &
+			+r(767)
+				margin-top: 10px
 	&__item
 		position: relative
 		padding-bottom: 85px
@@ -1157,7 +1245,8 @@ img
 				bottom: 0
 				width: calc(100% + 20px)
 				background-color: $red
-		&-in
+		img
+			width: 100%
 			+trs
 		&-video
 			position: absolute
@@ -1205,6 +1294,8 @@ img
 				padding-top: 25px
 				padding-right: 15px
 				padding-left: 14px
+			+r(767)
+				padding-top: 15px
 			&-text
 				float: left
 				max-width: 200px
@@ -1246,6 +1337,8 @@ img
 	text-align: right
 	+r(1279)
 		padding-top: 0
+	+r(767)
+		padding-top: 40px
 	&__container
 		+pie-clearfix
 		&:before
@@ -1272,6 +1365,7 @@ img
 			justify-content: center
 	&__item
 		position: relative
+		overflow: hidden
 		display: inline-block
 		vertical-align: top
 		width: 25%
@@ -1280,26 +1374,56 @@ img
 		+r(1279)
 			width: calc(33.33% - 15px)
 			flex: 1 0 auto
-			height: 250px
 			&:nth-child(3n+2)
 				width: 33.33%
+				+r(767)
+					width: 100%
+			&:nth-child(1)
+				+r(767)
+					order: 1
+			&:nth-child(2)
+				+r(767)
+					order: 3
+			&:nth-child(3)
+				+r(767)
+					order: 2
 			&:nth-child(4)
 				order: 6
 				width: calc(33.33% - 15px)
+				+r(767)
+					width: 100%
+					order: 4
 			&:nth-child(5)
 				order: 4
 				width: calc(33.33% - 15px)
+				+r(767)
+					width: 100%
+					order: 6
 			&:nth-child(6)
 				order: 5
 				width: 33.33%
+				+r(767)
+					width: 100%
+		+r(767)
+			height: 113px
+			width: 100%
+			&:before
+				display: none
+				content: none
 		&:not(&_title)
 			+ratio(1,1)
+			+r(767)
+				&:before
+					display: none
+					content: none
 		&:not(&_title):nth-child(3n + 1)
 			color: #ffffff
-			background-color: $red
+			.motion__inner
+				background-color: $red
 		&:not(&_title):nth-child(3n + 3)
 			background-color: #ffffff
 			.motion
+				overflow: hidden
 				&:before
 					content: ''
 					position: absolute
@@ -1324,13 +1448,33 @@ img
 				margin-bottom: -190px
 				width: calc(33.33vw + (24px - 15px) / 3 - 15px)
 				margin-right: -24px
+			+r(767)
+				float: none
+				width: auto
+				margin-right: 0
+				color: #000000
+				margin-bottom: 30px
+				height: auto
+				background-color: transparent
 			p
 				padding: 85px 50px 20px 40px
 				+r(1279)
 					padding-top: 70px
 					padding-right: 20px
 					padding-left: 24px
+				+r(767)
+					padding: 0
 			.motion
+				overflow: hidden
+				position: relative
+				&__element
+					position: absolute
+					z-index: -2
+					top: 0
+					left: 0
+					right: 0
+					bottom: 0
+					background-color: $red
 				&:after
 					content: ''
 					position: absolute
@@ -1343,11 +1487,15 @@ img
 					+r(1279)
 						left: 14px
 						top: 40px
+					+r(767)
+						display: none
 		.motion
 			overflow: hidden
 			z-index: 0
 			background-color: #ffffff
 			+ratio-in
+			+r(767)
+				position: relative
 			&__inner
 				position: relative
 				z-index: 1
@@ -1382,17 +1530,20 @@ img
 				transition: all 0.5s ease-in-out
 				+r(1279)
 					display: none
+					content: none
 		&:hover &-desc
 			&:before
 				transform: translateX(0)
-	&__img
+	img
 		position: absolute
 		z-index: 1
 		top: 50%
 		left: 50%
 		transform: translate(-50%, -50%)
-		height: 100%
 		width: 100%
+		height: 100%
+		+r(767)
+			height: auto
 	&__video
 		position: absolute
 		z-index: 1
@@ -1410,6 +1561,15 @@ img
 		transition: all 0.5s ease-in-out
 		+r(1279)
 			display: none
+		+r(767)
+			display: block
+			position: absolute
+			z-index: 100
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			transform: none
 	&__item:hover &__hide
 		transform: translateX(0)
 	&__title
@@ -1440,6 +1600,8 @@ img
 			transition: all 0.5s ease-in-out
 			+r(1279)
 				display: none
+			+r(767)
+				display: block
 			&:before,
 			&:after
 				content: ''
@@ -1460,6 +1622,16 @@ img
 			&:after
 				margin-top: -4px
 				top: 50%
+	&__item:nth-child(3) &__title-text
+		+r(767)
+			&:before
+				content: ''
+				position: absolute
+				left: 0
+				right: 0
+				top: 24px
+				bottom: 0
+				background-color: #ffffff
 	&__item:hover &__title-icon
 		transform: translateY(-3px) rotate(90deg)
 		&:before
@@ -1471,6 +1643,20 @@ img
 		background-color: #ffffff
 	&__item:hover &__title
 		color: #ffffff
+		+r(1279)
+			color: #000000
+	&__item:not(&__item_title):hover:nth-child(3n+1) &__title
+		+r(1279)
+			color: #ffffff
+	&__item:not(&__item_title):nth-child(3n+3)
+		+r(767)
+			border-left: 1px solid #f5f5f5
+			border-right: 1px solid #f5f5f5
+	&__item:not(&__item_title):nth-child(6)
+		+r(1279)
+			border-bottom: 1px solid #f5f5f5
+		+r(767)
+			border-bottom: none
 	&__item_title &__title
 		font-size: 24px
 		color: #ffffff
@@ -1485,6 +1671,8 @@ img
 		opacity: 0
 		transform: translateX(100%)
 		transition: top 0.5s ease-in-out 0.15s, transform 0.5s ease-in-out, opacity 0.5s ease-in-out
+		+r(767)
+			display: none
 	&__item:hover &__text
 		top: 0
 		opacity: 1
@@ -1507,6 +1695,14 @@ img
 		text-transform: uppercase
 		background-color: #989a9e
 		transform: translate(0,100%)
+		+r(767)
+			z-index: 1000
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			transform: none
+			opacity: 0
 		&-icon
 			display: inline-block
 			vertical-align: middle
@@ -1553,9 +1749,7 @@ img
 		margin-right: 1px
 		z-index: 2
 		+r(1279)
-			flex: 0 0 auto
-			order: 7
-			width: calc(33.33% + 10px)
+			display: none
 		.motion
 			overflow: hidden
 			position: relative
@@ -1566,6 +1760,8 @@ img
 	padding-top: 180px
 	+r(1279)
 		padding-top: 90px
+	+r(767)
+		padding-top: 70px
 	&:before
 		content: ''
 		pointer-events: none
@@ -1611,13 +1807,31 @@ img
 					width: calc(33.33vw + (24px - 15px) / 3 - 15px)
 					margin-left: -24px
 					margin-bottom: -110px
+				+r(767)
+					width: auto
+					height: auto
+					color: #000000
+					margin-left: 0
+					margin-bottom: 30px
+					background-color: transparent
 				p
 					padding: 85px 50px 20px 40px
 					+r(1279)
 						padding-top: 70px
 						padding-left: 24px
 						padding-right: 20px
+					+r(767)
+						padding: 0
 				.motion
+					overflow: hidden
+					&__element
+						position: absolute
+						z-index: 2
+						top: 0
+						left: 0
+						right: 0
+						bottom: 0
+						background-color: $red
 					&:before
 						content: ''
 						position: absolute
@@ -1627,6 +1841,9 @@ img
 						width: 20px
 						height: 3px
 						background-color: #ffffff
+						+r(767)
+							display: none
+							content: none
 			& + &
 				margin-left: 70px
 				margin-top: 97px
@@ -1634,15 +1851,21 @@ img
 				+r(1279)
 					margin-left: 30px
 					margin-top: 70px
+				+r(767)
+					display: none
 		&-title
 			+h1
 		&-subtitle
 			+h2
 			text-transform: uppercase
+			+r(767)
+				display: none
 		&-text
 			margin-top: 36px
 			font-size: 16px
 			color: $gray-dark
+			+r(767)
+				display: none
 	&__row
 		position: relative
 		padding-bottom: 100px
@@ -1651,13 +1874,19 @@ img
 		+r(1279)
 			display: block
 			padding-bottom: 70px
+		+r(767)
+			padding-bottom: 65px
 	&__col
 		position: relative
 		display: table-cell
 		height: 100%
 		width: 25%
+		+r(767)
+			color: $gray-light
 		&:nth-child(2n)
 			color: #ffffff
+			+r(767)
+				color: $gray-light
 		+r(1279)
 			display: block
 			&:before,
@@ -1669,6 +1898,11 @@ img
 				top: 0
 				bottom: 0
 				background-color: $gray-light
+		+r(767)
+			width: auto
+		& + &
+			+r(767)
+				margin-top: 30px
 		&.slick-current + &:nth-child(2n)
 			+r(1279)
 				&:before,
@@ -1689,6 +1923,8 @@ img
 					top: 0
 					bottom: 0
 					background-color: #ffffff
+					+r(767)
+						display: none
 				&:before
 					left: -5px
 				&:after
@@ -1699,6 +1935,8 @@ img
 		background-color: #ffffff
 		+r(1279)
 			min-height: 244px
+		+r(767)
+			min-height: 0
 		.motion
 			overflow: hidden
 			position: relative
@@ -1707,13 +1945,18 @@ img
 				z-index: 2
 				top: 0
 				left: 0
+				background-color: $red
 			&__inner
 				padding: 45px 30px
 				+r(1279)
 					padding-left: 24px
 					padding-right: 24px
+				+r(767)
+					padding: 0
 	&__col:nth-child(2n) &__item
 		background-color: $gray-light
+		+r(767)
+			background-color: transparent
 	&__title
 		margin-top: 28px
 		+open-extrabold
@@ -1721,6 +1964,9 @@ img
 		line-height: 1.5
 		text-transform: uppercase
 		+pie-clearfix
+		+r(767)
+			color: #000000
+			margin-top: 10px
 	&__text
 		margin-top: 23px
 		font-size: 16px
@@ -1734,6 +1980,9 @@ img
 		+open-extrabold
 		font-size: 60px
 		text-transform: uppercase
+		+r(767)
+			font-size: 30px
+			line-height: 1
 	&__prev,
 	&__next
 		opacity: 0.61
@@ -1750,7 +1999,7 @@ img
 			font-size: 12px
 	&__prev
 		left: 0
-		transform: rotate(180deg)
+		transform: rotate(180deg) translate3d(0,0,0)
 	&__next
 		right: 0
 		
@@ -1759,6 +2008,8 @@ img
 	----------------------------------- */
 .reg
 	padding-top: 80px
+	+r(767)
+		padding-top: 0
 	&:before
 		content: ''
 		pointer-events: none
@@ -1797,6 +2048,9 @@ img
 				width: auto
 				margin-left: -24px
 				margin-right: -24px
+			+r(767)
+				margin-left: 0
+				margin-right: 0
 			&:before
 				content: ''
 				pointer-events: none
@@ -1817,6 +2071,8 @@ img
 		&:nth-child(1)
 			+r(1279)
 				display: none
+			+r(767)
+				display: block
 		&:nth-child(2)
 			position: relative
 			margin-top: 65px
@@ -1830,6 +2086,11 @@ img
 				margin-left: 0
 				margin-right: 0
 				min-height: 0
+				margin-top: 0
+			+r(767)
+				margin-left: -15px
+				margin-right: -15px
+				background-color: transparent
 			.motion
 				position: relative
 				overflow: hidden
@@ -1838,6 +2099,8 @@ img
 					padding-left: 70px
 					+r(1279)
 						padding: 0
+					+r(767)
+						background-color: $red
 				&__element
 					position: absolute
 					left: 0
@@ -1845,6 +2108,7 @@ img
 					right: 0
 					bottom: 0
 					z-index: 2
+					background-color: $red
 		&:before
 			content: ''
 			pointer-events: none
@@ -1881,9 +2145,29 @@ img
 		color: #ffffff
 		text-transform: uppercase
 		background-color: $gray-light
+		+r(767)
+			margin-left: 0
+			width: auto
+			height: auto
+			margin-bottom: 30px
+			color: #000000
+			background-color: transparent
 		p
 			padding: 85px 50px 20px 40px
+			+r(767)
+				padding: 0
+				br
+					display: none
 		.motion
+			overflow: hidden
+			&__element
+				position: absolute
+				z-index: 2
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				background-color: $red
 			&:before
 				content: ''
 				position: absolute
@@ -1893,10 +2177,14 @@ img
 				width: 20px
 				height: 3px
 				background-color: #ffffff
+				+r(767)
+					display: none
 	&__image
 		position: relative
 		width: 330px
 		z-index: 2
+		+r(767)
+			display: none
 		img
 			display: block
 		.motion
@@ -1924,10 +2212,19 @@ img
 			padding-top: 65px
 			padding-left: 24px
 			padding-right: 64px
+		+r(767)
+			padding-top: 40px
+			padding-left: 15px
+			padding-right: 25px
+			margin-bottom: 25px
 	&__subtitle + &__row
 		padding-left: 24px
 		padding-right: 64px
 		padding-bottom: 70px
+		+r(767)
+			padding-left: 15px
+			padding-right: 15px
+			padding-bottom: 48px
 	&__column
 		float: left
 		+pie-clearfix
@@ -1939,16 +2236,25 @@ img
 				width: 65%
 				& + &
 					width: 35%
+			+r(767)
+				float: none
+				width: auto
+				& + &
+					width: auto
 		&:nth-child(1)
 			width: calc(100% - 340px)
 			padding-right: 60px
 			+r(1279)
 				width: auto
+			+r(767)
+				padding-right: 0
 		&:nth-child(2)
 			width: 300px
 			+r(1279)
 				width: auto
 				margin-top: 42px
+			+r(767)
+				margin-top: 37px
 		p
 			&:nth-child(1)
 				+open-extrabold
@@ -1973,11 +2279,19 @@ img
 		+r(1279)
 			margin-top: 18px
 			margin-bottom: 0
+		+r(767)
+			margin-top: 25px
+			font-size: 30px
+			margin-bottom: 37px
 	&__btn
 		margin-top: 27px
 		+r(1279)
 			margin-top: 45px
 			width: 235px
+		+r(767)
+			margin-top: 30px
+			display: block
+			width: 290px
 		
 /* Service
 	----------------------------------- */
@@ -1985,6 +2299,8 @@ img
 	padding-top: 182px
 	font-size: 0
 	text-align: right
+	+r(767)
+		padding-top: 70px
 	&:after
 		content: ''
 		pointer-events: none
@@ -2036,29 +2352,49 @@ img
 			padding-left: 15px
 			padding-right: 15px
 			justify-content: center
+		+r(767)
+			padding-bottom: 50px
 	&__item
 		position: relative
 		display: inline-block
 		vertical-align: top
+		overflow: hidden
 		width: 25%
-		height: 300px
 		text-align: left
 		background-color: #ffffff
 		+r(1279)
 			width: calc(33.33% - 15px)
 			flex: 1 0 auto
-			height: 250px
 			&:nth-child(3n+2)
 				width: 33.33%
+				+r(767)
+					width: 100%
 			&:nth-child(4)
 				order: 6
 				width: calc(33.33% - 15px)
+				+r(767)
+					width: 100%
 			&:nth-child(5)
 				order: 4
 				width: calc(33.33% - 15px)
+				+r(767)
+					width: 100%
 			&:nth-child(6)
 				order: 5
 				width: 33.33%
+				+r(767)
+					width: 100%
+		+r(767)
+			width: 100%
+			min-width: 290px
+		&:not(&_title)
+			+ratio(1,1)
+			+r(767)
+				color: #ffffff
+				height: 185px
+				&:before
+					display: none
+					content: none
 		&:nth-child(3) .motion
 			&:before
 				content: ''
@@ -2070,6 +2406,8 @@ img
 				right: 0
 				height: 1px
 				background-color: #e8ebf1
+				+r(767)
+					display: none
 		&:nth-child(3) ~ & .motion
 			&:before
 				content: ''
@@ -2081,6 +2419,8 @@ img
 				right: 0
 				height: 1px
 				background-color: #f5f5f5
+				+r(767)
+					display: none
 		&:last-child
 			&:after
 				content: ''
@@ -2121,6 +2461,7 @@ img
 			display: block
 			float: right
 			height: 400px
+			overflow: visible
 			margin-bottom: -100px
 			+h1
 			color: #ffffff
@@ -2131,13 +2472,33 @@ img
 				margin-bottom: -190px
 				width: calc(33.33vw + (24px - 15px) / 3 - 15px)
 				margin-right: -24px
+			+r(767)
+				float: none
+				width: auto
+				margin-right: 0
+				color: #000000
+				margin-bottom: 30px
+				height: auto
+				background-color: transparent
 			p
 				padding: 85px 50px 20px 40px
 				+r(1279)
 					padding-top: 70px
 					padding-right: 20px
 					padding-left: 24px
+				+r(767)
+					padding: 0
 			.motion
+				overflow: hidden
+				position: relative
+				&__element
+					position: absolute
+					z-index: 2
+					top: 0
+					left: 0
+					right: 0
+					bottom: 0
+					background-color: $red
 				&:after
 					content: ''
 					position: absolute
@@ -2147,15 +2508,36 @@ img
 					width: 20px
 					height: 3px
 					background-color: #ffffff
+					+r(1279)
+						left: 14px
+						top: 40px
+					+r(767)
+						display: none
+		.motion
+			overflow: hidden
+			z-index: 0
+			background-color: #ffffff
+			+r(767)
+				background-color: transparent
+			&__inner
+				position: relative
+				z-index: 1
+	&__item:not(&__item_title) .motion
+		+ratio-in
+		+r(767)
+			background-color: $red
 	img
 		position: absolute
 		z-index: 1
-		top: 0
-		left: 0
+		top: 50%
+		left: 50%
 		height: 100%
 		width: 100%
+		transform: translate(-50%,-50%)
+		+r(767)
+			display: none
 	&__title
-		position: relative
+		position: absolute
 		z-index: 2
 		+open-extrabold
 		font-size: 18px
@@ -2167,6 +2549,25 @@ img
 		font-size: 24px
 		color: #ffffff
 		line-height: 1.25
+	&__prev,
+	&__next
+		opacity: 0.61
+		position: absolute
+		z-index: 10
+		bottom: 0
+		font-size: 0
+		padding-top: 8px
+		padding-bottom: 8px
+		+trs
+		&:focus
+			opacity: 1
+		.icon
+			font-size: 12px
+	&__prev
+		left: 15px
+		transform: rotate(180deg) translate3d(0,0,0)
+	&__next
+		right: 15px
 		
 /* Gal
 	----------------------------------- */
@@ -2174,6 +2575,9 @@ img
 	padding-bottom: 115px
 	+r(1279)
 		padding-bottom: 90px
+	+r(767)
+		padding-top: 70px
+		padding-bottom: 70px
 	&:before
 		content: ''
 		pointer-events: none
@@ -2209,11 +2613,20 @@ img
 		flex-direction: row-reverse
 		padding-top: 200px
 		transform: translate3d(0,0,0)
+		+r(767)
+			padding-top: 0
+			display: block
+			margin-left: 0
+			margin-right: 0
 	&__item
 		position: relative
+		+r(767)
+			display: none
 		&-motion
 			position: relative
 			z-index: 2
+			+r(767)
+				display: none
 		.motion
 			position: relative
 			overflow: hidden
@@ -2231,6 +2644,8 @@ img
 		&_1
 			flex-basis: 190px
 			align-self: flex-end
+			+r(767)
+				display: block
 		&_2
 			margin-top: 75px
 			flex-basis: 450px
@@ -2241,6 +2656,8 @@ img
 			align-self: flex-end
 			transform: translateY(calc(100% - 75px))
 	&__item-in
+		+r(767)
+			display: none
 		&_1-1
 			position: absolute
 			z-index: 1
@@ -2279,6 +2696,14 @@ img
 		color: #ffffff
 		overflow: visible
 		background-color: $gray-light
+		+r(767)
+			position: relative
+			bottom: auto
+			right: auto
+			width: auto
+			height: auto
+			color: #000000
+			background-color: transparent
 		.motion
 			position: relative
 			&:after
@@ -2290,6 +2715,8 @@ img
 				width: 20px
 				height: 3px
 				background-color: #ffffff
+				+r(767)
+					display: none
 		p
 			max-width: 150px
 			padding: 85px 50px 20px 40px
@@ -2298,6 +2725,9 @@ img
 			text-transform: uppercase
 			line-height: 1.25
 			+pie-clearfix
+			+r(767)
+				padding: 0
+				max-width: none
 	&__desc
 		display: flex
 		margin-top: 100px
@@ -2309,6 +2739,18 @@ img
 		+r(1279)
 			position: relative
 			left: 30px
+		+r(767)
+			max-width: none
+			margin-top: 55px
+			left: auto
+		p
+			+r(767)
+				padding-left: 30px
+				padding-right: 30px
+				margin-left: auto
+				margin-right: auto
+				font-size: 12px
+				line-height: 18px
 		&-text
 			position: relative
 			padding-left: 11.5%
@@ -2320,12 +2762,16 @@ img
 			+r(1279)
 				br
 					display: none
+			+r(767)
+				padding-left: 0
 			.motion
 				position: relative
 				overflow: hidden
 				&__inner
 					+r(1279)
-					padding-right: 30px
+						padding-right: 30px
+					+r(767)
+						padding-right: 0
 				&__element
 					position: absolute
 					z-index: 2
@@ -2342,11 +2788,20 @@ img
 				font-size: 72px
 				+open-extrabold
 				color: #ced0d6
+				+r(767)
+					top: -15px
+					left: 0
+					font-size: 50px
 		&-btn
 			position: relative
 			margin-top: 40px
 			+r(1279)
 				margin-top: 20px
+			+r(767)
+				display: block
+				margin-left: auto
+				margin-right: auto
+				margin-top: 30px
 			.motion
 				position: relative
 				overflow: hidden
@@ -2396,12 +2851,22 @@ img
 			width: calc(50% + 48px)
 			margin-left: 0
 			padding-left: 48px
+		+r(767)
+			float: none
+			width: auto
+			margin-left: 0
+			padding-left: 0
 		& + &
 			+r(1279)
 				width: calc(50% - 48px)
 				padding-left: 0
 				padding-right: 48px
 				float: right
+			+r(767)
+				float: none
+				padding-right: 0
+				width: auto
+				margin-top: 40px
 	&__title
 		display: table
 		+open-extrabold
@@ -2431,6 +2896,9 @@ img
 		text-transform: uppercase
 		+r(1279)
 			margin-top: 35px
+		+r(767)
+			margin-top: 25px
+			font-size: 30px
 		.motion
 			overflow: hidden
 			position: relative
