@@ -616,12 +616,18 @@ img
 			flex-direction: column
 			flex-wrap: wrap
 			max-height: 140px
+			+r(767)
+				max-height: 160px
 		&_footer &__item
 			float: none
 			display: block
 			padding-top: 13px
 			padding-bottom: 13px
 			width: 33.33%
+			+r(767)
+				padding-top: 10px
+				padding-bottom: 10px
+				width: 50%
 	&_footer &__item
 		padding-left: 24px
 		padding-right: 25px
@@ -633,6 +639,9 @@ img
 .footer
 	overflow: hidden
 	background-color: lighten($red,30)
+	+r(767)
+		margin-top: 70px
+		border-top: 1px solid #f5f5f5
 	&__top
 		padding-top: 12px
 		padding-bottom: 12px
@@ -651,6 +660,10 @@ img
 			left: 66.66%
 			top: 33px
 			margin-left: -11px
+		+r(767)
+			left: 50%
+			top: 90px
+			margin-left: -5px
 	&__bot
 		padding-top: 13px
 		padding-bottom: 10px
