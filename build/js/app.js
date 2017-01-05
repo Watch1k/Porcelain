@@ -218,6 +218,7 @@ $(document).ready(function () {
 				this.animation.offset = +this.$el.closest(sceneEl).attr('data-offset') || this.animation.offset;
 
 				this.animation.offset = this.animation.offset / 100 * $(window).height();
+				this.animation.autoHeight = this.$el.attr('data-auto-height') || false;
 
 				if ($(window).width() < 768) {
 					if (this.animation.motion == 'motion1') {
@@ -227,7 +228,6 @@ $(document).ready(function () {
 
 				switch (this.animation.motion) {
 					case 'motion1':
-						this.animation.autoHeight = this.$el.attr('data-auto-height') || false;
 						if ($(window).width() > 1279) {
 							this.animation.advancedWidth = this.$el.attr('data-advanced-width') || 0;
 						} else {
@@ -387,6 +387,9 @@ $(document).ready(function () {
 									}, {
 										y: 0,
 										ease: Power3.easeInOut
+									});
+									$(this.target).children().first().css({
+										height: 'auto'
 									});
 								}
 							}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));

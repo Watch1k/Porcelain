@@ -2934,6 +2934,10 @@ img
 		+r(1279)
 			margin-left: -15px
 			margin-right: -15px
+		+r(767)
+			margin-left: 0
+			margin-right: 0
+			margin-bottom: 0
 	&__col
 		position: relative
 		cursor: pointer
@@ -2947,19 +2951,37 @@ img
 			width: calc(33.33% - 30px)
 			margin-left: 15px
 			margin-right: 15px
+		+r(767)
+			width: 100%
+			float: none
+			margin-left: 0
+			margin-right: 0
+		& + &
+			+r(767)
+				margin-top: 5px
 		& .motion
+			transition: background-color 0.5s ease-in-out
 			background-color: $gray-light!important
 		&.is-active .motion
 			background-color: $red!important
 		&-inner
-			padding: 52px 45px
+			padding: 52px 45px 35px
 			+r(1279)
 				padding-left: 24px
 				padding-right: 24px
 		.motion
 			position: relative
 			overflow: hidden
+			&__element
+				position: absolute
+				z-index: 2
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				background-color: $red
 	&__title
+		margin-bottom: 17px
 		+open-extrabold
 		font-size: 0
 		line-height: 1.67
@@ -2985,19 +3007,17 @@ img
 				height: 3px
 				background-color: #ffffff
 	&__desc
-		padding-top: 0
-		padding-bottom: 0
 		font-size: 16px
 		max-height: 0
 		opacity: 0
+		height: 0
 		+trs
 		a
 			pointer-events: none
 			display: table
 			margin-top: 10px
 	&__col.is-active &__desc
-		padding-top: 17px
-		padding-bottom: 5px
+		height: 75px
 		max-height: 75px
 		opacity: 1
 	&__col.is-active &__desc a
@@ -3007,6 +3027,8 @@ img
 		z-index: 1
 		margin-left: -40px
 		margin-right: -40px
+		+r(767)
+			display: none
 		.motion
 			position: relative
 			overflow: hidden
