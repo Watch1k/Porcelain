@@ -201,6 +201,7 @@ $(document).ready(function () {
 
 			motionEl.each(function () {
 				this.animation = new Animation();
+				var $thisAnimation = this.animation;
 				this.$el = $(this);
 				this.animation.motion = this.$el.attr('data-motion') || this.animation.motion;
 				this.animation.mainDelay = +this.$el.attr('data-main-delay') || +this.animation.mainDelay;
@@ -223,6 +224,7 @@ $(document).ready(function () {
 				if ($(window).width() < 768) {
 					if (this.animation.motion == 'motion1') {
 						this.animation.motion = 'motion3';
+						this.animation.bgColor = '';
 					}
 				}
 
@@ -266,16 +268,18 @@ $(document).ready(function () {
 								onComplete: function () {
 									TweenMax.to($(this.target), $(this.target).parent().get(0).animation.speedRect, {
 										width: $(this.target).parent().get(0).animation.width,
-										ease: Power3.easeInOut
+										ease: Power3.easeInOut,
+										onComplete: function () {
+											TweenMax.set($(this.target), {
+												height: '100%',
+												width: 'calc(100% + ' + $(this.target).parent().get(0).advancedWidth + 'px)'
+											});
+											TweenMax.set($(this.target).children(), {
+												height: '100%',
+												width: '100%'
+											});
+										}
 									});
-									if ($(this.target).parent().get(0).animation.autoHeight) {
-										TweenMax.set($(this.target), {
-											height: 'auto'
-										});
-										TweenMax.set($(this.target).children(), {
-											height: 'auto'
-										});
-									}
 								}
 							}, 'start')
 							.set(this.$el.children(), {
@@ -386,10 +390,21 @@ $(document).ready(function () {
 										y: $(this.target).parent().get(0).animation.moveUp
 									}, {
 										y: 0,
-										ease: Power3.easeInOut
-									});
-									$(this.target).children().first().css({
-										height: 'auto'
+										ease: Power3.easeInOut,
+										onComplete: function () {
+											$(this.target).css({
+												height: '100%',
+												width: '100%'
+											});
+											$(this.target).children().first().css({
+												height: '100%',
+												width: '100%'
+											});
+											$(this.target).children().last().css({
+												height: '100%',
+												width: '100%'
+											});
+										}
 									});
 								}
 							}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
@@ -933,7 +948,22 @@ $(document).ready(function () {
 				animateNav();
 			}
 			function animateNav() {
-				var navTl = new TimelineMax();
+				var navTl = new TimelineMax(),
+					navHeight = $(window).height() - 38;
+
+				if ($(window).width() < 768) {
+					navHeight = 540 - 38;
+				} else {
+					navHeight = $(window).height() - 38;
+				}
+				$(window).on('resize', function () {
+					if ($(window).width() < 768) {
+						navHeight = 540 - 38;
+					} else {
+						navHeight = $(window).height() - 38;
+					}
+				});
+
 				$('<div class="nav-anime"></div>').insertAfter(_this);
 				_this.siblings('.nav-anime').css({
 					position: 'absolute',
@@ -941,7 +971,7 @@ $(document).ready(function () {
 					top: -14,
 					left: 0,
 					right: 0,
-					height: $(window).height() - 38,
+					height: navHeight,
 					'background-color': '#a70a3f'
 				});
 				navTl.fromTo(_this.siblings('.nav-anime'), speedNav, {

@@ -239,6 +239,7 @@ body
 		padding-right: 15px
 	
 .preloader
+	display: none
 	position: fixed
 	top: 0
 	left: 0
@@ -591,6 +592,8 @@ img
 			width: 100%
 			&.is-active
 				display: flex
+		+r(767)
+			height: calc(540px - 38px)
 	+r(1279)
 		&_header &__item
 			color: #000000
@@ -1204,6 +1207,7 @@ img
 		+r(1279)
 			margin-left: -15px
 			margin-right: -15px
+			padding-bottom: 80px
 		+r(767)
 			margin-left: 0
 			padding: 30px 0 0
@@ -1821,6 +1825,7 @@ img
 					margin-left: -24px
 					margin-bottom: -110px
 				+r(767)
+					float: none
 					width: auto
 					height: auto
 					color: #000000
@@ -1945,11 +1950,14 @@ img
 	&__item
 		position: relative
 		min-height: 400px
+		height: 400px
 		background-color: #ffffff
 		+r(1279)
 			min-height: 244px
+			height: 244px
 		+r(767)
 			min-height: 0
+			height: auto
 		.motion
 			overflow: hidden
 			position: relative
@@ -2092,6 +2100,7 @@ img
 			margin-left: -30px
 			background-color: $red
 			min-height: 535px
+			height: 535px
 			width: calc(100% - 300px)
 			color: #ffffff
 			+r(1279)
@@ -2099,6 +2108,7 @@ img
 				margin-left: 0
 				margin-right: 0
 				min-height: 0
+				height: auto
 				margin-top: 0
 			+r(767)
 				margin-left: -15px
@@ -2231,9 +2241,10 @@ img
 			padding-right: 25px
 			margin-bottom: 25px
 	&__subtitle + &__row
-		padding-left: 24px
-		padding-right: 64px
-		padding-bottom: 70px
+		+r(1279)
+			padding-left: 24px
+			padding-right: 64px
+			padding-bottom: 70px
 		+r(767)
 			padding-left: 15px
 			padding-right: 15px
@@ -2310,8 +2321,11 @@ img
 	----------------------------------- */
 .service
 	padding-top: 182px
+	z-index: 2!important
 	font-size: 0
 	text-align: right
+	+r(1279)
+		padding-top: 90px
 	+r(767)
 		padding-top: 70px
 	&:after
@@ -2582,9 +2596,140 @@ img
 	&__next
 		right: 15px
 		
+
+/* Skill
+	----------------------------------- */
+.skill
+	padding-top: 180px
+	padding-bottom: 140px
+	&__container
+		pointer-events: none
+		+pie-clearfix
+	&__top
+		position: relative
+		+pie-clearfix
+		&:before
+			content: ''
+			pointer-events: none
+			position: absolute
+			z-index: 1
+			top: 0
+			right: -2px
+			width: 3px
+			height: 65px
+			background-color: #e8ebf1
+			+r(1279)
+				display: none
+				content: none
+		&-col
+			float: left
+			&:nth-child(1)
+				position: relative
+				margin-left: -40px
+				width: 340px
+				height: 490px
+				color: #ffffff
+				text-transform: uppercase
+				background-color: $gray-light
+				+r(1279)
+					width: calc(33.33vw + (24px - 15px) / 3 - 15px)
+					margin-left: -24px
+					margin-bottom: -110px
+				+r(767)
+					float: none
+					width: auto
+					height: auto
+					color: #000000
+					margin-left: 0
+					margin-bottom: 30px
+					background-color: transparent
+				p
+					padding: 85px 50px 20px 40px
+					+r(1279)
+						padding-top: 70px
+						padding-left: 24px
+						padding-right: 20px
+					+r(767)
+						padding: 0
+				.motion
+					overflow: hidden
+					&__element
+						position: absolute
+						z-index: 2
+						top: 0
+						left: 0
+						right: 0
+						bottom: 0
+						background-color: $red
+					&:before
+						content: ''
+						position: absolute
+						z-index: 1
+						top: 57px
+						left: 29px
+						width: 20px
+						height: 3px
+						background-color: #ffffff
+						+r(767)
+							display: none
+							content: none
+			& + &
+				margin-left: 70px
+				margin-top: 97px
+				max-width: 460px
+				+r(1279)
+					margin-left: 30px
+					margin-top: 70px
+				+r(767)
+					display: none
+		&-subtitle
+			pointer-events: auto
+			+h2
+			text-transform: uppercase
+	&__title
+		pointer-events: auto
+		+h1
+	&__map
+		position: absolute
+		z-index: 0
+		top: 50%
+		left: 50%
+		width: 100%
+		transform: scale(2) translate(-50%,-50%)
+		transform-origin: left top
+		&-gradient
+			pointer-events: none
+			position: absolute
+			z-index: 1
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			&_vertical
+				background: linear-gradient(to bottom, rgba(255,255,255, 1) 0%, rgba(255,255,255,0.8) 30%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 45%, rgba(255,255,255, 0) 55%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 100%)
+			&_horizontal
+				background: linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 60%, rgba(255,255,255,1) 100%)
+		&-svg
+			position: relative
+			transform: translate(9%, 8%)
+			width: 100%
+			height: 100%
+			path
+				fill: #e9e9e9
+				fill-opacity: 1
+				stroke: #ffffff
+				stroke-opacity: 1
+				stroke-width: 0.5
+				+trs
+				&:hover,
+				&.is-active
+					cursor: pointer
+					fill: $gray-light
+		
 /* Gal
 	----------------------------------- */
 .gal
+	z-index: 2 !important
 	padding-bottom: 115px
 	+r(1279)
 		padding-bottom: 90px
@@ -2766,7 +2911,7 @@ img
 				line-height: 18px
 		&-text
 			position: relative
-			padding-left: 11.5%
+			margin-left: 11.5%
 			flex-basis: 100%
 			+open-extrabold
 			font-size: 18px
@@ -2776,7 +2921,7 @@ img
 				br
 					display: none
 			+r(767)
-				padding-left: 0
+				margin-left: 0
 			.motion
 				position: relative
 				overflow: hidden
@@ -2798,12 +2943,14 @@ img
 				position: absolute
 				top: -5px
 				left: -20px
+				margin-left: -11.5%
 				font-size: 72px
 				+open-extrabold
 				color: #ced0d6
 				+r(767)
 					top: -15px
 					left: 0
+					margin-left: 0
 					font-size: 50px
 		&-btn
 			position: relative
@@ -2975,6 +3122,8 @@ img
 		& .motion
 			transition: background-color 0.5s ease-in-out
 			background-color: $gray-light!important
+		&.is-active
+			background-color: transparent
 		&.is-active .motion
 			background-color: $red!important
 		&-inner
