@@ -239,7 +239,6 @@ body
 		padding-right: 15px
 	
 .preloader
-	display: none
 	position: fixed
 	top: 0
 	left: 0
@@ -248,22 +247,128 @@ body
 	z-index: 1000
 	background-color: #ffffff
 	transition: all 1s ease-in-out
-	video
+	&__container
 		position: absolute
 		z-index: 1
-		max-width: 330px
-		margin-left: -20px
-		height: auto
+		width: 240px
 		top: 50%
 		left: 50%
 		transform: translate(-50%,-50%) scale(1)
 		transition: transform 1s ease-in-out, opacity 0.25s linear
+	&__rect
+		position: absolute
+		z-index: 2
+		top: 0
+		left: 0
+		right: 0
+		background-color: #ffffff
+		height: 61px
+		overflow: hidden
+		&:before
+			content: ''
+			position: absolute
+			z-index: 3
+			top: 5px
+			left: 0
+			height: 50px
+			width: 100%
+			background-color: #ffffff
+			animation: preloader-text 1s forwards linear
+		&-top
+			position: absolute
+			z-index: 4
+			top: 0
+			height: 6px
+			left: 0
+			right: 0
+			background-color: #ffffff
+			animation: preloader-top 0.5s forwards ease-in-out
+			animation-delay: 1s
+		&-bottom
+			position: absolute
+			z-index: 4
+			bottom: 0
+			height: 6px
+			left: 0
+			right: 0
+			background-color: #ffffff
+			animation: preloader-bottom 0.5s forwards ease-in-out
+			animation-delay: 1.99s
+		&-left
+			position: absolute
+			z-index: 4
+			top: 0
+			width: 6px
+			left: 0
+			bottom: 0
+			background-color: #ffffff
+			animation: preloader-left 0.5s forwards ease-in-out
+			animation-delay: 1.49s
+		&-right
+			position: absolute
+			z-index: 4
+			top: 0
+			width: 6px
+			right: 0
+			bottom: 0
+			background-color: #ffffff
+			animation: preloader-right 0.5s forwards ease-in-out
+			animation-delay: 2.49s
+	&__text
+		position: absolute
+		z-index: 1
+		top: -30px
+		left: 0
+		right: 0
+		animation: svg-text 4s forwards ease-in-out
 	.is-loaded &
 		opacity: 0
 		pointer-events: none
-	.is-loaded & video
+	.is-loaded &__container
 		opacity: 0
 		transform: translate(-50%,-50%) scale(0.9)
+
+@keyframes preloader-top
+	0%
+		transform: translateX(0)
+	100%
+		transform: translateX(-100%)
+		
+@keyframes preloader-left
+	0%
+		transform: translateY(0)
+	100%
+		transform: translateY(100%)
+		
+@keyframes preloader-bottom
+	0%
+		transform: translateX(0)
+	100%
+		transform: translateX(100%)
+
+@keyframes preloader-right
+	0%
+		transform: translateY(0)
+	100%
+		transform: translateY(-100%)
+
+@keyframes preloader-text
+	0%
+		transform: translateX(0)
+	10%
+		transform: translateX(0)
+	75%
+		transform: translateX(100%)
+	100%
+		transform: translateX(100%)
+		
+@keyframes svg-text
+	0%
+		top: -30px
+	75%
+		top: -30px
+	100%
+		top: 0
 
 
 /* Helpers
