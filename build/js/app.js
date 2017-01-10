@@ -1008,4 +1008,185 @@ $(document).ready(function () {
 
 	})();
 
+	(function () {
+
+		var mapSvg = $('.js-map-svg'),
+			navFor = $('.js-nav-for'),
+			navForItem = navFor.children(),
+			navList = $('.js-nav-list'),
+			navListItem = navList.find('.js-doctor-slider'),
+			navListEl = navList.find('.doctor'),
+			doctorSlider = $('.js-doctor-slider'),
+			indInit = false;
+
+		doctorSlider.each(function () {
+			initDoctorSlider($(this));
+		});
+
+		var doctorMapController = new ScrollMagic.Controller(),
+			tweenTimeline = new TimelineMax();
+
+		tweenTimeline
+			.staggerFromTo('.js-doctor-slider.is-active .slick-slide', 1, {
+				y: -30,
+				alpha: 0
+			}, {
+				y: 0,
+				alpha: 1,
+				ease: Power1.easeInOut,
+				delay: 0.5
+			}, 0.15);
+
+		doctorMapController.scene = new ScrollMagic.Scene({
+			triggerElement: '.js-doctor-slider.is-active',
+			offset: $(window).height() * 3 / (-5)
+		})
+			.setTween(tweenTimeline)
+			.addTo(doctorMapController);
+
+		doctorMapController.scene.on('start', function () {
+			console.log('start');
+			this.remove();
+		});
+
+		navForItem.on('click', function () {
+			if ($(this).hasClass('is-active')) return false;
+
+			var _this = $(this),
+				_thisIndex = _this.index(),
+				_thisDataCountry = _this.attr('data-country'),
+				_thisCountryList = _thisDataCountry.split(' '),
+				_thisDataMapPosition = _this.attr('data-map-position'),
+				_thisMapPosition = _thisDataMapPosition.split(' ');
+
+			if (indInit) {
+				var tweenEl1 = navListItem.filter('.is-active').find('.slick-slide');
+
+				TweenMax.staggerFromTo(tweenEl1, 1, {
+					y: 0,
+					alpha: 1
+				}, {
+					y: 30,
+					alpha: 0,
+					ease: Power1.easeInOut
+				}, 0.15);
+
+				navListItem.removeClass('is-active').eq(_thisIndex).addClass('is-active');
+
+				var tweenEl2 = navListItem.filter('.is-active').find('.slick-slide');
+
+				TweenMax.staggerFromTo(tweenEl2, 1, {
+					y: -30,
+					alpha: 0
+				}, {
+					y: 0,
+					alpha: 1,
+					delay: 0.75,
+					ease: Power1.easeInOut
+				}, 0.15);
+			}
+
+			_this.siblings().removeClass('is-active');
+			_this.addClass('is-active');
+
+			mapSvg.children().removeClass('is-current');
+			mapSvg.nextAll().filter('.skill__map-mark').remove();
+
+			TweenMax.to(mapSvg, 1, {
+					x: _thisMapPosition[0] + '%',
+					y: _thisMapPosition[1] + '%',
+					ease: Power1.easeInOut,
+					onComplete: function () {
+						var _itemCounter = 0;
+						for (var i = 0; i < _thisCountryList.length; i++) {
+							mapSvg.find('#' + _thisCountryList[i]).addClass('is-current');
+
+							var _thisCountry = mapSvg.find('#' + _thisCountryList[i]),
+								_thisCountryOffset = _thisCountry.offset(),
+								_thisParentOffset = _thisCountry.parent().offset(),
+								_thisMarkPositionX = _thisCountryOffset.left - _thisParentOffset.left,
+								_thisMarkPositionY = _thisCountryOffset.top - _thisParentOffset.top;
+
+							_thisMarkPositionX += 2 * mapSvg.width() * _thisMapPosition[0] / 100 + _thisCountry[0].getBBox().width;
+							_thisMarkPositionY += 2 * mapSvg.height() * _thisMapPosition[1] / 100 + _thisCountry[0].getBBox().height;
+
+							navListItem.eq(_thisIndex).find(navListEl).each(function () {
+								var _el = $(this),
+									_elCountry = _el.find('.js-doctor-domen').text(),
+									_elCity = _el.find('.js-doctor-city').text(),
+									_elDataPosition = _el.find('.js-doctor-position').text(),
+									_elPosition = _elDataPosition.split(' ');
+
+								if (_elCountry == _thisCountryList[i]) {
+									if ($('.js-map-mark').filter('[data-city="' + _elCity + '"]').length) {
+										_el.attr('data-counter', $('.js-map-mark').filter('[data-city="' + _elCity + '"]').attr('data-counter'));
+									} else {
+										$('<div class="skill__map-mark js-map-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 16"><path d="M0,16V0H13Z"/></svg></div>').insertAfter(mapSvg);
+										mapSvg.next().css({
+											left: (_thisMarkPositionX + +_elPosition[0]) / 2,
+											top: (_thisMarkPositionY + +_elPosition[1]) / 2,
+											opacity: 0
+										});
+
+										TweenMax.to(mapSvg.next(), 1, {
+											opacity: 1,
+											ease: Power3.easeInOut
+										});
+
+										mapSvg.next().attr('data-counter', _itemCounter).attr('data-city', _elCity);
+										_el.attr('data-counter', _itemCounter);
+										_itemCounter++;
+									}
+								}
+							});
+						}
+					}
+				}
+			);
+			indInit = true;
+		});
+
+		navForItem.eq(0).trigger('click');
+
+		if (doctorSlider.length) {
+			$(document).on('click', '.js-map-mark', function () {
+				var _thisMark = $(this),
+					_sliderArray = [];
+
+				navListEl.filter('[data-counter="' + _thisMark.attr('data-counter') + '"]').each(function () {
+					_sliderArray.push($(this).clone());
+				});
+				console.log(_sliderArray);
+
+				for (var i = 0; i < _sliderArray.length; i++) {
+					navList.append(_sliderArray[i]);
+				}
+			});
+		}
+
+		function initDoctorSlider(slider) {
+			slider.slick({
+				variableWidth: true,
+				slidesToScroll: 1,
+				cssEase: 'ease-in-out',
+				speed: 750,
+				infinite: false,
+				prevArrow: '<button type="button" class="skill__prev"><svg class="icon icon-arrow-left"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-left"></use></svg></button>',
+				nextArrow: '<button type="button" class="skill__next"><svg class="icon icon-arrow-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-right"></use></svg></button>'
+				// responsive: [
+				// 	{
+				// 		breakpoint: 768,
+				// 		settings: {
+				// 			slidesToShow: 1,
+				// 			slidesToScroll: 1,
+				// 			prevArrow: '<button type="button" class="screen__prev"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>',
+				// 			nextArrow: '<button type="button" class="screen__next"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>'
+				// 		}
+				// 	}
+				// ]
+			});
+		}
+
+	})();
+
 });
