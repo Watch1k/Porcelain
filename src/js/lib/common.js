@@ -893,6 +893,7 @@ $(document).ready(function () {
 	(function () {
 
 		var mapSvg = $('.js-map-svg'),
+			mapPath = mapSvg.find('path'),
 			navFor = $('.js-nav-for'),
 			navForItem = navFor.children(),
 			navList = $('.js-nav-list'),
@@ -916,7 +917,7 @@ $(document).ready(function () {
 				y: 0,
 				alpha: 1,
 				ease: Power1.easeInOut,
-				delay: 0.5
+				delay: 1
 			}, 0.15);
 
 		doctorMapController.scene = new ScrollMagic.Scene({
@@ -927,12 +928,34 @@ $(document).ready(function () {
 			.addTo(doctorMapController);
 
 		doctorMapController.scene.on('start', function () {
-			console.log('start');
 			this.remove();
 		});
 
 		navForItem.on('click', function () {
 			if ($(this).hasClass('is-active')) return false;
+
+			mapPath.removeClass('is-active');
+
+			var doctorClone = $('.js-doctor-clone');
+
+			if (doctorClone.length) {
+				var doctorCloneItem = doctorClone.find('.slick-slide'),
+					doctorTl = new TimelineMax();
+				doctorTl
+					.staggerFromTo(doctorCloneItem, 1, {
+						y: 0,
+						alpha: 1
+					}, {
+						y: 30,
+						alpha: 0,
+						ease: Power1.easeInOut
+					}, 0.15)
+					.set(doctorClone, {
+						onComplete: function () {
+							doctorClone.remove();
+						}
+					});
+			}
 
 			var _this = $(this),
 				_thisIndex = _this.index(),
@@ -994,20 +1017,35 @@ $(document).ready(function () {
 
 							navListItem.eq(_thisIndex).find(navListEl).each(function () {
 								var _el = $(this),
-									_elCountry = _el.find('.js-doctor-domen').text(),
+									_elDomen = _el.find('.js-doctor-domen').text(),
+									_elCountry = _el.find('.js-doctor-country').text(),
 									_elCity = _el.find('.js-doctor-city').text(),
 									_elDataPosition = _el.find('.js-doctor-position').text(),
 									_elPosition = _elDataPosition.split(' ');
 
-								if (_elCountry == _thisCountryList[i]) {
+								if (_elDomen == _thisCountryList[i]) {
 									if ($('.js-map-mark').filter('[data-city="' + _elCity + '"]').length) {
-										_el.attr('data-counter', $('.js-map-mark').filter('[data-city="' + _elCity + '"]').attr('data-counter'));
+										_el.attr('data-counter', $('.js-map-mark').filter('[data-city="' + _elCity + '"]').attr('data-counter')).attr('data-city', _elCity).attr('data-domen', _elDomen);
 									} else {
-										$('<div class="skill__map-mark js-map-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 16"><path d="M0,16V0H13Z"/></svg></div>').insertAfter(mapSvg);
+										$('' +
+											'<div class="skill__map-mark js-map-mark">' +
+											'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 16">' +
+											'<path d="M0,16V0H13Z"/>' +
+											'</svg>' +
+											'<div class="skill__map-mark-tooltip">' +
+											'<div class="skill__map-mark-tooltip-inner">' + _elCity + ', ' + _elCountry + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 16"><path d="M0,16V0H13Z"/></svg>' +
+											'</div>' +
+											'</div>' +
+											'</div>').insertAfter(mapSvg);
 										mapSvg.next().css({
 											left: (_thisMarkPositionX + +_elPosition[0]) / 2,
 											top: (_thisMarkPositionY + +_elPosition[1]) / 2,
+											width: mapSvg.next().children().last().children().outerWidth(),
+											height: mapSvg.next().children().last().children().outerHeight(),
 											opacity: 0
+										}).children().last().css({
+											width: 0,
+											height: mapSvg.next().children().last().children().outerHeight()
 										});
 
 										TweenMax.to(mapSvg.next(), 1, {
@@ -1016,7 +1054,7 @@ $(document).ready(function () {
 										});
 
 										mapSvg.next().attr('data-counter', _itemCounter).attr('data-city', _elCity);
-										_el.attr('data-counter', _itemCounter);
+										_el.attr('data-counter', _itemCounter).attr('data-city', _elCity).attr('data-domen', _elDomen);
 										_itemCounter++;
 									}
 								}
@@ -1030,19 +1068,193 @@ $(document).ready(function () {
 
 		navForItem.eq(0).trigger('click');
 
+		mapPath.on('click', function () {
+			var _thisPath = $(this),
+				_sliderArray = [];
+
+			if (_thisPath.hasClass('is-current')) {
+				if (!_thisPath.hasClass('is-active')) {
+					var doctorClone = $('.js-doctor-clone');
+
+					if (doctorClone.length) {
+						var doctorCloneItem = doctorClone.find('.slick-slide'),
+							doctorTl = new TimelineMax();
+						doctorTl
+							.staggerFromTo(doctorCloneItem, 1, {
+								y: 0,
+								alpha: 1
+							}, {
+								y: 30,
+								alpha: 0,
+								ease: Power1.easeInOut
+							}, 0.15)
+							.set(doctorClone, {
+								onComplete: function () {
+									doctorClone.remove();
+								}
+							});
+					}
+
+					var _hideEl = mapSvg.parent().find('.js-map-mark').filter('.is-active');
+
+					_hideEl.removeClass('is-active').parent().removeClass('is-active');
+					TweenMax.set(_hideEl.children().last().children().children(), {
+						y: '-100%',
+						ease: Power1.easeInOut,
+						onComplete: function () {
+							TweenMax.to($(this.target).parent().parent(), 1, {
+								overflow: 'hidden',
+								width: 0,
+								ease: Power1.easeInOut
+							});
+						}
+					});
+
+					mapPath.removeClass('is-active');
+					_thisPath.addClass('is-active');
+					navForItem.removeClass('is-active');
+
+					navList.append('<div class="skill__top-nav-list-item js-doctor-slider"></div>');
+					var tempSlider = $('.js-doctor-slider').last().addClass('js-doctor-clone is-active');
+
+					navListEl.filter('[data-domen="' + _thisPath.attr('id') + '"]').each(function () {
+						_sliderArray.push($(this).html());
+					});
+
+					for (var i = 0; i < _sliderArray.length; i++) {
+						tempSlider.append('<div class="skill__top-nav-list-inner doctor"></div>');
+						tempSlider.find('.doctor').last().append(_sliderArray[i]);
+					}
+
+					initDoctorSlider(tempSlider);
+
+					var tweenEl1 = navListItem.filter('.is-active').find('.slick-slide');
+
+					TweenMax.staggerFromTo(tweenEl1, 1, {
+						y: 0,
+						alpha: 1
+					}, {
+						y: 30,
+						alpha: 0,
+						ease: Power1.easeInOut
+					}, 0.15);
+
+					navListItem.removeClass('is-active').last().next().addClass('is-active');
+
+					var tweenEl2 = tempSlider.find('.slick-slide');
+
+					TweenMax.staggerFromTo(tweenEl2, 1, {
+						y: -30,
+						alpha: 0
+					}, {
+						y: 0,
+						alpha: 1,
+						delay: 0.75,
+						ease: Power1.easeInOut
+					}, 0.15);
+				}
+			}
+		});
+
 		if (doctorSlider.length) {
 			$(document).on('click', '.js-map-mark', function () {
 				var _thisMark = $(this),
 					_sliderArray = [];
 
-				navListEl.filter('[data-counter="' + _thisMark.attr('data-counter') + '"]').each(function () {
-					_sliderArray.push($(this).clone());
+				navForItem.removeClass('is-active');
+				mapPath.removeClass('is-active');
+
+				var doctorClone = $('.js-doctor-clone');
+
+				if (doctorClone.length) {
+					var doctorCloneItem = doctorClone.find('.slick-slide'),
+						doctorTl = new TimelineMax();
+					doctorTl
+						.staggerFromTo(doctorCloneItem, 1, {
+							y: 0,
+							alpha: 1
+						}, {
+							y: 30,
+							alpha: 0,
+							ease: Power1.easeInOut
+						}, 0.15)
+						.set(doctorClone, {
+							onComplete: function () {
+								doctorClone.remove();
+							}
+						});
+				}
+
+				if (!_thisMark.hasClass('is-active')) {
+					var _hideEl = mapSvg.parent().find('.js-map-mark').filter('.is-active');
+
+					_hideEl.removeClass('is-active').parent().removeClass('is-active');
+					TweenMax.set(_hideEl.children().last().children().children(), {
+						y: '-100%',
+						ease: Power1.easeInOut,
+						onComplete: function () {
+							TweenMax.to($(this.target).parent().parent(), 1, {
+								overflow: 'hidden',
+								width: 0,
+								ease: Power1.easeInOut
+							});
+						}
+					});
+
+					_thisMark.addClass('is-active').parent().addClass('is-active');
+					TweenMax.to(_thisMark.children().last(), 1, {
+						width: _thisMark.children().last().children().outerWidth(),
+						ease: Power1.easeInOut,
+						onComplete: function () {
+							TweenMax.set($(this.target), {
+								overflow: 'visible'
+							});
+							TweenMax.to($(this.target).children().children(), 0.5, {
+								y: '0%',
+								ease: Power1.easeInOut
+							});
+						}
+					});
+				}
+
+				navList.append('<div class="skill__top-nav-list-item js-doctor-slider"></div>');
+				var tempSlider = $('.js-doctor-slider').last().addClass('js-doctor-clone is-active');
+
+				navListEl.filter('[data-city="' + _thisMark.attr('data-city') + '"]').each(function () {
+					_sliderArray.push($(this).html());
 				});
-				console.log(_sliderArray);
 
 				for (var i = 0; i < _sliderArray.length; i++) {
-					navList.append(_sliderArray[i]);
+					tempSlider.append('<div class="skill__top-nav-list-inner doctor"></div>');
+					tempSlider.find('.doctor').last().append(_sliderArray[i]);
 				}
+
+				initDoctorSlider(tempSlider);
+
+				var tweenEl1 = navListItem.filter('.is-active').find('.slick-slide');
+
+				TweenMax.staggerFromTo(tweenEl1, 1, {
+					y: 0,
+					alpha: 1
+				}, {
+					y: 30,
+					alpha: 0,
+					ease: Power1.easeInOut
+				}, 0.15);
+
+				navListItem.removeClass('is-active').last().next().addClass('is-active');
+
+				var tweenEl2 = tempSlider.find('.slick-slide');
+
+				TweenMax.staggerFromTo(tweenEl2, 1, {
+					y: -30,
+					alpha: 0
+				}, {
+					y: 0,
+					alpha: 1,
+					delay: 0.75,
+					ease: Power1.easeInOut
+				}, 0.15);
 			});
 		}
 

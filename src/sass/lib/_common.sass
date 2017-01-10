@@ -2602,7 +2602,10 @@ img
 .skill
 	padding-top: 180px
 	padding-bottom: 240px
+	margin-bottom: 240px
 	z-index: 0!important
+	.line-vertical
+		bottom: -240px
 	&__container
 		pointer-events: none
 		+pie-clearfix
@@ -2684,6 +2687,12 @@ img
 					margin-top: 70px
 				+r(767)
 					display: none
+			&-btn
+				pointer-events: auto
+				position: absolute
+				z-index: 10
+				top: 670px
+				left: 0
 		&-subtitle
 			pointer-events: auto
 			+h2
@@ -2728,11 +2737,7 @@ img
 			top: 420px
 			left: calc(25% + 90px)
 			right: -40px
-			margin-left: -20px
-			margin-right: -20px
-			padding-left: 20px
-			padding-right: 20px
-			max-width: 950px
+			max-width: 910px
 			+pie-clearfix
 			&-item
 				pointer-events: none
@@ -2784,19 +2789,47 @@ img
 		transform: scale(2) translate(-50%,-50%)
 		transform-origin: left top
 		&-mark
+			pointer-events: none
 			cursor: pointer
-			width: 13px
-			height: 16px
-			overflow: hidden
 			position: absolute
+			font-size: 14px
+			color: #ffffff
 			z-index: 2
 			transform: scale(0.5) translate(-50%,-100%)
+			&.is-active
+				z-index: 3
 			svg
-				fill: $gray-light
+				pointer-events: auto
+				width: 13px
+				fill: darken($gray-light,10)
 				+trs
 			&:hover
 				svg
 					fill: $red
+			&-tooltip
+				pointer-events: auto
+				position: absolute
+				margin-right: -13px
+				height: 100%
+				bottom: 100%
+				right: 150%
+				transform: translateX(50%)
+				white-space: nowrap
+				overflow: hidden
+				z-index: 2
+				&-inner
+					position: absolute
+					right: 50%
+					transform: translateX(50%)
+					top: 0
+					padding: 7px 30px 7px
+					background-color: $red
+				svg
+					position: absolute
+					top: 100%
+					right: 0
+					fill: $red
+					transform: translateY(-100%)
 		&-gradient
 			pointer-events: none
 			position: absolute
@@ -2833,8 +2866,11 @@ img
 		z-index: 10
 		top: 0
 		bottom: 0
-		opacity: 0.5
+		opacity: 0
+		margin-top: -70px
 		+trs
+		.is-active &
+			opacity: 0.5
 		&:hover
 			opacity: 1
 		&.slick-disabled
@@ -2844,8 +2880,9 @@ img
 		left: -70px
 		width: 70px
 	&__next
-		right: 40px
+		right: 0
 		width: 150px
+		
 		
 /* Doctor
 	----------------------------------- */
