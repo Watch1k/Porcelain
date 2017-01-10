@@ -2604,6 +2604,23 @@ img
 	padding-bottom: 240px
 	margin-bottom: 240px
 	z-index: 0!important
+	+r(767)
+		padding-top: 60px
+		padding-bottom: 225px
+	&:before
+		content: ''
+		pointer-events: none
+		position: absolute
+		z-index: 2
+		top: 115px
+		left: calc(75% - 20px)
+		margin-left: -1px
+		width: 3px
+		height: 65px
+		background-color: #e8ebf1
+		+r(1279)
+			display: none
+			content: none
 	.line-vertical
 		bottom: -240px
 	&__container
@@ -2675,6 +2692,9 @@ img
 						width: 20px
 						height: 3px
 						background-color: #ffffff
+						+r(1279)
+							left: 14px
+							top: 40px
 						+r(767)
 							display: none
 							content: none
@@ -2686,13 +2706,25 @@ img
 					margin-left: 30px
 					margin-top: 70px
 				+r(767)
-					display: none
+					margin-left: 0
+					margin-top: 0
 			&-btn
 				pointer-events: auto
 				position: absolute
 				z-index: 10
 				top: 670px
-				left: 0
+				left: -70px
+				+r(1279)
+					margin-left: -15px
+					left: 0
+					width: 250px
+				+r(767)
+					margin-left: auto
+					margin-right: auto
+					top: 630px
+					left: 0
+					right: 0
+					width: 290px
 		&-subtitle
 			pointer-events: auto
 			+h2
@@ -2739,6 +2771,10 @@ img
 			right: -40px
 			max-width: 910px
 			+pie-clearfix
+			+r(767)
+				top: 360px
+				left: 15px
+				right: 15px
 			&-item
 				pointer-events: none
 				position: absolute
@@ -2760,6 +2796,10 @@ img
 				margin-left: 20px
 				margin-right: 20px
 				opacity: 0
+				+r(767)
+					width: 130px
+					margin-left: 15px
+					margin-right: 15px
 				&:before
 					content: ''
 					position: absolute
@@ -2774,6 +2814,10 @@ img
 				&.slick-current + & + & + & ~ &
 					&:before
 						background-color: rgba(#ffffff, .8)
+				+r(1279)
+					&.slick-current + & ~ &
+						&:before
+							background-color: rgba(#ffffff, .8)
 			&-item.is-active &-inner
 				opacity: 1
 	&__title
@@ -2788,6 +2832,10 @@ img
 		width: 100%
 		transform: scale(2) translate(-50%,-50%)
 		transform-origin: left top
+		+r(1279)
+			transform: scale(4) translate(-51%,-45%)
+		+r(767)
+			display: none
 		&-mark
 			pointer-events: none
 			cursor: pointer
@@ -2796,6 +2844,8 @@ img
 			color: #ffffff
 			z-index: 2
 			transform: scale(0.5) translate(-50%,-100%)
+			+r(1279)
+				transform: scale(0.25) translate(-50%,-100%)
 			&.is-active
 				z-index: 3
 			svg
@@ -2839,7 +2889,9 @@ img
 			right: 0
 			bottom: 0
 			&_vertical
-				background: linear-gradient(to bottom, rgba(255,255,255, 1) 0%, rgba(255,255,255,0.8) 35%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 45%, rgba(255,255,255, 0) 50%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,1) 100%)
+				background: linear-gradient(to bottom, rgba(255,255,255, 1) 0%, rgba(255,255,255,0.8) 35%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 45%, rgba(255,255,255, 0) 50%, rgba(255,255,255,0.9) 60%, rgba(255,255,255,1) 100%)
+				+r(1279)
+					background: linear-gradient(to bottom, rgba(255,255,255, 1) 0%, rgba(255,255,255,0.8) 35%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 45%, rgba(255,255,255, 0) 45%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,1) 100%)
 			&_horizontal
 				background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 60%, rgba(255,255,255,1) 100%)
 		&-svg
@@ -2869,6 +2921,10 @@ img
 		opacity: 0
 		margin-top: -70px
 		+trs
+		+r(767)
+			top: auto
+			bottom: -20px
+			margin-top: 0
 		.is-active &
 			opacity: 0.5
 		&:hover
@@ -2879,9 +2935,15 @@ img
 	&__prev
 		left: -70px
 		width: 70px
+		+r(767)
+			left: 0
+			width: auto
+			transform: rotate(180deg)
 	&__next
 		right: 0
 		width: 150px
+		+r(767)
+			width: auto
 		
 		
 /* Doctor

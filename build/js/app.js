@@ -1384,18 +1384,16 @@ $(document).ready(function () {
 				speed: 750,
 				infinite: false,
 				prevArrow: '<button type="button" class="skill__prev"><svg class="icon icon-arrow-left"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-left"></use></svg></button>',
-				nextArrow: '<button type="button" class="skill__next"><svg class="icon icon-arrow-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-right"></use></svg></button>'
-				// responsive: [
-				// 	{
-				// 		breakpoint: 768,
-				// 		settings: {
-				// 			slidesToShow: 1,
-				// 			slidesToScroll: 1,
-				// 			prevArrow: '<button type="button" class="screen__prev"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>',
-				// 			nextArrow: '<button type="button" class="screen__next"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>'
-				// 		}
-				// 	}
-				// ]
+				nextArrow: '<button type="button" class="skill__next"><svg class="icon icon-arrow-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-right"></use></svg></button>',
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: {
+							prevArrow: '<button type="button" class="skill__prev"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>',
+							nextArrow: '<button type="button" class="skill__next"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>'
+						}
+					}
+				]
 			});
 		}
 
