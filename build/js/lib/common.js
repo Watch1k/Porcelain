@@ -835,6 +835,8 @@ $(document).ready(function () {
 		hamburger.on('click', function () {
 			var _this = $(this);
 
+			$('body').toggleClass('is-overflow');
+
 			if (!_this.hasClass('is-active')) {
 				_this.addClass('is-active');
 				animateNav();
