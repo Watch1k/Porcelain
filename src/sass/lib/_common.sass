@@ -16,6 +16,16 @@ $gray-dark: #808080
 $white: #ffffff
 $whitesmoke: #f5f5f5
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+	font-size: inherit
+	color: inherit
+	font-weight: inherit
+
 //title
 =h1-lg
 	+open-extrabold
@@ -47,7 +57,19 @@ $whitesmoke: #f5f5f5
 	+open-extrabold
 	font-size: 60px
 	
+.motion
+	position: relative
+	overflow: hidden
+	&__element
+		position: absolute
+		z-index: 2
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+	
 .btn
+	position: relative
 	display: inline-block
 	width: 300px
 	height: 60px
@@ -147,7 +169,11 @@ $whitesmoke: #f5f5f5
 .main
 	position: relative
 	z-index: 1
-	padding-top: 38px
+	padding-top: 121px
+	+r(1279)
+		padding-top: 105px
+	+r(767)
+		padding-top: 93px
 	
 .line-vertical
 	pointer-events: none
@@ -206,6 +232,9 @@ $whitesmoke: #f5f5f5
 			content: none
 	
 body
+	display: flex
+	flex-direction: column
+	min-height: 100vh
 	position: relative
 	min-width: 320px
 	+pt
@@ -218,8 +247,7 @@ body
 .wrapper
 	position: relative
 	overflow: hidden
-	margin: 0 auto
-	min-height: 100%
+	flex: 1 0 auto
 	
 .main
 	position: relative
@@ -231,6 +259,7 @@ body
 	margin-right: auto
 	padding: 0 40px
 	max-width: 1280px
+	width: 100%
 	+r(1279)
 		padding-left: 24px
 		padding-right: 24px
@@ -273,7 +302,7 @@ body
 			height: 50px
 			width: 100%
 			background-color: #ffffff
-			animation: preloader-text 1s forwards linear
+			animation: preloader-text 0.75s forwards linear
 		&-top
 			position: absolute
 			z-index: 4
@@ -282,8 +311,8 @@ body
 			left: 0
 			right: 0
 			background-color: #ffffff
-			animation: preloader-top 0.5s forwards ease-in-out
-			animation-delay: 1s
+			animation: preloader-top 0.25s forwards ease-in-out
+			animation-delay: 0.75s
 		&-bottom
 			position: absolute
 			z-index: 4
@@ -292,8 +321,8 @@ body
 			left: 0
 			right: 0
 			background-color: #ffffff
-			animation: preloader-bottom 0.5s forwards ease-in-out
-			animation-delay: 1.99s
+			animation: preloader-bottom 0.25s forwards ease-in-out
+			animation-delay: 1.24s
 		&-left
 			position: absolute
 			z-index: 4
@@ -302,8 +331,8 @@ body
 			left: 0
 			bottom: 0
 			background-color: #ffffff
-			animation: preloader-left 0.5s forwards ease-in-out
-			animation-delay: 1.49s
+			animation: preloader-left 0.25s forwards ease-in-out
+			animation-delay: 0.99s
 		&-right
 			position: absolute
 			z-index: 4
@@ -312,15 +341,15 @@ body
 			right: 0
 			bottom: 0
 			background-color: #ffffff
-			animation: preloader-right 0.5s forwards ease-in-out
-			animation-delay: 2.49s
+			animation: preloader-right 0.25s forwards ease-in-out
+			animation-delay: 1.49s
 	&__text
 		position: absolute
 		z-index: 1
 		top: -30px
 		left: 0
 		right: 0
-		animation: svg-text 4s forwards ease-in-out
+		animation: svg-text 2.5s forwards ease-in-out
 	.is-loaded &
 		opacity: 0
 		pointer-events: none
@@ -418,6 +447,42 @@ img
 		color: #fff
 		background-color: $red
 
+.full-section
+	min-height: calc(100vh - 121px - 38px - 79px)
+	display: flex
+	flex-direction: column
+	+r(1279)
+		min-height: 0
+	&_center
+		justify-content: center
+		align-items: center
+		
+.category-title
+	position: relative
+	z-index: 1
+	background-color: $red
+	+open-extrabold
+	font-size: 35px
+	color: #ffffff
+	line-height: 1
+	text-transform: uppercase
+	+r(767)
+		font-size: 18px
+		line-height: 30px
+		background-color: transparent
+	&__container
+		padding-top: 35px
+		padding-bottom: 35px
+		+r(767)
+			padding-top: 15px
+			padding-bottom: 15px
+	.motion
+		+r(767)
+			&__inner
+				background-color: $red
+			&__element
+				background-color: $red
+			
 
 /* ===================================
 	 Hambruger
@@ -460,7 +525,7 @@ img
 		margin-top: -1px
 		width: 23px
 		height: 2px
-		background-color: #ffffff
+		background-color: $gray-light
 		position: absolute
 		transition-property: -webkit-transform
 		transition-property: transform
@@ -470,7 +535,7 @@ img
 		&::before, &::after
 			width: 23px
 			height: 2px
-			background-color: #ffffff
+			background-color: $gray-light
 			position: absolute
 			transition-property: -webkit-transform
 			transition-property: transform
@@ -650,7 +715,7 @@ img
 		top: 100%
 		left: 0
 		right: 0
-		border-bottom: 1px solid rgba(#f5f5f5, 0.1)
+		border-bottom: 1px solid #f5f5f5
 		transform: translateY(40px)
 		transition: all 1s ease-in-out
 		+r(1279)
@@ -659,7 +724,7 @@ img
 			transform: translateY(0)
 	&__logo
 		float: left
-		color: #ffffff
+		color: $red
 		font-size: 0
 		.icon
 			font-size: 53px
@@ -676,7 +741,7 @@ img
 .nav
 	+open-extrabold
 	font-size: 12px
-	color: #ffffff
+	color: $gray-light
 	text-transform: uppercase
 	+pie-clearfix
 	&__item
@@ -745,11 +810,9 @@ img
 	 Footer
 	 =================================== */
 .footer
-	overflow: hidden
+	width: 100%
 	background-color: lighten($red,30)
-	+r(767)
-		margin-top: 70px
-		border-top: 1px solid #f5f5f5
+	border-top: 1px solid #f5f5f5
 	&__top
 		padding-top: 12px
 		padding-bottom: 12px
@@ -1015,6 +1078,7 @@ img
 			stroke-dashoffset: 0
 	&__slider.is-video &__play
 		opacity: 0
+		transform: translateX(-30px)
 	&__inner
 		margin-top: 125px
 		display: inline-block
@@ -2938,7 +3002,7 @@ img
 		transform: scale(2) translate(-50%,-50%)
 		transform-origin: left top
 		+r(1279)
-			transform: scale(4) translate(-51%,-45%)
+			transform: scale(4) translate(-50%,-50%)
 		+r(767)
 			display: none
 		&-mark
@@ -3407,15 +3471,7 @@ img
 		+r(1279)
 			max-width: 235px
 		.motion
-			position: relative
-			overflow: hidden
 			&__element
-				position: absolute
-				z-index: 2
-				top: 0
-				left: 0
-				right: 0
-				bottom: 0
 				background-color: $red
 	&__phone
 		position: relative
@@ -3581,6 +3637,208 @@ img
 		display: none
 	.gm-style > .gmnoprint
 		display: none
+		
+/* ===================================
+	 Home Page
+	 =================================== */
+.page-home
+	.hamburger__inner
+		background-color: #ffffff
+	.hamburger__inner:before,
+	.hamburger__inner:after
+		background-color: #ffffff
+	.main
+		padding-top: 38px
+	.header__logo
+		color: #ffffff
+	.header__bot
+		border-bottom: 1px solid rgba(#f5f5f5, 0.1)
+	.nav
+		color: #ffffff
+	.footer
+		border-top: none
+		+r(767)
+			margin-top: 70px
+			border-top: 1px solid #f5f5f5
+	.nav_footer
+		color: $gray-light
+		
+		
+/* ===================================
+	 404 Page
+	 =================================== */
+.page-404
+	.full-section
+		min-height: calc(100vh - 121px - 38px)
+		+r(1279)
+			min-height: 0
+	.footer
+		border-top: none
+	.footer__top
+		display: none
+	&__title
+		position: relative
+		display: table
+		z-index: 2
+		+open-extrabold
+		font-size: 230px
+		color: $red
+		line-height: 1
+		+r(1279)
+			margin-top: 120px
+		+r(767)
+			font-size: 60px
+		.motion
+			&__element
+				background-color: $red
+	&__desc
+		position: relative
+		z-index: 2
+		margin-top: 20px
+		+open-extrabold
+		font-size: 24px
+		line-height: 1
+		text-transform: uppercase
+		p
+			white-space: nowrap
+		+r(767)
+			font-size: 18px
+		.motion
+			&__element
+				background-color: #000
+	&__btn
+		position: relative
+		z-index: 2
+		margin-top: 45px
+		+r(767)
+			margin-top: 35px
+			
+
+/* ===================================
+	 Services Open Category Page
+	 =================================== */
+.services-open-category
+	&__row
+		position: relative
+		padding-top: 95px
+		padding-bottom: 60px
+		margin-left: -22px
+		margin-right: -23px
+		+pie-clearfix
+		+r(1279)
+			padding-top: 90px
+			margin-left: -15px
+			margin-right: -15px
+		+r(767)
+			margin-left: 0
+			padding-top: 60px
+			padding-left: 0
+			padding-right: 0
+			margin-right: 0
+		&:before
+			content: ""
+			display: table
+			clear: both
+	&__col
+		position: relative
+		float: left
+		width: 33.33%
+		padding-left: 22px
+		padding-right: 23px
+		+r(1279)
+			padding-left: 15px
+			padding-right: 15px
+		+r(767)
+			float: none
+			width: auto
+			padding-left: 0
+			padding-right: 0
+			margin-top: 0
+		& + &
+			+r(767)
+				margin-top: 35px
+	&__item
+		position: relative
+		z-index: 1
+		display: block
+		&-ratio
+			position: relative
+			+ratio(1,1)
+			z-index: 1
+		&-inner
+			+ratio-in
+			z-index: 1
+		.motion
+			overflow: hidden
+			transform: translate3d(0,0,0)
+			&__inner
+				position: relative
+				z-index: 1
+				transform: translate3d(0,0,0)
+			&__element
+				position: absolute
+				margin-left: 20px
+				z-index: 2
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				width: calc(100% + 20px)
+				background-color: $red
+		img
+			width: 100%
+			+trs
+	&__title
+		padding-top: 40px
+		+open-extrabold
+		font-size: 18px
+		line-height: 24px
+		text-transform: uppercase
+		width: calc(100% - 70px)
+		transition: all 0.5s ease-out
+		+r(1279)
+			padding-top: 30px
+			width: 100%
+		+r(767)
+			padding-top: 20px
+		&-text
+			float: left
+			max-width: 90%
+	&__icon
+		float: left
+		margin-left: 33px
+		margin-top: 8px
+		height: 14px
+		width: 3px
+		position: relative
+		transition: all 0.5s ease-out
+		transform: translate3d(0,0,0)
+		&:before,
+		&:after
+			content: ''
+			position: absolute
+			display: block
+			right: 0
+			width: 3px
+			height: 8px
+			background-color: #000
+			transition: all 0.5s ease-out
+			transform: translate3d(0,0,0)
+		&:before
+			margin-top: 4px
+			bottom: 50%
+		&:after
+			margin-top: -4px
+			top: 50%
+	&__item:hover &__title
+		color: $red
+	&__item:hover &__icon
+		&:before
+			background-color: $red
+			transform: rotate(-45deg) translateZ(0)
+		&:after
+			background-color: $red
+			transform: rotate(45deg) translateZ(0)
 		
 		
 /* ===================================

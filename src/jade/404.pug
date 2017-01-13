@@ -1,0 +1,20 @@
+extend includes/_layout
+
+block vars
+	- var bodyClass = 'page-404'
+
+block title
+	title 404
+block content
+	.full-section.full-section_center.js-scene(data-offset='0')
+		.page-404__title.js-motion(data-motion='motion3' data-move-up='20')
+			p 404
+		.page-404__desc.js-motion(data-motion='motion3' data-main-delay='0.5' data-move-up='20')
+			p page not found
+		a.page-404__btn.btn.btn_red.js-motion(data-motion='motion4' data-main-delay='2' href='#')
+			| home page
+			.btn__icon
+
+block js
+	script(src="js/app.js")
+

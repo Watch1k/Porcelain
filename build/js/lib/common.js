@@ -2,19 +2,27 @@
 $(document).ready(function () {
 
 	(function () {
-		var main = $('.js-main');
+		var main = $('.js-main'),
+			mainChild = main.children();
 
-		main.children().each(function () {
+		mainChild.each(function () {
 			var $this = $(this);
 
-			$this.css({
-				position: 'relative',
-				'z-index': 1
-			})
-				.prepend('<div class="line-vertical line-vertical_left"></div>')
-				.prepend('<div class="line-vertical line-vertical_mid"></div>')
-				.prepend('<div class="line-vertical line-vertical_right"></div>');
+				$this.css({
+					position: 'relative',
+					'z-index': 1
+				})
+					.prepend('<div class="line-vertical line-vertical_left"></div>')
+					.prepend('<div class="line-vertical line-vertical_mid"></div>')
+					.prepend('<div class="line-vertical line-vertical_right"></div>');
 		});
+
+		if (mainChild.length == 1) {
+			mainChild.find('.line-vertical')
+				.css({
+					'min-height': '100vh'
+			});
+		}
 
 		if ($('.screen').length) {
 			$('.screen').find('.line-vertical_mid').remove();
@@ -22,363 +30,365 @@ $(document).ready(function () {
 	})();
 
 	$(window).on('load', function () {
-		$('body').addClass('is-loaded');
-		TweenMax.staggerTo($('.header .nav__item'), 1, {opacity: 1, transform: 'translateY(0)', delay: 0.5}, 0.1);
+		setTimeout(function () {
+			$('body').addClass('is-loaded');
+			TweenMax.staggerTo($('.header .nav__item'), 1, {opacity: 1, transform: 'translateY(0)', delay: 0.5}, 0.1);
 
-		(function () {
-			var footerController = new ScrollMagic.Controller(),
-				tween = new TimelineMax();
+			(function () {
+				var footerController = new ScrollMagic.Controller(),
+					tween = new TimelineMax();
 
-			tween
-				.from('.footer', 1, {
-					alpha: 0,
-					y: 40,
-					ease: Power1.easeInOut
-				}, 0)
-				.staggerFrom($('.footer .nav__item'), 1, {
-					alpha: 0,
-					y: -10,
-					delay: 0.5
-				}, 0.1, 0)
-				.staggerFrom($('.footer .socials__item'), 1, {
-					alpha: 0,
-					y: -15,
-					delay: 0.5
-				}, 0.15, 0)
-				.from($('.footer__bot'), 1, {
-					alpha: 0,
-					y: 40,
-					ease: Power1.easeInOut
-				}, 0);
+				tween
+					.from('.footer', 1, {
+						alpha: 0,
+						y: 40,
+						ease: Power1.easeInOut
+					}, 0)
+					.staggerFrom($('.footer .nav__item'), 1, {
+						alpha: 0,
+						y: -10,
+						delay: 0.5
+					}, 0.1, 0)
+					.staggerFrom($('.footer .socials__item'), 1, {
+						alpha: 0,
+						y: -15,
+						delay: 0.5
+					}, 0.15, 0)
+					.from($('.footer__bot'), 1, {
+						alpha: 0,
+						y: 40,
+						ease: Power1.easeInOut
+					}, 0);
 
-			footerController.scene = new ScrollMagic.Scene({
-				triggerElement: '.footer',
-				offset: $(window).height() * 3 / (-5)
-			})
-				.setTween(tween)
-				.addTo(footerController);
+				footerController.scene = new ScrollMagic.Scene({
+					triggerElement: '.footer',
+					offset: $(window).height() * 3 / (-5)
+				})
+					.setTween(tween)
+					.addTo(footerController);
 
-			footerController.scene.on('start', function () {
-				this.remove();
-			});
-		})();
+				footerController.scene.on('start', function () {
+					this.remove();
+				});
+			})();
 
-		(function () {
-			var motionEl = $('.js-motion'),
-				sceneEl = $('.js-scene');
+			(function () {
+				var motionEl = $('.js-motion'),
+					sceneEl = $('.js-scene');
 
-			var Animation = function () {
-				this.motion = false;
-				this.mainDelay = 0;
-				this.speedAlpha = 1;
-				this.speedLine = 0.5;
-				this.speedRect = 0.65;
-				this.moveDown = 0;
-				this.moveDelay = 0;
-				this.moveDownSpeed = 0;
-				this.moveUp = 0;
-				this.moveUpSpeed = 1.5;
-				this.offset = 0;
-			};
+				var Animation = function () {
+					this.motion = false;
+					this.mainDelay = 0;
+					this.speedAlpha = 1;
+					this.speedLine = 0.5;
+					this.speedRect = 0.65;
+					this.moveDown = 0;
+					this.moveDelay = 0;
+					this.moveDownSpeed = 0;
+					this.moveUp = 0;
+					this.moveUpSpeed = 1.5;
+					this.offset = 0;
+				};
 
-			motionEl.each(function () {
-				this.animation = new Animation();
-				var $thisAnimation = this.animation;
-				this.$el = $(this);
-				this.animation.motion = this.$el.attr('data-motion') || this.animation.motion;
-				this.animation.mainDelay = +this.$el.attr('data-main-delay') || +this.animation.mainDelay;
-				this.animation.speedAlpha = this.$el.attr('data-speed-alpha') || this.animation.speedAlpha;
-				this.animation.speedLine = this.$el.attr('data-speed-line') || this.animation.speedLine;
-				this.animation.speedRect = this.$el.attr('data-speed-rect') || this.animation.speedRect;
-				this.animation.moveDelay = this.$el.attr('data-move-delay') || this.animation.moveDelay;
-				this.animation.moveDownSpeed = this.$el.attr('data-move-down-speed') || this.animation.moveDownSpeed;
-				this.animation.moveUp = this.$el.attr('data-move-up') || this.animation.moveUp;
-				this.animation.moveDown = this.$el.attr('data-move-down') || this.animation.moveUp;
-				this.animation.moveUpSpeed = this.$el.attr('data-move-up-speed') || this.animation.moveUpSpeed;
-				this.animation.width = this.$el.outerWidth();
-				this.animation.height = this.$el.outerHeight();
-				this.animation.bgColor = this.$el.css('backgroundColor');
-				this.animation.offset = +this.$el.closest(sceneEl).attr('data-offset') || this.animation.offset;
+				motionEl.each(function () {
+					this.animation = new Animation();
+					var $thisAnimation = this.animation;
+					this.$el = $(this);
+					this.animation.motion = this.$el.attr('data-motion') || this.animation.motion;
+					this.animation.mainDelay = +this.$el.attr('data-main-delay') || +this.animation.mainDelay;
+					this.animation.speedAlpha = this.$el.attr('data-speed-alpha') || this.animation.speedAlpha;
+					this.animation.speedLine = this.$el.attr('data-speed-line') || this.animation.speedLine;
+					this.animation.speedRect = this.$el.attr('data-speed-rect') || this.animation.speedRect;
+					this.animation.moveDelay = this.$el.attr('data-move-delay') || this.animation.moveDelay;
+					this.animation.moveDownSpeed = this.$el.attr('data-move-down-speed') || this.animation.moveDownSpeed;
+					this.animation.moveUp = this.$el.attr('data-move-up') || this.animation.moveUp;
+					this.animation.moveDown = this.$el.attr('data-move-down') || this.animation.moveUp;
+					this.animation.moveUpSpeed = this.$el.attr('data-move-up-speed') || this.animation.moveUpSpeed;
+					this.animation.width = this.$el.outerWidth();
+					this.animation.height = this.$el.outerHeight();
+					this.animation.bgColor = this.$el.css('backgroundColor');
+					this.animation.offset = +this.$el.closest(sceneEl).attr('data-offset') || this.animation.offset;
 
-				this.animation.offset = this.animation.offset / 100 * $(window).height();
-				this.animation.autoHeight = this.$el.attr('data-auto-height') || false;
+					this.animation.offset = this.animation.offset / 100 * $(window).height();
+					this.animation.autoHeight = this.$el.attr('data-auto-height') || false;
 
-				if ($(window).width() < 768) {
-					if (this.animation.motion == 'motion1') {
-						this.animation.motion = 'motion3';
-						this.animation.bgColor = '';
+					if ($(window).width() < 768) {
+						if (this.animation.motion == 'motion1') {
+							this.animation.motion = 'motion3';
+							this.animation.bgColor = '';
+						}
 					}
-				}
 
-				switch (this.animation.motion) {
-					case 'motion1':
-						if ($(window).width() > 1279) {
-							this.animation.advancedWidth = this.$el.attr('data-advanced-width') || 0;
-						} else {
-							this.animation.advancedWidth = 0;
-						}
-						this.animation.width = +this.animation.width + +this.animation.advancedWidth;
-						this.$el
-							.css({
-								'background-color': 'transparent'
-							})
-							.wrapInner('<div class="motion__inner"></div>')
-							.wrapInner('<div class="motion"></div>')
-							.find('.motion')
-							.css({
-								'background-color': this.animation.bgColor
-							})
-							.children()
-							.css({
-								width: this.animation.width + 'px',
-								height: this.animation.height + 'px'
-							});
+					switch (this.animation.motion) {
+						case 'motion1':
+							if ($(window).width() > 1279) {
+								this.animation.advancedWidth = this.$el.attr('data-advanced-width') || 0;
+							} else {
+								this.animation.advancedWidth = 0;
+							}
+							this.animation.width = +this.animation.width + +this.animation.advancedWidth;
+							this.$el
+								.css({
+									'background-color': 'transparent'
+								})
+								.wrapInner('<div class="motion__inner"></div>')
+								.wrapInner('<div class="motion"></div>')
+								.find('.motion')
+								.css({
+									'background-color': this.animation.bgColor
+								})
+								.children()
+								.css({
+									width: this.animation.width + 'px',
+									height: this.animation.height + 'px'
+								});
 
-						this.animation.tweenAnimation = new TimelineMax();
+							this.animation.tweenAnimation = new TimelineMax();
 
-						this.animation.tweenAnimation
-							.addLabel('start', 0.01)
-							.set(this.$el.children(), {
-								width: 20
-							})
-							.fromTo(this.$el.children(), this.animation.speedLine, {
-								height: 0
-							}, {
-								height: this.animation.height,
-								ease: Power3.easeInOut,
-								delay: this.animation.mainDelay,
-								onComplete: function () {
-									TweenMax.to($(this.target), $(this.target).parent().get(0).animation.speedRect, {
-										width: $(this.target).parent().get(0).animation.width,
-										ease: Power3.easeInOut,
-										onComplete: function () {
-											TweenMax.set($(this.target), {
-												height: '100%',
-												width: 'calc(100% + ' + $(this.target).parent().get(0).advancedWidth + 'px)'
-											});
-											TweenMax.set($(this.target).children(), {
-												height: '100%',
-												width: '100%'
-											});
-										}
-									});
-								}
-							}, 'start')
-							.set(this.$el.children(), {
-								y: this.animation.moveDown
-							}, 'start')
-							.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
-								y: this.animation.moveDown
-							}, {
-								y: this.animation.moveUp,
-								ease: Power3.easeInOut,
-								onComplete: function () {
-									TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
-										y: $(this.target).parent().get(0).animation.moveUp
-									}, {
-										y: 0,
-										ease: Power3.easeInOut
-									});
-								}
-							}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
-						break;
-					case 'motion2':
-						this.$el
-							.wrapInner('<div class="motion__inner"></div>')
-							.wrapInner('<div class="motion"></div>');
+							this.animation.tweenAnimation
+								.addLabel('start', 0.01)
+								.set(this.$el.children(), {
+									width: 20
+								})
+								.fromTo(this.$el.children(), this.animation.speedLine, {
+									height: 0
+								}, {
+									height: this.animation.height,
+									ease: Power3.easeInOut,
+									delay: this.animation.mainDelay,
+									onComplete: function () {
+										TweenMax.to($(this.target), $(this.target).parent().get(0).animation.speedRect, {
+											width: $(this.target).parent().get(0).animation.width,
+											ease: Power3.easeInOut,
+											onComplete: function () {
+												TweenMax.set($(this.target), {
+													height: '100%',
+													width: 'calc(100% + ' + $(this.target).parent().get(0).advancedWidth + 'px)'
+												});
+												TweenMax.set($(this.target).children(), {
+													height: '100%',
+													width: '100%'
+												});
+											}
+										});
+									}
+								}, 'start')
+								.set(this.$el.children(), {
+									y: this.animation.moveDown
+								}, 'start')
+								.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
+									y: this.animation.moveDown
+								}, {
+									y: this.animation.moveUp,
+									ease: Power3.easeInOut,
+									onComplete: function () {
+										TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
+											y: $(this.target).parent().get(0).animation.moveUp
+										}, {
+											y: 0,
+											ease: Power3.easeInOut
+										});
+									}
+								}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
+							break;
+						case 'motion2':
+							this.$el
+								.wrapInner('<div class="motion__inner"></div>')
+								.wrapInner('<div class="motion"></div>');
 
-						this.animation.tweenAnimation = new TimelineMax();
+							this.animation.tweenAnimation = new TimelineMax();
 
-						this.animation.tweenAnimation
-							.addLabel('start', 0.01)
-							.fromTo(this.$el.children(), this.animation.speedAlpha, {
-								alpha: 0
-							}, {
-								alpha: 1,
-								ease: Power3.easeInOut,
-								delay: this.animation.mainDelay
-							}, 'start')
-							.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
-								y: this.animation.moveDown
-							}, {
-								y: this.animation.moveUp,
-								ease: Power3.easeInOut,
-								onComplete: function () {
-									TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
-										y: $(this.target).parent().get(0).animation.moveUp
-									}, {
-										y: 0,
-										ease: Power3.easeInOut
-									});
-								}
-							}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
-						break;
-					case 'motion3':
-						this.$el
-							.wrapInner('<div class="motion__inner"></div>')
-							.append('<div class="motion__element"></div>')
-							.wrapInner('<div class="motion"></div>')
-							.find('.motion')
-							.children()
-							.css({
-								width: this.animation.width + 'px',
-								height: this.animation.height + 'px'
-							})
-							.last()
-							.css({
-								'margin-left': '20px'
-							});
+							this.animation.tweenAnimation
+								.addLabel('start', 0.01)
+								.fromTo(this.$el.children(), this.animation.speedAlpha, {
+									alpha: 0
+								}, {
+									alpha: 1,
+									ease: Power3.easeInOut,
+									delay: this.animation.mainDelay
+								}, 'start')
+								.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
+									y: this.animation.moveDown
+								}, {
+									y: this.animation.moveUp,
+									ease: Power3.easeInOut,
+									onComplete: function () {
+										TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
+											y: $(this.target).parent().get(0).animation.moveUp
+										}, {
+											y: 0,
+											ease: Power3.easeInOut
+										});
+									}
+								}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
+							break;
+						case 'motion3':
+							this.$el
+								.wrapInner('<div class="motion__inner"></div>')
+								.append('<div class="motion__element"></div>')
+								.wrapInner('<div class="motion"></div>')
+								.find('.motion')
+								.children()
+								.css({
+									width: this.animation.width + 'px',
+									height: this.animation.height + 'px'
+								})
+								.last()
+								.css({
+									'margin-left': '20px'
+								});
 
-						if (this.$el.find('video').length) {
-							this.$el.find('video').get(0).play();
-						}
+							if (this.$el.find('video').length) {
+								this.$el.find('video').get(0).play();
+							}
 
-						this.animation.tweenAnimation = new TimelineMax();
+							this.animation.tweenAnimation = new TimelineMax();
 
-						this.animation.tweenAnimation
-							.addLabel('start', 0.01)
-							.set(this.$el.children().children().first(), {
-								alpha: 0
-							})
-							.set(this.$el.children().children().last(), {
-								x: '-100%'
-							})
-							.fromTo(this.$el.children().children().last(), this.animation.speedLine, {
-								y: '-100%'
-							}, {
-								y: '0%',
-								ease: Power3.easeInOut,
-								delay: this.animation.mainDelay,
-								onComplete: function () {
-									TweenMax.to($(this.target), (2 * $(this.target).parent().parent().get(0).animation.speedRect), {
-										x: '100%',
-										ease: Power3.easeInOut
-									});
-								}
-							}, 'start')
-							.set(this.$el.children().children().first(), {
-								alpha: 1
-							}, (+this.animation.speedRect + +this.animation.speedLine + +this.animation.mainDelay + 0.001))
-							.set(this.$el.children(), {
-								y: this.animation.moveDown
-							}, 0)
-							.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
-								y: this.animation.moveDown
-							}, {
-								y: this.animation.moveUp,
-								ease: Power3.easeInOut,
-								onComplete: function () {
-									TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
-										y: $(this.target).parent().get(0).animation.moveUp
-									}, {
-										y: 0,
-										ease: Power3.easeInOut,
-										onComplete: function () {
-											$(this.target).css({
-												height: '100%',
-												width: '100%'
-											});
-											$(this.target).children().first().css({
-												height: '100%',
-												width: '100%'
-											});
-											$(this.target).children().last().css({
-												height: '100%',
-												width: '100%'
-											});
-										}
-									});
-								}
-							}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
-						if (this.$el.siblings('.js-inno-desc').length) {
-							this.animation.tweenAnimation.fromTo(this.$el.next(), this.animation.moveDownSpeed, {
-								y: this.animation.moveDown
-							}, {
-								y: this.animation.moveUp,
-								ease: Power3.easeInOut,
-								onComplete: function () {
-									TweenMax.fromTo($(this.target), $(this.target).prev().get(0).animation.moveUpSpeed, {
-										y: $(this.target).prev().get(0).animation.moveUp
-									}, {
-										y: 0,
-										alpha: 1,
-										ease: Power3.easeInOut,
-										onComplete: function () {
-											$(this.target).addClass('is-transition').css('transform', '');
-										}
-									});
-								}
-							}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
-						}
-						break;
-					case 'motion4':
-						this.$el
-							.css({
-								'background-color': 'transparent'
-							})
-							.wrapInner('<div class="motion__inner"></div>')
-							.wrapInner('<div class="motion"></div>')
-							.css({
-								width: this.animation.width + 'px',
-								height: this.animation.height + 'px'
-							})
-							.find('.motion')
-							.css({
-								position: 'absolute',
-								top: 0,
-								left: '50%',
-								'background-color': this.animation.bgColor,
-								width: '0%',
-								height: this.animation.height + 'px'
-							})
-							.children()
-							.css({
-								position: 'absolute',
-								top: 0,
-								left: this.animation.width / 2 * (-1),
-								width: this.animation.width + 'px',
-								height: this.animation.height + 'px'
-							});
-						this.animation.tweenAnimation = new TimelineMax();
-						this.animation.tweenAnimation
-							.addLabel('start', 0.01)
-							.to(this.$el.children(), this.animation.speedRect, {
-								left: 0,
-								width: '100%',
-								ease: Power3.easeInOut
-							}, 'start+=' + +this.animation.mainDelay)
-							.to(this.$el.children().children(), this.animation.speedRect, {
-								left: 0,
-								ease: Power3.easeInOut
-							}, 'start+=' + +this.animation.mainDelay);
-					default:
-						return true;
-				}
-			});
+							this.animation.tweenAnimation
+								.addLabel('start', 0.01)
+								.set(this.$el.children().children().first(), {
+									alpha: 0
+								})
+								.set(this.$el.children().children().last(), {
+									x: '-100%'
+								})
+								.fromTo(this.$el.children().children().last(), this.animation.speedLine, {
+									y: '-100%'
+								}, {
+									y: '0%',
+									ease: Power3.easeInOut,
+									delay: this.animation.mainDelay,
+									onComplete: function () {
+										TweenMax.to($(this.target), (2 * $(this.target).parent().parent().get(0).animation.speedRect), {
+											x: '100%',
+											ease: Power3.easeInOut
+										});
+									}
+								}, 'start')
+								.set(this.$el.children().children().first(), {
+									alpha: 1
+								}, (+this.animation.speedRect + +this.animation.speedLine + +this.animation.mainDelay + 0.001))
+								.set(this.$el.children(), {
+									y: this.animation.moveDown
+								}, 0)
+								.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
+									y: this.animation.moveDown
+								}, {
+									y: this.animation.moveUp,
+									ease: Power3.easeInOut,
+									onComplete: function () {
+										TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
+											y: $(this.target).parent().get(0).animation.moveUp
+										}, {
+											y: 0,
+											ease: Power3.easeInOut,
+											onComplete: function () {
+												$(this.target).css({
+													height: '100%',
+													width: '100%'
+												});
+												$(this.target).children().first().css({
+													height: '100%',
+													width: '100%'
+												});
+												$(this.target).children().last().css({
+													height: '100%',
+													width: '100%'
+												});
+											}
+										});
+									}
+								}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
+							if (this.$el.siblings('.js-inno-desc').length) {
+								this.animation.tweenAnimation.fromTo(this.$el.next(), this.animation.moveDownSpeed, {
+									y: this.animation.moveDown
+								}, {
+									y: this.animation.moveUp,
+									ease: Power3.easeInOut,
+									onComplete: function () {
+										TweenMax.fromTo($(this.target), $(this.target).prev().get(0).animation.moveUpSpeed, {
+											y: $(this.target).prev().get(0).animation.moveUp
+										}, {
+											y: 0,
+											alpha: 1,
+											ease: Power3.easeInOut,
+											onComplete: function () {
+												$(this.target).addClass('is-transition').css('transform', '');
+											}
+										});
+									}
+								}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
+							}
+							break;
+						case 'motion4':
+							this.$el
+								.css({
+									'background-color': 'transparent'
+								})
+								.wrapInner('<div class="motion__inner"></div>')
+								.wrapInner('<div class="motion"></div>')
+								.css({
+									width: this.animation.width + 'px',
+									height: this.animation.height + 'px'
+								})
+								.find('.motion')
+								.css({
+									position: 'absolute',
+									top: 0,
+									left: '50%',
+									'background-color': this.animation.bgColor,
+									width: '0%',
+									height: this.animation.height + 'px'
+								})
+								.children()
+								.css({
+									position: 'absolute',
+									top: 0,
+									left: this.animation.width / 2 * (-1),
+									width: this.animation.width + 'px',
+									height: this.animation.height + 'px'
+								});
+							this.animation.tweenAnimation = new TimelineMax();
+							this.animation.tweenAnimation
+								.addLabel('start', 0.01)
+								.to(this.$el.children(), this.animation.speedRect, {
+									left: 0,
+									width: '100%',
+									ease: Power3.easeInOut
+								}, 'start+=' + +this.animation.mainDelay)
+								.to(this.$el.children().children(), this.animation.speedRect, {
+									left: 0,
+									ease: Power3.easeInOut
+								}, 'start+=' + +this.animation.mainDelay);
+						default:
+							return true;
+					}
+				});
 
-			var SceneModule = function (el) {
-				this.container = el;
-				this.element = el.find('.js-motion');
-			};
-			sceneEl.each(function () {
-				var sceneModule = new SceneModule($(this));
+				var SceneModule = function (el) {
+					this.container = el;
+					this.element = el.find('.js-motion');
+				};
+				sceneEl.each(function () {
+					var sceneModule = new SceneModule($(this));
 
-				sceneModule.container.controller = new ScrollMagic.Controller();
+					sceneModule.container.controller = new ScrollMagic.Controller();
 
-				sceneModule.element.each(function () {
-					sceneModule.container.scene = new ScrollMagic.Scene({
-						triggerElement: this.closest('.js-scene'),
-						offset: $(this).closest('.js-scene').attr('data-offset') / 100 * $(window).width()
-					})
-						.setTween(this.animation.tweenAnimation)
-						.addTo(sceneModule.container.controller);
+					sceneModule.element.each(function () {
+						sceneModule.container.scene = new ScrollMagic.Scene({
+							triggerElement: this.closest('.js-scene'),
+							offset: $(this).closest('.js-scene').attr('data-offset') / 100 * $(window).width()
+						})
+							.setTween(this.animation.tweenAnimation)
+							.addTo(sceneModule.container.controller);
 
-					sceneModule.container.scene.on('start', function () {
-						this.remove();
+						sceneModule.container.scene.on('start', function () {
+							this.remove();
+						});
 					});
 				});
-			});
-		})();
+			})();
+		}, 1500);
 	});
 
 	//for IE9
@@ -449,130 +459,133 @@ $(document).ready(function () {
 		var mapWrap = $('.js-map-list'),
 			mapEl = mapWrap.children();
 
-		mapEl.on('click', function () {
-			var _this = $(this);
+		if (mapWrap.length) {
 
-			if (!_this.hasClass('is-active')) {
-				mapEl.removeClass('is-active');
-				_this.addClass('is-active');
+			mapEl.on('click', function () {
+				var _this = $(this);
+
+				if (!_this.hasClass('is-active')) {
+					mapEl.removeClass('is-active');
+					_this.addClass('is-active');
+				}
+			});
+
+			google.maps.event.addDomListener(window, 'load', init_map());
+
+			function init_map() {
+				var bounds1 = new google.maps.LatLngBounds();
+				var bounds2 = new google.maps.LatLngBounds();
+				var bounds3 = new google.maps.LatLngBounds();
+				var center1 = new google.maps.LatLng(50.460321, 30.511742);
+				var center2 = new google.maps.LatLng(50.460321, 30.511742);
+				var center3 = new google.maps.LatLng(50.460321, 30.511742);
+				bounds1.extend(center1);
+				bounds2.extend(center2);
+				bounds3.extend(center3);
+				var loc1 = new google.maps.LatLng(50.460321, 30.511742);
+				var loc2 = new google.maps.LatLng(50.460321, 30.511742);
+				var loc3 = new google.maps.LatLng(50.460321, 30.511742);
+				bounds1.extend(loc1);
+				bounds2.extend(loc2);
+				bounds3.extend(loc3);
+				var mapOptions1 = {
+					zoom: 17,
+					scrollwheel: false,
+					streetViewControl: false,
+					panControl: false,
+					panControlOptions: {
+						position: google.maps.ControlPosition.TOP_RIGHT
+					},
+					mapTypeControl: false,
+					zoomControl: false,
+					zoomControlOptions: {
+						position: google.maps.ControlPosition.LEFT_BOTTOM
+					},
+					center: center1
+				};
+				var mapOptions2 = {
+					zoom: 17,
+					scrollwheel: false,
+					streetViewControl: false,
+					panControl: false,
+					panControlOptions: {
+						position: google.maps.ControlPosition.TOP_RIGHT
+					},
+					mapTypeControl: false,
+					zoomControl: false,
+					zoomControlOptions: {
+						position: google.maps.ControlPosition.LEFT_BOTTOM
+					},
+					center: center2
+				};
+				var mapOptions3 = {
+					zoom: 17,
+					scrollwheel: false,
+					streetViewControl: false,
+					panControl: false,
+					panControlOptions: {
+						position: google.maps.ControlPosition.TOP_RIGHT
+					},
+					mapTypeControl: false,
+					zoomControl: false,
+					zoomControlOptions: {
+						position: google.maps.ControlPosition.LEFT_BOTTOM
+					},
+					center: center3
+				};
+
+				var mapElement1 = document.getElementById('map1');
+				var mapElement2 = document.getElementById('map2');
+				var mapElement3 = document.getElementById('map3');
+
+				var map1 = new google.maps.Map(mapElement1, mapOptions1);
+				var map2 = new google.maps.Map(mapElement2, mapOptions2);
+				var map3 = new google.maps.Map(mapElement3, mapOptions3);
+
+				google.maps.event.addListenerOnce(map2, 'idle', function () {
+					$('#map2').hide();
+				});
+
+				google.maps.event.addListenerOnce(map3, 'idle', function () {
+					$('#map3').hide();
+				});
+
+				var marker1 = new google.maps.Marker({
+					position: loc1,
+					map: map1,
+					icon: {
+						url: 'img/content/pin.svg',
+						size: new google.maps.Size(30, 46),
+						origin: new google.maps.Point(0, 0),
+						anchor: new google.maps.Point(-13, -5)
+					},
+					title: 'Подол'
+				});
+
+				var marker2 = new google.maps.Marker({
+					position: loc2,
+					map: map2,
+					icon: {
+						url: 'img/content/pin.svg',
+						size: new google.maps.Size(30, 46),
+						origin: new google.maps.Point(0, 0),
+						anchor: new google.maps.Point(-13, -5)
+					},
+					title: 'Татарка'
+				});
+
+				var marker3 = new google.maps.Marker({
+					position: loc3,
+					map: map3,
+					icon: {
+						url: 'img/content/pin.svg',
+						size: new google.maps.Size(30, 46),
+						origin: new google.maps.Point(0, 0),
+						anchor: new google.maps.Point(-13, -5)
+					},
+					title: 'Печерск'
+				});
 			}
-		});
-
-		google.maps.event.addDomListener(window, 'load', init_map());
-
-		function init_map() {
-			var bounds1 = new google.maps.LatLngBounds();
-			var bounds2 = new google.maps.LatLngBounds();
-			var bounds3 = new google.maps.LatLngBounds();
-			var center1 = new google.maps.LatLng(50.460321, 30.511742);
-			var center2 = new google.maps.LatLng(50.460321, 30.511742);
-			var center3 = new google.maps.LatLng(50.460321, 30.511742);
-			bounds1.extend(center1);
-			bounds2.extend(center2);
-			bounds3.extend(center3);
-			var loc1 = new google.maps.LatLng(50.460321, 30.511742);
-			var loc2 = new google.maps.LatLng(50.460321, 30.511742);
-			var loc3 = new google.maps.LatLng(50.460321, 30.511742);
-			bounds1.extend(loc1);
-			bounds2.extend(loc2);
-			bounds3.extend(loc3);
-			var mapOptions1 = {
-				zoom: 17,
-				scrollwheel: false,
-				streetViewControl: false,
-				panControl: false,
-				panControlOptions: {
-					position: google.maps.ControlPosition.TOP_RIGHT
-				},
-				mapTypeControl: false,
-				zoomControl: false,
-				zoomControlOptions: {
-					position: google.maps.ControlPosition.LEFT_BOTTOM
-				},
-				center: center1
-			};
-			var mapOptions2 = {
-				zoom: 17,
-				scrollwheel: false,
-				streetViewControl: false,
-				panControl: false,
-				panControlOptions: {
-					position: google.maps.ControlPosition.TOP_RIGHT
-				},
-				mapTypeControl: false,
-				zoomControl: false,
-				zoomControlOptions: {
-					position: google.maps.ControlPosition.LEFT_BOTTOM
-				},
-				center: center2
-			};
-			var mapOptions3 = {
-				zoom: 17,
-				scrollwheel: false,
-				streetViewControl: false,
-				panControl: false,
-				panControlOptions: {
-					position: google.maps.ControlPosition.TOP_RIGHT
-				},
-				mapTypeControl: false,
-				zoomControl: false,
-				zoomControlOptions: {
-					position: google.maps.ControlPosition.LEFT_BOTTOM
-				},
-				center: center3
-			};
-
-			var mapElement1 = document.getElementById('map1');
-			var mapElement2 = document.getElementById('map2');
-			var mapElement3 = document.getElementById('map3');
-
-			var map1 = new google.maps.Map(mapElement1, mapOptions1);
-			var map2 = new google.maps.Map(mapElement2, mapOptions2);
-			var map3 = new google.maps.Map(mapElement3, mapOptions3);
-
-			google.maps.event.addListenerOnce(map2, 'idle', function () {
-				$('#map2').hide();
-			});
-
-			google.maps.event.addListenerOnce(map3, 'idle', function () {
-				$('#map3').hide();
-			});
-
-			var marker1 = new google.maps.Marker({
-				position: loc1,
-				map: map1,
-				icon: {
-					url: '/img/content/pin.svg',
-					size: new google.maps.Size(30, 46),
-					origin: new google.maps.Point(0, 0),
-					anchor: new google.maps.Point(-13, -5)
-				},
-				title: 'Подол'
-			});
-
-			var marker2 = new google.maps.Marker({
-				position: loc2,
-				map: map2,
-				icon: {
-					url: '/img/content/pin.svg',
-					size: new google.maps.Size(30, 46),
-					origin: new google.maps.Point(0, 0),
-					anchor: new google.maps.Point(-13, -5)
-				},
-				title: 'Татарка'
-			});
-
-			var marker3 = new google.maps.Marker({
-				position: loc3,
-				map: map3,
-				icon: {
-					url: '/img/content/pin.svg',
-					size: new google.maps.Size(30, 46),
-					origin: new google.maps.Point(0, 0),
-					anchor: new google.maps.Point(-13, -5)
-				},
-				title: 'Печерск'
-			});
 		}
 	})();
 
@@ -642,7 +655,7 @@ $(document).ready(function () {
 						$(this.target[0]).addClass('is-animated');
 					}
 				});
-			}, 1000);
+			}, 2750);
 		});
 
 		for (var i = 0; i < screenSlider.children().length; i++) {
@@ -1037,9 +1050,14 @@ $(document).ready(function () {
 											'</div>' +
 											'</div>' +
 											'</div>').insertAfter(mapSvg);
+										if ($(window).width() < 1280) {
+											var n = 4;
+										} else {
+											n = 2
+										}
 										mapSvg.next().css({
-											left: (_thisMarkPositionX + +_elPosition[0]) / 2,
-											top: (_thisMarkPositionY + +_elPosition[1]) / 2,
+											left: (_thisMarkPositionX + +_elPosition[0]) / n,
+											top: (_thisMarkPositionY + +_elPosition[1]) / n,
 											width: mapSvg.next().children().last().children().outerWidth(),
 											height: mapSvg.next().children().last().children().outerHeight(),
 											opacity: 0

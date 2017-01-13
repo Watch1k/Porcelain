@@ -1,5 +1,8 @@
 include _mixins
 
+- var bodyClass = ''
+block vars
+
 doctype html
 html
   head
@@ -15,7 +18,7 @@ html
     block css
       link(rel="stylesheet" media="all" href="css/screen.css")
     <!--[if IE]><script src="js/html5shiv.js"></script><![endif]-->
-  body
+  body(class=bodyClass)
     .preloader
       .preloader__container
         // Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)

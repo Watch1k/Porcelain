@@ -1,0 +1,45 @@
+extend includes/_layout
+
+block vars
+	- var bodyClass = 'page-services-open-category'
+
+block title
+	title Services open category
+block content
+	.services-open-category.full-section
+		.category-title.js-motion(data-motion='motion1' data-main-delay='0' data-move-up='50')
+			.category-title__container.container
+				h1 Лечение десен
+		.container
+			.services-open-category__row
+				.services-open-category__col
+					a.services-open-category__item(href='#')
+						.services-open-category__item-ratio
+							.services-open-category__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-up='75')
+								img(src='img/content/inno-1.jpg' alt='image')
+						.services-open-category__title.js-motion(data-motion='motion2' data-main-delay='0.5' data-move-up='50' data-speed-alpha='1.5')
+							.services-open-category__title-text
+								p первый прием
+							.services-open-category__icon
+				.services-open-category__col
+					a.services-open-category__item(href='#')
+						.services-open-category__item-ratio
+							.services-open-category__item-inner.js-motion(data-motion='motion3' data-main-delay='0.5' data-move-up='75')
+								img(src='img/content/inno-1.jpg' alt='image')
+						.services-open-category__title.js-motion(data-motion='motion2' data-main-delay='1' data-move-up='50' data-speed-alpha='1.5')
+							.services-open-category__title-text
+								p лечение десен
+							.services-open-category__icon
+				.services-open-category__col
+					a.services-open-category__item(href='#')
+						.services-open-category__item-ratio
+							.services-open-category__item-inner.js-motion(data-motion='motion3' data-main-delay='0.25' data-move-up='75')
+								img(src='img/content/inno-1.jpg' alt='image')
+						.services-open-category__title.js-motion(data-motion='motion2' data-main-delay='0.75' data-move-up='50' data-speed-alpha='1.5')
+							.services-open-category__title-text
+								p детский кабинет
+							.services-open-category__icon
+
+block js
+	script(src="js/app.js")
+
