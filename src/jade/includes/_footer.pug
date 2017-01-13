@@ -2,20 +2,13 @@ footer.footer
 	.footer__top
 		.footer__container.container
 			ul.footer__nav.nav.nav_footer
-				li.nav__item
-					a.nav__link(href='#') о клинике
-				li.nav__item
-					a.nav__link(href='#') врачи
-				li.nav__item
-					a.nav__link(href='#') услуги
-				li.nav__item
-					a.nav__link(href='#') технологии
-				li.nav__item
-					a.nav__link(href='#') истории
-				li.nav__item
-					a.nav__link(href='#') публикации
-				li.nav__item
-					a.nav__link(href='#') контакты
+				each value in navMenu
+					if navToggle === value
+						li.nav__item.active
+							a.nav__link(href='#')= value
+					else
+						li.nav__item
+							a.nav__link(href='#')= value
 			ul.footer__socials.socials
 				li.socials__item
 					a.socials__link(href='#')

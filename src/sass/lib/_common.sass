@@ -782,8 +782,23 @@ img
 		+trs
 		&:hover
 			color: $red
+	&_header &__item.active &__link
+		color: $red
+		position: relative
+		&:before
+			content: ''
+			position: absolute
+			top: -34px
+			left: 0
+			right: 0
+			height: 2px
+			background-color: $red
+			+r(1279)
+				display: none
 	&_footer
 		color: $gray-light
+	&_footer &__item.active
+		visibility: hidden
 	+r(1279)
 		&_footer
 			display: flex
