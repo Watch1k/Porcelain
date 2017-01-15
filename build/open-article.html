@@ -84,14 +84,14 @@
     <main class="main js-main">
       <div class="line-v line-v_1"></div>
       <!--begin screen-->
-      <div class="screen">
+      <div class="screen screen_sm">
         <div class="screen__anime"></div>
         <div class="screen__slider">
           <div class="screen__item">
             <video class="screen__video" src="video/screen-1.mp4" loop="loop" preload="none"></video>
             <div class="screen__img" style="background-image: url(img/content/open-article-img.jpg)"></div>
             <div class="screen__container container">
-              <div class="screen__inner screen__inner_open-article">
+              <div class="screen__inner">
                 <button class="screen__play screen__play_open-article js-play" type="button">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 27.32 34.44">
                       <defs>
@@ -108,7 +108,7 @@
                       <path class="path" d="M24.5,17.22l-23,14.5v-29Z"></path>
                     </svg>
                   </button>
-                <div class="screen__title screen__title_open-article">
+                <div class="screen__title">
                   <p>Открытие новой клиники на Печерск!</p>
                 </div>
               </div>
@@ -124,7 +124,7 @@
             <a class="open-article__back js-motion js-scene" href="#" data-offset="-25" data-motion="motion3" data-main-delay="0.25" data-move-up="10">
               <svg class="icon icon-arrow-left">
                   <use xlink:href="img/sprite.svg#icon-arrow-left"></use>
-                </svg>вернутся к публикациям</a>
+                </svg><span class="btn__hide-mobile">вернутся </span>к публикациям</a>
             <div class="open-article__date js-motion js-scene" data-offset="-25" data-motion="motion3" data-main-delay="0.5" data-move-up="10">
               <p>24 октября 2016</p>
             </div>
@@ -191,34 +191,17 @@
       </div>
       <!--end open-article-->
       <!--begin start-->
-      <div class="start js-scene" data-offset="0">
+      <div class="start start_open-article js-scene" data-offset="0">
         <div class="start__container container">
-          <div class="start__item start__item_title start__item_open-article js-motion" data-motion="motion1" data-main-delay="0.1" data-move-up="70">
+          <div class="start__item start__item_title start__item_open-article js-motion" data-motion="motion1" data-main-delay="0" data-move-up="70">
             <p>Услуги из статьи</p>
           </div>
           <div class="start__list">
-            <div class="start__item js-motion" data-motion="motion1" data-move-up="70">
+            <div class="start__item start__item_white js-motion" data-motion="motion1" data-main-delay="0.2" data-move-up="50">
               <div class="start__item-desc">
                 <div class="start__title">
                   <div class="start__title-text">
-                    <p>первый прием</p>
-                  </div>
-                  <div class="start__title-icon"></div>
-                </div>
-                <div class="start__hide">
-                  <div class="start__text">
-                    <p>Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</p>
-                  </div><a class="start__btn" href="#">узнать больше о лечении
-                      <div class="start__btn-icon"></div></a>
-                </div>
-              </div>
-            </div>
-            <div class="start__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="0.75"><img src="img/content/start-2.jpg" alt="image">
-              <!--video.start__video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')-->
-              <div class="start__item-desc">
-                <div class="start__title">
-                  <div class="start__title-text">
-                    <p>лечение десен</p>
+                    <p>Лечение зубов</p>
                   </div>
                   <div class="start__title-icon start__title-icon_black"></div>
                 </div>
@@ -230,11 +213,12 @@
                 </div>
               </div>
             </div>
-            <div class="start__item js-motion" data-motion="motion1" data-main-delay="0.15" data-move-up="50">
+            <div class="start__item js-motion" data-motion="motion3" data-main-delay="0.6" data-move-up="30" data-speed-line="0.25" data-move-up-speed="0.75"><img src="img/content/open-article-start-img-1.jpg" alt="image">
+              <!--video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')-->
               <div class="start__item-desc">
                 <div class="start__title">
                   <div class="start__title-text">
-                    <p>протезирование и эстетика</p>
+                    <p>Детский кабинет</p>
                   </div>
                   <div class="start__title-icon start__title-icon_black"></div>
                 </div>
@@ -246,27 +230,11 @@
                 </div>
               </div>
             </div>
-            <div class="start__item js-motion" data-motion="motion1" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="1">
+            <div class="start__item start__item_white js-motion" data-motion="motion1" data-main-delay="0.4" data-move-up="50">
               <div class="start__item-desc">
                 <div class="start__title">
                   <div class="start__title-text">
-                    <p>лечение каналов</p>
-                  </div>
-                  <div class="start__title-icon"></div>
-                </div>
-                <div class="start__hide">
-                  <div class="start__text">
-                    <p>Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</p>
-                  </div><a class="start__btn" href="#">узнать больше о лечении
-                      <div class="start__btn-icon"></div></a>
-                </div>
-              </div>
-            </div>
-            <div class="start__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="50" data-move-up-speed="1"><img src="img/content/start-6.jpg" alt="image">
-              <div class="start__item-desc">
-                <div class="start__title">
-                  <div class="start__title-text">
-                    <p>детский кабинет</p>
+                    <p>протезирование</p>
                   </div>
                   <div class="start__title-icon start__title-icon_black"></div>
                 </div>
@@ -278,27 +246,36 @@
                 </div>
               </div>
             </div>
-            <div class="start__item js-motion" data-motion="motion1" data-main-delay="0" data-move-up="70" data-speed-line="1">
-              <div class="start__item-desc">
-                <div class="start__title">
-                  <div class="start__title-text">
-                    <p>профилактика</p>
-                  </div>
-                  <div class="start__title-icon start__title-icon_black"></div>
-                </div>
-                <div class="start__hide">
-                  <div class="start__text">
-                    <p>Зарубежные исследования и наш практический опыт показали потрясающую эффективность наших восстановительных и профилактических способов лечения пародонтита.</p>
-                  </div><a class="start__btn" href="#">узнать больше о лечении
-                      <div class="start__btn-icon"></div></a>
-                </div>
-              </div>
-            </div><a class="start__button btn btn_red js-motion" data-motion="motion4" data-main-delay="2" href="#">все услуги клиники
-                <div class="btn__icon"></div></a>
           </div>
         </div>
       </div>
       <!--end start-->
+      <!--begin subscribe-->
+      <div class="subscribe">
+        <div class="subscribe__rel js-motion js-scene" data-offset="-25" data-motion="motion3" data-main-delay="0" data-move-up="30" data-speed-line="0.25" data-move-up-speed="0.75">
+          <div class="subscribe__container container">
+            <div class="subscribe__col">
+              <div class="subscribe__text js-motion" data-motion="motion3" data-main-delay="0.75" data-speed-line="0.25">
+                <p>Не забудьте подписаться на нашу рассылку</p>
+              </div>
+            </div>
+            <div class="subscribe__col">
+              <!--begin form-->
+              <form class="subscribe__form form" action="#">
+                <div class="subscribe__input form__row">
+                  <input type="email" required placeholder="Введите ваш e-mail">
+                </div>
+                <div class="subscribe__btn btn btn_red form__row js-motion" data-motion="motion4" data-main-delay="1.5">подписаться
+                  <div class="btn__icon"></div>
+                  <input type="submit">
+                </div>
+              </form>
+              <!--end form-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end subscribe-->
     </main>
   </div>
   <footer class="footer">

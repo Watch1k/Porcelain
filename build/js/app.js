@@ -485,7 +485,7 @@ $(document).ready(function () {
 
 				var SceneModule = function (el) {
 					this.container = el;
-					this.element = el.hasClass('js-motion') ? el : el.find('.js-motion');
+					this.element = el.hasClass('js-motion') ? el.find('.js-motion').andSelf() : el.find('.js-motion');
 				};
 				sceneEl.each(function () {
 					var sceneModule = new SceneModule($(this));

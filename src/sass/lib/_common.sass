@@ -90,6 +90,9 @@ h6
 	&__hide
 		+r(1279)
 			display: none
+		&-mobile
+			+r(767)
+				display: none
 	.btn__icon
 		display: inline-block
 		vertical-align: middle
@@ -801,7 +804,7 @@ img
 	&_footer
 		color: $gray-light
 	&_footer &__item.active &__link
-		color: #ffffff
+		color: $red
 	+r(1279)
 		&_footer
 			display: flex
@@ -916,9 +919,14 @@ img
 	margin-top: -38px
 	position: relative
 	color: #ffffff
-	min-height: 540px
+	min-height: 290px
 	.line-vertical
 		opacity: 0.1
+	.line-vertical_left:after,
+	.line-vertical_right:after
+		top: 121px
+		+r(1279)
+			top: 104px
 	&__anime
 		pointer-events: none
 		position: absolute
@@ -964,6 +972,12 @@ img
 		overflow: hidden
 		+r(1279)
 			height: 540px
+	&_sm &__item
+		height: 620px
+		+r(1279)
+			height: 575px
+		+r(767)
+			height: 325px
 	&__slider.is-video &__item
 		pointer-events: none
 	&__video
@@ -1024,6 +1038,7 @@ img
 			margin-left: 0
 			right: 100%
 			margin-right: -42px
+			width: 42px
 			background-color: rgba(#f5f5f5, 0.1)
 		+r(767)
 			display: none
@@ -1042,7 +1057,7 @@ img
 			opacity: 0
 			transform: translateY(-30px)
 			+r(1279)
-				visibility: hidden
+				display: none
 		.icon
 			position: relative
 			top: -3px
@@ -1051,7 +1066,9 @@ img
 			color: #ffffff
 			opacity: 0
 			+r(1279)
-				margin-left: 23px
+				top: -15px
+				margin-left: 0
+				left: 3px
 			.path
 				fill: none
 				stroke: #fff
@@ -1078,7 +1095,7 @@ img
 			+r(1279)
 				bottom: 50%
 				right: 21px
-				margin-bottom: 5px
+				margin-bottom: 45px
 		&:after
 			pointer-events: none
 			content: ''
@@ -1093,7 +1110,7 @@ img
 			transition: all 0.75s ease-in-out
 			transition-delay: 0.75s
 			+r(1279)
-				margin-top: 55px
+				margin-top: 15px
 				top: 50%
 				right: 21px
 		.is-loaded &:before,
@@ -1109,11 +1126,18 @@ img
 		display: inline-block
 		vertical-align: middle
 		width: 100%
+		+r(1279)
+			margin-top: -45px
+		+r(767)
+			margin-top: -53px
+	&_sm &__inner
+		margin-top: 0
+		+r(1279)
+			margin-top: -45px
 		+r(767)
 			margin-top: 15px
-		&_open-article
-			margin-top: 0
 	&__title
+		position: relative
 		max-width: 460px
 		margin-left: auto
 		margin-right: auto
@@ -1130,8 +1154,6 @@ img
 			transition: all 1s ease-in-out
 		.is-loaded & p
 			transform: scale(1)
-		&_open-article
-			margin-top: -7px
 	&__slider.is-video &__title
 		opacity: 0
 		transform: translateX(50px)
@@ -1140,7 +1162,9 @@ img
 		margin-top: 40px
 		margin-left: 230px
 		+r(1279)
+			position: absolute
 			left: 74.5%
+			top: 100%
 			margin-left: 0
 		+r(767)
 			left: auto
@@ -1157,6 +1181,8 @@ img
 		color: #ffffff
 		text-transform: uppercase
 		+trs
+		+r(1279)
+			right: 57px
 		+r(767)
 			display: none
 		&-text
@@ -1554,6 +1580,12 @@ img
 		padding-top: 0
 	+r(767)
 		padding-top: 40px
+	&_open-article
+		padding-bottom: 175px
+		+r(1279)
+			padding-bottom: 90px
+		+r(767)
+			display: none
 	&__container
 		+pie-clearfix
 		&:before
@@ -1631,11 +1663,12 @@ img
 				&:before
 					display: none
 					content: none
-		&:not(&_title):nth-child(3n + 1)
+		&_red
 			color: #ffffff
-			.motion__inner
-				background-color: $red
-		&:not(&_title):nth-child(3n + 3)
+			.motion
+				&__inner
+					background-color: $red
+		&_white
 			background-color: #ffffff
 			.motion
 				overflow: hidden
@@ -1646,6 +1679,15 @@ img
 					left: 0
 					right: 0
 					top: 0
+					height: 1px
+					background-color: #f5f5f5
+				&:after
+					content: ''
+					position: absolute
+					z-index: 0
+					left: 0
+					right: 0
+					bottom: 0
 					height: 1px
 					background-color: #f5f5f5
 		&_title
@@ -1711,10 +1753,17 @@ img
 			margin-bottom: 0
 			+ratio(1,1)
 			background-color: $red
+			+r(1279)
+				width: calc(33.33vw + (24px - 15px) / 3 - 15px)
+				margin-left: -24px
+				margin-bottom: -250px
+				height: 425px
+				&:before
+					display: none
+					content: none
 		.motion
 			overflow: hidden
 			z-index: 0
-			background-color: #ffffff
 			+ratio-in
 			+r(767)
 				position: relative
@@ -1766,14 +1815,14 @@ img
 		height: 100%
 		+r(767)
 			height: auto
-	&__video
+	video
 		position: absolute
 		z-index: 1
 		top: 50%
 		left: 50%
 		transform: translate(-50%, -50%)
 		height: 100%
-		+r(1279)
+		+r(767)
 			width: 100%
 			height: auto
 	&__hide
@@ -1844,7 +1893,7 @@ img
 			&:after
 				margin-top: -4px
 				top: 50%
-	&__item:nth-child(3) &__title-text
+	&__item_white &__title-text
 		+r(767)
 			&:before
 				content: ''
@@ -1867,18 +1916,16 @@ img
 		color: #ffffff
 		+r(1279)
 			color: #000000
-	&__item:not(&__item_title):hover:nth-child(3n+1) &__title
+	&__item_red &__title
 		+r(1279)
 			color: #ffffff
-	&__item:not(&__item_title):nth-child(3n+3)
+	&__item_white
 		+r(767)
 			border-left: 1px solid #f5f5f5
 			border-right: 1px solid #f5f5f5
-	&__item:not(&__item_title):nth-child(6)
+	&__item_white:last-child
 		+r(1279)
-			border-bottom: 1px solid #f5f5f5
-		+r(767)
-			border-bottom: none
+			border-right: 1px solid #f5f5f5
 	&__item_title &__title
 		font-size: 24px
 		color: #ffffff
@@ -3879,10 +3926,6 @@ img
 	 Open Article Page
 	 =================================== */
 .page-open-article
-	.screen
-		.line-vertical_left:after,
-		.line-vertical_right:after
-			top: 121px
 	.hamburger__inner
 		background-color: #ffffff
 	.hamburger__inner:before,
@@ -3896,33 +3939,56 @@ img
 		border-bottom: 1px solid rgba(#f5f5f5, 0.1)
 	.nav
 		color: #ffffff
-	.footer
-		border-top: none
-		+r(767)
-			margin-top: 70px
-			border-top: 1px solid #f5f5f5
 	.nav_footer
 		color: $gray-light
 		
 .open-article
 	padding-top: 85px
-	padding-bottom: 85px
+	padding-bottom: 75px
+	+r(1279)
+		padding-bottom: 85px
+	+r(767)
+		padding-top: 55px
+		padding-bottom: 70px
 	&__row
 		display: flex
+		flex-direction: row
+		+r(1279)
+			flex-wrap: wrap
 	&__col
 		&:nth-child(1)
 			flex-basis: calc(25% - 52px)
+			+r(1279)
+				order: 2
+				flex-basis: 50%
+				width: 50%
+			+r(767)
+				flex-basis: 100%
+				width: 100%
 		&:nth-child(2)
 			flex-basis: calc(50% + 104px)
 			font-size: 16px
 			color: $gray-dark
 			letter-spacing: -0.0075em
+			+r(1279)
+				order: 1
+				flex-basis: 100%
+				margin-bottom: 45px
+				width: 100%
 		&:nth-child(3)
 			display: flex
 			justify-content: flex-start
 			flex-basis: calc(25% - 52px)
 			align-items: flex-end
 			flex-direction: column
+			+r(1279)
+				order: 3
+				flex-basis: 50%
+				width: 50%
+			+r(767)
+				align-items: flex-start
+				flex-basis: 100%
+				width: 100%
 	&__back
 		display: table
 		+open-extrabold
@@ -3951,6 +4017,8 @@ img
 		+open
 		font-size: 12px
 		color: $gray-dark
+		+r(767)
+			display: none
 		&:before
 			content: ''
 			position: absolute
@@ -3971,7 +4039,13 @@ img
 			margin-top: 20px
 	&__p + &__image
 		margin-top: 55px
+		+r(1279)
+			margin-top: 45px
 	&__image
+		img
+			display: block
+			margin-left: auto
+			margin-right: auto
 		.motion
 			&__element
 				background-color: $red
@@ -3984,6 +4058,15 @@ img
 		color: #000000
 		line-height: 24px
 		text-transform: uppercase
+		+r(1279)
+			margin-top: 60px
+			margin-bottom: 40px
+		+r(767)
+			margin-top: 40px
+			margin-bottom: 20px
+			padding-left: 30px
+			padding-right: 30px
+			line-height: 18px
 		&:before
 			content: '“'
 			position: absolute
@@ -4007,11 +4090,15 @@ img
 		+open
 		font-size: 12px
 		color: $gray-light
+		+r(767)
+			margin-top: 40px
 		.motion
 			&__element
 				background-color: $red
 	&__soc
 		margin-top: 25px
+		+r(767)
+			margin-top: 15px
 		&-row
 			display: flex
 			flex-direction: row
@@ -4035,7 +4122,120 @@ img
 			.icon-fb
 				font-size: 16px
 
-
+/* Subscribe
+	----------------------------------- */
+.subscribe
+	&__rel
+		position: relative
+		& > .motion
+			z-index: 2
+			& > .motion__inner
+				background-color: #f5f5f5
+			& > .motion__element
+				background-color: $red
+	&__container
+		display: flex
+		flex-direction: row
+		justify-content: center
+		padding-top: 60px
+		padding-bottom: 55px
+		+open-extrabold
+		font-size: 24px
+		color: #000000
+		line-height: 30px
+		text-transform: uppercase
+		+r(1279)
+			padding-top: 45px
+			padding-bottom: 50px
+			flex-wrap: wrap
+		+r(767)
+			padding-top: 40px
+			padding-bottom: 45px
+			font-size: 12px
+			line-height: 18px
+	&__col
+		display: flex
+		flex-direction: row
+		flex-basis: 50%
+		+r(1279)
+			flex-basis: 100%
+		&:nth-child(1)
+			justify-content: flex-end
+			+r(1279)
+				justify-content: center
+			+r(767)
+				justify-content: flex-start
+		&:nth-child(2)
+			padding-left: 90px
+			justify-content: flex-start
+			+r(1279)
+				justify-content: center
+				margin-top: 20px
+				padding-left: 0
+			+r(767)
+				margin-top: 25px
+	&__form
+		display: flex
+		flex-direction: row
+		justify-content: center
+		flex-wrap: wrap
+		+r(767)
+			display: block
+	&__input
+		display: none
+		+r(1279)
+			display: block
+		+r(767)
+			display: table
+		input
+			display: block
+			width: 235px
+			height: 60px
+			padding-left: 10px
+			padding-right: 10px
+			background-color: #ffffff
+			-webkit-appearance: none
+			+pt
+			font-size: 16px
+			color: $gray-light
+			text-align: center
+			+r(767)
+				width: 290px
+	&__btn
+		margin-top: 5px
+		cursor: pointer
+		+r(1279)
+			margin-top: 0
+			margin-left: 25px
+			pointer-events: none
+		+r(767)
+			margin-left: 0
+			margin-top: 20px
+			display: table
+		input
+			position: absolute
+			z-index: 99
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			width: 100%
+			height: 100%
+			background-color: transparent
+			color: transparent
+			-webkit-appearance: none
+			pointer-events: none
+			+r(1279)
+				pointer-events: auto
+	&__text
+		max-width: 400px
+		+r(1279)
+			max-width: none
+		.motion
+			&__element
+				background-color: $red
+		
+	
 
 /* ===================================
 	 Other Styles
