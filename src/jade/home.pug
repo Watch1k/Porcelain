@@ -79,10 +79,10 @@ block content
 						p Клиника Porclaine совершенствуется каждый день и применяет все возможности передовых технологий для безопасного <br>и комфортного лечения пациентов
 			.inno__row
 				.inno__col
-					.inno__item
+					.inno__item.js-inno-el
 						.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
 							.inno__item-video
-								video.inno__video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+								video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
 							img(src='img/content/inno-1.jpg' alt='image')
 						.inno__desc.js-inno-desc
 							.inno__desc-title
@@ -92,7 +92,7 @@ block content
 							.inno__desc-text
 								p Проектируем цифровой прототип для разработки плана лечения.
 				.inno__col
-					.inno__item
+					.inno__item.js-inno-el
 						.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
 							img(src='img/content/inno-2.jpg' alt='image')
 						.inno__desc.js-inno-desc
@@ -103,7 +103,7 @@ block content
 							.inno__desc-text
 								p Проектируем цифровой прототип для разработки плана лечения.
 				.inno__col
-					.inno__item
+					.inno__item.js-inno-el
 						.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
 							img(src='img/content/inno-3.jpg' alt='image')
 						.inno__desc.js-inno-desc
@@ -272,7 +272,7 @@ block content
 	//end reg
 
 	//begin service
-	.service.js-scene(data-offset='0')
+	//.service.js-scene(data-offset='0')
 		.service__container.container
 			.service__item.service__item_title.js-motion(data-motion='motion1' data-advanced-width='40' data-main-delay='0.1' data-move-up='70')
 				p Сервис <br>клиники Porcelain <br>в деталях
@@ -514,7 +514,7 @@ block content
 							.doctor__info
 								p Страна обучения: Германия
 								p Изучение: <br>DSD концепция
-						.doctor__name Салтыков И. О.
+						a.doctor__name(href='#') Салтыков И. О.
 						.doctor__spec Доктор-гигиенист
 						.doctor__settings
 							.js-doctor-domen DE
@@ -527,7 +527,7 @@ block content
 							.doctor__info
 								p Страна обучения: Германия
 								p Изучение: <br>DSD концепция
-						.doctor__name Мирончук А. А.
+						a.doctor__name(href='#') Мирончук А. А.
 						.doctor__spec Доктор-терапевт, <br>ортопед
 						.doctor__settings
 							.js-doctor-domen DE
@@ -540,7 +540,7 @@ block content
 							.doctor__info
 								p Страна обучения: Германия
 								p Изучение: <br>DSD концепция
-						.doctor__name Прощин Н. И.
+						a.doctor__name(href='#') Прощин Н. И.
 						.doctor__spec Доктор-ортодонт
 						.doctor__settings
 							.js-doctor-domen DE
@@ -553,7 +553,7 @@ block content
 							.doctor__info
 								p Страна обучения: Швейцария
 								p Изучение: <br>DSD концепция
-						.doctor__name Дмитренко А. С.
+						a.doctor__name(href='#') Дмитренко А. С.
 						.doctor__spec Доктор-ортодонт
 						.doctor__settings
 							.js-doctor-domen CH
@@ -566,7 +566,7 @@ block content
 							.doctor__info
 								p Страна обучения: Швейцария
 								p Изучение: <br>DSD концепция
-						.doctor__name Фурман В. C.
+						a.doctor__name(href='#') Фурман В. C.
 						.doctor__spec Доктор-ортодонт
 						.doctor__settings
 							.js-doctor-domen CH
@@ -579,7 +579,7 @@ block content
 							.doctor__info
 								p Страна обучения: Швейцария
 								p Изучение: <br>DSD концепция
-						.doctor__name Доктор №6
+						a.doctor__name(href='#') Доктор №6
 						.doctor__spec Доктор-ортодонт
 						.doctor__settings
 							.js-doctor-domen CH
@@ -592,7 +592,7 @@ block content
 							.doctor__info
 								p Страна обучения: Швейцария
 								p Изучение: <br>DSD концепция
-						.doctor__name Доктор №7
+						a.doctor__name(href='#') Доктор №7
 						.doctor__spec Доктор-ортодонт
 						.doctor__settings
 							.js-doctor-domen CH
@@ -607,7 +607,7 @@ block content
 							.doctor__info
 								p Страна обучения: Венгрия
 								p Изучение: <br>DSD концепция
-						.doctor__name Салтыков И. О.
+						a.doctor__name(href='#') Салтыков И. О.
 						.doctor__spec Доктор-гигиенист
 						.doctor__settings
 							.js-doctor-domen HU
@@ -620,7 +620,7 @@ block content
 							.doctor__info
 								p Страна обучения: Чехия
 								p Изучение: <br>DSD концепция
-						.doctor__name Мирончук А. А.
+						a.doctor__name(href='#') Мирончук А. А.
 						.doctor__spec Доктор-терапевт, <br>ортопед
 						.doctor__settings
 							.js-doctor-domen CZ
@@ -633,7 +633,7 @@ block content
 							.doctor__info
 								p Страна обучения: Польща
 								p Изучение: <br>DSD концепция
-						.doctor__name Прощин Н. И.
+						a.doctor__name(href='#') Прощин Н. И.
 						.doctor__spec Доктор-ортодонт
 						.doctor__settings
 							.js-doctor-domen PL
@@ -646,7 +646,7 @@ block content
 							.doctor__info
 								p Страна обучения: Польща
 								p Изучение: <br>DSD концепция
-						.doctor__name Дмитренко А. С.
+						a.doctor__name(href='#') Дмитренко А. С.
 						.doctor__spec Доктор-ортодонт
 						.doctor__settings
 							.js-doctor-domen PL
@@ -659,7 +659,7 @@ block content
 							.doctor__info
 								p Страна обучения: Польща
 								p Изучение: <br>DSD концепция
-						.doctor__name Фурман В. C.
+						a.doctor__name(href='#') Фурман В. C.
 						.doctor__spec Доктор-ортодонт
 						.doctor__settings
 							.js-doctor-domen PL
@@ -672,7 +672,7 @@ block content
 							.doctor__info
 								p Страна обучения: Польща
 								p Изучение: <br>DSD концепция
-						.doctor__name Доктор №6
+						a.doctor__name(href='#') Доктор №6
 						.doctor__spec Доктор-ортодонт
 						.doctor__settings
 							.js-doctor-domen PL
@@ -685,7 +685,7 @@ block content
 							.doctor__info
 								p Страна обучения: Польща
 								p Изучение: <br>DSD концепция
-						.doctor__name Доктор №7
+						a.doctor__name(href='#') Доктор №7
 						.doctor__spec Доктор-ортодонт
 						.doctor__settings
 							.js-doctor-domen PL
@@ -700,7 +700,7 @@ block content
 							.doctor__info
 								p Страна обучения: Италия
 								p Изучение: <br>DSD концепция
-						.doctor__name Салтыков И. О.
+						a.doctor__name(href='#') Салтыков И. О.
 						.doctor__spec Доктор-гигиенист
 						.doctor__settings
 							.js-doctor-domen IT
@@ -713,7 +713,7 @@ block content
 							.doctor__info
 								p Страна обучения: Италия
 								p Изучение: <br>DSD концепция
-						.doctor__name Мирончук А. А.
+						a.doctor__name(href='#') Мирончук А. А.
 						.doctor__spec Доктор-терапевт, <br>ортопед
 						.doctor__settings
 							.js-doctor-domen IT
@@ -728,7 +728,7 @@ block content
 							.doctor__info
 								p Страна обучения: Израиль
 								p Изучение: <br>DSD концепция
-						.doctor__name Салтыков И. О.
+						a.doctor__name(href='#') Салтыков И. О.
 						.doctor__spec Доктор-гигиенист
 						.doctor__settings
 							.js-doctor-domen IL
@@ -741,7 +741,7 @@ block content
 							.doctor__info
 								p Страна обучения: Турция
 								p Изучение: <br>DSD концепция
-						.doctor__name Мирончук А. А.
+						a.doctor__name(href='#') Мирончук А. А.
 						.doctor__spec Доктор-терапевт, <br>ортопед
 						.doctor__settings
 							.js-doctor-domen TR

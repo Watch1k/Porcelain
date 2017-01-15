@@ -1076,8 +1076,8 @@ img
 				fill-rule: evenodd
 				stroke-dasharray: 132px
 				stroke-dashoffset: 132px
-				transition: all 1.75s ease-in-out
-				transition-delay: 1.25s
+				transition: all 1.25s ease-in
+				transition-delay: 1s
 		&:before
 			pointer-events: none
 			content: ''
@@ -1218,29 +1218,30 @@ img
 	&__prev
 		position: absolute
 		z-index: 3
-		bottom: 30px
-		left: calc(50% - 600px)
+		bottom: 15px
+		left: calc(50% - 615px)
 		font-size: 0
 		+r(1279)
-			left: 10px
+			left: 5px
 		+r(767)
-			bottom: 35px
-			left: 15px
+			bottom: 20px
+			left: 0
 			transform: rotate(180deg)
 	&__next
 		position: absolute
 		z-index: 3
-		left: calc(50% - 310px)
-		bottom: 30px
+		left: calc(50% - 325px)
+		bottom: 15px
 		font-size: 0
 		+r(1279)
-			left: 315px
+			left: 300px
 		+r(767)
-			bottom: 35px
+			bottom: 20px
 			left: auto
-			right: 15px
+			right: 0
 	&__prev,
 	&__next
+		padding: 15px
 		color: rgba(#ffffff, .5)
 		+trs
 		&:hover
@@ -1496,14 +1497,14 @@ img
 			width: 100%
 			height: 100%
 			overflow: hidden
-			+trs
-	&__video
+	video
 		position: absolute
 		z-index: 1
 		top: 50%
 		left: 50%
 		transform: translate(-50%, -50%)
 		height: 100%
+		+trs
 	&__desc
 		position: absolute
 		margin-top: -84px
@@ -1523,7 +1524,7 @@ img
 		&.is-transition
 			transition: all 0.75s ease-in-out
 		&-title
-			cursor: pointer
+			cursor: default
 			padding-top: 40px
 			padding-right: 45px
 			+open-extrabold
@@ -1547,6 +1548,7 @@ img
 				margin-top: 4px
 				margin-right: 3px
 		&-text
+			cursor: default
 			margin-top: 22px
 			padding: 0 95px 0 0
 			font-size: 16px
@@ -1563,11 +1565,12 @@ img
 	&__item.is-active &__desc-text
 		opacity: 1
 		transition: all 1.25s ease-in-out
-	&__item.is-active &__item-in
+	&__item.is-active &__item-inner img
 		filter: grayscale(100%)
-	&__item.is-active &__item-video
+		transition: all 1s ease-in-out
+	&__item.is-active &__item-inner video
 		filter: grayscale(100%)
-		transition: all 1.5s ease-in-out
+		transition: all 1s ease-in-out
 		
 /* Start
 	----------------------------------- */
@@ -2994,6 +2997,8 @@ img
 				pointer-events: auto
 				position: relative
 				+trs
+				&:hover
+					color: $red
 				&:before
 					content: ''
 					position: absolute
@@ -3098,6 +3103,7 @@ img
 			+r(1279)
 				transform: scale(0.25) translate(-50%,-100%)
 			&.is-active
+				cursor: default
 				z-index: 3
 			svg
 				pointer-events: auto
@@ -3162,6 +3168,7 @@ img
 					&:hover
 						fill: lighten($gray-light,12)
 				&.is-active
+					cursor: default
 					fill: $gray-light
 	&__prev,
 	&__next
@@ -3231,6 +3238,7 @@ img
 		p
 			transform: translateY(0)
 	&__name
+		display: block
 		margin-top: 25px
 		+open-extrabold
 		color: $red

@@ -8,20 +8,20 @@ $(document).ready(function () {
 		mainChild.each(function () {
 			var $this = $(this);
 
-				$this.css({
-					position: 'relative',
-					'z-index': 1
-				})
-					.prepend('<div class="line-vertical line-vertical_left"></div>')
-					.prepend('<div class="line-vertical line-vertical_mid"></div>')
-					.prepend('<div class="line-vertical line-vertical_right"></div>');
+			$this.css({
+				position: 'relative',
+				'z-index': 1
+			})
+				.prepend('<div class="line-vertical line-vertical_left"></div>')
+				.prepend('<div class="line-vertical line-vertical_mid"></div>')
+				.prepend('<div class="line-vertical line-vertical_right"></div>');
 		});
 
 		if (mainChild.length == 1) {
 			mainChild.find('.line-vertical')
 				.css({
 					'min-height': '100vh'
-			});
+				});
 		}
 
 		if ($('.screen').length) {
@@ -685,7 +685,7 @@ $(document).ready(function () {
 
 		initSlickSlider(screenSlider);
 
-		screenSlider.append('<div class="screen__dots"><div class="screen__dots-item" data-count="1">02</div><div class="screen__dots-item" data-count="2">03</div></div>');
+		screenSlider.append('<div class="screen__dots"><div class="screen__dots-item" data-count="1">01</div><div class="screen__dots-item" data-count="2">02</div></div>');
 
 		$(document).on('click', '.screen__dots-item', function (e) {
 			e.preventDefault();
@@ -693,24 +693,20 @@ $(document).ready(function () {
 		});
 
 		screenSlider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-			'beforeChange';
-			var currentIndex,
-				nextIndex;
+			var nextIndex;
 
-			currentIndex = nextSlide + 1;
-			if (currentIndex == slick.$slides.length) {
-				currentIndex = 0;
-			}
-			nextIndex = nextSlide + 2;
-			if (nextIndex - 1 == slick.$slides.length) {
-				nextIndex = 1;
-			}
+			nextIndex = nextSlide;
 			if (nextIndex == slick.$slides.length) {
 				nextIndex = 0;
 			}
+			$(this).find('.screen__dots-item').eq(0).attr('data-count', nextIndex).html('0' + (nextIndex + 1));
 
-			$(this).find('.screen__dots-item').eq(0).attr('data-count', currentIndex).html('0' + (currentIndex + 1));
-			$(this).find('.screen__dots-item').eq(1).attr('data-count', nextIndex).html('0' + (nextIndex + 1));
+			nextIndex = nextSlide;
+			if (nextIndex + 1 == slick.$slides.length) {
+				nextIndex = -1;
+			}
+			$(this).find('.screen__dots-item').eq(1).attr('data-count', nextIndex + 1).html('0' + (nextIndex + 2));
+
 		});
 		function initSlickSlider(slider) {
 			slider.slick({
@@ -803,38 +799,36 @@ $(document).ready(function () {
 	})();
 
 	(function () {
-		var innoDescItem = $('.js-inno-desc'),
+		var innoEl = $('.js-inno-el'),
+			innoDescItem = $('.js-inno-desc'),
 			innoDescTitle = innoDescItem.find('.inno__desc-title'),
-			innoItem = innoDescItem.closest('.inno__item'),
-			innoVideo = innoItem.find('video'),
-			timer,
-			timerDelay = 150;
+			innoVideo = innoEl.find('video');
 
 		if ($(window).width() > 767) {
-			innoDescTitle.on('mouseenter', function () {
+			innoEl.on('mouseenter', function () {
 				var _this = $(this),
-					_thisVideo = _this.closest(innoItem).find(innoVideo);
-				timer = setTimeout(function () {
-					_this.closest(innoItem).toggleClass('is-active');
-					_this.find('.icon').toggleClass('is-active');
-					if (_thisVideo.length) {
-						if (_thisVideo.get(0).paused) {
-							_thisVideo.get(0).play();
-						} else {
-							_thisVideo.get(0).pause();
-						}
-					}
-				}, timerDelay);
-				_this.on('mouseleave', function () {
-					clearTimeout(timer);
-				});
+					_thisVideo = _this.find(innoVideo);
+				_this.addClass('is-active');
+				_this.find('.icon').addClass('is-active');
+				if (_thisVideo.length) {
+					_thisVideo.get(0).pause();
+				}
+			});
+			innoEl.on('mouseleave', function () {
+				var _this = $(this),
+					_thisVideo = _this.find(innoVideo);
+				_this.removeClass('is-active');
+				_this.find('.icon').removeClass('is-active');
+				if (_thisVideo.length) {
+					_thisVideo.get(0).play();
+				}
 			});
 		} else {
 			innoDescTitle.on('click', function () {
 				var _this = $(this),
-					_thisVideo = _this.closest(innoItem).find(innoVideo);
+					_thisVideo = _this.closest(innoEl).find(innoVideo);
 
-				_this.closest(innoItem).toggleClass('is-active');
+				_this.closest(innoEl).toggleClass('is-active');
 				_this.find('.icon').toggleClass('is-active');
 				if (_thisVideo.length) {
 					if (_thisVideo.get(0).paused) {
@@ -927,10 +921,6 @@ $(document).ready(function () {
 	})();
 
 	(function () {
-
-		var element = document.getElementById('wtf');
-		console.log(element.getTotalLength());
-
 		var mapSvg = $('.js-map-svg'),
 			mapPath = mapSvg.find('path'),
 			navFor = $('.js-nav-for'),
@@ -971,143 +961,146 @@ $(document).ready(function () {
 		});
 
 		navForItem.on('click', function () {
-			if ($(this).hasClass('is-active')) return false;
+			if ($(this).hasClass('is-current')) {
+				//code
+			} else {
+				mapPath.removeClass('is-active is-current');
+				$(this).addClass('is-active is-current');
 
-			mapPath.removeClass('is-active');
+				var doctorClone = $('.js-doctor-clone');
 
-			var doctorClone = $('.js-doctor-clone');
+				if (doctorClone.length) {
+					var doctorCloneItem = doctorClone.find('.slick-slide'),
+						doctorTl = new TimelineMax();
+					doctorTl
+						.staggerFromTo(doctorCloneItem, 1, {
+							y: 0,
+							alpha: 1
+						}, {
+							y: 30,
+							alpha: 0,
+							ease: Power1.easeInOut
+						}, 0.15)
+						.set(doctorClone, {
+							onComplete: function () {
+								doctorClone.remove();
+							}
+						});
+				}
 
-			if (doctorClone.length) {
-				var doctorCloneItem = doctorClone.find('.slick-slide'),
-					doctorTl = new TimelineMax();
-				doctorTl
-					.staggerFromTo(doctorCloneItem, 1, {
+				var _this = $(this),
+					_thisIndex = _this.index(),
+					_thisDataCountry = _this.attr('data-country'),
+					_thisCountryList = _thisDataCountry.split(' '),
+					_thisDataMapPosition = _this.attr('data-map-position'),
+					_thisMapPosition = _thisDataMapPosition.split(' ');
+
+				if (indInit) {
+					var tweenEl1 = navListItem.filter('.is-active').find('.slick-slide');
+
+					TweenMax.staggerFromTo(tweenEl1, 1, {
 						y: 0,
 						alpha: 1
 					}, {
 						y: 30,
 						alpha: 0,
 						ease: Power1.easeInOut
-					}, 0.15)
-					.set(doctorClone, {
+					}, 0.15);
+
+					navListItem.removeClass('is-active').eq(_thisIndex).addClass('is-active is-current');
+
+					var tweenEl2 = navListItem.filter('.is-active').find('.slick-slide');
+
+					TweenMax.staggerFromTo(tweenEl2, 1, {
+						y: -30,
+						alpha: 0
+					}, {
+						y: 0,
+						alpha: 1,
+						delay: 0.75,
+						ease: Power1.easeInOut
+					}, 0.15);
+				}
+
+				_this.siblings().removeClass('is-active is-current');
+				_this.addClass('is-active is-current');
+
+				mapSvg.children().removeClass('is-current');
+				mapSvg.nextAll().filter('.skill__map-mark').remove();
+
+				TweenMax.to(mapSvg, 1, {
+						x: _thisMapPosition[0] + '%',
+						y: _thisMapPosition[1] + '%',
+						ease: Power1.easeInOut,
 						onComplete: function () {
-							doctorClone.remove();
-						}
-					});
-			}
+							var _itemCounter = 0;
+							for (var i = 0; i < _thisCountryList.length; i++) {
+								mapSvg.find('#' + _thisCountryList[i]).addClass('is-current');
 
-			var _this = $(this),
-				_thisIndex = _this.index(),
-				_thisDataCountry = _this.attr('data-country'),
-				_thisCountryList = _thisDataCountry.split(' '),
-				_thisDataMapPosition = _this.attr('data-map-position'),
-				_thisMapPosition = _thisDataMapPosition.split(' ');
+								var _thisCountry = mapSvg.find('#' + _thisCountryList[i]),
+									_thisCountryOffset = _thisCountry.offset(),
+									_thisParentOffset = _thisCountry.parent().offset(),
+									_thisMarkPositionX = _thisCountryOffset.left - _thisParentOffset.left,
+									_thisMarkPositionY = _thisCountryOffset.top - _thisParentOffset.top;
 
-			if (indInit) {
-				var tweenEl1 = navListItem.filter('.is-active').find('.slick-slide');
+								_thisMarkPositionX += 2 * mapSvg.width() * _thisMapPosition[0] / 100 + _thisCountry[0].getBBox().width;
+								_thisMarkPositionY += 2 * mapSvg.height() * _thisMapPosition[1] / 100 + _thisCountry[0].getBBox().height;
 
-				TweenMax.staggerFromTo(tweenEl1, 1, {
-					y: 0,
-					alpha: 1
-				}, {
-					y: 30,
-					alpha: 0,
-					ease: Power1.easeInOut
-				}, 0.15);
+								navListItem.eq(_thisIndex).find(navListEl).each(function () {
+									var _el = $(this),
+										_elDomen = _el.find('.js-doctor-domen').text(),
+										_elCountry = _el.find('.js-doctor-country').text(),
+										_elCity = _el.find('.js-doctor-city').text(),
+										_elDataPosition = _el.find('.js-doctor-position').text(),
+										_elPosition = _elDataPosition.split(' ');
 
-				navListItem.removeClass('is-active').eq(_thisIndex).addClass('is-active');
-
-				var tweenEl2 = navListItem.filter('.is-active').find('.slick-slide');
-
-				TweenMax.staggerFromTo(tweenEl2, 1, {
-					y: -30,
-					alpha: 0
-				}, {
-					y: 0,
-					alpha: 1,
-					delay: 0.75,
-					ease: Power1.easeInOut
-				}, 0.15);
-			}
-
-			_this.siblings().removeClass('is-active');
-			_this.addClass('is-active');
-
-			mapSvg.children().removeClass('is-current');
-			mapSvg.nextAll().filter('.skill__map-mark').remove();
-
-			TweenMax.to(mapSvg, 1, {
-					x: _thisMapPosition[0] + '%',
-					y: _thisMapPosition[1] + '%',
-					ease: Power1.easeInOut,
-					onComplete: function () {
-						var _itemCounter = 0;
-						for (var i = 0; i < _thisCountryList.length; i++) {
-							mapSvg.find('#' + _thisCountryList[i]).addClass('is-current');
-
-							var _thisCountry = mapSvg.find('#' + _thisCountryList[i]),
-								_thisCountryOffset = _thisCountry.offset(),
-								_thisParentOffset = _thisCountry.parent().offset(),
-								_thisMarkPositionX = _thisCountryOffset.left - _thisParentOffset.left,
-								_thisMarkPositionY = _thisCountryOffset.top - _thisParentOffset.top;
-
-							_thisMarkPositionX += 2 * mapSvg.width() * _thisMapPosition[0] / 100 + _thisCountry[0].getBBox().width;
-							_thisMarkPositionY += 2 * mapSvg.height() * _thisMapPosition[1] / 100 + _thisCountry[0].getBBox().height;
-
-							navListItem.eq(_thisIndex).find(navListEl).each(function () {
-								var _el = $(this),
-									_elDomen = _el.find('.js-doctor-domen').text(),
-									_elCountry = _el.find('.js-doctor-country').text(),
-									_elCity = _el.find('.js-doctor-city').text(),
-									_elDataPosition = _el.find('.js-doctor-position').text(),
-									_elPosition = _elDataPosition.split(' ');
-
-								if (_elDomen == _thisCountryList[i]) {
-									if ($('.js-map-mark').filter('[data-city="' + _elCity + '"]').length) {
-										_el.attr('data-counter', $('.js-map-mark').filter('[data-city="' + _elCity + '"]').attr('data-counter')).attr('data-city', _elCity).attr('data-domen', _elDomen);
-									} else {
-										$('' +
-											'<div class="skill__map-mark js-map-mark">' +
-											'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 16">' +
-											'<path d="M0,16V0H13Z"/>' +
-											'</svg>' +
-											'<div class="skill__map-mark-tooltip">' +
-											'<div class="skill__map-mark-tooltip-inner">' + _elCity + ', ' + _elCountry + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 16"><path d="M0,16V0H13Z"/></svg>' +
-											'</div>' +
-											'</div>' +
-											'</div>').insertAfter(mapSvg);
-										if ($(window).width() < 1280) {
-											var n = 4;
+									if (_elDomen == _thisCountryList[i]) {
+										if ($('.js-map-mark').filter('[data-city="' + _elCity + '"]').length) {
+											_el.attr('data-counter', $('.js-map-mark').filter('[data-city="' + _elCity + '"]').attr('data-counter')).attr('data-city', _elCity).attr('data-domen', _elDomen);
 										} else {
-											n = 2
+											$('' +
+												'<div class="skill__map-mark js-map-mark">' +
+												'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 16">' +
+												'<path d="M0,16V0H13Z"/>' +
+												'</svg>' +
+												'<div class="skill__map-mark-tooltip">' +
+												'<div class="skill__map-mark-tooltip-inner">' + _elCity + ', ' + _elCountry + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 16"><path d="M0,16V0H13Z"/></svg>' +
+												'</div>' +
+												'</div>' +
+												'</div>').insertAfter(mapSvg);
+											if ($(window).width() < 1280) {
+												var n = 4;
+											} else {
+												n = 2
+											}
+											mapSvg.next().css({
+												left: (_thisMarkPositionX + +_elPosition[0]) / n,
+												top: (_thisMarkPositionY + +_elPosition[1]) / n,
+												width: mapSvg.next().children().last().children().outerWidth(),
+												height: mapSvg.next().children().last().children().outerHeight(),
+												opacity: 0
+											}).children().last().css({
+												width: 0,
+												height: mapSvg.next().children().last().children().outerHeight()
+											});
+
+											TweenMax.to(mapSvg.next(), 1, {
+												opacity: 1,
+												ease: Power3.easeInOut
+											});
+
+											mapSvg.next().attr('data-counter', _itemCounter).attr('data-city', _elCity);
+											_el.attr('data-counter', _itemCounter).attr('data-city', _elCity).attr('data-domen', _elDomen);
+											_itemCounter++;
 										}
-										mapSvg.next().css({
-											left: (_thisMarkPositionX + +_elPosition[0]) / n,
-											top: (_thisMarkPositionY + +_elPosition[1]) / n,
-											width: mapSvg.next().children().last().children().outerWidth(),
-											height: mapSvg.next().children().last().children().outerHeight(),
-											opacity: 0
-										}).children().last().css({
-											width: 0,
-											height: mapSvg.next().children().last().children().outerHeight()
-										});
-
-										TweenMax.to(mapSvg.next(), 1, {
-											opacity: 1,
-											ease: Power3.easeInOut
-										});
-
-										mapSvg.next().attr('data-counter', _itemCounter).attr('data-city', _elCity);
-										_el.attr('data-counter', _itemCounter).attr('data-city', _elCity).attr('data-domen', _elDomen);
-										_itemCounter++;
 									}
-								}
-							});
+								});
+							}
 						}
 					}
-				}
-			);
-			indInit = true;
+				);
+				indInit = true;
+			}
 		});
 
 		navForItem.eq(0).trigger('click');
@@ -1156,7 +1149,7 @@ $(document).ready(function () {
 
 					mapPath.removeClass('is-active');
 					_thisPath.addClass('is-active');
-					navForItem.removeClass('is-active');
+					navForItem.removeClass('is-current');
 
 					navList.append('<div class="skill__top-nav-list-item js-doctor-slider"></div>');
 					var tempSlider = $('.js-doctor-slider').last().addClass('js-doctor-clone is-active');
@@ -1205,106 +1198,109 @@ $(document).ready(function () {
 				var _thisMark = $(this),
 					_sliderArray = [];
 
-				navForItem.removeClass('is-active');
-				mapPath.removeClass('is-active');
+				if (!_thisMark.hasClass('is-active')) {
+					navForItem.removeClass('is-current');
+					mapPath.removeClass('is-active');
 
-				var doctorClone = $('.js-doctor-clone');
+					var doctorClone = $('.js-doctor-clone');
 
-				if (doctorClone.length) {
-					var doctorCloneItem = doctorClone.find('.slick-slide'),
-						doctorTl = new TimelineMax();
-					doctorTl
-						.staggerFromTo(doctorCloneItem, 1, {
-							y: 0,
-							alpha: 1
-						}, {
-							y: 30,
-							alpha: 0,
-							ease: Power1.easeInOut
-						}, 0.15)
-						.set(doctorClone, {
+					if (doctorClone.length) {
+						var doctorCloneItem = doctorClone.find('.slick-slide'),
+							doctorTl = new TimelineMax();
+						doctorTl
+							.staggerFromTo(doctorCloneItem, 1, {
+								y: 0,
+								alpha: 1
+							}, {
+								y: 30,
+								alpha: 0,
+								ease: Power1.easeInOut
+							}, 0.15)
+							.set(doctorClone, {
+								onComplete: function () {
+									doctorClone.remove();
+								}
+							});
+					}
+
+					if (!_thisMark.hasClass('is-active')) {
+						var _hideEl = mapSvg.parent().find('.js-map-mark').filter('.is-active');
+
+						_hideEl.removeClass('is-active').parent().removeClass('is-active');
+						TweenMax.set(_hideEl.children().last().children().children(), {
+							y: '-100%',
+							ease: Power1.easeInOut,
 							onComplete: function () {
-								doctorClone.remove();
+								TweenMax.to($(this.target).parent().parent(), 1, {
+									overflow: 'hidden',
+									width: 0,
+									ease: Power1.easeInOut
+								});
 							}
 						});
-				}
 
-				if (!_thisMark.hasClass('is-active')) {
-					var _hideEl = mapSvg.parent().find('.js-map-mark').filter('.is-active');
+						_thisMark.addClass('is-active').parent().addClass('is-active');
+						TweenMax.to(_thisMark.children().last(), 1, {
+							width: _thisMark.children().last().children().outerWidth(),
+							ease: Power1.easeInOut,
+							onComplete: function () {
+								TweenMax.set($(this.target), {
+									overflow: 'visible'
+								});
+								TweenMax.to($(this.target).children().children(), 0.5, {
+									y: '0%',
+									ease: Power1.easeInOut
+								});
+							}
+						});
+					}
 
-					_hideEl.removeClass('is-active').parent().removeClass('is-active');
-					TweenMax.set(_hideEl.children().last().children().children(), {
-						y: '-100%',
-						ease: Power1.easeInOut,
-						onComplete: function () {
-							TweenMax.to($(this.target).parent().parent(), 1, {
-								overflow: 'hidden',
-								width: 0,
-								ease: Power1.easeInOut
-							});
-						}
+					navList.append('<div class="skill__top-nav-list-item js-doctor-slider"></div>');
+					var tempSlider = $('.js-doctor-slider').last().addClass('js-doctor-clone is-active');
+
+					navListEl.filter('[data-city="' + _thisMark.attr('data-city') + '"]').each(function () {
+						_sliderArray.push($(this).html());
 					});
 
-					_thisMark.addClass('is-active').parent().addClass('is-active');
-					TweenMax.to(_thisMark.children().last(), 1, {
-						width: _thisMark.children().last().children().outerWidth(),
-						ease: Power1.easeInOut,
-						onComplete: function () {
-							TweenMax.set($(this.target), {
-								overflow: 'visible'
-							});
-							TweenMax.to($(this.target).children().children(), 0.5, {
-								y: '0%',
-								ease: Power1.easeInOut
-							});
-						}
-					});
+					for (var i = 0; i < _sliderArray.length; i++) {
+						tempSlider.append('<div class="skill__top-nav-list-inner doctor"></div>');
+						tempSlider.find('.doctor').last().append(_sliderArray[i]);
+					}
+
+					initDoctorSlider(tempSlider);
+
+					var tweenEl1 = navListItem.filter('.is-active').find('.slick-slide');
+
+					TweenMax.staggerFromTo(tweenEl1, 1, {
+						y: 0,
+						alpha: 1
+					}, {
+						y: 30,
+						alpha: 0,
+						ease: Power1.easeInOut
+					}, 0.15);
+
+					navListItem.removeClass('is-active').last().next().addClass('is-active');
+
+					var tweenEl2 = tempSlider.find('.slick-slide');
+
+					TweenMax.staggerFromTo(tweenEl2, 1, {
+						y: -30,
+						alpha: 0
+					}, {
+						y: 0,
+						alpha: 1,
+						delay: 0.75,
+						ease: Power1.easeInOut
+					}, 0.15);
 				}
-
-				navList.append('<div class="skill__top-nav-list-item js-doctor-slider"></div>');
-				var tempSlider = $('.js-doctor-slider').last().addClass('js-doctor-clone is-active');
-
-				navListEl.filter('[data-city="' + _thisMark.attr('data-city') + '"]').each(function () {
-					_sliderArray.push($(this).html());
-				});
-
-				for (var i = 0; i < _sliderArray.length; i++) {
-					tempSlider.append('<div class="skill__top-nav-list-inner doctor"></div>');
-					tempSlider.find('.doctor').last().append(_sliderArray[i]);
-				}
-
-				initDoctorSlider(tempSlider);
-
-				var tweenEl1 = navListItem.filter('.is-active').find('.slick-slide');
-
-				TweenMax.staggerFromTo(tweenEl1, 1, {
-					y: 0,
-					alpha: 1
-				}, {
-					y: 30,
-					alpha: 0,
-					ease: Power1.easeInOut
-				}, 0.15);
-
-				navListItem.removeClass('is-active').last().next().addClass('is-active');
-
-				var tweenEl2 = tempSlider.find('.slick-slide');
-
-				TweenMax.staggerFromTo(tweenEl2, 1, {
-					y: -30,
-					alpha: 0
-				}, {
-					y: 0,
-					alpha: 1,
-					delay: 0.75,
-					ease: Power1.easeInOut
-				}, 0.15);
 			});
 		}
 
 		function initDoctorSlider(slider) {
 			slider.slick({
 				variableWidth: true,
+				slidesToShow: 4,
 				slidesToScroll: 1,
 				cssEase: 'ease-in-out',
 				speed: 750,
@@ -1313,8 +1309,15 @@ $(document).ready(function () {
 				nextArrow: '<button type="button" class="skill__next"><svg class="icon icon-arrow-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-right"></use></svg></button>',
 				responsive: [
 					{
+						breakpoint: 1280,
+						settings: {
+							slidesToShow: 2
+						}
+					},
+					{
 						breakpoint: 768,
 						settings: {
+							slidesToShow: 1,
 							prevArrow: '<button type="button" class="skill__prev"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>',
 							nextArrow: '<button type="button" class="skill__next"><svg class="icon icon-arrow-slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-slider"></use></svg></button>'
 						}

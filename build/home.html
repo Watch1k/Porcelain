@@ -97,7 +97,7 @@
               <div class="screen__inner">
                 <button class="screen__play js-play" type="button"><span class="screen__play-text">смотреть видео о нас</span>
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 28 34">
-                      <path class="path" id="wtf" d="M 25 18 L 3 31 L 3 3 L 25 18 L 3 31 Z"></path>
+                      <path class="path" d="M 25 18 L 3 31 L 3 3 L 25 18 L 3 31 Z"></path>
                     </svg>
                   </button>
                 <div class="screen__title">
@@ -172,10 +172,10 @@
           </div>
           <div class="inno__row">
             <div class="inno__col">
-              <div class="inno__item">
+              <div class="inno__item js-inno-el">
                 <div class="inno__item-inner js-motion" data-motion="motion3" data-main-delay="0.4" data-move-up="75">
                   <div class="inno__item-video">
-                    <video class="inno__video" src="video/inno-1.mp4" loop="loop" autoplay="true" muted="true"></video>
+                    <video src="video/inno-1.mp4" loop="loop" autoplay="true" muted="true"></video>
                   </div><img src="img/content/inno-1.jpg" alt="image">
                 </div>
                 <div class="inno__desc js-inno-desc">
@@ -192,7 +192,7 @@
               </div>
             </div>
             <div class="inno__col">
-              <div class="inno__item">
+              <div class="inno__item js-inno-el">
                 <div class="inno__item-inner js-motion" data-motion="motion3" data-main-delay="0" data-move-delay="0" data-move-up="75"><img src="img/content/inno-2.jpg" alt="image"></div>
                 <div class="inno__desc js-inno-desc">
                   <div class="inno__desc-title">
@@ -208,7 +208,7 @@
               </div>
             </div>
             <div class="inno__col">
-              <div class="inno__item">
+              <div class="inno__item js-inno-el">
                 <div class="inno__item-inner js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="75"><img src="img/content/inno-3.jpg" alt="image"></div>
                 <div class="inno__desc js-inno-desc">
                   <div class="inno__desc-title">
@@ -438,57 +438,38 @@
       </div>
       <!--end reg-->
       <!--begin service-->
-      <div class="service js-scene" data-offset="0">
-        <div class="service__container container">
-          <div class="service__item service__item_title js-motion" data-motion="motion1" data-advanced-width="40" data-main-delay="0.1" data-move-up="70">
-            <p>Сервис <br>клиники Porcelain <br>в деталях</p>
-          </div>
-          <div class="service__list js-service-slider">
-            <div class="service__item js-motion" data-motion="motion1" data-move-up="70">
-              <div class="service__title">
-                <div class="service__title-text">
-                  <p>Собираем самые необходимые данные и особенности пациента</p>
-                </div>
-              </div>
-            </div>
-            <div class="service__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="0.75"><img src="img/content/service-2.jpg" alt="image">
-              <div class="service__title">
-                <div class="service__title-text">
-                  <p>Игровая комната <br>и детский кабинет</p>
-                </div>
-              </div>
-            </div>
-            <div class="service__item js-motion" data-motion="motion1" data-main-delay="0.15" data-move-up="50">
-              <div class="service__title">
-                <div class="service__title-text">
-                  <p>Комната отдыха <br>и сна после наркоза</p>
-                </div>
-              </div>
-            </div>
-            <div class="service__item js-motion" data-motion="motion1" data-main-delay="0.2" data-move-up="30" data-speed-line="0.25" data-move-up-speed="1">
-              <div class="service__title">
-                <div class="service__title-text">
-                  <p>Небольшая библиотека Porcelain: свежие журналы <br>и книги</p>
-                </div>
-              </div>
-            </div>
-            <div class="service__item js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="50" data-move-up-speed="1"><img src="img/content/service-6.jpg" alt="image">
-              <div class="service__title">
-                <div class="service__title-text">
-                  <p>Профессиональная фотосессия <br>с мейкапом <br>по окончании лечения</p>
-                </div>
-              </div>
-            </div>
-            <div class="service__item js-motion" data-motion="motion1" data-main-delay="0.25" data-move-up="70" data-speed-line="1">
-              <div class="service__title">
-                <div class="service__title-text">
-                  <p>Кафе в клинике, <br>где можно попробовать десерт <br>и выпить чай</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!--.service.js-scene(data-offset='0')
+        .service__container.container
+        	.service__item.service__item_title.js-motion(data-motion='motion1' data-advanced-width='40' data-main-delay='0.1' data-move-up='70')
+        		p Сервис <br>клиники Porcelain <br>в деталях
+        	.service__list.js-service-slider
+        		.service__item.js-motion(data-motion='motion1' data-move-up='70')
+        			.service__title
+        				.service__title-text
+        					p Собираем самые необходимые данные и особенности пациента
+        		.service__item.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='30' data-speed-line='0.25' data-move-up-speed='0.75')
+        			img(src='img/content/service-2.jpg' alt='image')
+        			.service__title
+        				.service__title-text
+        					p Игровая комната <br>и детский кабинет
+        		.service__item.js-motion(data-motion='motion1' data-main-delay='0.15' data-move-up='50')
+        			.service__title
+        				.service__title-text
+        					p Комната отдыха <br>и сна после наркоза
+        		.service__item.js-motion(data-motion='motion1' data-main-delay='0.2' data-move-up='30' data-speed-line='0.25' data-move-up-speed='1')
+        			.service__title
+        				.service__title-text
+        					p Небольшая библиотека Porcelain: свежие журналы <br>и книги
+        		.service__item.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='50' data-move-up-speed='1')
+        			img(src='img/content/service-6.jpg' alt='image')
+        			.service__title
+        				.service__title-text
+        					p Профессиональная фотосессия <br>с мейкапом <br>по окончании лечения
+        		.service__item.js-motion(data-motion='motion1' data-main-delay='0.25' data-move-up='70' data-speed-line='1')
+        			.service__title
+        				.service__title-text
+        					p Кафе в клинике, <br>где можно попробовать десерт <br>и выпить чай
+        -->
       <!--end service-->
       <!--begin skill-->
       <div class="skill js-scene" data-offset="0">
@@ -707,8 +688,7 @@
                     <p>Страна обучения: Германия</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Салтыков И. О.</div>
+                </div><a class="doctor__name" href="#">Салтыков И. О.</a>
                 <div class="doctor__spec">Доктор-гигиенист</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">DE</div>
@@ -723,8 +703,7 @@
                     <p>Страна обучения: Германия</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Мирончук А. А.</div>
+                </div><a class="doctor__name" href="#">Мирончук А. А.</a>
                 <div class="doctor__spec">Доктор-терапевт, <br>ортопед</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">DE</div>
@@ -739,8 +718,7 @@
                     <p>Страна обучения: Германия</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Прощин Н. И.</div>
+                </div><a class="doctor__name" href="#">Прощин Н. И.</a>
                 <div class="doctor__spec">Доктор-ортодонт</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">DE</div>
@@ -755,8 +733,7 @@
                     <p>Страна обучения: Швейцария</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Дмитренко А. С.</div>
+                </div><a class="doctor__name" href="#">Дмитренко А. С.</a>
                 <div class="doctor__spec">Доктор-ортодонт</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">CH</div>
@@ -771,8 +748,7 @@
                     <p>Страна обучения: Швейцария</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Фурман В. C.</div>
+                </div><a class="doctor__name" href="#">Фурман В. C.</a>
                 <div class="doctor__spec">Доктор-ортодонт</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">CH</div>
@@ -787,8 +763,7 @@
                     <p>Страна обучения: Швейцария</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Доктор №6</div>
+                </div><a class="doctor__name" href="#">Доктор №6</a>
                 <div class="doctor__spec">Доктор-ортодонт</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">CH</div>
@@ -803,8 +778,7 @@
                     <p>Страна обучения: Швейцария</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Доктор №7</div>
+                </div><a class="doctor__name" href="#">Доктор №7</a>
                 <div class="doctor__spec">Доктор-ортодонт</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">CH</div>
@@ -822,8 +796,7 @@
                     <p>Страна обучения: Венгрия</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Салтыков И. О.</div>
+                </div><a class="doctor__name" href="#">Салтыков И. О.</a>
                 <div class="doctor__spec">Доктор-гигиенист</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">HU</div>
@@ -838,8 +811,7 @@
                     <p>Страна обучения: Чехия</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Мирончук А. А.</div>
+                </div><a class="doctor__name" href="#">Мирончук А. А.</a>
                 <div class="doctor__spec">Доктор-терапевт, <br>ортопед</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">CZ</div>
@@ -854,8 +826,7 @@
                     <p>Страна обучения: Польща</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Прощин Н. И.</div>
+                </div><a class="doctor__name" href="#">Прощин Н. И.</a>
                 <div class="doctor__spec">Доктор-ортодонт</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">PL</div>
@@ -870,8 +841,7 @@
                     <p>Страна обучения: Польща</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Дмитренко А. С.</div>
+                </div><a class="doctor__name" href="#">Дмитренко А. С.</a>
                 <div class="doctor__spec">Доктор-ортодонт</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">PL</div>
@@ -886,8 +856,7 @@
                     <p>Страна обучения: Польща</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Фурман В. C.</div>
+                </div><a class="doctor__name" href="#">Фурман В. C.</a>
                 <div class="doctor__spec">Доктор-ортодонт</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">PL</div>
@@ -902,8 +871,7 @@
                     <p>Страна обучения: Польща</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Доктор №6</div>
+                </div><a class="doctor__name" href="#">Доктор №6</a>
                 <div class="doctor__spec">Доктор-ортодонт</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">PL</div>
@@ -918,8 +886,7 @@
                     <p>Страна обучения: Польща</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Доктор №7</div>
+                </div><a class="doctor__name" href="#">Доктор №7</a>
                 <div class="doctor__spec">Доктор-ортодонт</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">PL</div>
@@ -937,8 +904,7 @@
                     <p>Страна обучения: Италия</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Салтыков И. О.</div>
+                </div><a class="doctor__name" href="#">Салтыков И. О.</a>
                 <div class="doctor__spec">Доктор-гигиенист</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">IT</div>
@@ -953,8 +919,7 @@
                     <p>Страна обучения: Италия</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Мирончук А. А.</div>
+                </div><a class="doctor__name" href="#">Мирончук А. А.</a>
                 <div class="doctor__spec">Доктор-терапевт, <br>ортопед</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">IT</div>
@@ -972,8 +937,7 @@
                     <p>Страна обучения: Израиль</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Салтыков И. О.</div>
+                </div><a class="doctor__name" href="#">Салтыков И. О.</a>
                 <div class="doctor__spec">Доктор-гигиенист</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">IL</div>
@@ -988,8 +952,7 @@
                     <p>Страна обучения: Турция</p>
                     <p>Изучение: <br>DSD концепция</p>
                   </div>
-                </div>
-                <div class="doctor__name">Мирончук А. А.</div>
+                </div><a class="doctor__name" href="#">Мирончук А. А.</a>
                 <div class="doctor__spec">Доктор-терапевт, <br>ортопед</div>
                 <div class="doctor__settings">
                   <div class="js-doctor-domen">TR</div>
