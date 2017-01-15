@@ -366,7 +366,7 @@ $(document).ready(function () {
 				});
 
 				var SceneModule = function (el) {
-					this.container = el.parent();
+					this.container = el;
 					this.element = el.hasClass('js-motion') ? el : el.find('.js-motion');
 				};
 				sceneEl.each(function () {
