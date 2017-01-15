@@ -1,10 +1,13 @@
 // fonts
 +font('PTSans-Regular', 'PTSans-Regular')
++font('OpenSans', 'OpenSans')
 +font('OpenSans-Extrabold', 'OpenSans-Extrabold')
 
 $default-fonts: Arial, sans-serif
 =pt
 	font-family: 'PTSans-Regular', $default-fonts
+=open
+	font-family: 'OpenSans', $default-fonts
 =open-extrabold
 	font-family: 'OpenSans-Extrabold', $default-fonts
 
@@ -436,7 +439,7 @@ img
 
 .is-hidden
 	display: none
-
+	
 .vertical
 	display: inline-block
 	vertical-align: middle
@@ -797,8 +800,8 @@ img
 				display: none
 	&_footer
 		color: $gray-light
-	&_footer &__item.active
-		visibility: hidden
+	&_footer &__item.active &__link
+		color: #ffffff
 	+r(1279)
 		&_footer
 			display: flex
@@ -959,7 +962,7 @@ img
 		position: relative
 		height: 100vh
 		overflow: hidden
-		+r(767)
+		+r(1279)
 			height: 540px
 	&__slider.is-video &__item
 		pointer-events: none
@@ -1028,6 +1031,11 @@ img
 			color: #ffffff
 		.is-loaded &
 			transform: translateX(0)
+		&_open-article
+			top: auto
+			margin-left: -330px
+			+r(1279)
+				top: 0
 		&-text
 			display: inline-block
 			vertical-align: 2px
@@ -1103,6 +1111,8 @@ img
 		width: 100%
 		+r(767)
 			margin-top: 15px
+		&_open-article
+			margin-top: 0
 	&__title
 		max-width: 460px
 		margin-left: auto
@@ -1120,6 +1130,8 @@ img
 			transition: all 1s ease-in-out
 		.is-loaded & p
 			transform: scale(1)
+		&_open-article
+			margin-top: -7px
 	&__slider.is-video &__title
 		opacity: 0
 		transform: translateX(50px)
@@ -1692,6 +1704,13 @@ img
 						top: 40px
 					+r(767)
 						display: none
+		&_open-article
+			overflow: hidden
+			float: left
+			height: auto
+			margin-bottom: 0
+			+ratio(1,1)
+			background-color: $red
 		.motion
 			overflow: hidden
 			z-index: 0
@@ -3614,7 +3633,6 @@ img
 				background-color: #ffffff
 	&__desc
 		font-size: 16px
-		max-height: 0
 		opacity: 0
 		height: 0
 		+trs
@@ -3624,7 +3642,6 @@ img
 			margin-top: 10px
 	&__col.is-active &__desc
 		height: 75px
-		max-height: 75px
 		opacity: 1
 	&__col.is-active &__desc a
 		pointer-events: auto
@@ -3857,7 +3874,169 @@ img
 			background-color: $red
 			transform: rotate(45deg) translateZ(0)
 		
+
+/* ===================================
+	 Open Article Page
+	 =================================== */
+.page-open-article
+	.screen
+		.line-vertical_left:after,
+		.line-vertical_right:after
+			top: 121px
+	.hamburger__inner
+		background-color: #ffffff
+	.hamburger__inner:before,
+	.hamburger__inner:after
+		background-color: #ffffff
+	.main
+		padding-top: 38px
+	.header__logo
+		color: #ffffff
+	.header__bot
+		border-bottom: 1px solid rgba(#f5f5f5, 0.1)
+	.nav
+		color: #ffffff
+	.footer
+		border-top: none
+		+r(767)
+			margin-top: 70px
+			border-top: 1px solid #f5f5f5
+	.nav_footer
+		color: $gray-light
 		
+.open-article
+	padding-top: 85px
+	padding-bottom: 85px
+	&__row
+		display: flex
+	&__col
+		&:nth-child(1)
+			flex-basis: calc(25% - 52px)
+		&:nth-child(2)
+			flex-basis: calc(50% + 104px)
+			font-size: 16px
+			color: $gray-dark
+			letter-spacing: -0.0075em
+		&:nth-child(3)
+			display: flex
+			justify-content: flex-start
+			flex-basis: calc(25% - 52px)
+			align-items: flex-end
+			flex-direction: column
+	&__back
+		display: table
+		+open-extrabold
+		font-size: 12px
+		line-height: 18px
+		text-transform: uppercase
+		+trs
+		.icon
+			margin-left: -1px
+			margin-right: 9px
+			display: inline-block
+			vertical-align: -2px
+			color: #000000
+			+trs
+		&:hover
+			color: $red
+			.icon
+				color: $red
+		.motion
+			&__element
+				background-color: $red
+	&__date
+		position: relative
+		display: table
+		margin-top: 52px
+		+open
+		font-size: 12px
+		color: $gray-dark
+		&:before
+			content: ''
+			position: absolute
+			top: -26px
+			left: 0
+			width: 77px
+			height: 1px
+			pointer-events: none
+			background-color: $gray-light
+		.motion
+			&__element
+				background-color: $red
+	&__p
+		.motion
+			&__element
+				background-color: $red
+		& + &
+			margin-top: 20px
+	&__p + &__image
+		margin-top: 55px
+	&__image
+		.motion
+			&__element
+				background-color: $red
+	&__quote
+		position: relative
+		max-width: 504px
+		margin: 82px auto 76px
+		+open-extrabold
+		font-size: 12px
+		color: #000000
+		line-height: 24px
+		text-transform: uppercase
+		&:before
+			content: '“'
+			position: absolute
+			top: 0
+			left: -20px
+			margin-left: -11.5%
+			font-size: 72px
+			+open-extrabold
+			color: #ced0d6
+			+r(767)
+				top: -15px
+				left: 0
+				margin-left: 0
+				font-size: 50px
+		.motion
+			&__element
+				background-color: $red
+	&__share
+		margin-top: 5px
+		display: table
+		+open
+		font-size: 12px
+		color: $gray-light
+		.motion
+			&__element
+				background-color: $red
+	&__soc
+		margin-top: 25px
+		&-row
+			display: flex
+			flex-direction: row
+			justify-content: flex-end
+		&-item
+			background-color: $red
+			+trs
+			&:hover
+				background-color: $gray-light
+			& + &
+				margin-left: 20px
+		&-link
+			display: flex
+			justify-content: center
+			align-items: center
+			width: 40px
+			height: 40px
+			color: #ffffff
+			.icon-tw
+				font-size: 12px
+			.icon-fb
+				font-size: 16px
+
+
+
 /* ===================================
 	 Other Styles
 	 =================================== */

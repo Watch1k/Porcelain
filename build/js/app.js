@@ -484,8 +484,8 @@ $(document).ready(function () {
 				});
 
 				var SceneModule = function (el) {
-					this.container = el;
-					this.element = el.find('.js-motion');
+					this.container = el.parent();
+					this.element = el.hasClass('js-motion') ? el : el.find('.js-motion');
 				};
 				sceneEl.each(function () {
 					var sceneModule = new SceneModule($(this));
@@ -493,9 +493,12 @@ $(document).ready(function () {
 					sceneModule.container.controller = new ScrollMagic.Controller();
 
 					sceneModule.element.each(function () {
+						var sceneItem = $(this).hasClass('js-scene') ? this : $(this).get(0).closest('.js-scene');
+						var sceneOffset = $(this).hasClass('js-scene') ? $(this).attr('data-offset') / 100 * $(window).height() : $(this).closest('.js-scene').attr('data-offset') / 100 * $(window).height();
+
 						sceneModule.container.scene = new ScrollMagic.Scene({
-							triggerElement: this.closest('.js-scene'),
-							offset: $(this).closest('.js-scene').attr('data-offset') / 100 * $(window).width()
+							triggerElement: sceneItem,
+							offset: sceneOffset
 						})
 							.setTween(this.animation.tweenAnimation)
 							.addTo(sceneModule.container.controller);
@@ -726,7 +729,7 @@ $(document).ready(function () {
 					tabsHeight = 0;
 				tabsButton.removeClass('is-active');
 				$(this).addClass('is-active');
-				tabsItem.fadeOut('fast').promise().done(function () {
+				tabsItem.filter(':visible').fadeOut('fast', function () {
 					tabsHeight = tabsItem.eq(index).outerHeight();
 					tabs.css({height: tabsHeight});
 					tabsItem.eq(index).fadeIn('fast');
@@ -738,19 +741,20 @@ $(document).ready(function () {
 	(function () {
 		var scrollBtn = $('.js-scroll-btn'),
 			screenSlider = $('.js-screen-slider'),
-			sliderVideo = screenSlider.find('video'),
+			sliderWrap = $('.screen__slider'),
+			sliderVideo = sliderWrap.find('video'),
 			playBtn = $('.js-play');
 
 		playBtn.on('click', function () {
 			$("html, body").animate({scrollTop: $(this).closest('.screen__item').offset().top}, 750);
 			$(this).closest('.screen__item').find(sliderVideo).addClass('is-active').get(0).play();
-			$(this).closest(screenSlider).addClass('is-video');
+			$(this).closest(sliderWrap).addClass('is-video');
 			scrollBtn.addClass('is-video');
 		});
 
 		sliderVideo.on('click', function () {
 			$(this).removeClass('is-active').get(0).pause();
-			$(this).closest(screenSlider).removeClass('is-video');
+			$(this).closest(sliderWrap).removeClass('is-video');
 			scrollBtn.removeClass('is-video');
 		});
 
@@ -759,7 +763,24 @@ $(document).ready(function () {
 			$("html, body").animate({scrollTop: $($(this).data('href')).offset().top}, 750);
 		});
 
-		screenSlider.on('init', function (slick) {
+		if (screenSlider.length) {
+			screenSlider.on('init', function (slick) {
+				setTimeout(function () {
+					$('.screen__anime').addClass('is-loaded');
+					TweenMax.to($('.screen__play .icon'), 1, {opacity: 1, delay: 0.5});
+					TweenMax.to($('.screen__play-text, .screen__scroll-text'), 1, {
+						opacity: 1,
+						transform: 'translateY(0)',
+						delay: 0.5
+					});
+					TweenMax.to($('.screen__scroll-line'), 1, {
+						opacity: 1, transform: 'translateY(0)', delay: 0.5, ease: Power2.easeInOut, onComplete: function () {
+							$(this.target[0]).addClass('is-animated');
+						}
+					});
+				}, 2750);
+			});
+		} else {
 			setTimeout(function () {
 				$('.screen__anime').addClass('is-loaded');
 				TweenMax.to($('.screen__play .icon'), 1, {opacity: 1, delay: 0.5});
@@ -774,7 +795,7 @@ $(document).ready(function () {
 					}
 				});
 			}, 2750);
-		});
+		}
 
 		for (var i = 0; i < screenSlider.children().length; i++) {
 			screenSlider.children().eq(i).attr('data-count', i);
