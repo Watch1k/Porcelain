@@ -927,10 +927,6 @@ $(document).ready(function () {
 	})();
 
 	(function () {
-
-		var element = document.getElementById('wtf');
-		console.log(element.getTotalLength());
-
 		var mapSvg = $('.js-map-svg'),
 			mapPath = mapSvg.find('path'),
 			navFor = $('.js-nav-for'),
