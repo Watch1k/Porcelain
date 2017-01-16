@@ -4,12 +4,10 @@ block title
 block wrapper
     .wrapper
         main.main
-            // popups should be contained here
-            .popups_container
-
-                // cooperation
-                .popup.popup-cooperation(style="display: none")
-                    .popup__close
+            // cooperation
+            .popup.popup-cooperation(tabindex="-1", role="dialog")
+                .popup__container
+                    .popup__close-btn
                         span
                         span
                     .popup__content
@@ -28,9 +26,10 @@ block wrapper
                             span или звоните
                             a(href="tel:044 593 77 87") 044 593 77 87
 
-                // subscribe
-                .popup.popup-subscribe(style="display: none")
-                    .popup__close
+            // subscribe
+            .popup.popup-subscribe(tabindex="-1", role="dialog")
+                .popup__container
+                    .popup__close-btn
                         span
                         span
                     .popup__content
@@ -49,9 +48,10 @@ block wrapper
                             span или звоните
                             a(href="tel:044 593 77 87") 044 593 77 87
 
-                // subscribe
-                .popup.popup-request(style="display: none")
-                    .popup__close
+            // subscribe
+            .popup.popup-request(tabindex="-1", role="dialog")
+                .popup__container
+                    .popup__close-btn
                         span
                         span
                     .popup__content
@@ -70,9 +70,10 @@ block wrapper
                             span или звоните
                             a(href="tel:044 593 77 87") 044 593 77 87
 
-                // thank you
-                .popup.popup-thankyou(style="display: none")
-                    .popup__close
+            // thank you
+            .popup.popup-thankyou(tabindex="-1", role="dialog")
+                .popup__container
+                    .popup__close-btn
                         span
                         span
                     .popup__content.popup__content-padding
@@ -82,9 +83,10 @@ block wrapper
                             | Посмотреть услуги
                             .btn__icon
 
-                // an appointment
-                .popup.popup-appointment(style="display: none")
-                    .popup__close
+            // an appointment
+            .popup.popup-appointment(tabindex="-1", role="dialog")
+                .popup__container
+                    .popup__close-btn
                         span
                         span
                     .popup__content
@@ -105,9 +107,10 @@ block wrapper
                             span или звоните
                             a(href="tel:044 593 77 87") 044 593 77 87
 
-                // thank you without avatar
-                .popup.popup-thankyou_short(style="display: none")
-                    .popup__close
+            // thank you without avatar
+            .popup.popup-thankyou_short(tabindex="-1", role="dialog")
+                .popup__container
+                    .popup__close-btn
                         span
                         span
                     .popup__content.popup__content-padding
@@ -116,9 +119,10 @@ block wrapper
                             | Посмотреть услуги
                             .btn__icon
 
-                // location info popup
-                .popup.popup-to_get_info
-                    .popup__close
+            // location info popup
+            .popup.popup-to_get_info(tabindex="-1", role="dialog")
+                .popup__container
+                    .popup__close-btn
                         span
                         span
                     .popup__content.popup__content-wide

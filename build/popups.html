@@ -46,11 +46,10 @@
   </div>
   <div class="wrapper">
     <main class="main">
-      <!-- popups should be contained here-->
-      <div class="popups_container">
-        <!-- cooperation-->
-        <div class="popup popup-cooperation" style="display: none">
-          <div class="popup__close"><span></span><span></span></div>
+      <!-- cooperation-->
+      <div class="popup popup-cooperation" tabindex="-1" role="dialog">
+        <div class="popup__container">
+          <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content">
             <div class="popup__title">Давайте сотрудничать</div>
             <form class="popup__form">
@@ -70,9 +69,11 @@
             <div class="popup__footer"><span>или звоните</span><a href="tel:044 593 77 87">044 593 77 87</a></div>
           </div>
         </div>
-        <!-- subscribe-->
-        <div class="popup popup-subscribe" style="display: none">
-          <div class="popup__close"><span></span><span></span></div>
+      </div>
+      <!-- subscribe-->
+      <div class="popup popup-subscribe" tabindex="-1" role="dialog">
+        <div class="popup__container">
+          <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content">
             <div class="popup__title">Подпишитесь на рассылку что бы всегда быть в курсе последних событий!</div>
             <form class="popup__form">
@@ -92,9 +93,11 @@
             <div class="popup__footer"><span>или звоните</span><a href="tel:044 593 77 87">044 593 77 87</a></div>
           </div>
         </div>
-        <!-- subscribe-->
-        <div class="popup popup-request" style="display: none">
-          <div class="popup__close"><span></span><span></span></div>
+      </div>
+      <!-- subscribe-->
+      <div class="popup popup-request" tabindex="-1" role="dialog">
+        <div class="popup__container">
+          <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content">
             <div class="popup__title">Заполнить заявку</div>
             <form class="popup__form">
@@ -114,15 +117,19 @@
             <div class="popup__footer"><span>или звоните</span><a href="tel:044 593 77 87">044 593 77 87</a></div>
           </div>
         </div>
-        <!-- thank you-->
-        <div class="popup popup-thankyou" style="display: none">
-          <div class="popup__close"><span></span><span></span></div>
+      </div>
+      <!-- thank you-->
+      <div class="popup popup-thankyou" tabindex="-1" role="dialog">
+        <div class="popup__container">
+          <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content popup__content-padding"><img class="popup__avatar" src="img/content/popup-avatar.png"><span class="popup__title">Спасибо!<br> Анастасия скоро с вами свяжется и уточнит все вопросы</span><a class="popup__btn btn btn_red" href="#!">Посмотреть услуги
                 <div class="btn__icon"></div></a></div>
         </div>
-        <!-- an appointment-->
-        <div class="popup popup-appointment" style="display: none">
-          <div class="popup__close"><span></span><span></span></div>
+      </div>
+      <!-- an appointment-->
+      <div class="popup popup-appointment" tabindex="-1" role="dialog">
+        <div class="popup__container">
+          <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content">
             <div class="popup__title">Запись на прием</div>
             <form class="popup__form">
@@ -145,15 +152,19 @@
             <div class="popup__footer"><span>или звоните</span><a href="tel:044 593 77 87">044 593 77 87</a></div>
           </div>
         </div>
-        <!-- thank you without avatar-->
-        <div class="popup popup-thankyou_short" style="display: none">
-          <div class="popup__close"><span></span><span></span></div>
+      </div>
+      <!-- thank you without avatar-->
+      <div class="popup popup-thankyou_short" tabindex="-1" role="dialog">
+        <div class="popup__container">
+          <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content popup__content-padding"><span class="popup__title">Спасибо!<br />Наш менеджер свяжется с вами в течение там дня или 3х часов</span><a class="popup__btn btn btn_red" href="#!">Посмотреть услуги
                 <div class="btn__icon"></div></a></div>
         </div>
-        <!-- location info popup-->
-        <div class="popup popup-to_get_info">
-          <div class="popup__close"><span></span><span></span></div>
+      </div>
+      <!-- location info popup-->
+      <div class="popup popup-to_get_info" tabindex="-1" role="dialog">
+        <div class="popup__container">
+          <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content popup__content-wide">
             <div class="text-block">
               <div class="text-block__title"><img src="img/content/icon-bus.png"><span>На маршрутке:</span></div>
