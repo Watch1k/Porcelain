@@ -824,11 +824,11 @@ $(document).ready(function () {
 				}
 			});
 		} else {
-			innoDescTitle.on('click', function () {
+			innoEl.on('click', function () {
 				var _this = $(this),
-					_thisVideo = _this.closest(innoEl).find(innoVideo);
+					_thisVideo = _this.find(innoVideo);
 
-				_this.closest(innoEl).toggleClass('is-active');
+				_this.toggleClass('is-active');
 				_this.find('.icon').toggleClass('is-active');
 				if (_thisVideo.length) {
 					if (_thisVideo.get(0).paused) {

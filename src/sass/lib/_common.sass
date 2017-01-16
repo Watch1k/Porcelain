@@ -250,7 +250,11 @@ body
 	+smooth
 	background-color: #ffffff
 	&.is-overflow
+		position: fixed
 		overflow: hidden
+		top: 0
+		left: 0
+		right: 0
 
 .wrapper
 	position: relative
@@ -605,6 +609,8 @@ img
 	.is-loaded &
 		opacity: 1
 		transform: translateY(0)
+	&__container
+		+pie-clearfix
 	&__top
 		position: relative
 		z-index: 2
@@ -760,18 +766,23 @@ img
 		+r(1279)
 			display: none
 			flex-direction: column
-			justify-content: center
 			position: absolute
+			justify-content: center
 			left: 0
 			right: 0
 			top: -14px
 			height: calc(100vh - 38px)
 			background-color: #ffffff
 			width: 100%
+			flex-wrap: nowrap
 			&.is-active
 				display: flex
+				overflow-y: auto
 		+r(767)
-			height: calc(540px - 38px)
+			justify-content: flex-start
+			padding-top: 30px
+			padding-bottom: 30px
+			height: calc(100vh - 38px)
 	+r(1279)
 		&_header &__item
 			color: #000000
@@ -783,6 +794,8 @@ img
 	&_header &__item
 		opacity: 0
 		transform: translateY(-15px)
+		+r(1279)
+			transform: none
 	&__link
 		display: block
 		+trs
@@ -812,6 +825,7 @@ img
 			flex-direction: column
 			flex-wrap: wrap
 			max-height: 140px
+			min-width: 0
 			+r(767)
 				max-height: 160px
 		&_footer &__item
@@ -820,10 +834,12 @@ img
 			padding-top: 13px
 			padding-bottom: 13px
 			width: 33.33%
+			flex: 1 0 33.33%
 			+r(767)
 				padding-top: 10px
 				padding-bottom: 10px
 				width: 50%
+				flex: 1 0 50%
 	&_footer &__item
 		padding-left: 24px
 		padding-right: 25px
@@ -837,13 +853,17 @@ img
 	background-color: lighten($red,30)
 	border-top: 1px solid #f5f5f5
 	&__top
+		overflow: hidden
 		padding-top: 12px
 		padding-bottom: 12px
 		background-color: #ffffff
-		+pie-clearfix
+	&__container
+		overflow: hidden
 	&__nav
 		float: left
 		margin-left: -24px
+		+r(1279)
+			float: none
 	&__socials
 		margin-top: 15px
 		margin-right: -5px
@@ -1007,6 +1027,13 @@ img
 		background-position: center center
 		background-repeat: no-repeat
 		background-size: cover
+		&_tablet
+			display: none
+			+r(1279)
+				display: block
+		&_tablet + &
+			+r(1279)
+				display: none
 		.slick-current &
 			transform: scale(1.1)
 			transition: all 1s ease-in-out
@@ -2858,7 +2885,10 @@ img
 	padding-bottom: 240px
 	margin-bottom: 240px
 	z-index: 0!important
+	+r(1279)
+		margin-bottom: 275px
 	+r(767)
+		margin-bottom: 240px
 		padding-top: 60px
 		padding-bottom: 225px
 	&:before
@@ -2877,6 +2907,10 @@ img
 			content: none
 	.line-vertical
 		bottom: -240px
+		+r(1279)
+			bottom: -275px
+		+r(767)
+			bottom: -240px
 	&__container
 		pointer-events: none
 		+pie-clearfix
@@ -2960,6 +2994,7 @@ img
 					margin-left: 30px
 					margin-top: 70px
 				+r(767)
+					max-width: none
 					margin-left: 0
 					margin-top: 0
 			&-btn
@@ -3443,10 +3478,10 @@ img
 			text-transform: uppercase
 			line-height: 24px
 			+r(1279)
+				margin-left: 0
 				br
 					display: none
 			+r(767)
-				margin-left: 0
 			.motion
 				position: relative
 				overflow: hidden
@@ -3472,6 +3507,10 @@ img
 				font-size: 72px
 				+open-extrabold
 				color: #ced0d6
+				+r(1279)
+					margin-left: 0
+					left: -50px
+					top: 0
 				+r(767)
 					top: -15px
 					left: 0
@@ -3481,7 +3520,7 @@ img
 			position: relative
 			margin-top: 40px
 			+r(1279)
-				margin-top: 20px
+				margin-top: 50px
 			+r(767)
 				display: block
 				margin-left: auto
