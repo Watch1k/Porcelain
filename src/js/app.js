@@ -7,3 +7,4 @@
 //=include lib/animation.gsap.min.js
 //=include lib/slick.min.js
 //=include lib/common.js
+//=include lib/popup.js

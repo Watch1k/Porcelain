@@ -1,0 +1,182 @@
+extend includes/_layout
+block title
+    title Popups
+block wrapper
+    .wrapper
+        style(type='text/css').
+            .example {
+                margin: 50px;
+                width: 240px;
+                height: 40px;
+                border: 2px solid black;
+                background-color: white;
+                color: black;
+                text-align: center;
+                line-height: 40px;
+                cursor: pointer;
+                transition: all .3s ease;
+            }
+            .example:hover {
+                color: white;
+                background: black;
+            }
+        main.main
+            // example buttons
+            .example(data-target-popup="cooperation", data-popup="toggle") Cooperation
+            .example(data-target-popup="subscribe", data-popup="toggle") Subscribe
+            .example(data-target-popup="request", data-popup="toggle") Request
+            .example(data-target-popup="thankyou", data-popup="toggle") Thank you
+            .example(data-target-popup="thankyou_short", data-popup="toggle") Thank you 2
+            .example(data-target-popup="appointment", data-popup="toggle") Appointment
+            .example(data-target-popup="to_get", data-popup="toggle", data-popup-remote="./example.json") To get
+            // cooperation
+            .popup.popup-cooperation(tabindex="-1", role="dialog", data-popup-id="cooperation")
+                .popup__container
+                    .popup__close-btn
+                        span
+                        span
+                    .popup__content
+                        .popup__title Давайте сотрудничать
+                        form.popup__form
+                            label.form-group
+                                input(type="text", name="userName", placeholder="Ваше имя")
+                            label.form-group
+                                input(type="tel", name="userTel", placeholder="Ваш номер телефона")
+                            label.form-group
+                                input(type="text", name="useTheme", placeholder="Тема сотрудничества")
+                            button.popup__btn.btn.btn_red(type="submit")
+                                | отправить
+                                .btn__icon
+                        .popup__footer
+                            span или звоните
+                            a(href="tel:044 593 77 87") 044 593 77 87
+
+            // subscribe
+            .popup.popup-subscribe(tabindex="-1", role="dialog", data-popup-id="subscribe")
+                .popup__container
+                    .popup__close-btn
+                        span
+                        span
+                    .popup__content
+                        .popup__title Подпишитесь на рассылку что бы всегда быть в курсе последних событий!
+                        form.popup__form
+                            label.form-group
+                                input(type="text", name="userName", placeholder="Ваше имя")
+                            label.form-group
+                                input(type="email", name="userEmail", placeholder="Ваш email")
+                            label.form-group
+                                input(type="text", name="userKids", placeholder="Есть ли у вас дети?")
+                            button.popup__btn.btn.btn_red(type="submit")
+                                | подписаться
+                                .btn__icon
+                        .popup__footer
+                            span или звоните
+                            a(href="tel:044 593 77 87") 044 593 77 87
+
+            // subscribe
+            .popup.popup-request(tabindex="-1", role="dialog", data-popup-id="request")
+                .popup__container
+                    .popup__close-btn
+                        span
+                        span
+                    .popup__content
+                        .popup__title Заполнить заявку
+                        form.popup__form
+                            label.form-group
+                                input(type="text", name="userName", placeholder="Ваше имя")
+                            label.form-group
+                                input(type="email", name="userEmail", placeholder="Ваш номер телефона")
+                            label.form-group
+                                textarea(name="userQuestion", placeholder="Ваша проблема или вопрос?")
+                            button.popup__btn.btn.btn_red(type="submit")
+                                | отправить
+                                .btn__icon
+                        .popup__footer
+                            span или звоните
+                            a(href="tel:044 593 77 87") 044 593 77 87
+
+            // thank you
+            .popup.popup-thankyou(tabindex="-1", role="dialog", data-popup-id="thankyou")
+                .popup__container
+                    .popup__close-btn
+                        span
+                        span
+                    .popup__content.popup__content-padding
+                        img.popup__avatar(src="img/content/popup-avatar.png")
+                        span.popup__title Спасибо!<br> Анастасия скоро с вами свяжется и уточнит все вопросы
+                        a.popup__btn.btn.btn_red(href="#!")
+                            | Посмотреть услуги
+                            .btn__icon
+
+            // an appointment
+            .popup.popup-appointment(tabindex="-1", role="dialog", data-popup-id="appointment")
+                .popup__container
+                    .popup__close-btn
+                        span
+                        span
+                    .popup__content
+                        .popup__title Запись на прием
+                        form.popup__form
+                            label.form-group
+                                input(type="text", name="userName", placeholder="Ваше имя")
+                            label.form-group
+                                input(type="email", name="userEmail", placeholder="Ваш номер телефона")
+                            label.form-group
+                                textarea.textarea-small(name="userAppointment", placeholder="Предположительная дата и время записи")
+                            label.form-group
+                                textarea(name="userQuestion", placeholder="Ваша проблема или вопрос?")
+                            button.popup__btn.btn.btn_red(type="submit")
+                                | отправить
+                                .btn__icon
+                        .popup__footer
+                            span или звоните
+                            a(href="tel:044 593 77 87") 044 593 77 87
+
+            // thank you without avatar
+            .popup.popup-thankyou_short(tabindex="-1", role="dialog", data-popup-id="thankyou_short")
+                .popup__container
+                    .popup__close-btn
+                        span
+                        span
+                    .popup__content.popup__content-padding
+                        span.popup__title Спасибо!<br />Наш менеджер свяжется с вами в течение там дня или 3х часов
+                        a.popup__btn.btn.btn_red(href="#!")
+                            | Посмотреть услуги
+                            .btn__icon
+
+            // location info popup
+            .popup.popup-to_get(tabindex="-1", role="dialog", data-popup-id="to_get")
+                .popup__container
+                    .popup__close-btn
+                        span
+                        span
+                    .popup__content.popup__content-wide
+                        .text-block
+                            .text-block__title
+                               img(src="img/content/icon-bus.png")
+                               span На маршрутке:
+                            ul.text-block__list
+                                li.text-block__list_item М. Политехнический институт – маршрутка № 31 (конечная: перекресток ул. В.Василевской и проспекта Победы) до остановки «ул. Татарская» (конечная) – 25-30 минут;
+                                li.text-block__list_item М. Лукьяновская – маршрутка № 31 (остановка: ул. Белорусская, 1) до остановки «ул. Татарская» (конечная) – 10-15 минут;
+                                li.text-block__list_item М. Контрактовая площадь – маршрутка № 432 (конечная: угол Контрактовой площади и ул. Константиновской) до остановки «ул. Татарская» – 20-25 минут.
+                        .text-block
+                            .text-block__title
+                                img(src="img/content/icon-taxi.png")
+                                span На такси:
+                            ul.text-block__list
+                                li.text-block__list_item Подъезд со стороны ул. Татарской.
+                        .text-block
+                            .text-block__title
+                                img(src="img/content/icon-car.png")
+                                span Своим автомобилем:
+                            ul.text-block__list
+                                li.text-block__list_item М. Контрактовая площадь – ул. Нижний Вал – ул. Глыбочицкая – ул. Татарская;
+                                li.text-block__list_item М. Контрактовая площадь – ул. Фрунзе – ул. Нижнеюрковская – ул. О.Шмидта – ул. Татарская (направо);
+                                li.text-block__list_item Из центра города – ул. Б. Житомирская – ул. Артема – ул. Глыбочицкая – ул. Татарская; площадь Шевченко – ул. Фрунзе – Подольский спуск – ул. Овруцкая – ул. Баггоутовская – ул. Татарская (налево);
+                                li.text-block__list_item Борщаговка – проспект Комарова – ул. Борщаговская – ул. В.Черновола – ул. Глыбочицкая – ул. Татарская.
+
+
+
+
+
+

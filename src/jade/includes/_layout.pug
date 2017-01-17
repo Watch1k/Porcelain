@@ -109,10 +109,11 @@ html
                       l-1.2,3.2l-0.1,0.2l-1.5-3.4h-1.4l2.1,4.4c-0.1,0.2-0.2,0.4-0.3,0.5c-0.2,0.1-0.3,0.2-0.5,0.2c0,0,0,0,0,0c0,0,0,0-0.1,0\
                       c-0.3,0-0.6-0.1-0.8-0.2v1.1c0.3,0.1,0.6,0.1,0.9,0.1c0,0,0.1,0,0.1,0c0,0,0,0,0,0c0.3,0,0.6-0.1,1-0.2c0.3-0.1,0.5-0.3,0.7-0.5\
                       c0.3-0.4,0.5-0.7,0.7-1.2L158.8,50.5L158.8,50.5z M21.6,55.5L21.6,55.5L21.6,55.5L21.6,55.5L21.6,55.5z')
-    .wrapper
-      include _header
-      main.main.js-main
-        block content
+    block wrapper
+      .wrapper
+        include _header
+        main.main.js-main
+          block content
     include _footer
     block js
       script(src="js/app.js")
