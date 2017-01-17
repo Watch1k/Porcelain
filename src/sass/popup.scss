@@ -9,7 +9,8 @@
   opacity: 0;
   visibility: hidden;
 
-  transition: opacity .5s ease, transform .5s ease, visibility 0s .1s;
+  transition: opacity .3s ease, transform .5s ease;
+  will-change: opacity, transform;
 
   z-index: 1050;
 
@@ -33,7 +34,7 @@
 
     max-width: 420px;
 
-    transition: opacity .3s ease, transform .3s ease, visibility 0s .1s;
+    transition: opacity .2s ease, transform .3s ease, visibility 0s .1s;
 
     transform: translate3d(0, -50px, 0);
 
@@ -182,8 +183,8 @@
   }
 
   // to_get_info popup
-  &-to_get_info {
-    .popup__content {
+  &-to_get {
+    .popup__container {
       max-width: 840px;
     }
   }
@@ -191,11 +192,14 @@
 
 @media (max-width: 767px) {
   .popup {
-    width: 100%;
 
-    padding: 40px 15px 35px;
+    &__container {
+      width: 100%;
 
-    &__close {
+      padding: 40px 15px 35px;
+    }
+
+    &__close-btn {
       top: 15px;
       right: 15px;
     }

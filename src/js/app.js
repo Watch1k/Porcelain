@@ -8,6 +8,3 @@
 //=include lib/slick.min.js
 //=include lib/common.js
 //=include lib/popup.js
-
-//popup page test
-//=include popup_test.js

@@ -45,9 +45,36 @@
     </div>
   </div>
   <div class="wrapper">
+    <style type="text/css">
+      .example {
+        margin: 50px;
+        width: 240px;
+        height: 40px;
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        transition: all .3s ease;
+      }
+      
+      .example:hover {
+        color: white;
+        background: black;
+      }
+    </style>
     <main class="main">
+      <!-- example buttons-->
+      <div class="example" data-target-popup="cooperation" data-popup="toggle">Cooperation</div>
+      <div class="example" data-target-popup="subscribe" data-popup="toggle">Subscribe</div>
+      <div class="example" data-target-popup="request" data-popup="toggle">Request</div>
+      <div class="example" data-target-popup="thankyou" data-popup="toggle">Thank you</div>
+      <div class="example" data-target-popup="thankyou_short" data-popup="toggle">Thank you 2</div>
+      <div class="example" data-target-popup="appointment" data-popup="toggle">Appointment</div>
+      <div class="example" data-target-popup="to_get" data-popup="toggle" data-popup-remote="./example.json">To get</div>
       <!-- cooperation-->
-      <div class="popup popup-cooperation" tabindex="-1" role="dialog">
+      <div class="popup popup-cooperation" tabindex="-1" role="dialog" data-popup-id="cooperation">
         <div class="popup__container">
           <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content">
@@ -71,7 +98,7 @@
         </div>
       </div>
       <!-- subscribe-->
-      <div class="popup popup-subscribe" tabindex="-1" role="dialog">
+      <div class="popup popup-subscribe" tabindex="-1" role="dialog" data-popup-id="subscribe">
         <div class="popup__container">
           <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content">
@@ -95,7 +122,7 @@
         </div>
       </div>
       <!-- subscribe-->
-      <div class="popup popup-request" tabindex="-1" role="dialog">
+      <div class="popup popup-request" tabindex="-1" role="dialog" data-popup-id="request">
         <div class="popup__container">
           <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content">
@@ -119,7 +146,7 @@
         </div>
       </div>
       <!-- thank you-->
-      <div class="popup popup-thankyou" tabindex="-1" role="dialog">
+      <div class="popup popup-thankyou" tabindex="-1" role="dialog" data-popup-id="thankyou">
         <div class="popup__container">
           <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content popup__content-padding"><img class="popup__avatar" src="img/content/popup-avatar.png"><span class="popup__title">Спасибо!<br> Анастасия скоро с вами свяжется и уточнит все вопросы</span><a class="popup__btn btn btn_red" href="#!">Посмотреть услуги
@@ -127,7 +154,7 @@
         </div>
       </div>
       <!-- an appointment-->
-      <div class="popup popup-appointment" tabindex="-1" role="dialog">
+      <div class="popup popup-appointment" tabindex="-1" role="dialog" data-popup-id="appointment">
         <div class="popup__container">
           <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content">
@@ -154,7 +181,7 @@
         </div>
       </div>
       <!-- thank you without avatar-->
-      <div class="popup popup-thankyou_short" tabindex="-1" role="dialog">
+      <div class="popup popup-thankyou_short" tabindex="-1" role="dialog" data-popup-id="thankyou_short">
         <div class="popup__container">
           <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content popup__content-padding"><span class="popup__title">Спасибо!<br />Наш менеджер свяжется с вами в течение там дня или 3х часов</span><a class="popup__btn btn btn_red" href="#!">Посмотреть услуги
@@ -162,7 +189,7 @@
         </div>
       </div>
       <!-- location info popup-->
-      <div class="popup popup-to_get_info" tabindex="-1" role="dialog">
+      <div class="popup popup-to_get" tabindex="-1" role="dialog" data-popup-id="to_get">
         <div class="popup__container">
           <div class="popup__close-btn"><span></span><span></span></div>
           <div class="popup__content popup__content-wide">

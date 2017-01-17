@@ -1,138 +1,197 @@
-/**
- * Created by Alexander Lozovskiy on 13.01.2017.
- */
-function Popup(callbackParams) {
-  var params = callbackParams || {};
-  var _this = this;
-
-  //Рендер элементов
+;(function () {
   var body = document.body;
-  var popup = createElement('popup hidden', 'body');
-  var popupContainer = createElement('popup__container', '.popup');
-  var closeBtn = createElement('popup__close-btn', '.popup__container');
-  var popupContent = createElement('popup__content', '.popup__container');
-  var esc = 27;
-
-  var openBtns = document.querySelectorAll('.popup__open-btn');
-  var closeBtns = document.querySelectorAll('.popup__close-btn');
-
-  //Events
-  for (var i = 0; i < closeBtns.length; i++) {
-    closeBtns[i].addEventListener('click', closePopup);
-  }
-  for (var i = 0; i < openBtns.length; i++) {
-    openBtns[i].addEventListener('click', showPopup);
-  }
-  body.addEventListener('keyup', onPressClose);
 
   /**
-   * Функция рендера элементов
+   * Popup module.
    *
-   * @param {String} elementClass
-   * @param {String|HTMLElement} elementContainer
-   * @returns {Element}
+   * @TODO: add beforeOpen, afterOpen, onOpen, onClose callbacks
+   *
+   * @param {HTMLElement} button
+   * @param {Object} options
+   * @param {String} [options.openedClass]
+   * @param {String} [options.openedBodyClass]
+   * @param {String} [options.popupDialogBoxClass]
+   * @param {String} [options.targetPopupId] - Popup to show (its data-pop-id value)
+   * @param {String} [options.closeBtnSelector]
+   * @param {Boolean} [options.closeOnEsc]
+   * @param {Number} [options.animationTime] - time in ms
+   * @param {String|Boolean} [options.remote] - Remote data URL (TODO: make it an object with callback params)
    */
-  function createElement(elementClass, elementContainer) {
+  function Popup (button, options) {
+    options = options || {};
 
-    var container = document.createElement('div');
+    this.options = {
+      openedClass: options.openedClass || 'opened',
+      openedBodyClass: options.openedBodyClass || 'popup-opened',
+      popupDialogBoxClass: options.popupDialogBoxClass || '.popup__container',
+      targetPopupId: options.targetPopupId || button.dataset.targetPopup,
+      closeBtnSelector: options.closeBtnSelector || '.popup__close-btn',
+      closeOnEsc: typeof options.closeOnEsc === 'boolean' ? options.closeOnEsc : true,
+      animationTime: options.animationTime || 200,
+      remote: options.remote || false
+    };
 
-    container.className = elementClass;
-
-    elementContainer = document.querySelector(elementContainer);
-
-    elementContainer.appendChild(container);
-
-    return container;
+    this.button = button;
+    this.popup = document.querySelector('[data-popup-id="' + this.options.targetPopupId + '"]');
+    this.closeBtn = this.popup.querySelector(this.options.closeBtnSelector);
+    this.dialogBox = this.popup.querySelector(this.options.popupDialogBoxClass);
   }
 
-  //Закрытие по нажатию екнопки ESC
-  function onPressClose(object) {
-    if (object.which == esc) {
-      closePopup()
+  /**
+   * Open popup.
+   *
+   * @param {Object} remoteData - ajax request 'response' object
+   */
+  Popup.prototype.open = function (remoteData) {
+    // do stuff with remote data before popup open
+    if (remoteData) {
+      console.log(remoteData);
     }
-  }
 
-  //Открыть попап
-  function showPopup() {
-    typeof _this.params.beforeOpen === 'function' ? _this.params.beforeOpen.call(_this) : null;
-    body.style.overflow = "hidden";
-    body.style.height = "100%";
-    popup.classList.remove('hidden');
-    popup.classList.add('visible');
-    typeof _this.params.afterOpen === 'function' ? _this.params.afterOpen.call(_this) : null;
-  }
+    // hide body scrollbar if popup is higher then window
+    if (this.dialogBox.offsetHeight + 60 > window.innerHeight && window.innerWidth > 1024) {
+      //@TODO: check and add padding if needed (visual bug, bootstrap solution)
+      body.style.overflow = 'hidden';
 
-  //Закрыть попап
-  function closePopup() {
-    typeof _this.params.beforeClose === 'function' ? _this.params.beforeClose.call(_this) : null;
-    body.style.overflow = "visible";
-    body.style.height = "auto";
-    popup.classList.remove('visible');
-    popup.classList.add('hidden');
-    typeof _this.params.afterClose === 'function' ? _this.params.afterClose.call(_this) : null;
-  }
-
-  //Public methods
-
-  this.open = showPopup;
-
-  this.close = closePopup;
-
-  this.destroy = function () {
-    body.removeEventListener('keyup', onPressClose);
-    for (var i = 0; i < closeBtns.length; i++) {
-      closeBtns[i].removeEventListener('click', closePopup);
+      this.overflowFlag = true;
     }
-    ;
-    for (var i = 0; i < openBtn.length; i++) {
-      openBtn[i].removeEventListener('click', showPopup);
+
+    // active class on body
+    body.classList.add(this.options.openedBodyClass);
+
+    // active class on element
+    this.popup.classList.add(this.options.openedClass);
+  };
+
+  /**
+   * Close popup.
+   */
+  Popup.prototype.close = function () {
+    // remove class on body
+    body.classList.remove(this.options.openedBodyClass);
+
+    // active class on element
+    this.popup.classList.remove(this.options.openedClass);
+
+    // show scrollbar if it was hidden
+    var closeOverflow;
+    if (this.overflowFlag) {
+      clearTimeout(closeOverflow);
+
+      closeOverflow = setTimeout(function () {
+        body.style.overflow = 'auto';
+      }, this.options.animationTime);
     }
-    ;
-
-
-    popup.parentNode.removeChild(popup);
   };
 
-  this.createContent = function (content) {
-    popupContent.innerHTML = content;
+  /**
+   * Open popup on button's click.
+   *
+   * @return {Popup}
+   */
+  Popup.prototype.registerOpenOnClick = function () {
+    var _this = this;
+
+    this.button.addEventListener('click', function () {
+
+      // REMOTE DATA
+      if (_this.button.dataset.popupRemote || _this.options.remote) {
+        var remoteUrl =_this.button.dataset.popupRemote || _this.options.remote;
+
+        if (!(typeof $ === 'function')) {
+          console.log('Remote option needs jquery');
+        } else {
+          $.ajax({
+            method: 'get',
+            url: remoteUrl,
+            beforeSend: function () {
+              // example - preloader start here
+            },
+            success: function (response) {
+              _this.open(response);
+            },
+            error: function (xhr) {
+              // handle error
+            },
+            complete: function () {
+              // example - remove preloader here
+            }
+          });
+        }
+
+        return;
+      }
+
+      //TODO: check for opened popups and close them
+
+      // open popup
+      _this.open();
+    });
+
+    return this;
   };
 
-  this.createCloseBtn = function (content) {
-    closeBtn.innerHTML = content;
+  /**
+   * Close popup on esc button click.
+   *
+   * @return {Popup}
+   */
+  Popup.prototype.registerCloseOnEsc = function () {
+    document.addEventListener('keypress', function (event) {
+      if (event.keyCode == 27) this.close();
+    });
+
+    return this;
   };
 
-  this.params = {
-    beforeOpen: params.beforeOpen || false,
-    afterOpen: params.afterOpen || false,
-    beforeClose: params.beforeOpen || false,
-    afterClose: params.afterOpen || false,
-    closeBtn: params.closeBtn || '<svg x="0px" y="0px" viewBox="0 0 16.7 16.7">' +
-    '    <g>' +
-    '        <line class="st0" x1="16.4" y1="0.4" x2="0.4" y2="16.4"></line>' +
-    '    </g>' +
-    '    <g>' +
-    '        <line class="st0" x1="0.4" y1="0.4" x2="16.4" y2="16.4"></line>' +
-    '    </g>' + +'</svg>',
-    content: params.content || ''
+  /**
+   * Close popup on modal's background click.
+   *
+   * @return {Popup}
+   */
+  Popup.prototype.registerCloseOnBgClick = function () {
+    var _this = this;
+
+    _this.popup.addEventListener('click', function (event) {
+      if (event.target === _this.popup) _this.close();
+    });
+
+    return this;
   };
 
-  (function init() {
-    _this.createContent(_this.params.content);
-    _this.createCloseBtn(_this.params.closeBtn);
-  })()
-}
+  /**
+   * Close popup on close button click.
+   *
+   * @return {Popup}
+   */
+  Popup.prototype.registerClsBtnClick = function () {
+    var _this = this;
 
-var data = {
-  id: 'test-template',
-  blog__date: '10 december 2016',
-  blog__tag: ['#finance', '#finopay'],
-  blog__title: 'What makes it different from normal currencies?',
-  blog__img: 'static/img/content/blog.jpg',
-  mainBtnBottom: 'Read more'
-};
+    this.closeBtn.addEventListener('click', function () {
+      _this.close();
+    });
 
-var content = _.template(document.getElementById(data.id).innerHTML);
+    return this;
+  };
 
-var popup = new Popup({
-  content: content(data)
+  /**
+   * Register all events.
+   */
+  Popup.prototype.init = function () {
+    if (this.options.closeOnEsc) this.registerCloseOnEsc();
+
+    this.registerOpenOnClick().registerClsBtnClick().registerCloseOnBgClick();
+  };
+
+  /**
+   * Expose Popup module.
+   */
+  window.Popup = Popup;
+})();
+
+/**
+ * Initialize popup module.
+ */
+document.querySelectorAll('[data-popup="toggle"]').forEach(function (button) {
+  (new Popup(button)).init();
 });
