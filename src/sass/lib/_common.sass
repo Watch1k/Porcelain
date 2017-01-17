@@ -740,31 +740,38 @@ img
 		+trs
 		+r(1279)
 			display: none
-			flex-direction: column
-			position: absolute
-			justify-content: center
-			left: -24px
-			right: -24px
-			top: -14px
-			height: calc(100vh - 38px)
 			background-color: #ffffff
-			flex-wrap: nowrap
-			width: calc(100% + 48px)
+			position: fixed
+			z-index: 101
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			height: calc(100vh - 38px)
+			padding-top: 100px
+			padding-bottom: 30px
+			width: 100%
 			&.is-active
-				display: flex
+				display: block
 				overflow-y: auto
 		+r(767)
-			justify-content: flex-start
+			background-color: #ffffff
+			position: fixed
+			z-index: 101
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
 			padding-top: 30px
 			padding-bottom: 30px
-			left: -15px
-			right: -15px
-			height: calc(100vh - 38px)
-			width: calc(100% + 30px)
+			width: 100%
 	+r(1279)
 		&_header &__item
 			color: #000000
 			float: none
+			display: table
+			margin-left: auto
+			margin-right: auto
 			padding: 15px 0
 			text-align: center
 			font-size: 24px

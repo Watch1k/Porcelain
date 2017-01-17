@@ -1031,21 +1031,16 @@ $(document).ready(function () {
 				animateNav();
 			}
 			function animateNav() {
-				var navTl = new TimelineMax(),
-					navHeight = $(window).height() - 38;
-
-				$(window).on('resize', function () {
-					navHeight = $(window).height() - 38;
-				});
+				var navTl = new TimelineMax();
 
 				$('<div class="nav-anime"></div>').insertAfter(_this);
 				_this.siblings('.nav-anime').css({
-					position: 'absolute',
+					position: 'fixed',
 					'z-index': 102,
-					top: -14,
-					left: -24,
-					right: -24,
-					height: navHeight,
+					top: 0,
+					left: 0,
+					right: 0,
+					height: '100vh',
 					'background-color': '#a70a3f'
 				});
 				navTl.fromTo(_this.siblings('.nav-anime'), speedNav, {
