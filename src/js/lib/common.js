@@ -140,7 +140,8 @@ $(document).ready(function () {
 							this.animation.width = +this.animation.width + +this.animation.advancedWidth;
 							this.$el
 								.css({
-									'background-color': 'transparent'
+									'background-color': 'transparent',
+									'height': this.animation.height
 								})
 								.wrapInner('<div class="motion__inner"></div>')
 								.wrapInner('<div class="motion"></div>')
@@ -168,6 +169,7 @@ $(document).ready(function () {
 									ease: Power3.easeInOut,
 									delay: this.animation.mainDelay,
 									onComplete: function () {
+										$(this.target).parent().css('height', '');
 										TweenMax.to($(this.target), $(this.target).parent().get(0).animation.speedRect, {
 											width: $(this.target).parent().get(0).animation.width,
 											ease: Power3.easeInOut,
@@ -235,6 +237,9 @@ $(document).ready(function () {
 							break;
 						case 'motion3':
 							this.$el
+								.css({
+									'height': this.animation.height
+								})
 								.wrapInner('<div class="motion__inner"></div>')
 								.append('<div class="motion__element"></div>')
 								.wrapInner('<div class="motion"></div>')
@@ -294,6 +299,7 @@ $(document).ready(function () {
 											y: 0,
 											ease: Power3.easeInOut,
 											onComplete: function () {
+												$(this.target).parent().css('height', '');
 												$(this.target).css({
 													height: '100%',
 													width: '100%'
@@ -678,7 +684,6 @@ $(document).ready(function () {
 			});
 		} else {
 			setTimeout(function () {
-				console.log('fine');
 				$('.screen__anime').addClass('is-loaded');
 				TweenMax.to($('.screen__play .icon'), 1, {opacity: 1, delay: 0.5});
 				TweenMax.to($('.screen__play-text, .screen__scroll-text'), 1, {

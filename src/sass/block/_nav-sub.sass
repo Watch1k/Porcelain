@@ -1,0 +1,37 @@
+/* nav-sub
+	----------------------------------- */
+.nav-sub
+	+open-extrabold
+	font-size: 12px
+	color: #000000
+	line-height: 18px
+	text-transform: uppercase
+	+trs
+	ul
+		li
+			position: relative
+			&:before
+				content: ''
+				position: absolute
+				top: 4px
+				left: -1px
+				bottom: 4px
+				z-index: 1
+				background-color: $red
+				width: 3px
+				opacity: 0
+				+trs
+			+ li
+				margin-top: 21px
+			&.active
+				&:before
+					opacity: 1
+			a
+				display: table
+				+trs
+				&:hover
+					color: $red
+			&.active a
+				color: $red
+				transform: translate3d(20px,0,0)
+				
