@@ -1472,13 +1472,13 @@ $(document).ready(function () {
    *
    * @param {HTMLElement} button
    * @param {Object} options
-   * @param {String} [options.openedClass]
-   * @param {String} [options.openedBodyClass]
-   * @param {String} [options.popupDialogBoxClass]
-   * @param {String} [options.targetPopupId] - Popup to show (its data-pop-id value)
-   * @param {String} [options.closeBtnSelector]
-   * @param {Boolean} [options.closeOnEsc]
-   * @param {Number} [options.animationTime] - time in ms
+   * @param {String} [options.openedClass] - class added to popup on popup open
+   * @param {String} [options.openedBodyClass] - class added to body on popup open
+   * @param {String} [options.popupDialogBoxClass] - popup content selector
+   * @param {String} [options.closeBtnSelector]  - popup close button selector
+   * @param {Boolean} [options.closeOnEsc] - close on 'Esc' button click
+   * @param {String} [options.targetPopupId] - Popup to show (its data-popup-id value)
+   * @param {Number} [options.animationTime] - animation time in ms (for removing/adding scrollbar and padding)
    * @param {String|Boolean} [options.remote] - Remote data URL (TODO: make it an object with callback params)
    */
   function Popup (button, options) {
@@ -1497,47 +1497,61 @@ $(document).ready(function () {
 
     this.button = button;
     this.popup = document.querySelector('[data-popup-id="' + this.options.targetPopupId + '"]');
-    this.closeBtn = this.popup.querySelector(this.options.closeBtnSelector);
-    this.dialogBox = this.popup.querySelector(this.options.popupDialogBoxClass);
+    this.remoteData = this.button.dataset.popupRemote || this.options.remote;
   }
 
   /**
    * Open popup.
    *
    * @param {Object} remoteData - ajax request 'response' object
+   *
+   * @return {Popup}
    */
   Popup.prototype.open = function (remoteData) {
+
     // do stuff with remote data before popup open
     if (remoteData) {
-      console.log(remoteData);
+      // actions with response
+      this.actionsWithRemoteData(remoteData);
+
+      // register events now
+      this.init(false);
     }
 
-    // hide body scrollbar if popup is higher then window
-    if (this.dialogBox.offsetHeight + 60 > window.innerHeight && window.innerWidth > 1024) {
+    // hide body's scrollbar if popup is higher then window
+    var dialogBox = this.popup.querySelector(this.options.popupDialogBoxClass);
+    var popupHasScrollbar = dialogBox.offsetHeight + 60 > window.innerHeight;
+    var isNotMobile = window.innerWidth > 1024;
+
+    if (popupHasScrollbar && isNotMobile) {
       //@TODO: check and add padding if needed (visual bug, bootstrap solution)
       body.style.overflow = 'hidden';
 
       this.overflowFlag = true;
     }
 
-    // active class on body
+    // add active class to body
     body.classList.add(this.options.openedBodyClass);
 
-    // active class on element
+    // add active active class to popup
     this.popup.classList.add(this.options.openedClass);
+
+    return this;
   };
 
   /**
    * Close popup.
+   *
+   * @return {Popup}
    */
   Popup.prototype.close = function () {
-    // remove class on body
+    // remove active class from body
     body.classList.remove(this.options.openedBodyClass);
 
-    // active class on element
+    // remove active class from popup
     this.popup.classList.remove(this.options.openedClass);
 
-    // show scrollbar if it was hidden
+    // show body's scrollbar if it was hidden
     var closeOverflow;
     if (this.overflowFlag) {
       clearTimeout(closeOverflow);
@@ -1546,6 +1560,8 @@ $(document).ready(function () {
         body.style.overflow = 'auto';
       }, this.options.animationTime);
     }
+
+    return this;
   };
 
   /**
@@ -1559,13 +1575,14 @@ $(document).ready(function () {
     this.button.addEventListener('click', function () {
 
       // REMOTE DATA
-      if (_this.button.dataset.popupRemote || _this.options.remote) {
-        var remoteUrl =_this.button.dataset.popupRemote || _this.options.remote;
+      if (_this.remoteData) {
+        var remoteUrl = _this.remoteData;
 
         if (!(typeof $ === 'function')) {
           console.log('Remote option needs jquery');
         } else {
           $.ajax({
+            cache: 'false',
             method: 'get',
             url: remoteUrl,
             beforeSend: function () {
@@ -1630,8 +1647,9 @@ $(document).ready(function () {
    */
   Popup.prototype.registerClsBtnClick = function () {
     var _this = this;
+    var closeButton = _this.popup.querySelector(this.options.closeBtnSelector);
 
-    this.closeBtn.addEventListener('click', function () {
+    closeButton.addEventListener('click', function () {
       _this.close();
     });
 
@@ -1639,12 +1657,60 @@ $(document).ready(function () {
   };
 
   /**
-   * Register all events.
+   * Actions with remote data.
+   *
+   * @param {Object} remoteData
+   * @return {Popup}
    */
-  Popup.prototype.init = function () {
-    if (this.options.closeOnEsc) this.registerCloseOnEsc();
+  Popup.prototype.actionsWithRemoteData = function (remoteData) {
+    if (remoteData.replaces instanceof Array) {
+      for (var i = 0, ilen = remoteData.replaces.length; i < ilen; i++) {
+        $(remoteData.replaces[i].what).replaceWith(remoteData.replaces[i].data);
+      }
+    }
+    if (remoteData.append instanceof Array) {
+      for (i = 0, ilen = remoteData.append.length; i < ilen; i++) {
+        $(remoteData.append[i].what).append(remoteData.append[i].data);
+      }
+    }
+    if (remoteData.content instanceof Array) {
+      for (i = 0, ilen = remoteData.content.length; i < ilen; i++) {
+        $(remoteData.content[i].what).html(remoteData.content[i].data);
+      }
+    }
+    if (remoteData.js) {
+      $("body").append(remoteData.js);
+    }
+    if (remoteData.refresh) {
+      window.location.reload(true);
+    }
+    if (remoteData.redirect) {
+      window.location.href = remoteData.redirect;
+    }
+  };
 
-    this.registerOpenOnClick().registerClsBtnClick().registerCloseOnBgClick();
+
+  /**
+   * Register all events.
+   *
+   * @param {Boolean} deferredRegistration - register events after AJAX's success callback
+   * @return {Popup}
+   */
+  Popup.prototype.init = function (deferredRegistration) {
+    deferredRegistration = typeof deferredRegistration === 'boolean'
+      ? deferredRegistration
+      : this.remoteData;
+
+    // close popup on 'Esc' click
+    if (this.options.closeOnEsc && !deferredRegistration) this.registerCloseOnEsc();
+
+    // open popup on click (button) and close on bg click
+    this.registerOpenOnClick().registerCloseOnBgClick();
+
+    // close button
+    if (!deferredRegistration) this.registerClsBtnClick();
+
+    return this;
   };
 
   /**
@@ -1654,7 +1720,7 @@ $(document).ready(function () {
 })();
 
 /**
- * Initialize popup module.
+ * Initialize popup module on buttons.
  */
 document.querySelectorAll('[data-popup="toggle"]').forEach(function (button) {
   (new Popup(button)).init();

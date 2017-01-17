@@ -103,8 +103,6 @@
     width: 100%;
     margin-top: 30px;
 
-    transition: all 0.5s ease-out;
-
     @media only screen and (max-width: 1279px) {
       width: 100%;
     }
@@ -127,9 +125,9 @@
     }
 
     textarea {
-      resize: vertical;
+      resize: none;
 
-      height: 100px;
+      height: 120px;
 
       padding-top: 20px;
 
@@ -209,7 +207,9 @@
 }
 
 body.popup-opened {
-  overflow: hidden;
+  @media (max-width: 1024px) {
+    overflow: hidden;
+  }
 }
 
 .popup.opened {
