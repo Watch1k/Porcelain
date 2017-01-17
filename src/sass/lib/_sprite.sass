@@ -1,6 +1,7 @@
 $icons: (0:0)
-$icons: map-merge($icons,(bt-next: (X: 0px, Y:0px, W: 39px, H: 41px, TW: 82px, TH: 41px, IMG: '../img/icons.png')))
-$icons: map-merge($icons,(bt-prev: (X: -43px, Y:0px, W: 39px, H: 41px, TW: 82px, TH: 41px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(bus: (X: 0px, Y:0px, W: 25px, H: 27px, TW: 54px, TH: 52px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(car: (X: 0px, Y:-31px, W: 25px, H: 21px, TW: 54px, TH: 52px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(taxi: (X: -29px, Y:0px, W: 25px, H: 23px, TW: 54px, TH: 52px, IMG: '../img/icons.png')))
 
 
 // Gets an attribute from the sass map
@@ -26,7 +27,11 @@ $icons: map-merge($icons,(bt-prev: (X: -43px, Y:0px, W: 39px, H: 41px, TW: 82px,
 	background-position: $x/2 $y/2
 	$tw: icon-attr($iconName, TW) 	
 	$th: icon-attr($iconName, TH)
-	background-size: $tw/2 $th/2  	
+	background-size: $tw/2 $th/2
+@mixin sprite-position-retina($iconName)
+	$x: icon-attr($iconName, X)
+	$y: icon-attr($iconName, Y)
+	background-position: $x/2 $y/2
 
 
 @mixin s($i)
@@ -34,18 +39,25 @@ $icons: map-merge($icons,(bt-prev: (X: -43px, Y:0px, W: 39px, H: 41px, TW: 82px,
 @mixin sp($i)
 	+sprite-position($i)
 @mixin sr($i)
-	+sprite-retina($i)	
+	+sprite-retina($i)
+@mixin spr($i)
+	+sprite-position-retina($i)
 
-//
-//.icon-bt-next
-//	width: 39px
-//	height: 41px
-//	background-image: url('../img/icons.png')
-//	background-position: 0px 0px
-//
-//.icon-bt-prev
-//	width: 39px
-//	height: 41px
-//	background-image: url('../img/icons.png')
-//	background-position: -43px 0px
-//
+.icon-bus
+	width: 25px
+	height: 27px
+	background-image: url('../img/icons.png')
+	background-position: 0px 0px
+	background-size: 54px 52px
+.icon-car
+	width: 25px
+	height: 21px
+	background-image: url('../img/icons.png')
+	background-position: 0px -31px
+	background-size: 54px 52px
+.icon-taxi
+	width: 25px
+	height: 23px
+	background-image: url('../img/icons.png')
+	background-position: -29px 0px
+	background-size: 54px 52px

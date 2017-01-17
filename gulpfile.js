@@ -210,6 +210,8 @@ gulp.task('js', function() {
 gulp.task('copy', function() {
 		gulp.src('src/*.php')
 				.pipe(gulp.dest('build/'));
+		gulp.src('src/*.json')
+			.pipe(gulp.dest('build/'));
 		gulp.src('src/img/**')
 				.pipe(gulp.dest('build/img/'));
 		gulp.src('src/fonts/*.*')
