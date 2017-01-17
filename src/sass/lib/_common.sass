@@ -84,6 +84,37 @@ h6
 		color: $red
 		background-color: #ffffff
 
+.arrow-right-anim
+	display: inline-block
+	vertical-align: middle
+	height: 14px
+	width: 3px
+	position: relative
+	transform: translateZ(0)
+	transition: all 0.5s ease-out
+	&:before,
+	&:after
+		content: ''
+		position: absolute
+		display: block
+		right: 0
+		width: 3px
+		height: 8px
+		background-color: #000
+		transition: all 0.5s ease-out
+		transform: translate3d(0,0,0)
+	&:before
+		margin-top: 4px
+		bottom: 50%
+	&:after
+		margin-top: -4px
+		top: 50%
+	&.is-active
+		&:before
+			transform: rotate(-45deg) translateZ(0)
+		&:after
+			transform: rotate(45deg) translateZ(0)
+
 .arrow-bot-anim
 	display: inline-block
 	vertical-align: middle
@@ -1435,6 +1466,7 @@ img
 				margin-top: 10px
 	&__item
 		position: relative
+		display: block
 		padding-bottom: 85px
 		+ratio(1,1)
 		z-index: 1
@@ -1479,6 +1511,7 @@ img
 		height: 100%
 		+trs
 	&__desc
+		pointer-events: none
 		position: absolute
 		margin-top: -84px
 		top: 100%
@@ -1497,7 +1530,7 @@ img
 		&.is-transition
 			transition: all 0.75s ease-in-out
 		&-title
-			cursor: default
+			pointer-events: auto
 			padding-top: 40px
 			padding-right: 45px
 			+open-extrabold
@@ -1521,7 +1554,6 @@ img
 				margin-top: 4px
 				margin-right: 3px
 		&-text
-			cursor: default
 			margin-top: 22px
 			padding: 0 95px 0 0
 			font-size: 16px
@@ -1544,7 +1576,48 @@ img
 	&__item.is-active &__item-inner video
 		filter: grayscale(100%)
 		transition: all 1s ease-in-out
+	
+/* Inno doctors
+	----------------------------------- */
+.inno
+	&_doctors
+		padding-top: 0
+		overflow: hidden
+	&_doctors &__row
+		+r(767)
+			display: flex
+			flex-direction: column
+			align-items: center
+			width: 100%
+	&_doctors &__col
+		margin-top: 0
+		+r(1279)
+			width: 50%
+		+r(767)
+			width: 100%
+			max-width: 290px
+	&_doctors &__col:nth-child(3) ~ &__col
+		margin-top: 60px
+	&_doctors &__col:nth-child(2) ~ &__col
+		+r(1279)
+			margin-top: 30px
+	&_doctors &__desc
+		height: 200px
+		width: 230px
+		max-width: 100%
+		+r(1279)
+			width: 230px
+			height: 178px
+	&_doctors &__desc-title
+		padding-right: 30px
+		+r(1279)
+			padding-right: 15px
+		.icon
+			margin-top: 6px
+	&_doctors &__desc-title-text
+		max-width: 190px
 		
+
 /* Start
 	----------------------------------- */
 .start
@@ -2536,6 +2609,7 @@ img
 			margin-bottom: 37px
 	&__btn
 		margin-top: 27px
+		transition: all 0.5s ease-out
 		+r(1279)
 			margin-top: 45px
 			width: 235px
@@ -4239,6 +4313,19 @@ img
 	&__container
 		padding-top: 95px
 		padding-bottom: 60px
+	&__flex-container
+		display: flex
+		flex-direction: row
+		width: 100%
+	&__aside
+		flex: 1 0 250px
+		margin-top: -7px
+		+r(1279)
+			flex-basis: 220px
+		+r(767)
+			display: none
+	&__content
+		flex: 1 1 100%
 	
 
 /* ===================================

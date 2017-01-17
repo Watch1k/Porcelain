@@ -242,6 +242,10 @@ textarea.textarea-small {
 
     &-icon {
       margin-right: 15px;
+      .icon {
+        font-size: 25px;
+        color: $red;
+      }
     }
 
     span {

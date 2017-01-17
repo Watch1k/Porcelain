@@ -126,11 +126,10 @@ gulp.task('svg-sprite', function () {
 						}]
 				}))
 				.pipe(rename({prefix: 'icon-'}))
-				.pipe(svgstore({ inlineSvg: true }))
+				.pipe(svgstore())
 				.pipe(rename({basename: 'sprite'}))
 				.pipe(cheerio({
-						run: extractDataFromIcons,
-						parserOptions: { xmlMode: true }
+						run: extractDataFromIcons
 				}))
 				.pipe(gulp.dest(dest.img));
 });

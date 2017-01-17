@@ -2,7 +2,7 @@ extend includes/_layout
 
 block vars
 	-var bodyClass = 'page-doctors'
-	-var navToggle = 'врачи'
+	-var navToggle = 'услуги'
 
 block title
 	title Doctors
@@ -11,51 +11,563 @@ block content
 		.category-title.js-motion.js-scene(data-offset='0' data-motion='motion1' data-main-delay='0' data-move-up='50')
 			.category-title__container.container
 				h1 Врачи Porcelain
+
 		.doctors__container.container
+			.doctors__flex-container
+				.doctors__aside
+					//begin nav-sub
+					-var navSubMenu = ['врачи-кураторы', 'Ортодонты', 'Эндодонты', 'Пародонтологи', 'Гигиенисты', 'Терапевты', 'Детский кабинет', 'Анестезиологи', 'Хирурги-имплантологи']
+					-var navSubToggle = 'врачи-кураторы'
+					-var navSubClass = 'doctors__nav-sub js-nav-sub'
+					include includes/_nav-sub
+					//end nav-sub
 
-			//begin nav-sub
-			-var navSubMenu = ['врачи-кураторы', 'Ортодонты', 'Эндодонты', 'Пародонтологи', 'Гигиенисты', 'Терапевты', 'Детский кабинет', 'Анестезиологи', 'Хирурги-имплантологи']
-			-var navSubToggle = 'Эндодонты'
-			-var navSubClass = 'doctors__nav-sub'
-			include includes/_nav-sub
-			//end nav-sub
-
-			//begin inno
-			.inno#inno.js-scene(data-offset="0")
-				.inno__row
-					.inno__col
-						.inno__item.js-inno-el
-							.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
-								.inno__item-video
-									video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
-								img(src='img/content/inno-1.jpg' alt='image')
-							.inno__desc.js-inno-desc
-								.inno__desc-title
-									.inno__desc-title-text
-										p 3D-пациент
-									.icon.arrow-bot-anim
-								.inno__desc-text
-									p Проектируем цифровой прототип для разработки плана лечения.
-					.inno__col
-						.inno__item.js-inno-el
-							.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
-								img(src='img/content/inno-2.jpg' alt='image')
-							.inno__desc.js-inno-desc
-								.inno__desc-title
-									.inno__desc-title-text
-										p Виртуальные операции
-									.icon.arrow-bot-anim
-								.inno__desc-text
-									p Проектируем цифровой прототип для разработки плана лечения.
-					.inno__col
-						.inno__item.js-inno-el
-							.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
-								img(src='img/content/inno-3.jpg' alt='image')
-							.inno__desc.js-inno-desc
-								.inno__desc-title
-									.inno__desc-title-text
-										p Цифровая модель улыбки
-									.icon.arrow-bot-anim
-								.inno__desc-text
-									p Проектируем цифровой прототип для разработки плана лечения.
-			//end inno
+				.doctors__content
+					//begin inno
+					.inno.inno_doctors.js-nav-sub-for.js-scene(data-offset="-15")
+						//tab-row1
+						.inno__row
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+						//tab-row2
+						.inno__row
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+						//tab-row3
+						.inno__row
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+						//tab-row4
+						.inno__row
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+						//tab-row5
+						.inno__row
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+						//tab-row6
+						.inno__row
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+						//tab-row7
+						.inno__row
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+						//tab-row8
+						.inno__row
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+						//tab-row9
+						.inno__row
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+										//.inno__item-video
+											video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+										img(src='img/content/doctors-img-1.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p тарасова анна владимировна
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+										img(src='img/content/doctors-img-2.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p иваненко игорь иванович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+							.inno__col
+								a.inno__item.js-inno-el(href='#')
+									.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+										img(src='img/content/doctors-img-3.jpg' alt='image')
+									.inno__desc.js-inno-desc
+										.inno__desc-title
+											.inno__desc-title-text
+												p гнатюк олег артемович
+											.icon.arrow-right-anim
+										.inno__desc-text
+											p Подольский район, ортопедическая стоматология
+					//end inno

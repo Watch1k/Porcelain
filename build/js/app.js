@@ -239,7 +239,7 @@ $(document).ready(function () {
 					this.animation.offset = +this.$el.closest(sceneEl).attr('data-offset') || this.animation.offset;
 
 					this.animation.offset = this.animation.offset / 100 * $(window).height();
-					this.animation.autoHeight = this.$el.attr('data-auto-height') || false;
+					this.animation.autoHeight = this.$el.attr('data-auto-height') || true;
 
 					if ($(window).width() < 768) {
 						if (this.animation.motion == 'motion1') {
@@ -417,7 +417,9 @@ $(document).ready(function () {
 											y: 0,
 											ease: Power3.easeInOut,
 											onComplete: function () {
-												$(this.target).parent().css('height', '');
+												if ($(this.target).parent().get(0).animation.autoHeight != 'false') {
+													$(this.target).parent().css('height', '');
+												}
 												$(this.target).css({
 													height: '100%',
 													width: '100%'
@@ -730,7 +732,7 @@ $(document).ready(function () {
 		}
 	})();
 
-	//tabs
+	//tabs MAP
 	(function () {
 		var tabs = $('.js-tabs-for');
 		if (tabs.length) {
@@ -757,6 +759,37 @@ $(document).ready(function () {
 			});
 		}
 	})();
+
+	// tabs navSub
+	(function () {
+		var tabs = $('.js-nav-sub-for');
+		if (tabs.length) {
+			$(window).resize(function () {
+				tabs.css({height: 'auto'});
+			});
+			var tabsItem = tabs.children(),
+				tabsButton = $('.js-nav-sub').find('a'),
+				currentHeight;
+
+			currentHeight = tabsItem.eq(0).outerHeight();
+			tabsItem.eq(0).next().hide();
+			tabs.css({height: currentHeight});
+
+			tabsButton.on('click', function () {
+				var index = $(this).parent().index(),
+					tabsHeight = 0;
+				tabsButton.parent().removeClass('active');
+				$(this).parent().addClass('active');
+				tabsItem.fadeOut('fast').promise().done(function () {
+					tabsItem.eq(index).fadeIn('fast');
+					tabsHeight = tabsItem.eq(index).outerHeight();
+					tabs.css({height: tabsHeight});
+				});
+			});
+		}
+	})();
+
+
 
 	(function () {
 		var scrollBtn = $('.js-scroll-btn'),
@@ -1001,17 +1034,8 @@ $(document).ready(function () {
 				var navTl = new TimelineMax(),
 					navHeight = $(window).height() - 38;
 
-				if ($(window).width() < 768) {
-					navHeight = 540 - 38;
-				} else {
-					navHeight = $(window).height() - 38;
-				}
 				$(window).on('resize', function () {
-					if ($(window).width() < 768) {
-						navHeight = 540 - 38;
-					} else {
-						navHeight = $(window).height() - 38;
-					}
+					navHeight = $(window).height() - 38;
 				});
 
 				$('<div class="nav-anime"></div>').insertAfter(_this);
