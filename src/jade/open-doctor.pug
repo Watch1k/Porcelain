@@ -1,0 +1,67 @@
+extend includes/_layout
+
+block vars
+    - var bodyClass = 'page-home page-open-doctor'
+
+block title
+    title Open doctor
+block content
+    .line-v.line-v_1
+    //begin screen
+    .screen
+        .screen__anime
+        button.screen__scroll.is-animate.js-scroll-btn(type='button' data-href='#inno')
+            span.screen__scroll-text листайте вниз
+            .screen__scroll-line
+        .screen__slider.js-screen-slider
+            .screen__item
+                video.screen__video(src='video/screen-1.mp4' loop='loop' preload='none')
+                .screen__img.screen__img_tablet(style='background-image: url(img/content/doctor-screen-tablet.png)')
+                .screen__img(style='background-image: url(img/content/doctor-screen.png)')
+                .screen__container.container
+                    .screen__inner.screen__inner-lift_up
+                        button.screen__play.js-play(type='button')
+                            span.screen__play-text смотреть видео о нас
+                            svg.icon(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 28 34')
+                                path.path(d='M 25 18 L 3 31 L 3 3 L 25 18 L 3 31 Z')
+                        .screen__title
+                            p Туркив анна Владимировна
+                        .screen__subtitle
+                            p Врач куратор, ортопедическая стоматология
+            .screen__item
+                .screen__img(style='background-image: url(img/content/screen-2.jpg)')
+                .screen__container.container
+                    .screen__inner.screen__inner-lift_up
+                        .screen__title
+                            p Туркив анна Владимировна
+                        .screen__subtitle
+                            p Врач куратор, ортопедическая стоматология
+            .screen__item
+                .screen__img(style='background-image: url(img/content/screen-2.jpg)')
+                .screen__container.container
+                    .screen__inner.screen__inner-lift_up
+                        .screen__title
+                            p Туркив анна Владимировна
+                        .screen__subtitle
+                            p Врач куратор, ортопедическая стоматология
+            .screen__item
+                .screen__img(style='background-image: url(img/content/screen-2.jpg)')
+                .screen__container.container
+                    .screen__inner.screen__inner-lift_up
+                        .screen__title
+                            p Туркив анна Владимировна
+                        .screen__subtitle
+                            p Врач куратор, ортопедическая стоматология
+            .screen__item
+                .screen__img(style='background-image: url(img/content/screen-3.jpg)')
+                .screen__container.container
+                    .screen__inner.screen__inner-lift_up
+                        .screen__title
+                            p Туркив анна Владимировна
+                        .screen__subtitle
+                            p Врач куратор, ортопедическая стоматология
+    //end screen
+    section.doctor-profile
+       .doctor-more
+       .doctor-spec
+       .doctor-stories
