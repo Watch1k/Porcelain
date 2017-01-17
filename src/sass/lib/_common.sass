@@ -82,7 +82,6 @@ h6
 	color: $white
 	text-align: center
 	text-transform: uppercase
-	transition: all 0.5s ease-out
 	+r(1279)
 		width: 235px
 	+r(767)
@@ -269,6 +268,7 @@ body
 	z-index: 2
 	margin-left: auto
 	margin-right: auto
+	width: 100%
 	max-width: 1200px
 	+r(1279)
 		max-width: calc(100% - 48px)
@@ -764,13 +764,13 @@ img
 			flex-direction: column
 			position: absolute
 			justify-content: center
-			left: 0
-			right: 0
+			left: -24px
+			right: -24px
 			top: -14px
 			height: calc(100vh - 38px)
 			background-color: #ffffff
-			width: 100%
 			flex-wrap: nowrap
+			width: calc(100% + 48px)
 			&.is-active
 				display: flex
 				overflow-y: auto
@@ -778,7 +778,10 @@ img
 			justify-content: flex-start
 			padding-top: 30px
 			padding-bottom: 30px
+			left: -15px
+			right: -15px
 			height: calc(100vh - 38px)
+			width: calc(100% + 30px)
 	+r(1279)
 		&_header &__item
 			color: #000000
@@ -1328,7 +1331,7 @@ img
 			position: absolute
 			z-index: 1
 			bottom: 0
-			right: 38px
+			right: -2px
 			width: 3px
 			height: 3px
 			background-color: #e8ebf1
@@ -1341,7 +1344,7 @@ img
 			position: absolute
 			z-index: 1
 			bottom: 0
-			left: 338px
+			left: 298px
 			width: 3px
 			height: 3px
 			background-color: #e8ebf1
@@ -1616,7 +1619,7 @@ img
 			content: ''
 			pointer-events: none
 			position: absolute
-			left: 38px
+			left: -2px
 			bottom: 0
 			width: 3px
 			height: 65px
@@ -2354,7 +2357,7 @@ img
 				position: absolute
 				z-index: 1
 				top: 190px
-				right: 38px
+				right: -2px
 				width: 3px
 				height: 3px
 				background-color: #e8ebf1
@@ -2625,7 +2628,7 @@ img
 			position: absolute
 			z-index: 2
 			top: -90px
-			right: 38px
+			right: -2px
 			width: 3px
 			height: 3px
 			background-color: #e8ebf1
@@ -2638,7 +2641,7 @@ img
 			position: absolute
 			z-index: 2
 			bottom: 90px
-			left: 38px
+			left: -2px
 			width: 3px
 			height: 3px
 			background-color: #e8ebf1
@@ -2892,11 +2895,11 @@ img
 		position: absolute
 		z-index: 2
 		top: 115px
-		left: calc(75% - 20px)
-		margin-left: -1px
+		left: 50%
 		width: 3px
 		height: 65px
 		background-color: #e8ebf1
+		margin-left: 299px
 		+r(1279)
 			display: none
 			content: none
@@ -4280,6 +4283,14 @@ img
 			&__element
 				background-color: $red
 		
+
+/* ===================================
+	 Doctors Page
+	 =================================== */
+.doctors
+	&__container
+		padding-top: 95px
+		padding-bottom: 60px
 	
 
 /* ===================================

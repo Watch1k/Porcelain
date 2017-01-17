@@ -4,13 +4,10 @@ header.header
 			a.header__phone(href='tel:0445937787') 044 593-77-87
 			a.header__login(href='#') Войти
 			ul.header__lang.header__lang_parent.js-lang
-				li.header__lang-item.active
-					a.header__lang-link(href='#') ru
+				li.header__lang-item.active: a.header__lang-link(href='#') ru
 					ul.header__lang
-						li.header__lang-item
-							a.header__lang-link(href='#') uk
-						li.header__lang-item
-							a.header__lang-link(href='#') en
+						li.header__lang-item: a.header__lang-link(href='#') uk
+						li.header__lang-item: a.header__lang-link(href='#') en
 	.header__bot
 		.header__container.container
 			a.header__logo.logo(href='/home.html')
@@ -18,11 +15,9 @@ header.header
 			ul.header__nav.nav.nav_header.js-nav
 				each value in navMenu
 					if navToggle === value
-						li.nav__item.active
-							a.nav__link(href='#')= value
+						li.nav__item.active: a.nav__link(href='#')= value
 					else
-						li.nav__item
-							a.nav__link(href='#')= value
+						li.nav__item: a.nav__link(href='#')= value
 			.hamburger.hamburger_spin.js-hamburger
 				.hamburger__box
 					.hamburger__inner

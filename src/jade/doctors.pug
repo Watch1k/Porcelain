@@ -1,0 +1,61 @@
+extend includes/_layout
+
+block vars
+	-var bodyClass = 'page-doctors'
+	-var navToggle = 'врачи'
+
+block title
+	title Doctors
+block content
+	.doctors.full-section
+		.category-title.js-motion.js-scene(data-offset='0' data-motion='motion1' data-main-delay='0' data-move-up='50')
+			.category-title__container.container
+				h1 Врачи Porcelain
+		.doctors__container.container
+
+			//begin nav-sub
+			-var navSubClass = 'nav-sub_doctors'
+			-var navSubMenu = ['врачи-кураторы', 'Ортодонты', 'Эндодонты', 'Пародонтологи', 'Гигиенисты', 'Терапевты', 'Детский кабинет', 'Анестезиологи', 'Хирурги-имплантологи']
+			-var navSubToggle = 'врачи-кураторы'
+			include includes/_nav-sub
+			//end nav-sub
+
+			//begin inno
+			.inno#inno.js-scene(data-offset="0")
+				.inno__row
+					.inno__col
+						.inno__item.js-inno-el
+							.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.4' data-move-up='75')
+								.inno__item-video
+									video(src='video/inno-1.mp4' loop='loop' autoplay='true' muted='true')
+								img(src='img/content/inno-1.jpg' alt='image')
+							.inno__desc.js-inno-desc
+								.inno__desc-title
+									.inno__desc-title-text
+										p 3D-пациент
+									.icon.arrow-bot-anim
+								.inno__desc-text
+									p Проектируем цифровой прототип для разработки плана лечения.
+					.inno__col
+						.inno__item.js-inno-el
+							.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0' data-move-delay='0' data-move-up='75')
+								img(src='img/content/inno-2.jpg' alt='image')
+							.inno__desc.js-inno-desc
+								.inno__desc-title
+									.inno__desc-title-text
+										p Виртуальные операции
+									.icon.arrow-bot-anim
+								.inno__desc-text
+									p Проектируем цифровой прототип для разработки плана лечения.
+					.inno__col
+						.inno__item.js-inno-el
+							.inno__item-inner.js-motion(data-motion='motion3' data-main-delay='0.2' data-move-up='75')
+								img(src='img/content/inno-3.jpg' alt='image')
+							.inno__desc.js-inno-desc
+								.inno__desc-title
+									.inno__desc-title-text
+										p Цифровая модель улыбки
+									.icon.arrow-bot-anim
+								.inno__desc-text
+									p Проектируем цифровой прототип для разработки плана лечения.
+			//end inno

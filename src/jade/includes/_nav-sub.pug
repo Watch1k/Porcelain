@@ -1,0 +1,7 @@
+.nav-sub(class=navSubClass)
+	ul
+		each value in navSubMenu
+			if navSubToggle === value
+				li.active: a(href='javascript: void(0);')= value
+			else
+				li: a(href='javascript: void(0);')= value

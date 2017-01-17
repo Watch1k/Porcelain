@@ -5,7 +5,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Каталог</title>
+  <title>Doctors</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="format-detection" content="telephone=no">
   <!-- theme color for android 5.0 -->
@@ -16,7 +16,7 @@
   <!--[if IE]><script src="js/html5shiv.js"></script><![endif]-->
 </head>
 
-<body>
+<body class="page-doctors">
   <div class="preloader">
     <div class="preloader__container">
       <!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)-->
@@ -69,7 +69,7 @@
               </svg></a>
           <ul class="header__nav nav nav_header js-nav">
             <li class="nav__item"><a class="nav__link" href="#">о клинике</a></li>
-            <li class="nav__item"><a class="nav__link" href="#">врачи</a></li>
+            <li class="nav__item active"><a class="nav__link" href="#">врачи</a></li>
             <li class="nav__item"><a class="nav__link" href="#">услуги</a></li>
             <li class="nav__item"><a class="nav__link" href="#">технологии</a></li>
             <li class="nav__item"><a class="nav__link" href="#">истории</a></li>
@@ -85,12 +85,88 @@
       </div>
     </header>
     <main class="main js-main">
-      <ul style="padding-left: 30px; list-style: decimal">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="404.html">404</a></li>
-        <li><a href="services-open-category.html">Services-open-category</a></li>
-        <li><a href="open-article.html">Open-article</a></li>
-      </ul>
+      <div class="doctors full-section">
+        <div class="category-title js-motion js-scene" data-offset="0" data-motion="motion1" data-main-delay="0" data-move-up="50">
+          <div class="category-title__container container">
+            <h1>Врачи Porcelain</h1>
+          </div>
+        </div>
+        <div class="doctors__container container">
+          <!--begin nav-sub-->
+          <div class="nav-sub nav-sub_doctors">
+            <ul>
+              <li class="active"><a href="javascript: void(0);">врачи-кураторы</a></li>
+              <li><a href="javascript: void(0);">Ортодонты</a></li>
+              <li><a href="javascript: void(0);">Эндодонты</a></li>
+              <li><a href="javascript: void(0);">Пародонтологи</a></li>
+              <li><a href="javascript: void(0);">Гигиенисты</a></li>
+              <li><a href="javascript: void(0);">Терапевты</a></li>
+              <li><a href="javascript: void(0);">Детский кабинет</a></li>
+              <li><a href="javascript: void(0);">Анестезиологи</a></li>
+              <li><a href="javascript: void(0);">Хирурги-имплантологи</a></li>
+            </ul>
+          </div>
+          <!--end nav-sub-->
+          <!--begin inno-->
+          <div class="inno js-scene" id="inno" data-offset="0">
+            <div class="inno__row">
+              <div class="inno__col">
+                <div class="inno__item js-inno-el">
+                  <div class="inno__item-inner js-motion" data-motion="motion3" data-main-delay="0.4" data-move-up="75">
+                    <div class="inno__item-video">
+                      <video src="video/inno-1.mp4" loop="loop" autoplay="true" muted="true"></video>
+                    </div><img src="img/content/inno-1.jpg" alt="image">
+                  </div>
+                  <div class="inno__desc js-inno-desc">
+                    <div class="inno__desc-title">
+                      <div class="inno__desc-title-text">
+                        <p>3D-пациент</p>
+                      </div>
+                      <div class="icon arrow-bot-anim"></div>
+                    </div>
+                    <div class="inno__desc-text">
+                      <p>Проектируем цифровой прототип для разработки плана лечения.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="inno__col">
+                <div class="inno__item js-inno-el">
+                  <div class="inno__item-inner js-motion" data-motion="motion3" data-main-delay="0" data-move-delay="0" data-move-up="75"><img src="img/content/inno-2.jpg" alt="image"></div>
+                  <div class="inno__desc js-inno-desc">
+                    <div class="inno__desc-title">
+                      <div class="inno__desc-title-text">
+                        <p>Виртуальные операции</p>
+                      </div>
+                      <div class="icon arrow-bot-anim"></div>
+                    </div>
+                    <div class="inno__desc-text">
+                      <p>Проектируем цифровой прототип для разработки плана лечения.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="inno__col">
+                <div class="inno__item js-inno-el">
+                  <div class="inno__item-inner js-motion" data-motion="motion3" data-main-delay="0.2" data-move-up="75"><img src="img/content/inno-3.jpg" alt="image"></div>
+                  <div class="inno__desc js-inno-desc">
+                    <div class="inno__desc-title">
+                      <div class="inno__desc-title-text">
+                        <p>Цифровая модель улыбки</p>
+                      </div>
+                      <div class="icon arrow-bot-anim"></div>
+                    </div>
+                    <div class="inno__desc-text">
+                      <p>Проектируем цифровой прототип для разработки плана лечения.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end inno-->
+        </div>
+      </div>
     </main>
   </div>
   <footer class="footer">
@@ -98,7 +174,7 @@
       <div class="footer__container container">
         <ul class="footer__nav nav nav_footer">
           <li class="nav__item"><a class="nav__link" href="#">о клинике</a></li>
-          <li class="nav__item"><a class="nav__link" href="#">врачи</a></li>
+          <li class="nav__item active"><a class="nav__link" href="#">врачи</a></li>
           <li class="nav__item"><a class="nav__link" href="#">услуги</a></li>
           <li class="nav__item"><a class="nav__link" href="#">технологии</a></li>
           <li class="nav__item"><a class="nav__link" href="#">истории</a></li>

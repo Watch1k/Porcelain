@@ -1,6 +1,8 @@
 /* Common JS */
 
 $(document).ready(function () {
+	var loaderTimeStart = new Date();
+	loaderTimeStart = loaderTimeStart.getTime();
 
 	(function () {
 		var main = $('.js-main'),
@@ -30,370 +32,380 @@ $(document).ready(function () {
 		}
 	})();
 
-	setTimeout(function () {
-		$('body').addClass('is-loaded');
-		TweenMax.staggerTo($('.header .nav__item'), 1, {opacity: 1, transform: 'translateY(0)', delay: 0.5}, 0.1);
-	}, 2500);
-
 	$(window).on('load', function () {
+		var loaderDelay = new Date();
+		loaderDelay = loaderDelay.getTime();
+		loaderDelay = 2500 - (loaderDelay - loaderTimeStart);
 
-		(function () {
-			var footerController = new ScrollMagic.Controller(),
-				tween = new TimelineMax();
+		if (loaderDelay < 0) {
+			loaderDelay = 0;
+		}
 
-			tween
-				.from('.footer', 1, {
-					alpha: 0,
-					y: 40,
-					ease: Power1.easeInOut
-				}, 0)
-				.staggerFrom($('.footer .nav__item'), 1, {
-					alpha: 0,
-					y: -10,
-					delay: 0.5
-				}, 0.1, 0)
-				.staggerFrom($('.footer .socials__item'), 1, {
-					alpha: 0,
-					y: -15,
-					delay: 0.5
-				}, 0.15, 0)
-				.from($('.footer__bot'), 1, {
-					alpha: 0,
-					y: 40,
-					ease: Power1.easeInOut
-				}, 0);
+		setTimeout(function () {
+			$('body').addClass('is-loaded');
+			TweenMax.staggerTo($('.header .nav__item'), 1, {opacity: 1, transform: 'translateY(0)', delay: 0.5}, 0.1);
 
-			footerController.scene = new ScrollMagic.Scene({
-				triggerElement: '.footer',
-				offset: $(window).height() * 3 / (-5)
-			})
-				.setTween(tween)
-				.addTo(footerController);
+			(function () {
+				var footerController = new ScrollMagic.Controller(),
+					tween = new TimelineMax();
 
-			footerController.scene.on('start', function () {
-				this.remove();
-			});
-		})();
+				tween
+					.from('.footer', 1, {
+						alpha: 0,
+						y: 40,
+						ease: Power1.easeInOut
+					}, 0)
+					.staggerFrom($('.footer .nav__item'), 1, {
+						alpha: 0,
+						y: -10,
+						delay: 0.5
+					}, 0.1, 0)
+					.staggerFrom($('.footer .socials__item'), 1, {
+						alpha: 0,
+						y: -15,
+						delay: 0.5
+					}, 0.15, 0)
+					.from($('.footer__bot'), 1, {
+						alpha: 0,
+						y: 40,
+						ease: Power1.easeInOut
+					}, 0);
 
-		(function () {
-			var motionEl = $('.js-motion'),
-				sceneEl = $('.js-scene');
+				footerController.scene = new ScrollMagic.Scene({
+					triggerElement: '.footer',
+					offset: $(window).height() * 3 / (-5)
+				})
+					.setTween(tween)
+					.addTo(footerController);
 
-			var Animation = function () {
-				this.motion = false;
-				this.mainDelay = 0;
-				this.speedAlpha = 1;
-				this.speedLine = 0.5;
-				this.speedRect = 0.65;
-				this.moveDown = 0;
-				this.moveDelay = 0;
-				this.moveDownSpeed = 0;
-				this.moveUp = 0;
-				this.moveUpSpeed = 1.5;
-				this.offset = 0;
-			};
+				footerController.scene.on('start', function () {
+					this.remove();
+				});
+			})();
 
-			motionEl.each(function () {
-				this.animation = new Animation();
-				var $thisAnimation = this.animation;
-				this.$el = $(this);
-				this.animation.motion = this.$el.attr('data-motion') || this.animation.motion;
-				this.animation.mainDelay = +this.$el.attr('data-main-delay') || +this.animation.mainDelay;
-				this.animation.speedAlpha = this.$el.attr('data-speed-alpha') || this.animation.speedAlpha;
-				this.animation.speedLine = this.$el.attr('data-speed-line') || this.animation.speedLine;
-				this.animation.speedRect = this.$el.attr('data-speed-rect') || this.animation.speedRect;
-				this.animation.moveDelay = this.$el.attr('data-move-delay') || this.animation.moveDelay;
-				this.animation.moveDownSpeed = this.$el.attr('data-move-down-speed') || this.animation.moveDownSpeed;
-				this.animation.moveUp = this.$el.attr('data-move-up') || this.animation.moveUp;
-				this.animation.moveDown = this.$el.attr('data-move-down') || this.animation.moveUp;
-				this.animation.moveUpSpeed = this.$el.attr('data-move-up-speed') || this.animation.moveUpSpeed;
-				this.animation.width = this.$el.outerWidth();
-				this.animation.height = this.$el.outerHeight();
-				this.animation.bgColor = this.$el.css('backgroundColor');
-				this.animation.offset = +this.$el.closest(sceneEl).attr('data-offset') || this.animation.offset;
+			(function () {
+				var motionEl = $('.js-motion'),
+					sceneEl = $('.js-scene');
 
-				this.animation.offset = this.animation.offset / 100 * $(window).height();
-				this.animation.autoHeight = this.$el.attr('data-auto-height') || false;
+				var Animation = function () {
+					this.motion = false;
+					this.mainDelay = 0;
+					this.speedAlpha = 1;
+					this.speedLine = 0.5;
+					this.speedRect = 0.65;
+					this.moveDown = 0;
+					this.moveDelay = 0;
+					this.moveDownSpeed = 0;
+					this.moveUp = 0;
+					this.moveUpSpeed = 1.5;
+					this.offset = 0;
+				};
 
-				if ($(window).width() < 768) {
-					if (this.animation.motion == 'motion1') {
-						this.animation.motion = 'motion3';
-						this.animation.bgColor = '';
+				motionEl.each(function () {
+					this.animation = new Animation();
+					var $thisAnimation = this.animation;
+					this.$el = $(this);
+					this.animation.motion = this.$el.attr('data-motion') || this.animation.motion;
+					this.animation.mainDelay = +this.$el.attr('data-main-delay') || +this.animation.mainDelay;
+					this.animation.speedAlpha = this.$el.attr('data-speed-alpha') || this.animation.speedAlpha;
+					this.animation.speedLine = this.$el.attr('data-speed-line') || this.animation.speedLine;
+					this.animation.speedRect = this.$el.attr('data-speed-rect') || this.animation.speedRect;
+					this.animation.moveDelay = this.$el.attr('data-move-delay') || this.animation.moveDelay;
+					this.animation.moveDownSpeed = this.$el.attr('data-move-down-speed') || this.animation.moveDownSpeed;
+					this.animation.moveUp = this.$el.attr('data-move-up') || this.animation.moveUp;
+					this.animation.moveDown = this.$el.attr('data-move-down') || this.animation.moveUp;
+					this.animation.moveUpSpeed = this.$el.attr('data-move-up-speed') || this.animation.moveUpSpeed;
+					this.animation.width = this.$el.outerWidth();
+					this.animation.height = this.$el.outerHeight();
+					this.animation.bgColor = this.$el.css('backgroundColor');
+					this.animation.offset = +this.$el.closest(sceneEl).attr('data-offset') || this.animation.offset;
+
+					this.animation.offset = this.animation.offset / 100 * $(window).height();
+					this.animation.autoHeight = this.$el.attr('data-auto-height') || false;
+
+					if ($(window).width() < 768) {
+						if (this.animation.motion == 'motion1') {
+							this.animation.motion = 'motion3';
+							this.animation.bgColor = '';
+						}
 					}
-				}
 
-				switch (this.animation.motion) {
-					case 'motion1':
-						if ($(window).width() > 1279) {
-							this.animation.advancedWidth = this.$el.attr('data-advanced-width') || 0;
-						} else {
-							this.animation.advancedWidth = 0;
-						}
-						this.animation.width = +this.animation.width + +this.animation.advancedWidth;
-						this.$el
-							.css({
-								'background-color': 'transparent'
-							})
-							.wrapInner('<div class="motion__inner"></div>')
-							.wrapInner('<div class="motion"></div>')
-							.find('.motion')
-							.css({
-								'background-color': this.animation.bgColor
-							})
-							.children()
-							.css({
-								width: this.animation.width + 'px',
-								height: this.animation.height + 'px'
-							});
+					switch (this.animation.motion) {
+						case 'motion1':
+							if ($(window).width() > 1279) {
+								this.animation.advancedWidth = this.$el.attr('data-advanced-width') || 0;
+							} else {
+								this.animation.advancedWidth = 0;
+							}
+							this.animation.width = +this.animation.width + +this.animation.advancedWidth;
+							this.$el
+								.css({
+									'background-color': 'transparent'
+								})
+								.wrapInner('<div class="motion__inner"></div>')
+								.wrapInner('<div class="motion"></div>')
+								.find('.motion')
+								.css({
+									'background-color': this.animation.bgColor
+								})
+								.children()
+								.css({
+									width: this.animation.width + 'px',
+									height: this.animation.height + 'px'
+								});
 
-						this.animation.tweenAnimation = new TimelineMax();
+							this.animation.tweenAnimation = new TimelineMax();
 
-						this.animation.tweenAnimation
-							.addLabel('start', 0.01)
-							.set(this.$el.children(), {
-								width: 20
-							})
-							.fromTo(this.$el.children(), this.animation.speedLine, {
-								height: 0
-							}, {
-								height: this.animation.height,
-								ease: Power3.easeInOut,
-								delay: this.animation.mainDelay,
-								onComplete: function () {
-									TweenMax.to($(this.target), $(this.target).parent().get(0).animation.speedRect, {
-										width: $(this.target).parent().get(0).animation.width,
-										ease: Power3.easeInOut,
-										onComplete: function () {
-											TweenMax.set($(this.target), {
-												height: '100%',
-												width: 'calc(100% + ' + $(this.target).parent().get(0).advancedWidth + 'px)'
-											});
-											TweenMax.set($(this.target).children(), {
-												height: '100%',
-												width: '100%'
-											});
-										}
-									});
-								}
-							}, 'start')
-							.set(this.$el.children(), {
-								y: this.animation.moveDown
-							}, 'start')
-							.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
-								y: this.animation.moveDown
-							}, {
-								y: this.animation.moveUp,
-								ease: Power3.easeInOut,
-								onComplete: function () {
-									TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
-										y: $(this.target).parent().get(0).animation.moveUp
-									}, {
-										y: 0,
-										ease: Power3.easeInOut
-									});
-								}
-							}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
-						break;
-					case 'motion2':
-						this.$el
-							.wrapInner('<div class="motion__inner"></div>')
-							.wrapInner('<div class="motion"></div>');
+							this.animation.tweenAnimation
+								.addLabel('start', 0.01)
+								.set(this.$el.children(), {
+									width: 20
+								})
+								.fromTo(this.$el.children(), this.animation.speedLine, {
+									height: 0
+								}, {
+									height: this.animation.height,
+									ease: Power3.easeInOut,
+									delay: this.animation.mainDelay,
+									onComplete: function () {
+										TweenMax.to($(this.target), $(this.target).parent().get(0).animation.speedRect, {
+											width: $(this.target).parent().get(0).animation.width,
+											ease: Power3.easeInOut,
+											onComplete: function () {
+												TweenMax.set($(this.target), {
+													height: '100%',
+													width: 'calc(100% + ' + $(this.target).parent().get(0).advancedWidth + 'px)'
+												});
+												TweenMax.set($(this.target).children(), {
+													height: '100%',
+													width: '100%'
+												});
+											}
+										});
+									}
+								}, 'start')
+								.set(this.$el.children(), {
+									y: this.animation.moveDown
+								}, 'start')
+								.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
+									y: this.animation.moveDown
+								}, {
+									y: this.animation.moveUp,
+									ease: Power3.easeInOut,
+									onComplete: function () {
+										TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
+											y: $(this.target).parent().get(0).animation.moveUp
+										}, {
+											y: 0,
+											ease: Power3.easeInOut
+										});
+									}
+								}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
+							break;
+						case 'motion2':
+							this.$el
+								.wrapInner('<div class="motion__inner"></div>')
+								.wrapInner('<div class="motion"></div>');
 
-						this.animation.tweenAnimation = new TimelineMax();
+							this.animation.tweenAnimation = new TimelineMax();
 
-						this.animation.tweenAnimation
-							.addLabel('start', 0.01)
-							.fromTo(this.$el.children(), this.animation.speedAlpha, {
-								alpha: 0
-							}, {
-								alpha: 1,
-								ease: Power3.easeInOut,
-								delay: this.animation.mainDelay
-							}, 'start')
-							.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
-								y: this.animation.moveDown
-							}, {
-								y: this.animation.moveUp,
-								ease: Power3.easeInOut,
-								onComplete: function () {
-									TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
-										y: $(this.target).parent().get(0).animation.moveUp
-									}, {
-										y: 0,
-										ease: Power3.easeInOut
-									});
-								}
-							}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
-						break;
-					case 'motion3':
-						this.$el
-							.wrapInner('<div class="motion__inner"></div>')
-							.append('<div class="motion__element"></div>')
-							.wrapInner('<div class="motion"></div>')
-							.find('.motion')
-							.children()
-							.css({
-								width: this.animation.width + 'px',
-								height: this.animation.height + 'px'
-							})
-							.last()
-							.css({
-								'margin-left': '20px'
-							});
+							this.animation.tweenAnimation
+								.addLabel('start', 0.01)
+								.fromTo(this.$el.children(), this.animation.speedAlpha, {
+									alpha: 0
+								}, {
+									alpha: 1,
+									ease: Power3.easeInOut,
+									delay: this.animation.mainDelay
+								}, 'start')
+								.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
+									y: this.animation.moveDown
+								}, {
+									y: this.animation.moveUp,
+									ease: Power3.easeInOut,
+									onComplete: function () {
+										TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
+											y: $(this.target).parent().get(0).animation.moveUp
+										}, {
+											y: 0,
+											ease: Power3.easeInOut
+										});
+									}
+								}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
+							break;
+						case 'motion3':
+							this.$el
+								.wrapInner('<div class="motion__inner"></div>')
+								.append('<div class="motion__element"></div>')
+								.wrapInner('<div class="motion"></div>')
+								.find('.motion')
+								.children()
+								.css({
+									width: this.animation.width + 'px',
+									height: this.animation.height + 'px'
+								})
+								.last()
+								.css({
+									'margin-left': '20px'
+								});
 
-						if (this.$el.find('video').length) {
-							this.$el.find('video').get(0).play();
-						}
+							if (this.$el.find('video').length) {
+								this.$el.find('video').get(0).play();
+							}
 
-						this.animation.tweenAnimation = new TimelineMax();
+							this.animation.tweenAnimation = new TimelineMax();
 
-						this.animation.tweenAnimation
-							.addLabel('start', 0.01)
-							.set(this.$el.children().children().first(), {
-								alpha: 0
-							})
-							.set(this.$el.children().children().last(), {
-								x: '-100%'
-							})
-							.fromTo(this.$el.children().children().last(), this.animation.speedLine, {
-								y: '-100%'
-							}, {
-								y: '0%',
-								ease: Power3.easeInOut,
-								delay: this.animation.mainDelay,
-								onComplete: function () {
-									TweenMax.to($(this.target), (2 * $(this.target).parent().parent().get(0).animation.speedRect), {
-										x: '100%',
-										ease: Power3.easeInOut
-									});
-								}
-							}, 'start')
-							.set(this.$el.children().children().first(), {
-								alpha: 1
-							}, (+this.animation.speedRect + +this.animation.speedLine + +this.animation.mainDelay + 0.001))
-							.set(this.$el.children(), {
-								y: this.animation.moveDown
-							}, 0)
-							.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
-								y: this.animation.moveDown
-							}, {
-								y: this.animation.moveUp,
-								ease: Power3.easeInOut,
-								onComplete: function () {
-									TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
-										y: $(this.target).parent().get(0).animation.moveUp
-									}, {
-										y: 0,
-										ease: Power3.easeInOut,
-										onComplete: function () {
-											$(this.target).css({
-												height: '100%',
-												width: '100%'
-											});
-											$(this.target).children().first().css({
-												height: '100%',
-												width: '100%'
-											});
-											$(this.target).children().last().css({
-												height: '100%',
-												width: '100%'
-											});
-										}
-									});
-								}
-							}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
-						if (this.$el.siblings('.js-inno-desc').length) {
-							this.animation.tweenAnimation.fromTo(this.$el.next(), this.animation.moveDownSpeed, {
-								y: this.animation.moveDown
-							}, {
-								y: this.animation.moveUp,
-								ease: Power3.easeInOut,
-								onComplete: function () {
-									TweenMax.fromTo($(this.target), $(this.target).prev().get(0).animation.moveUpSpeed, {
-										y: $(this.target).prev().get(0).animation.moveUp
-									}, {
-										y: 0,
-										alpha: 1,
-										ease: Power3.easeInOut,
-										onComplete: function () {
-											$(this.target).addClass('is-transition').css('transform', '');
-										}
-									});
-								}
-							}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
-						}
-						break;
-					case 'motion4':
-						this.$el
-							.css({
-								'background-color': 'transparent'
-							})
-							.wrapInner('<div class="motion__inner"></div>')
-							.wrapInner('<div class="motion"></div>')
-							.css({
-								width: this.animation.width + 'px',
-								height: this.animation.height + 'px'
-							})
-							.find('.motion')
-							.css({
-								position: 'absolute',
-								top: 0,
-								left: '50%',
-								'background-color': this.animation.bgColor,
-								width: '0%',
-								height: this.animation.height + 'px'
-							})
-							.children()
-							.css({
-								position: 'absolute',
-								top: 0,
-								left: this.animation.width / 2 * (-1),
-								width: this.animation.width + 'px',
-								height: this.animation.height + 'px'
-							});
-						this.animation.tweenAnimation = new TimelineMax();
-						this.animation.tweenAnimation
-							.addLabel('start', 0.01)
-							.to(this.$el.children(), this.animation.speedRect, {
-								left: 0,
-								width: '100%',
-								ease: Power3.easeInOut
-							}, 'start+=' + +this.animation.mainDelay)
-							.to(this.$el.children().children(), this.animation.speedRect, {
-								left: 0,
-								ease: Power3.easeInOut
-							}, 'start+=' + +this.animation.mainDelay);
-					default:
-						return true;
-				}
-			});
+							this.animation.tweenAnimation
+								.addLabel('start', 0.01)
+								.set(this.$el.children().children().first(), {
+									alpha: 0
+								})
+								.set(this.$el.children().children().last(), {
+									x: '-100%'
+								})
+								.fromTo(this.$el.children().children().last(), this.animation.speedLine, {
+									y: '-100%'
+								}, {
+									y: '0%',
+									ease: Power3.easeInOut,
+									delay: this.animation.mainDelay,
+									onComplete: function () {
+										TweenMax.to($(this.target), (2 * $(this.target).parent().parent().get(0).animation.speedRect), {
+											x: '100%',
+											ease: Power3.easeInOut
+										});
+									}
+								}, 'start')
+								.set(this.$el.children().children().first(), {
+									alpha: 1
+								}, (+this.animation.speedRect + +this.animation.speedLine + +this.animation.mainDelay + 0.001))
+								.set(this.$el.children(), {
+									y: this.animation.moveDown
+								}, 0)
+								.fromTo(this.$el.children(), this.animation.moveDownSpeed, {
+									y: this.animation.moveDown
+								}, {
+									y: this.animation.moveUp,
+									ease: Power3.easeInOut,
+									onComplete: function () {
+										TweenMax.fromTo($(this.target), $(this.target).parent().get(0).animation.moveUpSpeed, {
+											y: $(this.target).parent().get(0).animation.moveUp
+										}, {
+											y: 0,
+											ease: Power3.easeInOut,
+											onComplete: function () {
+												$(this.target).css({
+													height: '100%',
+													width: '100%'
+												});
+												$(this.target).children().first().css({
+													height: '100%',
+													width: '100%'
+												});
+												$(this.target).children().last().css({
+													height: '100%',
+													width: '100%'
+												});
+											}
+										});
+									}
+								}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
+							if (this.$el.siblings('.js-inno-desc').length) {
+								this.animation.tweenAnimation.fromTo(this.$el.next(), this.animation.moveDownSpeed, {
+									y: this.animation.moveDown
+								}, {
+									y: this.animation.moveUp,
+									ease: Power3.easeInOut,
+									onComplete: function () {
+										TweenMax.fromTo($(this.target), $(this.target).prev().get(0).animation.moveUpSpeed, {
+											y: $(this.target).prev().get(0).animation.moveUp
+										}, {
+											y: 0,
+											alpha: 1,
+											ease: Power3.easeInOut,
+											onComplete: function () {
+												$(this.target).addClass('is-transition').css('transform', '');
+											}
+										});
+									}
+								}, 'start+=' + (+this.animation.moveDelay + +this.animation.mainDelay));
+							}
+							break;
+						case 'motion4':
+							this.$el
+								.css({
+									'background-color': 'transparent'
+								})
+								.wrapInner('<div class="motion__inner"></div>')
+								.wrapInner('<div class="motion"></div>')
+								.css({
+									width: this.animation.width + 'px',
+									height: this.animation.height + 'px'
+								})
+								.find('.motion')
+								.css({
+									position: 'absolute',
+									top: 0,
+									left: '50%',
+									'background-color': this.animation.bgColor,
+									width: '0%',
+									height: this.animation.height + 'px'
+								})
+								.children()
+								.css({
+									position: 'absolute',
+									top: 0,
+									left: this.animation.width / 2 * (-1),
+									width: this.animation.width + 'px',
+									height: this.animation.height + 'px'
+								});
+							this.animation.tweenAnimation = new TimelineMax();
+							this.animation.tweenAnimation
+								.addLabel('start', 0.01)
+								.to(this.$el.children(), this.animation.speedRect, {
+									left: 0,
+									width: '100%',
+									ease: Power3.easeInOut
+								}, 'start+=' + +this.animation.mainDelay)
+								.to(this.$el.children().children(), this.animation.speedRect, {
+									left: 0,
+									ease: Power3.easeInOut,
+									onComplete: function () {
+										$(this.target).parent().parent().css('transition', 'all 0.5s ease-out');
+									}
+								}, 'start+=' + +this.animation.mainDelay);
+						default:
+							return true;
+					}
+				});
 
-			var SceneModule = function (el) {
-				this.container = el;
-				this.element = el.hasClass('js-motion') ? el.find('.js-motion').andSelf() : el.find('.js-motion');
-			};
-			sceneEl.each(function () {
-				var sceneModule = new SceneModule($(this));
+				var SceneModule = function (el) {
+					this.container = el;
+					this.element = el.hasClass('js-motion') ? el.find('.js-motion').andSelf() : el.find('.js-motion');
+				};
+				sceneEl.each(function () {
+					var sceneModule = new SceneModule($(this));
 
-				sceneModule.container.controller = new ScrollMagic.Controller();
+					sceneModule.container.controller = new ScrollMagic.Controller();
 
-				sceneModule.element.each(function () {
-					var sceneItem = $(this).hasClass('js-scene') ? this : $(this).get(0).closest('.js-scene');
-					var sceneOffset = $(this).hasClass('js-scene') ? $(this).attr('data-offset') / 100 * $(window).height() : $(this).closest('.js-scene').attr('data-offset') / 100 * $(window).height();
+					sceneModule.element.each(function () {
+						var sceneItem = $(this).hasClass('js-scene') ? this : $(this).get(0).closest('.js-scene');
+						var sceneOffset = $(this).hasClass('js-scene') ? $(this).attr('data-offset') / 100 * $(window).height() : $(this).closest('.js-scene').attr('data-offset') / 100 * $(window).height();
 
-					sceneModule.container.scene = new ScrollMagic.Scene({
-						triggerElement: sceneItem,
-						offset: sceneOffset
-					})
-						.setTween(this.animation.tweenAnimation)
-						.addTo(sceneModule.container.controller);
+						sceneModule.container.scene = new ScrollMagic.Scene({
+							triggerElement: sceneItem,
+							offset: sceneOffset
+						})
+							.setTween(this.animation.tweenAnimation)
+							.addTo(sceneModule.container.controller);
 
-					sceneModule.container.scene.on('start', function () {
-						this.remove();
+						sceneModule.container.scene.on('start', function () {
+							this.remove();
+						});
 					});
 				});
-			});
-		})();
+			})();
+		}, loaderDelay);
 	});
 
 	//for IE9
@@ -884,8 +896,8 @@ $(document).ready(function () {
 					position: 'absolute',
 					'z-index': 102,
 					top: -14,
-					left: 0,
-					right: 0,
+					left: -24,
+					right: -24,
 					height: navHeight,
 					'background-color': '#a70a3f'
 				});

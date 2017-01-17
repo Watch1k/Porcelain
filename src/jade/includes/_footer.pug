@@ -4,26 +4,15 @@ footer.footer
 			ul.footer__nav.nav.nav_footer
 				each value in navMenu
 					if navToggle === value
-						li.nav__item.active
-							a.nav__link(href='#')= value
+						li.nav__item.active: a.nav__link(href='#')= value
 					else
-						li.nav__item
-							a.nav__link(href='#')= value
+						li.nav__item: a.nav__link(href='#')= value
 			ul.footer__socials.socials
-				li.socials__item
-					a.socials__link(href='#')
-						+i('fb')
-				li.socials__item
-					a.socials__link(href='#')
-						+i('insta-original')
-				li.socials__item
-					a.socials__link(href='#')
-						+i('tw')
-				li.socials__item
-					a.socials__link(href='#')
-						+i('yt')
+				li.socials__item: a.socials__link(href='#'): +i('fb')
+				li.socials__item: a.socials__link(href='#'): +i('insta-original')
+				li.socials__item: a.socials__link(href='#'): +i('tw')
+				li.socials__item: a.socials__link(href='#'): +i('yt')
 	.footer__bot
 		.footer__container.container
 			.footer__copy © Porcelain, 2016
-			a.footer__vintage(href='http://vintage.com.ua' target="_blank")
-				+i('vintage')
+			a.footer__vintage(href='http://vintage.com.ua' target="_blank"): +i('vintage')
