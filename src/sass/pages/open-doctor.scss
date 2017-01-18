@@ -386,11 +386,11 @@
 
   @media (min-width: 768px) and (max-width: 1279px){
     width: 340px;
-    width: 45vw;
+    width: 44vw;
 
     &:not(:last-child) {
       margin-right: 35px;
-      margin-right: 5vw;
+      margin-right: 6vw;
     }
   }
 
@@ -407,9 +407,7 @@
 
     font-size: 16px;
 
-    //TODO ask about text crop
-    height: 57px;
-    overflow: hidden;
+    height: 60px;
   }
 
   &__doctor {
@@ -450,6 +448,14 @@
 
     padding: 0 35px 0 0;
 
+    @media (min-width: 1279px) {
+      width: 300px;
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+    }
+
     .article_block__text {
       margin-top: 7px;
     }
@@ -458,13 +464,7 @@
       margin-top: 13px;
     }
 
-    @media (min-width: 768px) {
-      &:not(:last-child) {
-        margin-right: 0
-      }
-    }
-
-    @media (max-width: 767px) {
+    @media (max-width: 1279px) {
       padding-right: 0;
     }
   }

@@ -144,9 +144,28 @@
         margin-top: 10px;
       }
 
+      .error-text {
+        display: none;
+
+        opacity: 0;
+
+        transition: opacity .3s ease;
+
+        font-size: 12px;
+        margin-top: 5px;
+
+        color: #a70a3f;
+      }
+
       &.has-error {
         input, textarea {
           border-color: #a70a3f;
+        }
+
+        .error-text {
+          display: block;
+
+          opacity: 1;
         }
       }
     }

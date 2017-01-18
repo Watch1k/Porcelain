@@ -40,10 +40,13 @@ block wrapper
                         form.popup__form
                             label.form-group
                                 input(type="text", name="userName", placeholder="Ваше имя")
+                                .error-text Текст ошибки
                             label.form-group
                                 input(type="tel", name="userTel", placeholder="Ваш номер телефона")
+                                .error-text Текст ошибки
                             label.form-group
                                 input(type="text", name="useTheme", placeholder="Тема сотрудничества")
+                                .error-text Текст ошибки
                             button.popup__btn.btn.btn_red(type="submit")
                                 | отправить
                                 .btn__icon
@@ -62,10 +65,13 @@ block wrapper
                         form.popup__form
                             label.form-group
                                 input(type="text", name="userName", placeholder="Ваше имя")
+                                .error-text Текст ошибки
                             label.form-group
                                 input(type="email", name="userEmail", placeholder="Ваш email")
+                                .error-text Текст ошибки
                             label.form-group
                                 input(type="text", name="userKids", placeholder="Есть ли у вас дети?")
+                                .error-text Текст ошибки
                             button.popup__btn.btn.btn_red(type="submit")
                                 | подписаться
                                 .btn__icon
@@ -84,10 +90,13 @@ block wrapper
                         form.popup__form
                             label.form-group
                                 input(type="text", name="userName", placeholder="Ваше имя")
+                                .error-text Текст ошибки
                             label.form-group
                                 input(type="email", name="userEmail", placeholder="Ваш номер телефона")
+                                .error-text Текст ошибки
                             label.form-group
                                 textarea(name="userQuestion", placeholder="Ваша проблема или вопрос?")
+                                .error-text Текст ошибки
                             button.popup__btn.btn.btn_red(type="submit")
                                 | отправить
                                 .btn__icon
@@ -119,12 +128,16 @@ block wrapper
                         form.popup__form
                             label.form-group
                                 input(type="text", name="userName", placeholder="Ваше имя")
+                                .error-text Текст ошибки
                             label.form-group
                                 input(type="email", name="userEmail", placeholder="Ваш номер телефона")
+                                .error-text Текст ошибки
                             label.form-group
                                 textarea.textarea-small(name="userAppointment", placeholder="Предположительная дата и время записи")
+                                .error-text Текст ошибки
                             label.form-group
                                 textarea(name="userQuestion", placeholder="Ваша проблема или вопрос?")
+                                .error-text Текст ошибки
                             button.popup__btn.btn.btn_red(type="submit")
                                 | отправить
                                 .btn__icon
