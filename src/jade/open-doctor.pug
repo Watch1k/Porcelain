@@ -28,40 +28,80 @@ block content
                             p Туркив анна Владимировна
                         .screen__subtitle
                             p Врач куратор, ортопедическая стоматология
-            .screen__item
-                .screen__img(style='background-image: url(img/content/screen-2.jpg)')
-                .screen__container.container
-                    .screen__inner.screen__inner-lift_up
-                        .screen__title
-                            p Туркив анна Владимировна
-                        .screen__subtitle
-                            p Врач куратор, ортопедическая стоматология
-            .screen__item
-                .screen__img(style='background-image: url(img/content/screen-2.jpg)')
-                .screen__container.container
-                    .screen__inner.screen__inner-lift_up
-                        .screen__title
-                            p Туркив анна Владимировна
-                        .screen__subtitle
-                            p Врач куратор, ортопедическая стоматология
-            .screen__item
-                .screen__img(style='background-image: url(img/content/screen-2.jpg)')
-                .screen__container.container
-                    .screen__inner.screen__inner-lift_up
-                        .screen__title
-                            p Туркив анна Владимировна
-                        .screen__subtitle
-                            p Врач куратор, ортопедическая стоматология
-            .screen__item
-                .screen__img(style='background-image: url(img/content/screen-3.jpg)')
-                .screen__container.container
-                    .screen__inner.screen__inner-lift_up
-                        .screen__title
-                            p Туркив анна Владимировна
-                        .screen__subtitle
-                            p Врач куратор, ортопедическая стоматология
+            - for (var i = 0; i < 4; i++) {
+                .screen__item
+                    .screen__img(style='background-image: url(img/content/screen-2.jpg)')
+                    .screen__container.container
+                        .screen__inner.screen__inner-lift_up
+                            .screen__title
+                                p Туркив анна Владимировна
+                            .screen__subtitle
+                                p Врач куратор, ортопедическая стоматология
+            - }
     //end screen
-    section.doctor-profile
-       .doctor-more
-       .doctor-spec
-       .doctor-stories
+    .doctor_profile.container.clearfix
+        section.doctor_profile__block.doctor_profile__block-doctor
+            .doctor_profile__block_title больше о враче
+            .doctor_more
+                mixin doctor-more__field(title, text)
+                    .doctor_more__field
+                        .doctor_more__field_title #{title}
+                        .doctor_more__field_text #{text}
+                +doctor-more__field('профиль', 'Врач куратор, ортопедическая стоматология')
+                +doctor-more__field('Интересные факты', 'Есть коллекция из 100 зубов мудрости,  за один сеанс под мед сном полечила 99 зубов')
+                +doctor-more__field('стаж:', '10 лет')
+                +doctor-more__field('Увлечения:', 'Высокой, высокой, высокой')
+                +doctor-more__field('цитата:', 'Все работы доктор выполняет под контролем увеличения (бинокулярные лупы), что дает')
+                +doctor-more__field('авторский стиль', 'Так же доктор владеет современными методиками планирования дизайна улыбки, а именно технологией Digital Smile Design (DSD), признанная ведущими мировыми специалистами в области эстетической стоматологии. <br/> Все работы доктор выполняет под контролем увеличения (бинокулярные лупы), что дает.')
+                mixin doctor-more__field-social(title, icons)
+                    .doctor_more__field.doctor_more__field-social
+                        .doctor_more__field_title.doctor_more__field_title-padding #{title}
+                        .doctor_more__field-icons_container
+                            each icon in icons
+                                a.doctor_more__field_icon(href="#!")
+                                    +i(`${icon}`)
+                - var doctor_more__icons = ['tw', 'fb'];
+                +doctor-more__field-social('в социальных сетях', doctor_more__icons)
+        section.doctor_profile__block.doctor_profile__block-spec
+            .doctor_profile__block_title Специализация
+            .doctor_spec
+                - var doctor_spec__buttons = ['Реставрация зубов', 'Пломбы', 'Лечение кариеса', 'Инвизалайн'];
+                each button in doctor_spec__buttons
+                    a.doctor_spec__button(href='#')
+                        span #{button}
+                        .start__title-icon
+        section.doctor_profile__block.doctor_profile__block-stories
+            .doctor_profile__block_title истории пациентов
+            .doctor_stories
+                .doctor_stories__container
+                    - var storTitles = ['лечение зубов в клинике', 'имплантация в клинике', 'лечение зубов в клинике', 'имплантация в клинике'];
+                    - for (var i = 0; i < 4; i++) {
+                    article.doctor_stories__item.article_block
+                        .article_block__title #{storTitles[i]}
+                        .article_block__text Первая история лечения в клинике которая показывает высочайший уровень предоставлнгия услуг...
+                        .article_block__doctor <b>доктор:</b> Андрей Туркив
+                        a.article_block__read(href="#!") Читать статью
+                    - }
+                .arrows-container
+                    .doctor_stories__prev.arrow_btn.arrow_btn-prev
+                        +i('arrow-slider')
+                    .doctor_stories__next.arrow_btn.arrow_btn-next
+                        +i('arrow-slider')
+        section.doctor_profile__block.doctor_profile__block-public
+            .doctor_profile__block_title.doctor_profile__block_title-small Свежие публикации врачей
+            .doctor_publications
+                - var pubTitles = ['лечение десен в клинике', 'протезирование', 'лечение десен в клинике', 'протезирование'];
+                - for (var i = 0; i < 4; i++) {
+                article.doctor_publications__item.article_block.article_block-white
+                    .article_block__title #{pubTitles[i]}
+                    .article_block__text Первая история лечения в клинике которая показывает высочайший уровень предоставлнгия услуг...
+                    a.article_block__read(href="#!") Читать статью
+                - }
+            .arrows-container
+                .doctor_publications__prev.arrow_btn.arrow_btn-prev
+                    +i('arrow-slider')
+                .doctor_publications__next.arrow_btn.arrow_btn-next
+                    +i('arrow-slider')
+        a.all_doctors_button.btn.btn_black(href='#')
+            | ко всем врачам
+            .btn__icon

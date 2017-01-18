@@ -8,3 +8,4 @@
 //=include lib/slick.min.js
 //=include lib/common.js
 //=include lib/popup.js
+//=include lib/open-doctor.js
