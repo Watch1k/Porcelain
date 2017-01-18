@@ -378,8 +378,20 @@
 
   color: white;
 
-  &:not(:last-child) {
-    margin-right: 16px;
+  @media (min-width: 1279px) {
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px){
+    width: 340px;
+    width: 45vw;
+
+    &:not(:last-child) {
+      margin-right: 35px;
+      margin-right: 5vw;
+    }
   }
 
   &__title {
@@ -444,6 +456,16 @@
 
     .article_block__read {
       margin-top: 13px;
+    }
+
+    @media (min-width: 768px) {
+      &:not(:last-child) {
+        margin-right: 0
+      }
+    }
+
+    @media (max-width: 767px) {
+      padding-right: 0;
     }
   }
 }
